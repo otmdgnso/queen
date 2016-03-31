@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#bulletin{
+		width:700px;
+		margin: 0px;
+		padding: 0px;
+		font-size: 9pt;
+	}
+	
+	#bulletin dl{
+		clear: both;
+	}
+	
+	#bulletin dt{
+		float: left;
+		width:75px;
+		height: 30px;
+		line-height:30px;
+		background: #e4e4e4;
+		text-align: center;
+	}
+	
+	#bulletin dd{
+		float: left;
+		width: 75px;
+		margin: 0px;
+		height: 30px;
+		line-height:30px;
+		border-bottom: 1px solid #ccc;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+
+<img src="arrow.gif">&nbsp;게시판
+
+<div id="bulletin">
+	<dl>
+		<dt>번호</dt>
+		<dt style="width:400px;">제목</dt>
+		<dt>작성자</dt>
+		<dt>작성일</dt>
+		<dt>조회수</dt>
+	</dl>
+	<dl>
+		<dd>3</dd>
+		<dd style="width:400px; text-align: left;">테스트 제목 3...</dd>
+		<dd>홍길동</dd>
+		<dd>2000-10-10</dd>
+		<dd>1</dd>
+	</dl>
+	<dl>
+		<dd>2</dd>
+		<dd style="width:400px; text-align: left;">테스트 제목 2...</dd>
+		<dd>자바다</dd>
+		<dd>2000-10-10</dd>
+		<dd>1</dd>
+	</dl>
+	<dl>
+		<dd>1</dd>
+		<dd style="width:400px; text-align: left;">테스트 제목 1...</dd>
+		<dd>스프링</dd>
+		<dd>2000-10-10</dd>
+		<dd>1</dd>
+	</dl>
+</div>
+</body>
+</html>

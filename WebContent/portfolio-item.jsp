@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +57,7 @@
                     <li>
                         <a href="contact.html">Contact</a>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -71,18 +72,18 @@
                             <li>
                                 <a href="portfolio-4-col.html">4 Column Portfolio</a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="portfolio-item.html">Single Portfolio Item</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="blog-home-1.html">Blog Home 1</a>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="blog-home-2.html">Blog Home 2</a>
                             </li>
                             <li>
@@ -120,104 +121,102 @@
     <!-- Page Content -->
     <div class="container">
 
+        <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Blog Home Two
+                <h1 class="page-header">Portfolio Item
                     <small>Subheading</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a>
                     </li>
-                    <li class="active">Blog Home Two</li>
+                    <li class="active">Portfolio Item</li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
 
-        <!-- Blog Post Row -->
+        <!-- Portfolio Item Row -->
         <div class="row">
-            <div class="col-md-1 text-center">
-                <p><i class="fa fa-camera fa-4x"></i>
-                </p>
-                <p>June 17, 2014</p>
+
+            <div class="col-md-8">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
             </div>
-            <div class="col-md-5">
-                <a href="blog-post.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/600x300" alt="">
-                </a>
+
+            <div class="col-md-4">
+                <h3>Project Description</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                <h3>Project Details</h3>
+                <ul>
+                    <li>Lorem Ipsum</li>
+                    <li>Dolor Sit Amet</li>
+                    <li>Consectetur</li>
+                    <li>Adipiscing Elit</li>
+                </ul>
             </div>
-            <div class="col-md-6">
-                <h3>
-                    <a href="blog-post.html">Blog Post Title</a>
-                </h3>
-                <p>by <a href="#">Start Bootstrap</a>
-                </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.html">Read More <i class="fa fa-angle-right"></i></a>
-            </div>
+
         </div>
         <!-- /.row -->
 
-        <hr>
-
-        <!-- Blog Post Row -->
+        <!-- Related Projects Row -->
         <div class="row">
-            <div class="col-md-1 text-center">
-                <p><i class="fa fa-film fa-4x"></i>
-                </p>
-                <p>June 17, 2014</p>
+
+            <div class="col-lg-12">
+                <h3 class="page-header">Related Projects</h3>
             </div>
-            <div class="col-md-5">
-                <a href="blog-post.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/600x300" alt="">
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
                 </a>
             </div>
-            <div class="col-md-6">
-                <h3><a href="blog-post.html">Blog Post Title</a>
-                </h3>
-                <p>by <a href="#">Start Bootstrap</a>
-                </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.html">Read More <i class="fa fa-angle-right"></i></a>
-            </div>
-        </div>
-        <!-- /.row -->
 
-        <hr>
-
-        <!-- Blog Post Row -->
-        <div class="row">
-            <div class="col-md-1 text-center">
-                <p><i class="fa fa-file-text fa-4x"></i>
-                </p>
-                <p>June 17, 2014</p>
-            </div>
-            <div class="col-md-5">
-                <a href="blog-post.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/600x300" alt="">
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
                 </a>
             </div>
-            <div class="col-md-6">
-                <h3><a href="blog-post.html">Blog Post Title</a>
-                </h3>
-                <p>by <a href="#">Start Bootstrap</a>
-                </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.html">Read More <i class="fa fa-angle-right"></i></a>
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
+                </a>
             </div>
-        </div>
-        <!-- /.row -->
 
-        <hr>
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
 
-        <!-- Pager -->
-        <div class="row">
-            <ul class="pager">
-                <li class="previous"><a href="#">&larr; Older</a>
-                </li>
-                <li class="next"><a href="#">Newer &rarr;</a>
-                </li>
-            </ul>
         </div>
         <!-- /.row -->
 

@@ -75,7 +75,7 @@
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
-        </div>
+        </div>	
         <!-- /.row -->
 
         <!-- Projects Row -->

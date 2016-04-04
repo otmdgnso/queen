@@ -40,10 +40,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="portfolio-1-col.jsp">1 Column Portfolio</a>
+                                <a href="article.jsp">1 Column Portfolio</a>
                             </li>
                             <li>
-                                <a href="portfolio-2-col.jsp">2 Column Portfolio</a>
+                                <a href="list.jsp">2 Column Portfolio</a>
                             </li>
                             <li>
                                 <a href="portfolio-3-col.jsp">3 Column Portfolio</a>

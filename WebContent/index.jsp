@@ -46,7 +46,7 @@
         </ol>
 
         <!-- Wrapper for slides -->
-        <div class="carousel-inner">
+        <div class="carousel-inner">R
             <div class="item active">
                 <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
                 <div class="carousel-caption">

@@ -190,7 +190,7 @@ $(function() {
 						</button>
                     </li>
                     <li>
-                        <a href="member.jsp">회원가입</a>
+                        <a href="<%=cp%>WEB-INF/views/member/member.jsp">회원가입</a>
                     </li>
                   
                 </ul>
@@ -232,9 +232,10 @@ $(function() {
                                 </label>
                             </div>
         		    	</div>
-				        <div class="modal-footer" style=" border: none; margin-top:-20px;">
+				        <div class="modal-footer" style=" border: none; margin-top:-8px;">
                             <div>
-                                <button style="font-size:16px; margin-top:0px; border-radius:0px; " type="submit" class="btn btn-warning btn-lg btn-block">로그인</button>
+                                <button style="font-size:16px; margin-top:0px; border-radius:0px; "
+                                 type="submit" class="btn btn-warning btn-lg btn-block">로그인</button>
                             </div>
 				    	    <div style="margin-top:10px; margin-right:-15px;" >
                                 <button style="font-size:13px; color:gray; margin-right:-10px;" 

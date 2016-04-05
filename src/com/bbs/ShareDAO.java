@@ -10,25 +10,25 @@ import java.util.List;
 
 import com.util.DBConn;
 
-public class DocuDAO {
+public class ShareDAO {
   private Connection conn=DBConn.getConnection();
   
   
  //데이터 추가
-  public int insertDocu(DocuDTO dto){
+  public int insertDocu(ShareDTO dto){
 	  int result=0;
 	  PreparedStatement pstmt=null;
 	  StringBuffer sb=new StringBuffer();
 	  
 	  try {
-		sb.append("insert into docu (docuNum, docuSubject, ");
-		sb.append(" docuContent,docuCreated, docuHitCount,");
-		sb.append(" docuRecomm,docuFile, memId)");
+		sb.append("insert into share (shareNum, shareSubject, ");
+		sb.append(" shareContent,shareCreated, shareHitCount,");
+		sb.append(" shareModified, memId)");
 		sb.append(" values (?,?,?,?,?,?,?,?);");
 		pstmt=conn.prepareStatement(sb.toString());
-		pstmt.setInt(1, dto.getDocuNum());
-		pstmt.setString(2, dto.getDocuSubject());
-		pstmt.setString(3, dto.getDocuContent());
+		pstmt.setInt(1, dto.getShareNum());
+		pstmt.setString(2, dto.getShareContent());
+		pstmt.setString(3, dto.getShareCreated());
 		
 	
 	} catch (Exception e) {
@@ -38,28 +38,28 @@ public class DocuDAO {
 	  return result;
   }
   
-  public List<DocuDTO> listDocu(){
-	  List<DocuDTO> list=new ArrayList<>();
+  public List<ShareDTO> listShare(){
+	  List<ShareDTO> list=new ArrayList<>();
 	  PreparedStatement pstmt=null;
 	  ResultSet rs=null;
 	  StringBuffer sb=new StringBuffer();
 	  
 	  try {
-		sb.append("SELECT docuNum, docuSubject,memId,");
-		sb.append(" docuCreated, docuHitCount FROM docu");
+		sb.append("SELECT shareNum, shareSubject,memId,");
+		sb.append(" shareCreated, shareHitCount FROM share");
 		
 		pstmt =conn.prepareStatement(sb.toString());
 		
 		rs=pstmt.executeQuery();
 		
 		while(rs.next()){
-			DocuDTO dto=new DocuDTO();
+			ShareDTO dto=new ShareDTO();
 			
-			dto.setDocuNum(rs.getInt("docuNum"));
-			dto.setDocuSubject(rs.getString("docuSubject"));
+			dto.setShareNum(rs.getInt("ShareNum"));
+			dto.setShareSubject(rs.getString("ShareSubject"));
 			dto.setMemId(rs.getString("memId"));
-			dto.setDocuCreated(rs.getString("docuCreated"));
-			dto.setDocuHitCount(rs.getInt("docuHitCount"));
+			dto.setShareCreated(rs.getString("ShareCreated"));
+			dto.setShareHitCount(rs.getInt("ShareHitCount"));
 			
 			list.add(dto);
 		}

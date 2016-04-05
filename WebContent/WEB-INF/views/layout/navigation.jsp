@@ -22,7 +22,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.jsp">Queen</a>
+                <a class="navbar-brand" href="<%=cp%>/main.sst">Queen</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -30,66 +30,63 @@
                     <li>
                         <a href="about.jsp">About</a>
                     </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">과정별 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="full-width.jsp">수업자료</a>
+                            </li>
+                            <li>
+                                <a href="sidebar.jsp">주절주절</a>
+                            </li>
+                            <li>
+                                <a href="lIst.jsp">포트폴리오</a>
+                            </li>                                                     
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">취업정보 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="portfolio-1-col.jsp">취업달력</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-2-col.jsp">자소서 공유 </a>
+                            </li>
+                            <li>
+                                <a href="portfolio-3-col.jsp">회사정보</a>
+                            </li>
+                            <li>
+                                <a href="<%=cp%>/bbs/list.sst">취업정보나눔 </a>
+                            </li>
+                            <li>
+                                <a href="portfolio-item.jsp">팀원구하기 </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">IT정보<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="blog-home-1.jsp">IT동향</a>
+                            </li>
+                            <li>
+                                <a href="blog-home-2.jsp">개발Tip </a>
+                            </li>
+                            <li>
+                                <a href="blog-post.jsp">개발Q&A</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
-                        <a href="services.jsp">Services</a>
+                        <a href="about.jsp">로그인</a>
                     </li>
                     <li>
-                        <a href="contact.jsp">Contact</a>
+                        <a href="about.jsp">회원가입</a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="<%=cp%>/bbs/article.sst">1 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="list.jsp">2 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-3-col.jsp">3 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-4-col.jsp">4 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-item.jsp">Single Portfolio Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="blog-home-1.jsp">Blog Home 1</a>
-                            </li>
-                            <li>
-                                <a href="blog-home-2.jsp">Blog Home 2</a>
-                            </li>
-                            <li>
-                                <a href="blog-post.jsp">Blog Post</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="full-width.jsp">Full Width Page</a>
-                            </li>
-                            <li>
-                                <a href="sidebar.jsp">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="faq.jsp">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="404.jsp">404</a>
-                            </li>
-                            <li>
-                                <a href="pricing.jsp">Pricing Table</a>
-                            </li>
-                        </ul>
-                    </li>
+                  
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -18,9 +18,9 @@ public class BbsServlet extends MyServlet {
 		req.setCharacterEncoding("utf-8");
 		String uri=req.getRequestURI();
 		
-		if(uri.indexOf("article.sst")!=-1) {
+		if(uri.indexOf("list.sst")!=-1) {
 			
-			forward(req, resp, "/WEB-INF/views/bbs/article.jsp");
+			forward(req, resp, "/WEB-INF/views/bbs/list.jsp");
 		}
 		
 	}

@@ -16,6 +16,10 @@
 
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
+
+
+
+
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript" src="<%=cp%>/res/jquery/js/jquery-1.12.0.min.js"></script>
 
@@ -292,12 +296,6 @@ $(function() {
 			</div>
 		</div>
 	</div>
- <!-- jQuery -->
-    <script src="res/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="res/js/bootstrap.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 
 </body>
 </html>

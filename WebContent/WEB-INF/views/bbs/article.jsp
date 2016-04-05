@@ -34,7 +34,7 @@
 
    <!-- Navigation -->
    <div>
-      <jsp:include page="/navigation.jsp"></jsp:include>
+      <jsp:include page="<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>"></jsp:include>
    </div>
 
     <div class="container" role="main">
@@ -72,6 +72,12 @@
                                  ${dto.content}
                             </td>
                         </tr>
+                        
+                        <tr>
+                        <td>추천하기<img src="recommend.jpg"></td>
+                        <td>총 추천수:</td>
+                        </tr>
+                        
                         <tr>
                             <td colspan="2">
                                  <span style="display: inline-block; min-width: 45px;">이전글</span> :

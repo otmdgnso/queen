@@ -34,7 +34,7 @@
 
    <!-- Navigation -->
 	<div>
-		<jsp:include page="/navigation.jsp"></jsp:include>
+		<jsp:include page="<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>"></jsp:include>
 	</div>
 
 

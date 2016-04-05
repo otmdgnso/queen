@@ -190,7 +190,7 @@ $(function() {
 						</button>
                     </li>
                     <li>
-                        <a href="<%=cp%>WEB-INF/views/member/member.jsp">회원가입</a>
+                        <a href="" >회원가입</a>
                     </li>
                   
                 </ul>
@@ -203,7 +203,8 @@ $(function() {
     	
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     	<div class="modal-dialog">
-			<div class="modal-content" style="border-radius:0px; padding:5px; padding-left:10px; padding-right:10px;">
+			<div class="modal-content" style="border-radius:0px; padding:5px; padding-left:30px; 
+					padding-right:30px;">
 				<div style=""class="modal-header" align="center">
 					<img class="img-circle" id="img_logo" src="<%=cp%>/res/image/사자.png">
 					
@@ -237,12 +238,7 @@ $(function() {
                                 <button style="font-size:16px; margin-top:0px; border-radius:0px; "
                                  type="submit" class="btn btn-warning btn-lg btn-block">로그인</button>
                             </div>
-				    	    <div style="margin-top:10px; margin-right:-15px;" >
-                                <button style="font-size:13px; color:gray; margin-right:-10px;" 
-                               			 type="button" class="btn btn-link">아이디 분실</button>
-                                <button style="font-size:13px; color:gray; " type="button"
-                               			  class="btn btn-link">가입하기</button>
-                            </div>
+				    	    
 				        </div>
                     </form>
                     <!-- End # Login Form -->

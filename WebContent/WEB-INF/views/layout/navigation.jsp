@@ -40,7 +40,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="article.jsp">1 Column Portfolio</a>
+                                <a href="<%=cp%>/bbs/article.sst">1 Column Portfolio</a>
                             </li>
                             <li>
                                 <a href="list.jsp">2 Column Portfolio</a>

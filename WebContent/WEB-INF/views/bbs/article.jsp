@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%
+   String cp = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,13 +16,13 @@
     <title>글 보기</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +37,7 @@
 
    <!-- Navigation -->
    <div>
-      <jsp:include page="<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>"></jsp:include>
+     <jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
    </div>
 
     <div class="container" role="main">

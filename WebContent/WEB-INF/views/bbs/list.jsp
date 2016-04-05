@@ -74,11 +74,11 @@
 	                <tbody>
 					  <c:forEach var="dto" items="${list}">
 	                    <tr>
-	                        <td class="text-center">${dto.listNum}</td>
-	                        <td><a href='${articleUrl}&num=${dto.num}'>${dto.subject}</a></td>
-	                        <td class="text-center">${dto.userName}</td>
-	                        <td class="text-center">${dto.created}</td>
-	                        <td class="text-center">${dto.hitCount}</td> 
+	                        <td class="text-center">${dto.shareNum}</td>
+	                        <td>${dto.shareSubject}</td>
+	                        <td class="text-center">${dto.memId}</td>
+	                        <td class="text-center">${dto.shareCreated}</td>
+	                        <td class="text-center">${dto.shareHitCount}</td> 
 	                    </tr>
 	                   </c:forEach> 
 	                </tbody>

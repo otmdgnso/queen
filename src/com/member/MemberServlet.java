@@ -21,7 +21,7 @@ public class MemberServlet extends MyServlet {
 		String uri=req.getRequestURI();
 		String cp=req.getContextPath();
 		
-		//MemberDAO dao=new MemberDAO();
+		MemberDAO dao=new MemberDAO();
 		
 		// 세션객체. 세션 정보는 서버에 저장(로그인정보, 권한등을저장)
 		HttpSession session=req.getSession();
@@ -35,11 +35,9 @@ public class MemberServlet extends MyServlet {
 			
 		} else if(uri.indexOf("member_ok.do")!=-1) {
 			// 회원가입 처리
-		/*//	MemberDTO dto = new MemberDTO();
-
-		
-		
-			
+			MemberDTO dto = new MemberDTO();
+		/*
+		*/
 			dto.setMemId(req.getParameter("userId"));
 			dto.setMemPwd(req.getParameter("userPwd"));
 			dto.setMemName(req.getParameter("userName"));
@@ -47,7 +45,7 @@ public class MemberServlet extends MyServlet {
 			String course = req.getParameter("selectCourse");
 			String kisu= req.getParameter("kisu");
 			if(course!=null && kisu!=null && course.length() != 0 && kisu.length() != 0 )
-				dto.setMemCourse(course+"_"+kisu+"기");
+				dto.setMemCourse(course+"_"+kisu+"기_"+dto.getMemName());
 			
 			dto.setBirth(req.getParameter("birth"));
 			
@@ -56,7 +54,6 @@ public class MemberServlet extends MyServlet {
 			if (email1 != null && email1.length() != 0 && email2 != null && email2.length() != 0 ) {
 				dto.setEmail(email1 + email2);
 			}
-			
 			String tel1 = req.getParameter("tel1");
 			String tel2 = req.getParameter("tel2");
 			String tel3 = req.getParameter("tel3");
@@ -66,10 +63,12 @@ public class MemberServlet extends MyServlet {
 			}
 			
 			dto.setJob(req.getParameter("job"));
-			dto.setZip(req.getParameter("zip"));
+			//주소는 일단 이렇게 
 			dto.setAddr2(req.getParameter("addr2"));
 			
+			//////////////////////////////////////////////////INSERT MEMBER 멤버추가 
 			int result = dao.insertMember(dto);
+			
 			if (result != 1) {
 				String message = "회원 가입이 실패 했습니다.";
 
@@ -79,7 +78,7 @@ public class MemberServlet extends MyServlet {
 				forward(req, resp, "/WEB-INF/views/member/member.jsp");
 				return;
 			}
-
+			System.out.println("회원가입 완료 !!!!!!");
 			StringBuffer sb=new StringBuffer();
 			sb.append("<b>"+dto.getMemName()+ "</b>님 회원가입이 되었습니다.<br>");
 			sb.append("메인화면으로 이동하여 로그인 하시기 바랍니다.<br>");
@@ -88,7 +87,7 @@ public class MemberServlet extends MyServlet {
 			req.setAttribute("message", sb.toString());
 			
 			forward(req, resp, "/WEB-INF/views/member/complete.jsp");
-			*/
+			
 		}
 	}
 }

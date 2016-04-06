@@ -9,19 +9,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
+<script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
+
+<link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/login.css" type="text/css"/>
-
-<link rel="stylesheet" href="<%=cp%>/res/jquery/css/smoothness/jquery-ui.min.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/bootstrap/css/bootstrap-theme.min.css" type="text/css"/>
-
+<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
 
-
-
-
-<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
-<script type="text/javascript" src="<%=cp%>/res/jquery/js/jquery-1.12.0.min.js"></script>
+<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
 
 <script type="text/javascript">
 
@@ -190,7 +189,7 @@ $(function() {
 						</button>
                     </li>
                     <li>
-                        <a href="" >회원가입</a>
+                       <a href="<%=cp%>/member/member.do" >회원가입</a>
                     </li>
                   
                 </ul>

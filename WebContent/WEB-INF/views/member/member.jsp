@@ -174,8 +174,8 @@ function changeEmail() {
 	</div>
 
 <div class="container" role="main" style="margin-top:50px;">
-  <div class="jumbotron">
-    <h1><span class="glyphicon glyphicon-user" style="color:gray; margin-right:10px;" ></span> 회원가입 </h1>
+  <div class="jumbotron" style="font-size:30px;">
+    <h3><span class="glyphicon glyphicon-user" style="color:gray; margin-right:10px;" ></span> 회원가입 </h3>
     <p>사자의 심장을 가져라! 쌍용 수강생만 가입 가능합니다</p>
   </div>
 

@@ -101,7 +101,7 @@
                                  <button type="button" class="btn btn-default btn-sm wbtn" onclick="deleteBoard();">삭제</button>
                          </td>
                          <td align="right">
-					           <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/bbs/list.sst';">
+					           <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/bbs/list.sst?${params}';">
 					    </td>
                       </tr>
                    </tfoot>

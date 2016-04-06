@@ -122,17 +122,23 @@ public class ShareDAO {
 	}
 
 	// 게시판 리스트
-	public List<ShareDTO> listShare() {
+	public List<ShareDTO> listShare(int start, int end) {
 		List<ShareDTO> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		StringBuffer sb = new StringBuffer();
 
 		try {
-			sb.append("SELECT shareNum, shareSubject,memId,");
+			sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
+			sb.append(" SELECT shareNum, shareSubject,memId,");
 			sb.append(" shareCreated, shareHitCount FROM share");
+			sb.append(" ORDER BY shareNum DESC) tb,");
+			sb.append(" (SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
 
 			pstmt = conn.prepareStatement(sb.toString());
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
 
 			rs = pstmt.executeQuery();
 

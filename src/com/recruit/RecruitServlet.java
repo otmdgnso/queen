@@ -21,6 +21,9 @@ public class RecruitServlet extends MyServlet{
 		if(uri.indexOf("recruit.sst")!=-1){
 			
 			forward(req, resp, "/WEB-INF/views/recruit/recruit.jsp");
+		}else if(uri.indexOf("created.sst")!=-1){
+			
+			
 		}
 	}
 

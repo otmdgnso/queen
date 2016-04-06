@@ -31,6 +31,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+
+
 
 </head>
 
@@ -192,8 +195,7 @@
                         	<li><a href="#">취업정보 공유 제목 4</a></li>
                         	<li><a href="#">취업정보 공유 제목 5</a></li>
                         </ul>
-                        
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                        <a href="<%=cp%>/bbs/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>
                 </div>
             </div>
@@ -292,7 +294,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; SIST Queen 2016</p>
+                    <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
         </footer>

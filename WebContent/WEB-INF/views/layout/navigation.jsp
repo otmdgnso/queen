@@ -10,17 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
-<script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
-
-<link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/login.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
-
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
 
 <script type="text/javascript">
 
@@ -34,7 +24,7 @@ $(function() {
     var $msgAnimateTime = 150;
     var $msgShowTime = 2000;
 
-    $("form").submit(function () {
+    $("#login-form").submit(function () {
         switch(this.id) {
             case "login-form":
                 var $lg_username=$('#login_username').val();

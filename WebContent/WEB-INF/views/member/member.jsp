@@ -13,15 +13,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>spring</title>
-<link rel="stylesheet" href="<%=cp%>/res/jquery/css/smoothness/jquery-ui.min.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/bootstrap/css/bootstrap.min.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/bootstrap/css/bootstrap-theme.min.css" type="text/css"/>
 
+<script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
+
+<link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
+<link rel="stylesheet" href="<%=cp%>/res/css/login.css" type="text/css"/>
+<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
 
-<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
-<script type="text/javascript" src="<%=cp%>/res/jquery/js/jquery-1.12.0.min.js"></script>
+<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
+
+
 <script type="text/javascript">
 
 function check() {
@@ -66,15 +70,24 @@ function check() {
 		$("#userName + .help-block").html("이름은 한글로 2자이상 4자 이하입니다.");
 	}
     
-    //f.userName.value = str;
-    str = f.courseName.value;
+    
+    str = f.selectCourse.value;
             
     if(!str) {
-    	$("#kisu + .help-block").html("<span style='color:red;'>과정을 선택해주세요!<span>");
-        f.courseName.focus();
+    	$("#course + .help-block").html("<span style='color:red;'>과정을 선택해주세요!<span>");
+        f.selectCourse.focus();
         return false;
     }else {
-		$("#kisu + .help-block").html("");
+		$("#course + .help-block").html("");
+	}
+    
+    str = f.kisu.value;
+    if(!str) {
+    	$("#course + .help-block").html("<span style='color:red;'>기수를 기입하세요!<span>");
+        f.kisu.focus();
+        return false;
+    }else if(!/^[0-9]{2}$/g.test(str)) {
+		$("#course + .help-block").html("기수는 숫자만 입력가능합니다");
 	}
         
     str = f.birth.value;
@@ -150,12 +163,15 @@ function changeEmail() {
     }
 }
 </script>
-
+<style>
+.form-group{
+}
+</style>
 </head>
 <body>
-<div>
-		<jsp:include page="<%=cp%>/WEB-INF/views/layout/navigation.jsp"></jsp:include>
-</div>
+	<div>
+		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
+	</div>
 
 <div class="container" role="main" style="margin-top:50px;">
   <div class="jumbotron">
@@ -165,14 +181,13 @@ function changeEmail() {
 
   <div class="bodyFrame">
   <form class="form-horizontal" name="memberForm" method="post" onsubmit="return check();">
-    <div class="form-group">
+    <div class="form-group" style="margin-bottom:0px;">
         <label class="col-sm-2 control-label" for="userId">아이디</label>
         <div class="col-sm-7">
-            <input style="width:200px; "class="form-control" id="userId" name="userId" type="text" placeholder="아이디"
-                       onchange="userIdCheck();"
-                       value="${dto.userId}"
-                       ${mode=="update" ? "readonly='readonly' style='border:none;'":""}>
-            <p class="help-block">아이디는 5~10자 이내이며, 첫글자는 영문자로 시작해야 합니다.</p>
+            <input style="width:200px;"class="form-control" id="userId" name="userId" type="text" 
+            		placeholder="아이디"  value="${dto.userId}"
+              ${mode=="update" ? "readonly='readonly' style='border:none;'":""}>
+            <p class="help-block"> 아이디는 5~10자 이내이며, 첫글자는 영문자로 시작해야 합니다.</p>
         </div>
     </div>
  
@@ -204,10 +219,10 @@ function changeEmail() {
     </div>
     
  	<div class="form-group">
-        <label class="col-sm-2 control-label" for="coursename">과정</label>
+        <label class="col-sm-2 control-label" for="course">과정</label>
          <div class="col-sm-10">
          
-           <select name="selectCourse" id="selectCourse" onchange="changeCourse();" class="form-control" 
+           <select name="selectCourse" id="course" onchange="changeCourse();" class="form-control" 
            		style="width:320px; float: left; margin-right:-40px; "  >
            			
 				<option value="">선 택</option>
@@ -221,12 +236,14 @@ function changeEmail() {
 						쌍용 웹기획 개발자 과정 </option>
 			</select>
 			
-			<label class="col-sm-7 control-label" for="kisu">기수</label>
-			<input style="width:100px; float:left; " class="form-control" id="kisu" name="kisu" 
-		            type="text" placeholder="기수입력">
-		     <br>
-        	<p style="margin-top:30px;" class="help-block"> 자신이 수강 중인 과정과 기수를 기입하세요. </p>
+			<label class="col-sm-2 control-label" for="course">기수</label>
+			<input style="width:100px; float:left; margin-bottom:8px;" class="form-control" id="course" name="kisu" 
+		            type="text" placeholder="기수입력" maxlength="2">
+		  	
+        		<p style="clear:both; " class="help-block">자신이 수강 중인 과정과 기수를 기입하세요. </p>
+        	  
          </div>
+         
         </div>
         
    
@@ -372,5 +389,8 @@ function changeEmail() {
     </div>
     <!-- /.container -->
 
+<script type="text/javascript" src="<%=cp%>/res/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/res/js/jquery.ui.datepicker-ko.js"></script>
+<script type="text/javascript" src="<%=cp%>/res/js/bootstrap.min.js"></script>
 </body>
 </html>

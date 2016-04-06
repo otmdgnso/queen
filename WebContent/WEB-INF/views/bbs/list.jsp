@@ -75,7 +75,7 @@
 					  <c:forEach var="dto" items="${list}">
 	                    <tr>
 	                        <td class="text-center">${dto.shareNum}</td>
-	                        <td>${dto.shareSubject}</td>
+	                        <td> <a href="article.sst?shareNum=1">${dto.shareSubject}</a></td>
 	                        <td class="text-center">${dto.memId}</td>
 	                        <td class="text-center">${dto.shareCreated}</td>
 	                        <td class="text-center">${dto.shareHitCount}</td> 

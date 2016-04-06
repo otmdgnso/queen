@@ -127,4 +127,84 @@ public class ShareDAO {
 	}
 	  return list;
   }
+  
+  public ShareDTO readShare (int shareNum) {
+	  ShareDTO dto=null;
+	  PreparedStatement pstmt=null;
+	  StringBuffer sb=new StringBuffer();
+	  ResultSet rs=null;
+	  
+	  try {
+		  sb.append("SELECT shareNum, memId, shareSubject, shareContent,");
+		  sb.append(" shareHitCount, shareCreated");
+		  sb.append(" FROM share");
+		  sb.append(" WHERE shareNum=?");
+		  
+		  pstmt=conn.prepareStatement(sb.toString());
+		  pstmt.setInt(1, shareNum);
+		  
+		  rs=pstmt.executeQuery();
+		  
+		  if(rs.next()) {
+			  dto=new ShareDTO();
+			  dto.setShareNum(shareNum);
+			  dto.setMemId(rs.getString("memId"));
+			  dto.setShareSubject(rs.getString("shareSubject"));
+			  dto.setShareContent(rs.getString("shareContent"));
+			  dto.setShareHitCount(rs.getInt("shareHitCount"));
+			  dto.setShareCreated(rs.getString("shareCreated"));
+		  }
+		
+	} catch (Exception e) {
+		System.out.println(e.toString());
+	} finally {
+		if(rs!=null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+			
+		if(pstmt!=null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+	
+	return dto;
+}
+  
+  public int ShareUpdate (ShareDTO dto) {
+	  PreparedStatement pstmt=null;
+	  int result=0;
+	  StringBuffer sb= new StringBuffer();
+	  
+	  try {
+		sb.append("UPDATE share set shareSubject=?, shareContent=?,");
+		sb.append(" shareModified=NOW()");
+		sb.append(" WHERE shareNum=?");
+		
+		pstmt=conn.prepareStatement(sb.toString());
+		
+		pstmt.setString(1, dto.getShareSubject());
+		pstmt.setString(2, dto.getShareContent());
+		pstmt.setInt(3, dto.getShareNum());
+		
+		result=pstmt.executeUpdate();
+		pstmt.close();
+	} catch (Exception e) {
+		System.out.println(e.toString());
+	}
+	  
+	  return result;
+  }
+  
+  public int ShareHitCount(int num){
+	  int result=0;
+	  PreparedStatement pstmt=null;
+	  
+	  return result;
+  }
 }

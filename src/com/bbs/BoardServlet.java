@@ -34,6 +34,8 @@ public class BoardServlet extends MyServlet {
 		} else if(uri.indexOf("article.sst")!=-1) {
 			int shareNum=Integer.parseInt(req.getParameter("shareNum"));
 			
+			dao.ShareHitCount(shareNum);
+			
 			ShareDTO dto= dao.readShare(shareNum);
 			
 			if(dto==null){
@@ -47,6 +49,12 @@ public class BoardServlet extends MyServlet {
 			req.setAttribute("dto", dto);
 			
 			forward(req, resp, "/WEB-INF/views/bbs/article.jsp");
+		} else if(uri.indexOf("update.sst")!=-1) {
+			int shareNum = Integer.parseInt(req.getParameter("shareNum"));
+			
+			ShareDTO dto=dao.readShare(shareNum);
+			req.setAttribute("dto", dto);
+			forward(req, resp, "/WEB-INF/views/bbs/created.jsp");
 		}
 		
 	}

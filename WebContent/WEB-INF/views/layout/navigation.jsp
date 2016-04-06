@@ -9,19 +9,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
+<script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
+
+<link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/login.css" type="text/css"/>
-
-<link rel="stylesheet" href="<%=cp%>/res/jquery/css/smoothness/jquery-ui.min.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/bootstrap/css/bootstrap-theme.min.css" type="text/css"/>
-
+<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
 
-
-
-
-<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
-<script type="text/javascript" src="<%=cp%>/res/jquery/js/jquery-1.12.0.min.js"></script>
+<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
 
 <script type="text/javascript">
 
@@ -190,7 +189,7 @@ $(function() {
 						</button>
                     </li>
                     <li>
-                        <a href="member.jsp">회원가입</a>
+                       <a href="<%=cp%>/member/member.do" >회원가입</a>
                     </li>
                   
                 </ul>
@@ -203,7 +202,8 @@ $(function() {
     	
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     	<div class="modal-dialog">
-			<div class="modal-content" style="border-radius:0px; padding:5px; padding-left:10px; padding-right:10px;">
+			<div class="modal-content" style="border-radius:0px; padding:5px; padding-left:30px; 
+					padding-right:30px;">
 				<div style=""class="modal-header" align="center">
 					<img class="img-circle" id="img_logo" src="<%=cp%>/res/image/사자.png">
 					
@@ -232,16 +232,12 @@ $(function() {
                                 </label>
                             </div>
         		    	</div>
-				        <div class="modal-footer" style=" border: none; margin-top:-20px;">
+				        <div class="modal-footer" style=" border: none; margin-top:-8px;">
                             <div>
-                                <button style="font-size:16px; margin-top:0px; border-radius:0px; " type="submit" class="btn btn-warning btn-lg btn-block">로그인</button>
+                                <button style="font-size:16px; margin-top:0px; border-radius:0px; "
+                                 type="submit" class="btn btn-warning btn-lg btn-block">로그인</button>
                             </div>
-				    	    <div style="margin-top:10px; margin-right:-15px;" >
-                                <button style="font-size:13px; color:gray; margin-right:-10px;" 
-                               			 type="button" class="btn btn-link">아이디 분실</button>
-                                <button style="font-size:13px; color:gray; " type="button"
-                               			  class="btn btn-link">가입하기</button>
-                            </div>
+				    	    
 				        </div>
                     </form>
                     <!-- End # Login Form -->

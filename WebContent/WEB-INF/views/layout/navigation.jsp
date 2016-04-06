@@ -153,7 +153,7 @@ $(function() {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">취업정보 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="portfolio-1-col.jsp">취업달력</a>
+                                <a href="<%=cp%>/recruit/recruit.sst">취업달력</a>
                             </li>
                             <li>
                                 <a href="portfolio-2-col.jsp">자소서 공유 </a>

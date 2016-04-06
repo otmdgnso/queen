@@ -57,61 +57,52 @@
                     <thead>
                         <tr>
                             <th colspan="2" style="text-align: center;">
-                                    ${dto.subject}
+                                    ${dto.shareSubject}
                             </th>
                         </tr>
                    <thead>
                     <tbody>
                         <tr>
                             <td style="text-align: left;">
-                                이름 : ${dto.userName}
+                                이름 : ${dto.memId}
                             </td>
                             <td style="text-align: right;">
-                             ${dto.created} <i></i>조회 : ${dto.hitCount}
+                             ${dto.shareCreated} <i></i>조회 : ${dto.shareHitCount}
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" style="height: 230px;">
-                                 ${dto.content}
+                                 ${dto.shareContent}
                             </td>
                         </tr>
                         
                         <tr>
-                        <td>추천하기<img src="recommend.jpg"></td>
+                        <td>추천하기<img src="<%=cp%>/res/image/recommend.jpg"></td>
                         <td>총 추천수:</td>
                         </tr>
                         
                         <tr>
                             <td colspan="2">
                                  <span style="display: inline-block; min-width: 45px;">이전글</span> :
-                           <c:if test="${not empty preReadDto }">
                               <a href="#">${preReadDto.subject}</a>
-                            </c:if>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" style="border-bottom: #d5d5d5 solid 1px;">
                                  <span style="display: inline-block; min-width: 45px;">다음글</span> :
-                           <c:if test="${not empty nextReadDto }">
                               <a href="#">${nextReadDto.subject}</a>
-                            </c:if>
                             </td>
                         </tr>
                    </tbody>
                    <tfoot>
                       <tr>
-                         <td>
-                              <c:if test="${sessionScope.member.userId==dto.userId}">                            
+                         <td>                          
                                  <button type="button" class="btn btn-default btn-sm wbtn" onclick="updateBoard();">수정</button>
-                             </c:if>
-                              <c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">    
                                  <button type="button" class="btn btn-default btn-sm wbtn" onclick="deleteBoard();">삭제</button>
-                             </c:if>
                          </td>
                          <td align="right">
-                             <button type="button" class="btn btn-default btn-sm wbtn"
-                                         onclick="#"> 목록으로 </button>
-                         </td>
+					           <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/bbs/list.sst';">
+					    </td>
                       </tr>
                    </tfoot>
                </table>

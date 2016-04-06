@@ -97,7 +97,7 @@
                    <tfoot>
                       <tr>
                          <td>                          
-                                 <button type="button" class="btn btn-default btn-sm wbtn" onclick="updateBoard();">수정</button>
+                                 <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/bbs/update.sst?shareNum=${dto.shareNum}';">
                                  <button type="button" class="btn btn-default btn-sm wbtn" onclick="deleteBoard();">삭제</button>
                          </td>
                          <td align="right">

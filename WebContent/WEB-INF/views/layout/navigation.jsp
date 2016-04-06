@@ -178,7 +178,7 @@ $(function() {
                                 <a href="blog-home-2.jsp">개발Tip </a>
                             </li>
                             <li>
-                                <a href="blog-post.jsp">개발Q&A</a>
+                                <a href="blog-post.jsp">개발Q&nbsp;&#38;&nbsp;A</a>
                             </li>
                         </ul>
                     </li>

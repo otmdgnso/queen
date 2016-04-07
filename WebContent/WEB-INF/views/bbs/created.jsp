@@ -12,7 +12,14 @@
 <head>
 <meta charset="UTF-8">
 <title>study</title>
+<!-- Bootstrap Core CSS -->
+    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom CSS -->
+    <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css">
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css">
 
@@ -47,6 +54,10 @@
 </script>
 </head>
 <body>
+   <!-- Navigation -->
+	<div>
+		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
+	</div>
 
 	
 	<div class="layoutBody">
@@ -94,7 +105,7 @@
 					     <tr height="45"> 
 					      <td align="center" >
 						    <input type="image" src="<%=cp%>/res/image/btn_submit.gif" >
-		        		    <a href="javascript:location.href='<%=cp%>/bbs/article.sst?shareNum=${dto.shareNum}';"><img src="<%=cp%>/res/image/btn_cancel.gif" border="0"></a>
+		        		    <a href="javascript:location.href='<%=cp%>/bbs/list.sst';"><img src="<%=cp%>/res/image/btn_cancel.gif" border="0"></a>
 		
 							<c:if test="${mode=='update'}">
 								<input type="hidden" name="num" value="${dto.shareNum}">
@@ -109,7 +120,11 @@
 		</div>
 
     </div>
-	
+	 <!-- jQuery -->
+    <script src="<%=cp%>/res/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 
 </body>
 </html>

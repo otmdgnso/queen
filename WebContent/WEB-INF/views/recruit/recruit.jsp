@@ -8,7 +8,7 @@
 <%
     	request.setCharacterEncoding("utf-8");
 		String cp=request.getContextPath();
-
+		String articleUrl=(String)request.getAttribute("articleUrl");
 
     
 		//시스템 상 오늘의 날짜를 가져온다.
@@ -166,11 +166,13 @@
 			Integer m=Integer.parseInt(s.split("-")[1]);
 			Integer d=Integer.parseInt(s.split("-")[2]);
 			
+			int recruitNum=dto.getRecruitNum();
+			
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
 				out.print("시작"+"</td>");
-				out.print("<td>"+"&nbsp&nbsp"+"<a href='#' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 			}
 		}
 		
@@ -180,12 +182,14 @@
 			Integer y=Integer.parseInt(s.split("-")[0]);
 			Integer m=Integer.parseInt(s.split("-")[1]);
 			Integer d=Integer.parseInt(s.split("-")[2]);
+			
+			int recruitNum=dto.getRecruitNum();
 					
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
 				out.print("마감"+"</td>");
-				out.print("<td>"+"&nbsp&nbsp"+subject+"</td><br>");
+				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 			}
 		}
 		
@@ -262,12 +266,14 @@
 			Integer y=Integer.parseInt(s.split("-")[0]);
 			Integer m=Integer.parseInt(s.split("-")[1]);
 			Integer d=Integer.parseInt(s.split("-")[2]);
-				
+			
+			int recruitNum=dto.getRecruitNum();
+			
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
 				out.print("시작"+"</td>");
-				out.print("<td>"+"&nbsp&nbsp"+"<a href='#' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 			}
 		}
 			
@@ -278,11 +284,13 @@
 				Integer m=Integer.parseInt(s.split("-")[1]);
 				Integer d=Integer.parseInt(s.split("-")[2]);
 						
+				int recruitNum=dto.getRecruitNum();
+				
 				if(y==beforeyear && m==beforemonth && d==beforeday){
 					String subject=dto.getRecruitSubject();
 					out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
 					out.print("마감"+"</td>");
-					out.print("<td>"+"&nbsp&nbsp"+"<a href='#' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+					out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 				}
 			}
 			
@@ -356,12 +364,14 @@
 			Integer y=Integer.parseInt(s.split("-")[0]);
 			Integer m=Integer.parseInt(s.split("-")[1]);
 			Integer d=Integer.parseInt(s.split("-")[2]);
+			
+			int recruitNum=dto.getRecruitNum();
 				
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
 				out.print("시작"+"</td>");
-				out.print("<td>"+"&nbsp&nbsp"+"<a href='#' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 			}
 		}
 			
@@ -371,12 +381,14 @@
 			Integer y=Integer.parseInt(s.split("-")[0]);
 			Integer m=Integer.parseInt(s.split("-")[1]);
 			Integer d=Integer.parseInt(s.split("-")[2]);
-						
+			
+			int recruitNum=dto.getRecruitNum();
+			
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
 				out.print("마감"+"</td>");
-				out.print("<td>"+"&nbsp&nbsp"+"<a href='#' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 			}
 		}
 			

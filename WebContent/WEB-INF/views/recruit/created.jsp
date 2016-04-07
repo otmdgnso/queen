@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>spring</title>
+<title>일정 등록</title>
 
 <script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
@@ -89,7 +89,7 @@ function check() {
    
     var mode="created";
     if(mode=="created") {
-       f.action = "<%=cp%>/recruit/created.sst";
+       f.action = "<%=cp%>/recruit/created_ok.sst";
     } else if(mode=="update") {
        f.action = "<%=cp%>/recruit/update_ok.sst";
     }

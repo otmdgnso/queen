@@ -64,7 +64,7 @@
                     <tbody>
                         <tr>
                             <td style="text-align: left;">
-                                이름 : ${dto.memId}
+                           	     이름 : ${dto.memId}
                             </td>
                             <td style="text-align: right;">
                              ${dto.shareCreated} <i></i>조회 : ${dto.shareHitCount}

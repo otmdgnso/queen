@@ -33,6 +33,15 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
+<script type="text/javascript">
+	function searchList() {
+		var f=document.searchForm;
+		f.action="<%=cp%>/bbs/list.sst";
+		f.submit();
+	}
+</script>
+
 </head>
 
 <body>
@@ -101,10 +110,10 @@
 	        		<div style="float: left; width: 60%; text-align: center;">
 	        		     <form name="searchForm" method="post" class="form-inline">
 							  <select class="form-control input-sm" name="searchKey" >
-							      <option value="subject">제목</option>
-							      <option value="userName">작성자</option>
-							      <option value="content">내용</option>
-							      <option value="created">등록일</option>
+							      <option value="shareSubject">제목</option>
+							      <option value="memId">작성자</option>
+							      <option value="shareContent">내용</option>
+							      <option value="shareCreated">등록일</option>
 							  </select>
 							  <input type="text" class="form-control input-sm input-search" name="searchValue">
 							  <button type="button" class="btn btn-info btn-sm btn-search" onclick="searchList();"><span class="glyphicon glyphicon-search"></span> 검색</button>

@@ -42,7 +42,7 @@
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
 
-    <!-- Header Carousel -->
+ <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -54,23 +54,24 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style= "background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+            	<div class="fill" style="background-image:url('<%=cp%>/res/image/mainslide/fill1.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 1</h2>
+                    <h2></h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="fill" style="background-image:url('<%=cp%>/res/image/mainslide/fill2.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 2</h2>
+                    <h2></h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="fill" style="background-image:url('<%=cp%>/res/image/mainslide/fill3.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 3</h2>
+                    <h2></h2>
                 </div>
             </div>
+          
         </div>
 
         <!-- Controls -->
@@ -81,6 +82,20 @@
             <span class="icon-next"></span>
         </a>
     </header>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
     <!-- Page Content -->
     <div class="container">
@@ -89,108 +104,176 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Welcome to Modern Business
+                    Welcome to SIST Community
                 </h1>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.2.0</h4>
+                        <h4><i class="fa fa-fw fa-check"></i>Class&nbsp;materials</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                        <ul type="disc">
+                        	<li><a href="#">수업자료 제목 1</a></li>
+                        	<li><a href="#">수업자료 제목 2</a></li>
+                        	<li><a href="#">수업자료 제목 3</a></li>
+                        	<li><a href="#">수업자료 제목 4</a></li>
+                        	<li><a href="#">수업자료 제목 5</a></li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Portfolio</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                         <ul type="disc">
+                        	<li><a href="#">포트폴리오 1</a></li>
+                        	<li><a href="#">포트폴리오 2</a></li>
+                        	<li><a href="#">포트폴리오 3</a></li>
+                        	<li><a href="#">포트폴리오 4</a></li>
+                        	<li><a href="#">포트폴리오 5</a></li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i>Self&nbsp;Introduction</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                         <ul type="disc">
+                        	<li><a href="#">자기소개서 공유 제목 1</a></li>
+                        	<li><a href="#">자기소개서 공유 제목 2</a></li>
+                        	<li><a href="#">자기소개서 공유 제목 3</a></li>
+                        	<li><a href="#">자기소개서 공유 제목 4</a></li>
+                        	<li><a href="#">자기소개서 공유 제목 5</a></li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-check"></i> Company&nbsp;Info</h4>
+                    </div>
+                    <div class="panel-body">
+                          
+                          <ul type="disc">
+                        	<li><a href="#">회사정보 공유 제목 1</a></li>
+                        	<li><a href="#">회사정보 공유 제목 2</a></li>
+                        	<li><a href="#">회사정보 공유 제목 3</a></li>
+                        	<li><a href="#">회사정보 공유 제목 4</a></li>
+                        	<li><a href="#">회사정보 공유 제목 5</a></li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
+                        	
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-gift"></i> Employment&nbsp;Information</h4>
+                    </div>
+                    <div class="panel-body">
+                         <ul type="disc">
+                        	<li><a href="#">취업정보 공유 제목 1</a></li>
+                        	<li><a href="#">취업정보 공유 제목 2</a></li>
+                        	<li><a href="#">취업정보 공유 제목 3</a></li>
+                        	<li><a href="#">취업정보 공유 제목 4</a></li>
+                        	<li><a href="#">취업정보 공유 제목 5</a></li>
+                        </ul>
+                        <a href="<%=cp%>/bbs/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compass"></i> Team&nbsp;Member</h4>
+                    </div>
+                    <div class="panel-body">
+                      <ul type="disc">
+                        	<li><a href="#">팀원 구하기 제목 1</a></li>
+                        	<li><a href="#">팀원 구하기 제목 2</a></li>
+                        	<li><a href="#">팀원 구하기 제목 3</a></li>
+                        	<li><a href="#">팀원 구하기 제목 4</a></li>
+                        	<li><a href="#">팀원 구하기 제목 5</a></li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-check"></i> IT&nbsp;Trend&nbsp;Info</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul type="disc">
+                        	<li><a href="#">IT 팀원 구하기 1</a></li>
+                        	<li><a href="#">IT 팀원 구하기 2</a></li>
+                        	<li><a href="#">IT 팀원 구하기 3</a></li>
+                        	<li><a href="#">IT 팀원 구하기 4</a></li>
+                        	<li><a href="#">IT 팀원 구하기 5</a></li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-gift"></i> Development&nbsp;Tip</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul type="disc">
+                        	<li><a href="#">개발 팀 공유 1</a></li>
+                        	<li><a href="#">개발 팀 공유 2</a></li>
+                        	<li><a href="#">개발 팀 공유 3</a></li>
+                        	<li><a href="#">개발 팀 공유 4</a></li>
+                        	<li><a href="#">개발 팀 공유 5</a></li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compass"></i> Q&nbsp;&#38;&nbsp;A</h4>
+                    </div>
+                    <div class="panel-body">
+                         <ul type="disc">
+                        	<li><a href="#">개발 질문 답변 게시판 1</a></li>
+                        	<li><a href="#">개발 질문 답변 게시판 2</a></li>
+                        	<li><a href="#">개발 질문 답변 게시판 3</a></li>
+                        	<li><a href="#">개발 질문 답변 게시판 4</a></li>
+                        	<li><a href="#">개발 질문 답변 게시판 5</a></li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>
                 </div>
             </div>
         </div>
         <!-- /.row -->
 
-        <!-- Portfolio Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Portfolio Heading</h2>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.jsp">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.jsp">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.jsp">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.jsp">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.jsp">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.jsp">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-        </div>
-        <!-- /.row -->
 
-        <!-- Features Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Modern Business Features</h2>
-            </div>
-            <div class="col-md-6">
-                <p>The Modern Business template by Start Bootstrap includes:</p>
-                <ul>
-                    <li><strong>Bootstrap v3.2.0</strong>
-                    </li>
-                    <li>jQuery v1.11.0</li>
-                    <li>Font Awesome v4.1.0</li>
-                    <li>Working PHP contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
-                    <li>17 HTML pages</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-            </div>
-            <div class="col-md-6">
-                <img class="img-responsive" src="http://placehold.it/700x450" alt="">
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
 
         <!-- Call to Action Section -->
         <div class="well">

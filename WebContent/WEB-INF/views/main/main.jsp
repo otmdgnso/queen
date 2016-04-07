@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -131,15 +133,13 @@
                         <h4><i class="fa fa-fw fa-gift"></i> Portfolio</h4>
                     </div>
                     <div class="panel-body">
-                         <ul type="disc">
-                        	<li><a href="#">포트폴리오 1</a></li>
-                        	<li><a href="#">포트폴리오 2</a></li>
-                        	<li><a href="#">포트폴리오 3</a></li>
-                        	<li><a href="#">포트폴리오 4</a></li>
-                        	<li><a href="#">포트폴리오 5</a></li>
+                        <ul type="disc">
+		                  <c:forEach var="dtoPfo" items="${listPfo}">
+                        	<li><a href="<%=cp%>/portfolio/article.sst?page=1&num=${dtoPfo.pfoNum}">${dtoPfo.pfoSubject}</a></li>
+                          </c:forEach>
                         </ul>
-                        
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
+            
+                        <a href="<%=cp%>/portfolio/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
                     </div>
                 </div>
             </div>
@@ -187,12 +187,10 @@
                         <h4><i class="fa fa-fw fa-gift"></i> Employment&nbsp;Information</h4>
                     </div>
                     <div class="panel-body">
-                         <ul type="disc">
-                        	<li><a href="#">취업정보 공유 제목 1</a></li>
-                        	<li><a href="#">취업정보 공유 제목 2</a></li>
-                        	<li><a href="#">취업정보 공유 제목 3</a></li>
-                        	<li><a href="#">취업정보 공유 제목 4</a></li>
-                        	<li><a href="#">취업정보 공유 제목 5</a></li>
+                         <ul type="square">
+	                    	 <c:forEach var="dtoShare" items="${listShare}">
+	                        	<li><a href="<%=cp%>/bbs/article.sst?page=1&shareNum=${dtoShare.shareNum}">${dtoShare.shareSubject}</a></li>
+	                         </c:forEach>
                         </ul>
                         <a href="<%=cp%>/bbs/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>

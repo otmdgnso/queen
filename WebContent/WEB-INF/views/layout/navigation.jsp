@@ -144,7 +144,7 @@ $(function() {
 
 <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+       <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -181,7 +181,7 @@ $(function() {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">취업정보 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="portfolio-1-col.jsp">취업달력</a>
+                                <a href="<%=cp%>/recruit/recruit.sst">취업달력</a>
                             </li>
                             <li>
                                 <a href="portfolio-2-col.jsp">자소서 공유 </a>
@@ -207,7 +207,7 @@ $(function() {
                                 <a href="blog-home-2.jsp">개발Tip </a>
                             </li>
                             <li>
-                                <a href="blog-post.jsp">개발Q&A</a>
+                                <a href="blog-post.jsp">개발Q&nbsp;&#38;&nbsp;A</a>
                             </li>
                         </ul>
                     </li>
@@ -217,17 +217,17 @@ $(function() {
 	                    <c:if test="${empty sessionScope.member}">
 	             			   <button  style="margin-top:10px; border-radius:4px;" type="button" class="btn btn-default btn-sm btn-block" 
 	                        			data-toggle="modal" data-target="#login-modal" >
-								 로그인
-							   </button>
+							 로그인
+							</button>
 	            		</c:if>
 	            		
 	          			<c:if test="${not empty sessionScope.member}">
 	                		
 	                		<c:if test="${sessionScope.member.memId=='admin'}">
-	                    		<span style="text-aling:center; font-weight:bold; color:white;">관리자 </span>님 <i></i>
+	                			<span style="margin-top:5px;">관리자 </span> <i></i>
 	                		</c:if>
 	                		<c:if test="${sessionScope.member.memId!='admin' }" >
-	                		  <span style="font-weight:bold; color:white;">${sessionScope.member.memName}</span>님 <i></i>
+	                		  <span style="font-weight:bold; color:white;">${sessionScope.member.memName}</span> <i></i>
 	                		</c:if>
 	            		</c:if>
                       

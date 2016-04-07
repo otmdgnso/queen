@@ -23,12 +23,16 @@ public class RecruitServlet extends MyServlet{
 		RecruitDAO dao=new RecruitDAO();
 		
 		HttpSession session=req.getSession();
+		//SessionInfo info = (SessionInfo) session.getAttribute("member");
 
 		if(uri.indexOf("recruit.sst")!=-1){
 			
+			String articleUrl = cp + "/recruit/article.sst";
+			req.setAttribute("articleUrl", articleUrl);
 			forward(req, resp, "/WEB-INF/views/recruit/recruit.jsp");
 		}else if(uri.indexOf("created.sst")!=-1){
 			
+			req.setAttribute("mode", "created");			
 			forward(req, resp, "/WEB-INF/views/recruit/created.jsp");
 		}else if(uri.indexOf("created_ok.sst")!=-1){
 			
@@ -47,25 +51,28 @@ public class RecruitServlet extends MyServlet{
 			
 			dto.setRecruitSubject(company + " [" + head + "]");
 			
-			int result=dao.insertRecruit(dto);
-			if(result!=1){
-				String message="일정 등록 실패";
-				
-				req.setAttribute("title", "회원 가입");
-				req.setAttribute("mode", "created");
-				req.setAttribute("message", message);
-				forward(req, resp, "/WEB-INF/views/recruit/created.jsp");
+			dao.insertRecruit(dto);
+			
+			resp.sendRedirect(cp + "/recruit/recruit.sst");
+		}else if(uri.indexOf("article.sst")!=-1){
+			
+			int recruitNum=Integer.parseInt(req.getParameter("recruitNum"));
+			
+			RecruitDTO dto=dao.readRecruit(recruitNum);
+			
+			if(dto==null){
+				resp.sendRedirect(cp+"/recruit/recruit.jsp");
 				return;
 			}
 			
-			StringBuffer sb=new StringBuffer();
-			sb.append("자료 등록이 완료되었습니다.<br>");
+			dto.setRecruitQual(dto.getRecruitQual().replaceAll("\n", "<br>"));
+			dto.setRecruitStep(dto.getRecruitStep().replaceAll("\n", "<br>"));
 			
-			req.setAttribute("title", "일정 등록");
-			req.setAttribute("message", sb.toString());
+			req.setAttribute("dto", dto);
 			
-			forward(req, resp, "/WEB-INF/views/member/complete.jsp");
-			
+			String path = "/WEB-INF/views/recruit/article.jsp";
+			forward(req, resp, path);
+				
 		}
 	}
 

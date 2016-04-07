@@ -22,8 +22,6 @@ public class RecruitServlet extends MyServlet{
 		
 		RecruitDAO dao=new RecruitDAO();
 		
-		HttpSession session=req.getSession();
-		//SessionInfo info = (SessionInfo) session.getAttribute("member");
 
 		if(uri.indexOf("recruit.sst")!=-1){
 			
@@ -49,7 +47,7 @@ public class RecruitServlet extends MyServlet{
 			String company=req.getParameter("recruitCompany");
 			String head=req.getParameter("recruitHead");
 			
-			dto.setRecruitSubject(company + " [" + head + "]");
+			dto.setRecruitSubject(company+"["+head+"]");
 			
 			dao.insertRecruit(dto);
 			

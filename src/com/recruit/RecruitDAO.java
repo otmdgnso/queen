@@ -153,7 +153,7 @@ public List<RecruitDTO> listEndRecruit(String start, String end){
 		try {
 			sb.append("INSERT INTO recruit(recruitSubject, recruitCompany, recruitHead,");
 			sb.append(" recruitStart, recruitEnd, recruitQual, recruitStep, recruitImg, memId)");
-			sb.append(" VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?");
+			sb.append(" VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			
 			pstmt=conn.prepareStatement(sb.toString());
 			pstmt.setString(1, dto.getRecruitSubject());

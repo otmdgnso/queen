@@ -170,9 +170,11 @@
 			
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
+				out.print("<tr>");
 				out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
 				out.print("시작"+"</td>");
 				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+				out.print("</tr>");
 			}
 		}
 		
@@ -187,9 +189,11 @@
 					
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
+				out.print("<tr>");
 				out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
 				out.print("마감"+"</td>");
 				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+				out.print("</tr>");
 			}
 		}
 		
@@ -271,9 +275,11 @@
 			
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
+				out.print("<tr>");
 				out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
 				out.print("시작"+"</td>");
 				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+				out.print("</tr>");
 			}
 		}
 			
@@ -288,9 +294,11 @@
 				
 				if(y==beforeyear && m==beforemonth && d==beforeday){
 					String subject=dto.getRecruitSubject();
+					out.print("<tr>");
 					out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
 					out.print("마감"+"</td>");
 					out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+					out.print("</tr>");
 				}
 			}
 			
@@ -325,84 +333,88 @@
 	out.print("<tr height='30' align='center'>");
 
 	//세번째 줄의 날짜를 출력한다.
-	for(int i=1; i<=7; i++){
-		if(i==1){
-			out.print("<td style='border: solid #BDBDBD  1px; color: red;'>"+beforemonth+"/"+beforeday+"</td>");
-		}else if(i==7){
-			out.print("<td style='border: solid #BDBDBD 1px; color: blue'>"+beforemonth+"/"+beforeday+"</td>");
-		}else{
-			out.print("<td style='border: solid #BDBDBD 1px;'>"+beforemonth+"/"+beforeday+"</td>");
-		}
-		
-		//날짜를 하루씩 늘려간다.
-		beforecal.add(Calendar.DATE, 1);
-		beforeyear=beforecal.get(Calendar.YEAR);
-		beforemonth=beforecal.get(Calendar.MONTH)+1;
-		beforeday=beforecal.get(Calendar.DATE);
-		
-	}
-	
-	out.print("</tr>");
-	
-	out.print("<tr height='200' align='center'>");
-	
-	
-	//공채정보를 출력하기 위해 날짜정보를 초기화한다.
-	beforecal.add(Calendar.DATE, -7);
+   	for(int i=1; i<=7; i++){
+      if(i==1){
+         out.print("<td style='border: solid #BDBDBD  1px; color: red;'>"+beforemonth+"/"+beforeday+"</td>");
+      }else if(i==7){
+         out.print("<td style='border: solid #BDBDBD 1px; color: blue'>"+beforemonth+"/"+beforeday+"</td>");
+      }else{
+         out.print("<td style='border: solid #BDBDBD 1px;'>"+beforemonth+"/"+beforeday+"</td>");
+      }
+      
+      //날짜를 하루씩 늘려간다.
+      beforecal.add(Calendar.DATE, 1);
+      beforeyear=beforecal.get(Calendar.YEAR);
+      beforemonth=beforecal.get(Calendar.MONTH)+1;
+      beforeday=beforecal.get(Calendar.DATE);
+      
+   }
+   
+   out.print("</tr>");
+   
+   out.print("<tr height='200' align='center'>");
+   
+   
+   //공채정보를 출력하기 위해 날짜정보를 초기화한다.
+   beforecal.add(Calendar.DATE, -7);
+   beforeyear=beforecal.get(Calendar.YEAR);
+   beforemonth=beforecal.get(Calendar.MONTH)+1;
+   beforeday=beforecal.get(Calendar.DATE);
+      
+   //공채정보를 출력한다.
+   for(int i=1; i<=7; i++){
+      out.print("<td style='border: solid #BDBDBD 1px;'>");
+      out.print("<table><tr>");
+         
+      //해당 날짜에 맞는 공채 시작 자료를 출력한다.
+      for(RecruitDTO dto:startList){
+         String s=dto.getRecruitStart();
+         Integer y=Integer.parseInt(s.split("-")[0]);
+         Integer m=Integer.parseInt(s.split("-")[1]);
+         Integer d=Integer.parseInt(s.split("-")[2]);
+         
+         int recruitNum=dto.getRecruitNum();
+            
+         if(y==beforeyear && m==beforemonth && d==beforeday){
+            String subject=dto.getRecruitSubject();
+            out.print("<tr>");
+            out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
+            out.print("시작"+"</td>");
+            out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+          	out.print("</tr>");
+         }
+      }
+         
+      //해당 날짜에 맞는 공채 종료 자료를 출력한다.
+      for(RecruitDTO dto:endList){
+         String s=dto.getRecruitEnd();
+         Integer y=Integer.parseInt(s.split("-")[0]);
+         Integer m=Integer.parseInt(s.split("-")[1]);
+         Integer d=Integer.parseInt(s.split("-")[2]);
+         
+         int recruitNum=dto.getRecruitNum();
+                  
+         if(y==beforeyear && m==beforemonth && d==beforeday){
+            String subject=dto.getRecruitSubject();
+            out.print("<tr>");
+            out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
+            out.print("마감"+"</td>");
+            out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
+            out.print("</tr>");
+         }
+      }
+         
+    //다음 날짜로 넘어간다.
+    beforecal.add(Calendar.DATE, 1);
 	beforeyear=beforecal.get(Calendar.YEAR);
 	beforemonth=beforecal.get(Calendar.MONTH)+1;
 	beforeday=beforecal.get(Calendar.DATE);
-		
-	//공채정보를 출력한다.
-	for(int i=1; i<=7; i++){
-		out.print("<td style='border: solid #BDBDBD 1px;'>");
-		out.print("<table><tr>");
-			
-		//해당 날짜에 맞는 공채 시작 자료를 출력한다.
-		for(RecruitDTO dto:startList){
-			String s=dto.getRecruitStart();
-			Integer y=Integer.parseInt(s.split("-")[0]);
-			Integer m=Integer.parseInt(s.split("-")[1]);
-			Integer d=Integer.parseInt(s.split("-")[2]);
-			
-			int recruitNum=dto.getRecruitNum();
-				
-			if(y==beforeyear && m==beforemonth && d==beforeday){
-				String subject=dto.getRecruitSubject();
-				out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
-				out.print("시작"+"</td>");
-				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
-			}
-		}
-			
-		//해당 날짜에 맞는 공채 종료 자료를 출력한다.
-		for(RecruitDTO dto:endList){
-			String s=dto.getRecruitEnd();
-			Integer y=Integer.parseInt(s.split("-")[0]);
-			Integer m=Integer.parseInt(s.split("-")[1]);
-			Integer d=Integer.parseInt(s.split("-")[2]);
-			
-			int recruitNum=dto.getRecruitNum();
-			
-			if(y==beforeyear && m==beforemonth && d==beforeday){
-				String subject=dto.getRecruitSubject();
-				out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
-				out.print("마감"+"</td>");
-				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
-			}
-		}
-			
-		//다음 날짜로 넘어간다.
-		beforecal.add(Calendar.DATE, 1);
-		beforeyear=beforecal.get(Calendar.YEAR);
-	   	beforemonth=beforecal.get(Calendar.MONTH)+1;
-	   	beforeday=beforecal.get(Calendar.DATE);
-			
-	   		
-	   	out.print("</tr></table>");
-		out.print("</td>");
-	}
-	out.print("</tr>");
+         
+            
+	out.print("</tr></table>");
+	out.print("</td>");
+   }
+   out.print("</tr>");
 	
 %>
 
@@ -412,9 +424,9 @@
 
 <!-- 글쓰기 버튼 출력 -->
 <!-- 관리자인 경우만 일정 등록 가능 -->
-<c:if test="${sessionScope.member1.memId=='admin'}">
+<c:if test="${sessionScope.member.m=='admin'}">
 <!-- 글쓰기 폼으로 가는 주소 입력 -->
-<input type="button" value="일정 등록" onclick="javascript:location.href=<%=cp%>/WEB-INF/views/recruit/created.sst;">
+<input type="button" value="일정 등록" onclick="javascript:location.href='<%=cp%>/recruit/created.sst';">
 </c:if>
 <!-- 글쓰기 버튼 출력 끝 -->
         	

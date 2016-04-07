@@ -1,4 +1,4 @@
-package com.bbs;
+package com.share;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class ShareDAO {
 	private Connection conn = DBConn.getConnection();
 
 	// 데이터 추가
-	public int insertDocu(ShareDTO dto) {
+	public int insertShare(ShareDTO dto) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		StringBuffer sb = new StringBuffer();
@@ -122,17 +122,23 @@ public class ShareDAO {
 	}
 
 	// 게시판 리스트
-	public List<ShareDTO> listShare() {
+	public List<ShareDTO> listShare(int start, int end) {
 		List<ShareDTO> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		StringBuffer sb = new StringBuffer();
 
 		try {
-			sb.append("SELECT shareNum, shareSubject,memId,");
+			sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
+			sb.append(" SELECT shareNum, shareSubject,memId,");
 			sb.append(" shareCreated, shareHitCount FROM share");
+			sb.append(" ORDER BY shareNum DESC) tb,");
+			sb.append(" (SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
 
 			pstmt = conn.prepareStatement(sb.toString());
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
 
 			rs = pstmt.executeQuery();
 
@@ -166,6 +172,22 @@ public class ShareDAO {
 		}
 		return list;
 	}
+	//검색될 때 리스트
+	public List<ShareDTO> listShare (int start, int end, String searchKey, String searchValue) {
+	      List<ShareDTO> list=new ArrayList<>();
+	      PreparedStatement pstmt=null;
+	      StringBuffer sb= new StringBuffer();
+	      ResultSet rs=null;
+	      
+	      try {
+	         
+	      } catch (Exception e) {
+	         System.out.println(e.toString());
+	      }
+	      
+	      return list;
+	 }
+	
 
 	// 게시판 글보기
 	public ShareDTO readShare(int shareNum) {

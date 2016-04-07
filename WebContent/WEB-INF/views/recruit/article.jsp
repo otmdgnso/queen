@@ -48,7 +48,7 @@
        </div>
        
        <div class="alert alert-info">
-           <i class="glyphicon glyphicon-info-sign"></i> 회원과 자유로이 토론할 수 있는 공간입니다.
+           <i class="glyphicon glyphicon-info-sign"></i> 기업별 상세 채용 내용을 확인하는 공간입니다.
        </div>
        
        <div class="table-responsive" style="clear: both;">
@@ -57,51 +57,42 @@
                     <thead>
                         <tr>
                             <th colspan="2" style="text-align: center;">
-                                    ${dto.shareSubject}
+                                   [${dto.recruitCompany}] ${dto.recruitHead} 채용
                             </th>
                         </tr>
                    <thead>
                     <tbody>
                         <tr>
                             <td style="text-align: left;">
-                                이름 : ${dto.memId}
+                                	작성자 : ${dto.memId}
                             </td>
                             <td style="text-align: right;">
-                             ${dto.shareCreated} <i></i>조회 : ${dto.shareHitCount}
+                             ${dto.recruitCreated}
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" style="height: 230px;">
-                                 ${dto.shareContent}
+                             	  접수 기간 : ${dto.recruitStart} ~ ${dto.recruitEnd}<br>
+                             	  지원 자격 : ${dto.recruitQual}<br>
+                             	  전형 절차 : ${dto.recruitStep}<br>
+                             	 <img src="<%=cp%>/res/image/recommend.jpg">
                             </td>
+                        </tr>
+                        <tr>
+                        	<td style="text-align: center;">
+								<a href='#'>${dto.recruitCompany} 에 대한 상세 정보를 알고 싶다면 클릭!</a>                        	
+                        	</td>
                         </tr>
                         
-                        <tr>
-                        <td>추천하기<img src="<%=cp%>/res/image/recommend.jpg"></td>
-                        <td>총 추천수:</td>
-                        </tr>
-                        
-                        <tr>
-                            <td colspan="2">
-                                 <span style="display: inline-block; min-width: 45px;">이전글</span> :
-                              <a href="#">${preReadDto.subject}</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="border-bottom: #d5d5d5 solid 1px;">
-                                 <span style="display: inline-block; min-width: 45px;">다음글</span> :
-                              <a href="#">${nextReadDto.subject}</a>
-                            </td>
-                        </tr>
                    </tbody>
                    <tfoot>
                       <tr>
                          <td>                          
-                                 <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/bbs/update.sst?shareNum=${dto.shareNum}';">
-                                 <button type="button" class="btn btn-default btn-sm wbtn" onclick="deleteBoard();">삭제</button>
+                                 <input type="button" value="수정" onclick="javascript:location.href='<%=cp%>/recruit/update.sst?shareNum=${dto.recruitNum}';">
+                                 <button type="button" class="btn btn-default btn-sm wbtn" onclick="deleteRecruit();">삭제</button>
                          </td>
                          <td align="right">
-					           <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/bbs/list.sst?${params}';">
+					           <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/recruit/recruit.sst';">
 					    </td>
                       </tr>
                    </tfoot>
@@ -122,7 +113,7 @@
                   </div>           
               </div>
           
-              <div id="listReply"></div>
+              <div id="recruitReply"></div>
           </div>
           
       </div>

@@ -402,7 +402,7 @@
 <!-- 관리자인 경우만 일정 등록 가능 -->
 <c:if test="${sessionScope.member1.memId=='admin'}">
 <!-- 글쓰기 폼으로 가는 주소 입력 -->
-<input type="button" value="일정 등록" onclick="javascript:location.href='';">
+<input type="button" value="일정 등록" onclick="javascript:location.href=<%=cp%>/WEB-INF/views/recruit/created.sst;">
 </c:if>
 <!-- 글쓰기 버튼 출력 끝 -->
         	

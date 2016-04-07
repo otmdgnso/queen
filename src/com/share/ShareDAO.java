@@ -14,33 +14,34 @@ public class ShareDAO {
 
 	// 데이터 추가
 	public int insertShare(ShareDTO dto) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		StringBuffer sb = new StringBuffer();
+	      int result = 0;
+	      PreparedStatement pstmt = null;
+	      StringBuffer sb = new StringBuffer();
 
-		try {
-			sb.append("INSERT INTO share(shareNum, memId, shareSubject, shareContent) ");
-			sb.append(" VALUES (share_seq.NEXTVAL,?,?,?)");
+	      try {
+	         sb.append("INSERT INTO share(memId, shareSubject, shareContent) ");
+	         sb.append(" VALUES (?,?,?)");
 
-			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setString(1, dto.getMemId());
-			pstmt.setString(2, dto.getShareSubject());
-			pstmt.setString(3, dto.getShareContent());
+	         pstmt = conn.prepareStatement(sb.toString());
+	         pstmt.setString(1, dto.getMemId());
+	         pstmt.setString(2, dto.getShareSubject());
+	         pstmt.setString(3, dto.getShareContent());
 
-			result = pstmt.executeUpdate();
+	         result = pstmt.executeUpdate();
 
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		} finally {
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
+	      } catch (Exception e) {
+	         System.out.println(e.toString());
+	      } finally {
+	         if (pstmt != null)
+	            try {
+	               pstmt.close();
+	            } catch (SQLException e) {
 
-				}
-		}
-		return result;
-	}
+	            }
+	      }
+	      return result;
+	   }
+
 
 	// 데이터 개수
 	public int dataCount() {
@@ -183,9 +184,7 @@ public class ShareDAO {
 	    	  	sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
 				sb.append(" SELECT shareNum, shareSubject,memId,");
 				sb.append(" DATE_FORMAT(shareCreated , '%Y-%m-%d') shareCreated, shareHitCount FROM share");
-				if(searchKey.equals("shareCreated"))
-					sb.append(" WHERE shareCreated  =?");
-				else if(searchKey.equals("memId"))
+				if(searchKey.equals("memId"))
 					sb.append(" WHERE memId =?");
 				else
 					sb.append(" WHERE " + searchKey + " LIKE CONCAT('%', ? ,'%') ");
@@ -319,6 +318,115 @@ public class ShareDAO {
 		return result;
 	}
 	
+	 // 이전글
+	public ShareDTO preReadShare(int shareNum, String searchKey, String searchValue) {
+		ShareDTO dto =null;
+		
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		StringBuffer sb=new StringBuffer();
+		
+		try {
+			if(searchValue!=null && searchValue.length() != 0) {
+				sb.append("SELECT * FROM (");
+				sb.append(" SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
+				sb.append(" SELECT shareNum, shareSubject,memId,");
+				sb.append(" DATE_FORMAT(shareCreated , '%Y-%m-%d') shareCreated, shareHitCount FROM share");
+				if(searchKey.equals("memId"))
+					sb.append(" WHERE memId =?");
+				else
+					sb.append(" WHERE " + searchKey + " LIKE CONCAT('%', ? ,'%') ");
+				sb.append(" AND shareNum>?");
+				sb.append(" ORDER BY shareNum ASC) tb,");
+				sb.append(" (SELECT @rownum:=0) T)tb1");
+				sb.append(" WHERE rnum =1");
+				
+				pstmt=conn.prepareStatement(sb.toString());
+				pstmt.setString(1, searchValue);
+				pstmt.setInt(2, shareNum);
+			} else {
+				sb.append("SELECT * FROM (");
+				sb.append(" SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
+				sb.append(" SELECT shareNum, shareSubject,memId,");
+				sb.append(" DATE_FORMAT(shareCreated , '%Y-%m-%d') shareCreated, shareHitCount FROM share");
+				sb.append(" WHERE shareNum > ?");
+				sb.append(" ORDER BY shareNum ASC) tb,");
+				sb.append(" (SELECT @rownum:=0) T)tb1");
+				sb.append(" WHERE rnum =1");
+				
+				pstmt=conn.prepareStatement(sb.toString());
+				pstmt.setInt(1, shareNum);
+			}
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto=new ShareDTO();
+				dto.setShareNum(rs.getInt("shareNum"));
+				dto.setShareSubject(rs.getString("shareSubject"));
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return dto;
+	}
+	
+	// 다음글
+	public ShareDTO nextReadShare(int shareNum, String searchKey, String searchValue) {
+		ShareDTO dto =null;
+		
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		StringBuffer sb=new StringBuffer();
+		
+		try {
+			if(searchValue!=null && searchValue.length() != 0) {
+				sb.append("SELECT * FROM (");
+				sb.append(" SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
+				sb.append(" SELECT shareNum, shareSubject,memId,");
+				sb.append(" DATE_FORMAT(shareCreated , '%Y-%m-%d') shareCreated, shareHitCount FROM share");
+				if(searchKey.equals("memId"))
+					sb.append(" WHERE memId =?");
+				else
+					sb.append(" WHERE " + searchKey + " LIKE CONCAT('%', ? ,'%') ");
+				sb.append(" AND shareNum<?");
+				sb.append(" ORDER BY shareNum ASC) tb,");
+				sb.append(" (SELECT @rownum:=0) T)tb1");
+				sb.append(" WHERE rnum =1");
+				
+				pstmt=conn.prepareStatement(sb.toString());
+				pstmt.setString(1, searchValue);
+				pstmt.setInt(2, shareNum);
+			} else {
+				sb.append("SELECT * FROM (");
+				sb.append(" SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
+				sb.append(" SELECT shareNum, shareSubject,memId,");
+				sb.append(" DATE_FORMAT(shareCreated , '%Y-%m-%d') shareCreated, shareHitCount FROM share");
+				sb.append(" WHERE shareNum < ?");
+				sb.append(" ORDER BY shareNum DESC) tb,");
+				sb.append(" (SELECT @rownum:=0) T)tb1");
+				sb.append(" WHERE rnum =1");
+				
+				pstmt=conn.prepareStatement(sb.toString());
+				pstmt.setInt(1, shareNum);
+			}
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto=new ShareDTO();
+				dto.setShareNum(rs.getInt("shareNum"));
+				dto.setShareSubject(rs.getString("shareSubject"));
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return dto;
+	}
 	
 	
 	

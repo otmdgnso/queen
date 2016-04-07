@@ -21,17 +21,17 @@
     function check() {
         var f = document.boardForm;
 
-    	var str = f.subject.value;
+    	var str = f.shareSubject.value;
         if(!str) {
             alert("제목을 입력하세요. ");
-            f.subject.focus();
+            f.shareSubject.focus();
             return false;
         }
 
-    	str = f.content.value;
+    	str = f.shareContent.value;
         if(!str) {
             alert("내용을 입력하세요. ");
-            f.content.focus();
+            f.shareContent.focus();
             return false;
         }
 
@@ -68,7 +68,7 @@
 					  <tr align="left" height="40"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="subject" size="75" maxlength="100" class="boxTF" value="${dto.shareSubject}">
+					        <input type="text" name="shareSubject" size="75" maxlength="100" class="boxTF" value="${dto.shareSubject}">
 					      </td>
 					  </tr>
 					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
@@ -76,7 +76,7 @@
 					  <tr align="left" height="40"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">작 성 자</td>
 					      <td width="500" style="padding-left:10px;"> 
-					        ${sessionScope.member.userName}
+					        ${sessionScope.member.memId}
 					      </td>
 					  </tr>
 				      <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
@@ -84,7 +84,7 @@
 					  <tr align="left"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center; padding-top:5px;" valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 					      <td width="500" valign="top" style="padding:5px 0px 5px 10px;"> 
-					        <textarea name="content" cols="75" rows="12" class="boxTA">${dto.shareContent}</textarea>
+					        <textarea name="shareContent" cols="75" rows="12" class="boxTA">${dto.shareContent}</textarea>
 					      </td>
 					  </tr>
 					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>

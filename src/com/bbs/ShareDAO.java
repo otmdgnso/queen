@@ -172,6 +172,10 @@ public class ShareDAO {
 		}
 		return list;
 	}
+	
+	public List<ShareDTO> listShare(int start, int end, String searchKey, String searchValue) {
+		
+	}
 
 	// 게시판 글보기
 	public ShareDTO readShare(int shareNum) {

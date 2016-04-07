@@ -62,6 +62,12 @@ public class MemberDAO {
 				}
 				dto.setJob(rs.getString("job"));
 				dto.setAddr2(rs.getString("add2"));
+
+				System.out.println("성공! :"+dto.getMemId());
+				System.out.println("성공! :"+dto.getMemName());
+			}
+			else{
+				System.out.println("그런아이디 없다...");
 			}
 			rs.close();
 			pstmt.close();
@@ -70,8 +76,6 @@ public class MemberDAO {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		System.out.println("성공! :"+dto.getMemId());
-		System.out.println("성공! :"+dto.getMemName());
 		return dto;
 	}
 	

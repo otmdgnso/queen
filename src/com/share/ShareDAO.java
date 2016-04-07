@@ -1,4 +1,4 @@
-package com.bbs;
+package com.share;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class ShareDAO {
 	private Connection conn = DBConn.getConnection();
 
 	// 데이터 추가
-	public int insertDocu(ShareDTO dto) {
+	public int insertShare(ShareDTO dto) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		StringBuffer sb = new StringBuffer();
@@ -92,7 +92,7 @@ public class ShareDAO {
 			else if (searchKey.equals("shareCreated"))
 				sb.append(" WHERE shareCreated=? ");
 			else
-				sb.append(" WHERE " + searchKey + " LIKE CONCAT('%', ? ,'%' ");
+				sb.append(" WHERE " + searchKey + " LIKE CONCAT('%', ? ,'%' )");
 
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setString(1, searchValue);
@@ -131,7 +131,7 @@ public class ShareDAO {
 		try {
 			sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
 			sb.append(" SELECT shareNum, shareSubject,memId,");
-			sb.append(" shareCreated, shareHitCount FROM share");
+			sb.append(" DATE_FORMAT(shareCreated , '%Y-%m-%d') shareCreated, shareHitCount FROM share");
 			sb.append(" ORDER BY shareNum DESC) tb,");
 			sb.append(" (SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
 
@@ -172,6 +172,54 @@ public class ShareDAO {
 		}
 		return list;
 	}
+	//검색될 때 리스트
+	public List<ShareDTO> listShare (int start, int end, String searchKey, String searchValue) {
+	      List<ShareDTO> list=new ArrayList<>();
+	      PreparedStatement pstmt=null;
+	      StringBuffer sb= new StringBuffer();
+	      ResultSet rs=null;
+	      
+	      try {
+	    	  	sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
+				sb.append(" SELECT shareNum, shareSubject,memId,");
+				sb.append(" DATE_FORMAT(shareCreated , '%Y-%m-%d') shareCreated, shareHitCount FROM share");
+				if(searchKey.equals("shareCreated"))
+					sb.append(" WHERE shareCreated  =?");
+				else if(searchKey.equals("memId"))
+					sb.append(" WHERE memId =?");
+				else
+					sb.append(" WHERE " + searchKey + " LIKE CONCAT('%', ? ,'%') ");
+				sb.append(" ORDER BY shareNum DESC) tb,");
+				sb.append(" (SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
+				
+				pstmt=conn.prepareStatement(sb.toString());
+				
+				pstmt.setString(1, searchValue);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()) {
+					ShareDTO dto = new ShareDTO();
+					
+					dto.setShareNum(rs.getInt("ShareNum"));
+					dto.setShareSubject(rs.getString("ShareSubject"));
+					dto.setMemId(rs.getString("memId"));
+					dto.setShareCreated(rs.getString("ShareCreated"));
+					dto.setShareHitCount(rs.getInt("ShareHitCount"));
+					
+					list.add(dto);
+				}
+				rs.close();
+				pstmt.close();
+	      } catch (Exception e) {
+	         System.out.println(e.toString());
+	      }
+	      
+	      return list;
+	 }
+	
 
 	// 게시판 글보기
 	public ShareDTO readShare(int shareNum) {

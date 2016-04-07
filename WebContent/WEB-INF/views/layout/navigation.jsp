@@ -1,19 +1,57 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	request.setCharacterEncoding("utf-8");
 	String cp=request.getContextPath();
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
 <link rel="stylesheet" href="<%=cp%>/res/css/login.css" type="text/css"/>
+<%-- 
+<link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
+<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
+
+<link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
+<link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
+<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
+--%>
+
+<script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script> 
 
 <script type="text/javascript">
 
+
+function bgLabel(ob, id) {
+	    if(!ob.value) {
+		    document.getElementById(id).style.display="";
+	    } else {
+		    document.getElementById(id).style.display="none";
+	    }
+}
+
+function sendLogin() {
+	
+        var f = document.loginForm;
+
+    	var str = f.userId.value;
+        if(!str) {
+            f.userId.focus();
+            return false;
+        }
+
+        str = f.userPwd.value;
+        
+        if(!str) {
+            f.userPwd.focus();
+            return false;
+        }
+
+        f.action ="<%=cp%>/member/login_ok.do";
+       
+        return true;
+  }
+/*  
 $(function() {
     
     var $formLogin = $('#login-form');
@@ -100,12 +138,13 @@ $(function() {
   		}, $msgShowTime);
     }
 });
+*/
+
 </script>
-</head>
-<body>
+
 <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+       <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -172,16 +211,39 @@ $(function() {
                             </li>
                         </ul>
                     </li>
+                    <!-- 로그인/ 혹은 000님 -->
                      <li>
-                         <button  style="margin-top:10px; border-radius:4px;" type="button" class="btn btn-default btn-sm btn-block" 
-                        			data-toggle="modal" data-target="#login-modal" >
-						 로그인
-						</button>
+                    
+	                    <c:if test="${empty sessionScope.member}">
+	             			   <button  style="margin-top:10px; border-radius:4px;" type="button" class="btn btn-default btn-sm btn-block" 
+	                        			data-toggle="modal" data-target="#login-modal" >
+							 로그인
+							</button>
+	            		</c:if>
+	            		
+	          			<c:if test="${not empty sessionScope.member}">
+	                		
+	                		<c:if test="${sessionScope.member.memId=='admin'}">
+	                			<span style="margin-top:5px;">관리자 </span> <i></i>
+	                		</c:if>
+	                		<c:if test="${sessionScope.member.memId!='admin' }" >
+	                		  <span style="font-weight:bold; color:white;">${sessionScope.member.memName}</span> <i></i>
+	                		</c:if>
+	            		</c:if>
+                      
                     </li>
+                    <!-- 로그아웃 / 혹은 회원가입 -->
                     <li>
-                       <a href="<%=cp%>/member/member.do" >회원가입</a>
-                    </li>
-                  
+						<c:if test="${empty sessionScope.member}">  
+					   		<a href="<%=cp%>/member/member.do" >회원가입</a>
+					   </c:if>
+                 
+                      <c:if test="${not empty sessionScope.member}">
+                        <a href="<%=cp%>/member/logout.do"> 로그아웃</a>
+                      </c:if>
+                   
+                   </li>
+                   
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -207,15 +269,15 @@ $(function() {
                 <div id="div-forms">
                 
                     <!-- Begin # Login Form -->
-                    <form id="login-form">
+                    <form id="login-form" name="loginForm" method="post" onsubmit="return sendLogin();">
 		                <div class="modal-body">
 				    		<div id="div-login-msg">
 				    		
                                 <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-login-msg" style="font-size:13px;"> 아이디와 비밀번호를 입력해주세요  </span>
                             </div>
-				    		<input id="login_username" class="form-control" type="text" placeholder="ID" required>
-				    		<input id="login_password" class="form-control" type="password" placeholder="Password" required>
+				    		<input name="userId" id="login_username" class="form-control" type="text" placeholder="ID" required>
+				    		<input name="userPwd" id="login_password" class="form-control" type="password" placeholder="Password" required>
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Remember me
@@ -225,63 +287,17 @@ $(function() {
 				        <div class="modal-footer" style=" border: none; margin-top:-8px;">
                             <div>
                                 <button style="font-size:16px; margin-top:0px; border-radius:0px; "
-                                 type="submit" class="btn btn-warning btn-lg btn-block">로그인</button>
+                                type="submit" class="btn btn-warning btn-lg btn-block">로그인</button>
                             </div>
 				    	    
 				        </div>
                     </form>
                     <!-- End # Login Form -->
                     
-                    <!-- Begin | Lost Password Form -->
-                    <form id="lost-form" style="display:none;">
-    	    		    <div class="modal-body">
-		    				<div id="div-lost-msg">
-                                <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-lost-msg">이메일을 입력해주세요</span>
-                            </div>
-		    				<input id="lost_email" class="form-control" type="text" placeholder="E-Mail (type ERROR for error effect)" required>
-            			</div>
-		    		    <div class="modal-footer">
-                            <div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">찾기</button>
-                            </div>
-                            <div>
-                                <button  id="lost_login_btn" type="button" class="btn btn-link">로그인</button>
-                                <button id="lost_register_btn" type="button" class="btn btn-link">가입하기</button>
-                            </div>
-		    		    </div>
-                    </form>
-                    <!-- End | Lost Password Form -->
-                    
-                    <!-- Begin | Register Form -->
-                    <form id="register-form" style="display:none;">
-            		    <div class="modal-body">
-		    				<div id="div-register-msg">
-                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Register an account.</span>
-                            </div>
-		    				<input id="register_username" class="form-control" type="text" placeholder="Username (type ERROR for error effect)" required>
-                            <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
-                            <input id="register_password" class="form-control" type="password" placeholder="Password" required>
-            			</div>
-		    		    <div class="modal-footer">
-                            <div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
-                            </div>
-                            <div>
-                                <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
-                                <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
-                            </div>
-		    		    </div>
-                    </form>
-                    <!-- End | Register Form -->
-                    
+                  
                 </div>
                 <!-- End # DIV Form -->
                 
 			</div>
 		</div>
 	</div>
- 
-</body>
-</html>

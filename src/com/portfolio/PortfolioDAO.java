@@ -18,14 +18,14 @@ private Connection conn=DBConn.getConnection();
 		String sql;
 
 		String fields = "subject, content, imageFilename, memId";
-		sql="INSERT INTO portfolio (" + fields + ") VALUES (?, ?, ?, ?, ?)";
+		sql="INSERT INTO portfolio (" + fields + ") VALUES (?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getContent());
 			pstmt.setString(3, dto.getImageFilename());
-			pstmt.setString(5, dto.getMemId());
+			pstmt.setString(4, dto.getMemId());
 			
 			result = pstmt.executeUpdate();
 			pstmt.close();

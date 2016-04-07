@@ -13,7 +13,7 @@ public class MainDAO {
 	private Connection conn =  DBConn.getConnection();
 	
 	public List<MainDTO> mainShare(){
-		List<MainDTO> list = new ArrayList<>();
+		List<MainDTO> listShare = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		StringBuffer sb = new StringBuffer();
@@ -32,7 +32,7 @@ public class MainDAO {
 				dto.setShareNum(rs.getInt("shareNum"));
 				dto.setShareSubject(rs.getString("shareSubject"));
 				
-				list.add(dto);				
+				listShare.add(dto);				
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -51,6 +51,48 @@ public class MainDAO {
 				}
 			}
 		}
-		return list;
+		return listShare;
+	}
+
+	public List<MainDTO> mainPortfolio(){
+		List<MainDTO> listPfo = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuffer sb = new StringBuffer();
+		
+		try {
+			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
+			sb.append(" SELECT Num ,Subject FROM portfolio ORDER BY Num DESC)tb, ");  
+			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
+			
+			pstmt=conn.prepareStatement(sb.toString());
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				MainDTO dto = new MainDTO();
+				
+				dto.setPfoNum(rs.getInt("Num"));
+				dto.setPfoSubject(rs.getString("Subject"));
+				
+				listPfo.add(dto);				
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if(rs!=null){
+				try {
+					rs.close();
+				} catch (SQLException e2) {
+				}
+			}
+			
+			if(pstmt!=null){
+				try{
+					pstmt.close();
+				} catch (SQLException e){
+				}
+			}
+		}
+		return listPfo;
 	}
 }

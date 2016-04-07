@@ -3,6 +3,7 @@ package com.recruit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,7 +92,55 @@ public List<RecruitDTO> listEndRecruit(String start, String end){
 	}
 	
 	public RecruitDTO readRecruit(int recruitNum){
-		RecruitDTO dto=new RecruitDTO();
+		RecruitDTO dto=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		StringBuffer sb=new StringBuffer();
+		
+		try {
+			
+			sb.append("SELECT r.memId, recruitSubject, recruitCompany, recruitHead,");
+			sb.append(" DATE_FORMAT(recruitStart,'%Y-%m-%d') recruitStart,");
+			sb.append(" DATE_FORMAT(recruitEnd,'%Y-%m-%d') recruitEnd, recruitQual,");
+			sb.append(" recruitStep, recruitImg, recruitCreated, recruitNum");
+			sb.append(" FROM recruit r JOIN member1 m ON m.memId=r.memId WHERE recruitNum=?;");
+			
+			pstmt=conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, recruitNum);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				dto=new RecruitDTO();
+				dto.setRecruitNum(rs.getInt("recruitNum"));
+				dto.setMemId(rs.getString("memId"));
+				dto.setRecruitSubject(rs.getString("recruitSubject"));
+				dto.setRecruitCompany(rs.getString("recruitCompany"));
+				dto.setRecruitHead(rs.getString("recruitHead"));
+				dto.setRecruitStart(rs.getString("recruitStart"));
+				dto.setRecruitEnd(rs.getString("recruitEnd"));
+				dto.setRecruitQual(rs.getString("recruitQual"));
+				dto.setRecruitStep(rs.getString("recruitStep"));
+				dto.setRecruitImg(rs.getString("recruitImg"));
+				dto.setRecruitCreated(rs.getString("recruitCreated"));
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			}
+				
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
 		
 		return dto;
 	}
@@ -104,7 +153,7 @@ public List<RecruitDTO> listEndRecruit(String start, String end){
 		try {
 			sb.append("INSERT INTO recruit(recruitSubject, recruitCompany, recruitHead,");
 			sb.append(" recruitStart, recruitEnd, recruitQual, recruitStep, recruitImg, memId)");
-			sb.append(" VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?");
+			sb.append(" VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			
 			pstmt=conn.prepareStatement(sb.toString());
 			pstmt.setString(1, dto.getRecruitSubject());

@@ -113,14 +113,13 @@
 							      <option value="shareSubject">제목</option>
 							      <option value="memId">작성자</option>
 							      <option value="shareContent">내용</option>
-							      <option value="shareCreated">등록일</option>
 							  </select>
 							  <input type="text" class="form-control input-sm input-search" name="searchValue">
 							  <button type="button" class="btn btn-info btn-sm btn-search" onclick="searchList();"><span class="glyphicon glyphicon-search"></span> 검색</button>
 	        		     </form>
 	        		</div>
 	        		<div style="float: left; width: 20%; min-width: 85px; text-align: right;">
-	        		    <button type="button" class="btn btn-primary btn-sm bbtn" onclick="article.jsp"><span class="glyphicon glyphicon glyphicon-pencil"></span> 글쓰기</button>
+	        		    <input type="image" src="<%=cp%>/res/image/btn_write.gif" onclick="javascript:location.href='<%=cp%>/bbs/created.sst';">
 	        		</div>
 	        </div>
 	    </div>

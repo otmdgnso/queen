@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
    String cp = request.getContextPath();
 %>
@@ -81,18 +83,22 @@
                         <td>총 추천수:</td>
                         </tr>
                         
-                        <tr>
-                            <td colspan="2">
-                                 <span style="display: inline-block; min-width: 45px;">이전글</span> :
-                              <a href="#">${preReadDto.subject}</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="border-bottom: #d5d5d5 solid 1px;">
-                                 <span style="display: inline-block; min-width: 45px;">다음글</span> :
-                              <a href="#">${nextReadDto.subject}</a>
-                            </td>
-                        </tr>
+                        <tr height="30">
+					    <td width="80" bgcolor="#EEEEEE" align="center">이전글</td>
+					    <td width="520" align="left" style="padding-left:10px;" colspan="3">
+							<c:if test="${not empty preReadDto}">
+								<a href="<%=cp%>/bbs/article.sst?shareNum=${preReadDto.shareNum}&${params}">${preReadDto.shareSubject }</a>
+							</c:if>
+						</td>
+					</tr>
+                        <tr height="30">
+					    <td width="80" bgcolor="#EEEEEE" align="center">다음글</td>
+					    <td width="520" align="left" style="padding-left:10px;" colspan="3">
+							<c:if test="${not empty nextReadDto}">
+								<a href="<%=cp%>/bbs/article.sst?shareNum=${nextReadDto.shareNum}&${params}">${nextReadDto.shareSubject }</a>
+							</c:if>
+					    </td>
+					</tr>
                    </tbody>
                    <tfoot>
                       <tr>

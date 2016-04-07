@@ -8,7 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.member.SessionInfo;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.FileManager;
@@ -25,9 +27,15 @@ public class portfolioServlet extends MyServlet {
 		String uri = req.getRequestURI();
 
 		String cp = req.getContextPath();
-
+		// 로그인 정보를 세션에서 가져오기
+				HttpSession session=req.getSession();
+				SessionInfo info=(SessionInfo)session.getAttribute("member");
+				if(info==null) { // 로그인되지 않은 경우
+					resp.sendRedirect(cp+"/member/login.do");
+					return;
+				}
 		// 이미지를 저장할 경로(pathname)
-		String root=getServletContext().getRealPath("/");
+		String root=session.getServletContext().getRealPath("/");
 		String pathname = root+File.separator + "uploads" + File.separator + "portfolio";
 		File f = new File(pathname);
 		if (!f.exists()) { // 폴더가 존재하지 않으면
@@ -96,7 +104,7 @@ public class portfolioServlet extends MyServlet {
 
 			// 이미지 파일을 업로드 한경우
 			if (mreq.getFile("upload") != null) {
-				dto.setMemId(mreq.getParameter("MemId"));
+				dto.setMemId(info.getMemId());
 
 				dto.setSubject(mreq.getParameter("subject"));
 				dto.setContent(mreq.getParameter("content"));
@@ -112,8 +120,8 @@ public class portfolioServlet extends MyServlet {
 				// 저장
 				dao.insertPortfolio(dto);
 			}
-
 			resp.sendRedirect(cp + "/portfolio/list.sst");
+			
 		}else if(uri.indexOf("article.sst")!=-1) {
 			int num=Integer.parseInt(req.getParameter("num"));
 			String page=req.getParameter("page");

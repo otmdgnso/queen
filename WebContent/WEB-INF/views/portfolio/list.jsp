@@ -41,23 +41,23 @@
 	<div>
     <jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
+ <!-- Page Content -->
+    <div class="container">
 
-	<div class="container" role="main">
-		<div class="bodyFrame col-sm-10"
-			style="float: none; margin-left: auto; margin-right: auto;">
-
-			<!-- Page Heading/Breadcrumbs -->
+        <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Portfolio
+                <h1 class="page-header">Three Column Portfolio
+                    <small>Subheading</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a>
                     </li>
-                    <li class="active">Portfolio</li>
+                    <li class="active">Three Column Portfolio</li>
                 </ol>
             </div>
         </div>
+        <!-- /.row -->
 
 			<div>
 				<c:if test="${dataCount!=0 }">
@@ -80,12 +80,12 @@
 									escapeXml="false" />
 							</c:if>
 							<div class="col-md-4 img-portfolio">
-		                     <img src="<%=cp%>/uploads/portfolio/${dto.imageFilename}" onclick="javascript:article('${dto.num}');">
+		                     <img class="img-responsive img-hover" src="<%=cp%>/uploads/portfolio/${dto.imageFilename}" onclick="javascript:article('${dto.num}');" style="height: 150px">
 				             	<h3><span class="subject" onclick="javascript:article('${dto.num}');" >
 				                   ${dto.subject}
 				             </span></h3>
 				             <p>'${dto.content}'</p>
-				     	  </div>								
+				     	  </div>
 						</c:forEach>
 					</div>
 				</c:if>
@@ -108,16 +108,14 @@
 					<div
 						style="float: left; width: 20%; min-width: 85px; text-align: right;">
 						<button type="button" class="btn btn-primary btn-sm bbtn"
-							onclick="javascript:location.href='<%=cp%>/portfolio/created.do';">
+							onclick="javascript:location.href='<%=cp%>/portfolio/created.sst';">
 							<span class="glyphicon glyphicon glyphicon-pencil"></span> 등록하기
 						</button>
 					</div>
 				</div>
 
 			</div>
-
-		</div>
-	</div>
+			</div>
 
 	<!-- jQuery -->
 	<script src="<%=cp%>/res/js/jquery.js"></script>

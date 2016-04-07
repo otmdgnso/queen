@@ -12,7 +12,14 @@
 <head>
 <meta charset="UTF-8">
 <title>study</title>
+<!-- Bootstrap Core CSS -->
+    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom CSS -->
+    <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css">
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css">
 
@@ -21,17 +28,17 @@
     function check() {
         var f = document.boardForm;
 
-    	var str = f.subject.value;
+    	var str = f.shareSubject.value;
         if(!str) {
             alert("제목을 입력하세요. ");
-            f.subject.focus();
+            f.shareSubject.focus();
             return false;
         }
 
-    	str = f.content.value;
+    	str = f.shareContent.value;
         if(!str) {
             alert("내용을 입력하세요. ");
-            f.content.focus();
+            f.shareContent.focus();
             return false;
         }
 
@@ -47,6 +54,10 @@
 </script>
 </head>
 <body>
+   <!-- Navigation -->
+	<div>
+		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
+	</div>
 
 	
 	<div class="layoutBody">
@@ -68,7 +79,7 @@
 					  <tr align="left" height="40"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="subject" size="75" maxlength="100" class="boxTF" value="${dto.shareSubject}">
+					        <input type="text" name="shareSubject" size="75" maxlength="100" class="boxTF" value="${dto.shareSubject}">
 					      </td>
 					  </tr>
 					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
@@ -76,7 +87,7 @@
 					  <tr align="left" height="40"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">작 성 자</td>
 					      <td width="500" style="padding-left:10px;"> 
-					        ${sessionScope.member.userName}
+					        ${sessionScope.member.memId}
 					      </td>
 					  </tr>
 				      <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
@@ -84,7 +95,7 @@
 					  <tr align="left"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center; padding-top:5px;" valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 					      <td width="500" valign="top" style="padding:5px 0px 5px 10px;"> 
-					        <textarea name="content" cols="75" rows="12" class="boxTA">${dto.shareContent}</textarea>
+					        <textarea name="shareContent" cols="75" rows="12" class="boxTA">${dto.shareContent}</textarea>
 					      </td>
 					  </tr>
 					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
@@ -94,7 +105,7 @@
 					     <tr height="45"> 
 					      <td align="center" >
 						    <input type="image" src="<%=cp%>/res/image/btn_submit.gif" >
-		        		    <a href="javascript:location.href='<%=cp%>/bbs/article.sst?shareNum=${dto.shareNum}';"><img src="<%=cp%>/res/image/btn_cancel.gif" border="0"></a>
+		        		    <a href="javascript:location.href='<%=cp%>/bbs/list.sst';"><img src="<%=cp%>/res/image/btn_cancel.gif" border="0"></a>
 		
 							<c:if test="${mode=='update'}">
 								<input type="hidden" name="num" value="${dto.shareNum}">
@@ -109,7 +120,11 @@
 		</div>
 
     </div>
-	
+	 <!-- jQuery -->
+    <script src="<%=cp%>/res/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 
 </body>
 </html>

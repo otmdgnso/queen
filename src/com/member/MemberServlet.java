@@ -36,8 +36,7 @@ public class MemberServlet extends MyServlet {
 		} else if(uri.indexOf("member_ok.do")!=-1) {
 			// 회원가입 처리
 			MemberDTO dto = new MemberDTO();
-		/*
-		*/
+		
 			dto.setMemId(req.getParameter("userId"));
 			dto.setMemPwd(req.getParameter("userPwd"));
 			dto.setMemName(req.getParameter("userName"));
@@ -89,5 +88,53 @@ public class MemberServlet extends MyServlet {
 			forward(req, resp, "/WEB-INF/views/member/complete.jsp");
 			
 		}
+		//dao. readMember 필요 
+		else if(uri.indexOf("login_ok.do")!=-1) {
+	
+			// 로그인 처리
+			String memId=req.getParameter("userId");
+			String memPwd=req.getParameter("userPwd");
+			
+			MemberDTO dto=dao.readMember(memId);
+			
+			
+			// 로그인 성공 : 로그인정보를 서버에 저장
+			if(dto!=null) {
+				System.out.println("DTO에 로그인정보 넣기 성공");
+				if(memPwd.equals(dto.getMemPwd()) && dto.getEnabled()==1) {
+					
+					// 세션의 유지시간을 20분설정(기본 30분)
+					session.setMaxInactiveInterval(20*60);
+					
+					// 세션에 저장할 내용
+					SessionInfo info=new SessionInfo();
+					
+					info.setMemId(dto.getMemId());
+					info.setMemName(dto.getMemName());
+					
+					// 세션에 member이라는 이름으로 저장
+					session.setAttribute("member", info);
+					System.out.println("성공로그인  ");
+					// 메인화면으로 리다이렉트
+					resp.sendRedirect(cp);
+					return;
+				} 
+			}
+			// 로그인 실패인 경우(다시 로그인 폼으로)
+			System.out.println("실패!!!!!!!");
+			resp.sendRedirect(cp);
+			
+		} else if(uri.indexOf("logout.do")!=-1) {
+			// 로그아웃
+			// 세션에 저장된 정보를 지운다
+			session.removeAttribute("member");
+			
+			// 세션에 저장된 모든 정보를 지우고 세션을 초기화 한다.
+			session.invalidate();
+			
+			// 루트로 리다이렉트
+			resp.sendRedirect(cp);
+			
+		} 
 	}
 }

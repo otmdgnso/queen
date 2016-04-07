@@ -18,9 +18,11 @@
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 
 <link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
+
 <link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
+
 <link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
 
 
@@ -135,11 +137,12 @@ function check() {
     
     var mode="created";
     if(mode=="created") {
+    	alert("성공!");
     	f.action = "<%=cp%>/member/member_ok.do";
     } else if(mode=="update") {
     	f.action = "<%=cp%>/member/update_ok.do";
     }
-    
+
     return true;
 }
 </script>
@@ -161,10 +164,7 @@ function changeEmail() {
     }
 }
 </script>
-<style>
-.form-group{
-}
-</style>
+
 </head>
 <body>
 	<div>
@@ -172,7 +172,7 @@ function changeEmail() {
 	</div>
 
 <div class="container" role="main" style="margin-top:50px;">
-  <div class="jumbotron" style="font-size:50px;">
+  <div class="jumbotron">
     <h1><span class="glyphicon glyphicon-user" style="color:gray; margin-right:10px;" ></span> 회원가입 </h1>
     <p>사자의 심장을 가져라! 쌍용 수강생만 가입 가능합니다</p>
   </div>
@@ -220,7 +220,7 @@ function changeEmail() {
         <label class="col-sm-2 control-label" for="course">과정</label>
          <div class="col-sm-10">
          
-           <select name="selectCourse" id="course" onchange="changeCourse();" class="form-control" 
+           <select name="selectCourse" id="course" class="form-control" 
            		style="width:320px; float: left; margin-right:-40px; "  >
            			
 				<option value="">선 택</option>
@@ -265,11 +265,11 @@ function changeEmail() {
 											<option value="@gmail.com" ${dto.email2=="gmail.com" ? "selected='selected'" : ""}>지 메일</option>
 											<option value="direct">직접입력</option>
 		</select>
-		 <input style="width:150px; float:left; margin-right:10px;" type="text" name="email1" size="13" maxlength="30" id="email"  class="form-control" 
-			value="${dto.email1}">
+		 <input style="width:150px; float:left; margin-right:10px;" type="text" name="email1" size="13" 
+		 		maxlength="30" id="email"  class="form-control" value="${dto.email1}">
 			
-		<input style="width:150px;  float:left; margin-right:10px; " type="text" name="email2" size="13" maxlength="30" id="email"  class="form-control" 
-												value="${dto.email2}" readonly="readonly">
+		<input style="width:150px;  float:left; margin-right:10px; " type="text" name="email2" size="13"
+				 maxlength="30" id="email"  class="form-control" value="${dto.email2}" readonly="readonly">
          <p class="help-block"> </p>
          </div>
     </div>

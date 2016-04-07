@@ -9,35 +9,39 @@ import com.util.DBConn;
 public class MemberDAO {
 	private Connection conn=DBConn.getConnection();
 	
-	/*public MemberDTO readMember(String userId) {
+	public MemberDTO readMember(String memId) {
+		
 		MemberDTO dto=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		StringBuffer sb=new StringBuffer();
-		
+		System.out.println("dao 작업중..");
 		try {
-			sb.append("SELECT m1.userId, userName, userPwd,");
-			sb.append("      enabled, created_date, modify_date,");
-			sb.append("      TO_CHAR(birth, 'YYYY-MM-DD') birth, ");
+			sb.append("SELECT m1.memId, memName, memPwd,");
+			sb.append("      enabled, memCreated, memModified,");
+			sb.append("      DATE_FORMAT(birth, '%Y-%m-%d') birth, ");
 			sb.append("      email, tel, job,");
-			sb.append("      zip, addr1, addr2");
+			sb.append("      add2");
 			sb.append("      FROM member1 m1");
 			sb.append("      LEFT OUTER JOIN member2 m2 ");
-			sb.append("      ON m1.userId=m2.userId");
-			sb.append("      WHERE m1.userId=?");
+			sb.append("      ON m1.memId=m2.memId");
+			sb.append("      WHERE m1.memId=?");
 			
 			pstmt=conn.prepareStatement(sb.toString());
-			pstmt.setString(1, userId);
+			pstmt.setString(1, memId);
 			rs=pstmt.executeQuery();
+			
 			if(rs.next()) {
+				
 				dto=new MemberDTO();
-				dto.setUserId(rs.getString("userId"));
-				dto.setUserPwd(rs.getString("userPwd"));
-				dto.setUserName(rs.getString("userName"));
+				dto.setMemId(rs.getString("memId"));
+				dto.setMemPwd(rs.getString("memPwd"));
+				dto.setMemName(rs.getString("memName"));
 				dto.setEnabled(rs.getInt("enabled"));
-				dto.setCreated_date(rs.getString("created_date"));
-				dto.setModify_date(rs.getString("modify_date"));
+				dto.setMemCreated(rs.getString("memCreated"));
+				dto.setMemModify(rs.getString("memModified"));
 				dto.setBirth(rs.getString("birth"));
+				
 				dto.setTel(rs.getString("tel"));
 				if(dto.getTel()!=null) {
 					String[] ss=dto.getTel().split("-");
@@ -47,6 +51,7 @@ public class MemberDAO {
 						dto.setTel3(ss[2]);
 					}
 				}
+				
 				dto.setEmail(rs.getString("email"));
 				if(dto.getEmail()!=null) {
 					String[] ss=dto.getEmail().split("@");
@@ -56,20 +61,20 @@ public class MemberDAO {
 					}
 				}
 				dto.setJob(rs.getString("job"));
-				dto.setZip(rs.getString("zip"));
-				dto.setAddr1(rs.getString("addr1"));
-				dto.setAddr2(rs.getString("addr2"));
+				dto.setAddr2(rs.getString("add2"));
 			}
 			rs.close();
 			pstmt.close();
 			pstmt=null;
+			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
+		System.out.println("성공! :"+dto.getMemId());
+		System.out.println("성공! :"+dto.getMemName());
 		return dto;
 	}
-	*/
+	
 	public int insertMember(MemberDTO dto) { 
 		int result=0;
 		PreparedStatement pstmt=null;

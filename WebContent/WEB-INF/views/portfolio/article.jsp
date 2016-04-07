@@ -65,7 +65,7 @@
 	                     </tr>
                          <tr style="border-bottom:none;">
                              <td colspan="2">
-                                 <img src="<%=cp%>/uploads/photo/${dto.imageFilename}" style="max-width:100%; height:auto; resize:both;">
+                                 <img src="<%=cp%>/uploads/portfolio/${dto.imageFilename}" style="max-width:100%; height:auto; resize:both;">
                              </td>
                          </tr>
 	                     <tr>
@@ -78,15 +78,15 @@
 	                	<tr>
 	                		<td>
 	                		
-	                		        <button type="button" class="btn btn-default btn-sm wbtn" onclick="updatePhoto(${dto.num});">수정</button>
+	                		        <button type="button" class="btn btn-default btn-sm wbtn" onclick="updatePortfolio(${dto.num});">수정</button>
 
 		                        
-	                		        <button type="button" class="btn btn-default btn-sm wbtn" onclick="deletePhoto(${dto.num});">삭제</button>
+	                		        <button type="button" class="btn btn-default btn-sm wbtn" onclick="deletePortfolio(${dto.num});">삭제</button>
 
 	                		</td>
 	                		<td align="right">
 	                		    <button type="button" class="btn btn-default btn-sm wbtn"
-	                		                onclick="javascript:location.href='<%=cp%>/photo/list.do?page=${page}';"> 목록으로 </button>
+	                		                onclick="javascript:location.href='<%=cp%>/portfolio/list.do?page=${page}';"> 목록으로 </button>
 	                		</td>
 	                	</tr>
 	                </tfoot>

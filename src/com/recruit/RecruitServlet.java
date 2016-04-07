@@ -22,9 +22,9 @@ public class RecruitServlet extends MyServlet{
 		
 		RecruitDAO dao=new RecruitDAO();
 		
+		HttpSession session=req.getSession();
 
 		if(uri.indexOf("recruit.sst")!=-1){
-			
 			String articleUrl = cp + "/recruit/article.sst";
 			req.setAttribute("articleUrl", articleUrl);
 			forward(req, resp, "/WEB-INF/views/recruit/recruit.jsp");

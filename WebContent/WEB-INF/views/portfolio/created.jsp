@@ -50,9 +50,9 @@
   	  }
       
   	  if(mode=="created")
-  		f.action="<%=cp%>/portfolio/created_ok.do";
+  		f.action="<%=cp%>/portfolio/created_ok.sst";
   	  else if(mode=="update")
-  		f.action="<%=cp%>/portfolio/update_ok.do";
+  		f.action="<%=cp%>/portfolio/update_ok.sst";
 
 		// <input type='submit' ..>,  <input type='image' ..>, <button>은 submit() 메소드 호출하면 두번전송
 		return true;
@@ -86,10 +86,12 @@
 							<tbody>
 								<tr>
 									<td class="td1">작성자명</td>
-									<td class="td2 "></td>
+									<td class="td2 col-md-5 col-sm-5">
+										<p class="form-control-static">${sessionScope.member.memId}</p>
+									</td>
 									<td class="td1" align="center">&nbsp;</td>
-									<td class="td2"><input type="text" name="memId" class="form-control input-sm"
-										value="${dto.memId}" required="required"></td>
+									<td class="td2 col-md-5 col-sm-5">&nbsp;</td>
+
 								</tr>
 								<tr>
 									<td class="td1">제목</td>
@@ -131,7 +133,7 @@
 											확인 <span class="glyphicon glyphicon-ok"></span>
 										</button>
 										<button type="button" class="btn btn-danger"
-											onclick="javascript:location.href='<%=cp%>/portfolio/list.do';">
+											onclick="javascript:location.href='<%=cp%>/portfolio/list.sst';">
 											취소</button> <c:if test="${mode=='update'}">
 											<input type="hidden" name="num" value="${dto.num}">
 											<input type="hidden" name="userId" value="${dto.userId}">

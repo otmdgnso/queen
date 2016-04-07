@@ -217,8 +217,8 @@ $(function() {
 	                    <c:if test="${empty sessionScope.member}">
 	             			   <button  style="margin-top:10px; border-radius:4px;" type="button" class="btn btn-default btn-sm btn-block" 
 	                        			data-toggle="modal" data-target="#login-modal" >
-							 로그인
-							</button>
+								 로그인
+							   </button>
 	            		</c:if>
 	            		
 	          			<c:if test="${not empty sessionScope.member}">

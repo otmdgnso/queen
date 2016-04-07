@@ -1,4 +1,4 @@
-package com.bbs;
+package com.share;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import com.util.MyServlet;
 import com.util.MyUtil;
 
 @WebServlet("/bbs/*")
-public class BoardServlet extends MyServlet {
+public class ShareServlet extends MyServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override

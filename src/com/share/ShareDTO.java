@@ -1,4 +1,4 @@
-package com.bbs;
+package com.share;
 
 public class ShareDTO {
  private int shareNum,shareHitCount;

@@ -1,4 +1,4 @@
-package com.bbs;
+package com.share;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class ShareDAO {
 	private Connection conn = DBConn.getConnection();
 
 	// 데이터 추가
-	public int insertDocu(ShareDTO dto) {
+	public int insertShare(ShareDTO dto) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		StringBuffer sb = new StringBuffer();
@@ -172,10 +172,22 @@ public class ShareDAO {
 		}
 		return list;
 	}
+	//검색될 때 리스트
+	public List<ShareDTO> listShare (int start, int end, String searchKey, String searchValue) {
+	      List<ShareDTO> list=new ArrayList<>();
+	      PreparedStatement pstmt=null;
+	      StringBuffer sb= new StringBuffer();
+	      ResultSet rs=null;
+	      
+	      try {
+	         
+	      } catch (Exception e) {
+	         System.out.println(e.toString());
+	      }
+	      
+	      return list;
+	 }
 	
-	public List<ShareDTO> listShare(int start, int end, String searchKey, String searchValue) {
-		
-	}
 
 	// 게시판 글보기
 	public ShareDTO readShare(int shareNum) {

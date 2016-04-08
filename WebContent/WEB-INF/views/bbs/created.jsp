@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css">
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css">
 
+<!-- jQuery -->
+<script src="<%=cp%>/res/js/jquery.js"></script>
+
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript">
     function check() {
@@ -120,8 +123,6 @@
 		</div>
 
     </div>
-	 <!-- jQuery -->
-    <script src="<%=cp%>/res/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>

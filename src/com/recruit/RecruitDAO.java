@@ -178,12 +178,55 @@ public List<RecruitDTO> listEndRecruit(String start, String end){
 	
 	public int updateRecruit(RecruitDTO dto){
 		int result=0;
+		PreparedStatement pstmt=null;
+		StringBuffer sb=new StringBuffer();
 		
+		try {
+			sb.append("UPDATE recruit SET recruitSubject=?, recruitHead=?, recruitStart=?, recruitEnd=?,");
+			sb.append(" recruitQual=?, recruitStep=?, recruitImg=? WHERE recruitNum=?");
+			
+			pstmt=conn.prepareStatement(sb.toString());
+			pstmt.setString(1, dto.getRecruitSubject());
+			pstmt.setString(2, dto.getRecruitHead());
+			pstmt.setString(3, dto.getRecruitStart());
+			pstmt.setString(4, dto.getRecruitEnd());
+			pstmt.setString(5, dto.getRecruitQual());
+			pstmt.setString(6, dto.getRecruitStep());
+			pstmt.setString(7, dto.getRecruitImg());
+			pstmt.setInt(8, dto.getRecruitNum());
+			
+			result=pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}finally {
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}		
 		return result;
+		
 	}
 	
 	public int deleteRecruit(int recruitNum){
 		int result=0;
+		PreparedStatement pstmt=null;
+		StringBuffer sb=new StringBuffer();
+		
+		try {
+			sb.append("DELETE FROM recruit WHERE recruitNum=?");
+			
+			pstmt=conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, recruitNum);
+			result=pstmt.executeUpdate();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 		
 		return result;
 	}

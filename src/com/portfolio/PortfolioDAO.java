@@ -3,6 +3,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,7 +149,7 @@ private Connection conn=DBConn.getConnection();
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getContent());
 			pstmt.setString(3, dto.getImageFilename());
-			pstmt.setInt(5, dto.getNum());
+			pstmt.setInt(4, dto.getNum());
 			
 			result=pstmt.executeUpdate();
 			pstmt.close();
@@ -159,7 +160,30 @@ private Connection conn=DBConn.getConnection();
 		
 		return result;
 	}
-	
+	// 조회수 증가하기
+		public int updateHitCount(int num)  {
+			int result=0;
+			PreparedStatement pstmt=null;
+			String sql;
+			
+			try {
+				sql="UPDATE portfolio SET hitCount=hitCount+1  WHERE num=?";
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				result=pstmt.executeUpdate();
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			} finally {
+				if(pstmt!=null) {
+					try {
+						pstmt.close();
+					} catch (Exception e2) {
+					}
+				}
+			}
+			
+			return result;
+		}
 	public int deletePortfolio(int num) {
 		int result=0;
 		PreparedStatement pstmt=null;
@@ -175,6 +199,148 @@ private Connection conn=DBConn.getConnection();
 			System.out.println(e.toString());
 		}
 		
+		return result;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////리플
+	
+	public int insertReply(PortfolioReplyDTO dto) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		StringBuffer sb=new StringBuffer();
+		
+		try {
+			sb.append("INSERT INTO portfolioreply(num, memId, content) ");
+			sb.append(" VALUES (?, ?, ?)");
+			
+			pstmt=conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, dto.getNum());
+			pstmt.setString(2, dto.getMemId());
+			pstmt.setString(3, dto.getContent());
+			
+			result=pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if(pstmt!=null)
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+		}
+		
+		return result;
+	}
+	
+	public int dataCountReply(int num) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql;
+		
+		try {
+			sql="SELECT IFNULL(COUNT(*), 0) FROM portfolioreply WHERE num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				result=rs.getInt(1);
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			}
+				
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		
+		return result;
+	}
+
+	public List<PortfolioReplyDTO> listReply(int num, int start, int end) {
+		List<PortfolioReplyDTO> list=new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		StringBuffer sb=new StringBuffer();
+		
+		try {
+			sb.append("SELECT * FROM (SELECT @rownum:=@rownum+1 AS rnum, tb.* FROM (");    
+			sb.append("		  SELECT replyNum, portfolioReply.num, portfolioReply.memId, portfolioReply.content, ");
+			sb.append("		DATE_FORMAT(portfolioReply.Created , '%Y-%m-%d') Created");
+			sb.append("			 FROM portfolioReply JOIN  portfolio ON portfolioReply.num=portfolio.num   ");
+			sb.append("			WHERE portfolioReply.num=?  ORDER BY replyNum DESC) tb,(SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
+
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, num);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				PortfolioReplyDTO dto=new PortfolioReplyDTO();
+				
+				dto.setReplyNum(rs.getInt("replyNum"));
+				dto.setNum(rs.getInt("num"));
+				dto.setMemId(rs.getString("memId"));
+				dto.setContent(rs.getString("content"));
+				dto.setCreated(rs.getString("created"));
+				
+				list.add(dto);
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			}
+				
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return list;
+	}
+
+	public int deleteReply(int replyNum) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		sql="DELETE FROM portfolioreply WHERE replyNum=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, replyNum);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}		
 		return result;
 	}
 }

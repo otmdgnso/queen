@@ -108,6 +108,74 @@ public class RecruitServlet extends MyServlet{
 			String path = "/WEB-INF/views/recruit/article.jsp";
 			forward(req, resp, path);
 				
+		}else if(uri.indexOf("update.sst")!=-1){
+			int recruitNum=Integer.parseInt(req.getParameter("recruitNum"));
+			RecruitDTO dto=dao.readRecruit(recruitNum);
+			
+			req.setAttribute("dto", dto);
+			req.setAttribute("mode", "update");
+			String path="/WEB-INF//views/recruit/created.jsp";
+			forward(req, resp, path);
+			
+		}else if(uri.indexOf("update_ok.sst")!=-1){
+			
+			String enctype="utf-8";
+			int maxSize=5*1024*1024;
+			
+			MultipartRequest mreq=new MultipartRequest(req, pathname, maxSize, enctype, new DefaultFileRenamePolicy());
+			
+			String recruitImg=mreq.getParameter("recruitImg");
+			
+			RecruitDTO dto=new RecruitDTO();
+			
+			dto.setRecruitNum(Integer.parseInt(mreq.getParameter("recruitNum")));
+			dto.setRecruitHead(mreq.getParameter("recruitHead"));
+			dto.setRecruitStart(mreq.getParameter("recruitStart"));
+			dto.setRecruitEnd(mreq.getParameter("recruitEnd"));
+			dto.setRecruitQual(mreq.getParameter("recruitQual"));
+			dto.setRecruitStep(mreq.getParameter("recruitStep"));
+			
+			String company=mreq.getParameter("recruitCompany");
+			String head=mreq.getParameter("recruitHead");
+			
+			dto.setRecruitSubject(company+"["+head+"]");
+			
+			// 이미지 파일을 업로드 한경우
+			if(mreq.getFile("upload")!=null) {
+				// 기존 이미지 파일 지우기
+				FileManager.doFiledelete(pathname, recruitImg);
+							
+				// 서버에 저장된 파일명
+				String saveFilename=mreq.getFilesystemName("upload");
+							
+				// 파일 이름 변경
+				saveFilename = FileManager.doFilerename(pathname, saveFilename);
+							
+				dto.setRecruitImg(saveFilename);
+			} else {
+				// 새로운 이미지 파일을 올리지 않은 경우 기존 이미지 파일로
+				dto.setRecruitImg(recruitImg);
+			}
+						
+			dao.updateRecruit(dto);
+						
+			resp.sendRedirect(cp+"/recruit/recruit.sst");	
+			
+		}else if(uri.indexOf("delete.sst")!=-1){
+			
+			// 삭제 완료
+			int recruitNum=Integer.parseInt(req.getParameter("recruitNum"));
+			
+			RecruitDTO dto=dao.readRecruit(recruitNum);
+			
+			// 이미지 파일 지우기
+			FileManager.doFiledelete(pathname, dto.getRecruitImg());
+						
+			// 테이블 데이터 삭제
+			dao.deleteRecruit(recruitNum);
+						
+			resp.sendRedirect(cp+"/recruit/recruit.sst");			
+			
 		}
 	}
 

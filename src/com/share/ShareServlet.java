@@ -1,6 +1,7 @@
 package com.share;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -271,6 +272,30 @@ public class ShareServlet extends MyServlet {
 			// 포워딩
 			String path = "/WEB-INF/views/bbs/listReply.jsp";
 			forward(req, resp, path);
+		} else if(uri.indexOf("insertReply.sst") != -1){
+			//리플 저장하기 ------
+			String state="true";
+			if(info == null){ //로그인 되지 않은 경우
+				state="loginFail";
+			}else {
+				int shareNum = Integer.parseInt(req.getParameter("shareNum"));
+				ShareReplyDTO dto= new ShareReplyDTO();
+				dto.setShareNum(shareNum);
+				dto.setMemId(info.getMemId());
+				dto.setShareR_content(req.getParameter("shareR_content"));
+				
+				int result=dao.insertShareReply(dto);
+				if(result==0)
+					state="false";
+			}
+			StringBuffer sb=new StringBuffer();
+			sb.append("{");
+			sb.append("\"state\":"+"\""+state+"\"");
+			sb.append("}");
+			
+			resp.setContentType("text/html);charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.println(sb.toString());
 		}
 
 		

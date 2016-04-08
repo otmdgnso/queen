@@ -72,6 +72,48 @@ function listPage(page) {
 		$("#listReply").html(data);
 	});
 }
+//리플 저장
+
+function sendReply(){
+	var mId="${sessionScope.member.memId}";
+	if(! mId){
+		login();
+		return false;
+	}
+	
+	var shareNum="${dto.shareNum}"; //해당 게시물 번호
+	var shareR_content=$.trim($("#shareR_content").val());
+	if(! shareR_content){
+		alert("댓글내용을  입력하세요!");
+		$("#shareR_content").focus();
+		return false;
+	}
+	
+	var params="shareNum="+shareNum;
+	params+="&shareR_content="+shareR_content;
+	
+	$.ajax({
+		type:"POST"
+		,url:"<%=cp%>/bbs/insertReply.sst"
+		,data:params
+		,dataType:"json"
+		,success:function(data) {
+			$("#shareR_content").val("");
+			
+  			var state=data.state;
+			if(state=="true") {
+				listPage(1);
+			} else if(state=="false") {
+				alert("댓글을 등록하지 못했습니다. !!!");
+			} else if(state=="loginFail") {
+				login();
+			}
+		}
+		,error:function(e) {
+			alert(e.responseText);
+		}
+	});
+}
 </script>
 
 </head>
@@ -169,7 +211,7 @@ function listPage(page) {
                         <div style="float: right; text-align: right;"></div>
                   </div>
                   <div style="clear: both; padding-top: 10px;">
-                      <textarea id="content" class="form-control" rows="3" required="required"></textarea>
+                      <textarea id="shareR_content" class="form-control" rows="3" required="required"></textarea>
                   </div>
                   <div style="text-align: right; padding-top: 10px;">
                       <button type="button" class="btn btn-primary btn-sm" onclick="sendReply();"> 댓글등록 <span class="glyphicon glyphicon-ok"></span></button>

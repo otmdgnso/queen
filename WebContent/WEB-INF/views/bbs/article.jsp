@@ -33,6 +33,17 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<script type="text/javascript">
+<c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
+function deleteShare(shareNum) {
+	if(confirm("삭제 하시겠습니까 ?")) {
+		var url="<%=cp%>/bbs/delete.sst?shareNum="+shareNum+"&page=${page}";
+		location.href=url;
+	}
+}
+</c:if>
+</script>
+
 </head>
 
 <body>
@@ -65,9 +76,7 @@
                    <thead>
                     <tbody>
                         <tr>
-                            <td style="text-align: left;">
-                                이름 : ${dto.memId}
-                            </td>
+                            <td style="text-align: left;"> 이름 :${dto.memId}</td>
                             <td style="text-align: right;">
                              ${dto.shareCreated} <i></i>조회 : ${dto.shareHitCount}
                             </td>
@@ -101,15 +110,21 @@
 					</tr>
                    </tbody>
                    <tfoot>
-                      <tr>
-                         <td>                          
-                                 <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/bbs/update.sst?shareNum=${dto.shareNum}';">
-                                 <button type="button" class="btn btn-default btn-sm wbtn" onclick="deleteBoard();">삭제</button>
-                         </td>
-                         <td align="right">
+                    <tr>
+					    <td align="left">
+					    <c:if test="${dto.memId == sessionScope.member.memId}">
+					          <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/bbs/update.sst?shareNum=${dto.shareNum}&page=${page}';">
+   						</c:if>
+   						</td>
+   						<td align="left">
+   						<c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
+					          <input type="image" src="<%=cp%>/res/image/btn_delete.gif" onclick="deleteShare('${dto.shareNum}')">
+					    </c:if>
+					    </td>
+					    <td align="right">
 					           <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/bbs/list.sst?${params}';">
 					    </td>
-                      </tr>
+					    </tr>
                    </tfoot>
                </table>
           </div>

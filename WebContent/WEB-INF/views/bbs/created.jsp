@@ -108,7 +108,7 @@
 		        		    <a href="javascript:location.href='<%=cp%>/bbs/list.sst';"><img src="<%=cp%>/res/image/btn_cancel.gif" border="0"></a>
 		
 							<c:if test="${mode=='update'}">
-								<input type="hidden" name="num" value="${dto.shareNum}">
+								<input type="hidden" name="shareNum" value="${dto.shareNum}">
 								<input type="hidden" name="page" value="${page}">
 							</c:if>
 		

@@ -39,11 +39,11 @@
 </head>
 
 <body>
-	<!-- Navigation -->
+ <!-- Navigation -->
 	<div>
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
-
+ 	<br>
  <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -112,15 +112,13 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i>Class&nbsp;materials</h4>
+                        <h4><i class="fa fa-fw fa-check"></i>Class&nbsp;materials(리스트불러)</h4>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
-                        	<li><a href="#">수업자료 제목 1</a></li>
-                        	<li><a href="#">수업자료 제목 2</a></li>
-                        	<li><a href="#">수업자료 제목 3</a></li>
-                        	<li><a href="#">수업자료 제목 4</a></li>
-                        	<li><a href="#">수업자료 제목 5</a></li>
+                          <c:forEach var="dtoDocu" items="${listDocu}">
+                        	<li><a href="#">${dtoDocu.docuSubject}</a></li>
+                          </c:forEach>
                         </ul>
                         
                         <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
@@ -130,7 +128,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Portfolio</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Portfolio (리스트불러)</h4>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -146,15 +144,13 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i>Self&nbsp;Introduction</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i>Self&nbsp;Introduction(리스트불러)</h4>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">
-                        	<li><a href="#">자기소개서 공유 제목 1</a></li>
-                        	<li><a href="#">자기소개서 공유 제목 2</a></li>
-                        	<li><a href="#">자기소개서 공유 제목 3</a></li>
-                        	<li><a href="#">자기소개서 공유 제목 4</a></li>
-                        	<li><a href="#">자기소개서 공유 제목 5</a></li>
+                          <c:forEach var="dtoResume" items="${listResume}">
+                        	<li><a href="#">${dtoResume.resumeSubject}</a></li>
+                          </c:forEach>
                         </ul>
                         
                         <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
@@ -164,16 +160,14 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Company&nbsp;Info</h4>
+                        <h4><i class="fa fa-fw fa-check"></i> Company&nbsp;Info (리스트불러)</h4>
                     </div>
                     <div class="panel-body">
                           
                           <ul type="disc">
-                        	<li><a href="#">회사정보 공유 제목 1</a></li>
-                        	<li><a href="#">회사정보 공유 제목 2</a></li>
-                        	<li><a href="#">회사정보 공유 제목 3</a></li>
-                        	<li><a href="#">회사정보 공유 제목 4</a></li>
-                        	<li><a href="#">회사정보 공유 제목 5</a></li>
+                        	<c:forEach var="dtoCompany" items="${listCompany}">
+                        		<li><a href="#">${dtoCompany.companySubject}</a></li>
+                          </c:forEach>
                         </ul>
                         
                         <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
@@ -184,10 +178,10 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Employment&nbsp;Information</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Recruits&nbsp;Information (리스트불러)</h4>
                     </div>
                     <div class="panel-body">
-                         <ul type="square">
+                         <ul type="disc">
 	                    	 <c:forEach var="dtoShare" items="${listShare}">
 	                        	<li><a href="<%=cp%>/bbs/article.sst?page=1&shareNum=${dtoShare.shareNum}">${dtoShare.shareSubject}</a></li>
 	                         </c:forEach>
@@ -199,15 +193,13 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Team&nbsp;Member</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i> Team&nbsp;Member(리스트불러)</h4>
                     </div>
                     <div class="panel-body">
                       <ul type="disc">
-                        	<li><a href="#">팀원 구하기 제목 1</a></li>
-                        	<li><a href="#">팀원 구하기 제목 2</a></li>
-                        	<li><a href="#">팀원 구하기 제목 3</a></li>
-                        	<li><a href="#">팀원 구하기 제목 4</a></li>
-                        	<li><a href="#">팀원 구하기 제목 5</a></li>
+                        	<c:forEach var="dtoWanted" items="${listWanted}">
+	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoWanted.wantedHead}]</b>&nbsp;${dtoWanted.wantedSubject}</a></li>
+	                         </c:forEach>
                         </ul>
                         
                         <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
@@ -221,11 +213,9 @@
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
-                        	<li><a href="#">IT 팀원 구하기 1</a></li>
-                        	<li><a href="#">IT 팀원 구하기 2</a></li>
-                        	<li><a href="#">IT 팀원 구하기 3</a></li>
-                        	<li><a href="#">IT 팀원 구하기 4</a></li>
-                        	<li><a href="#">IT 팀원 구하기 5</a></li>
+                        	<c:forEach var="dtoTrend" items="${listTrend}">
+	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoTrend.trendHead}]</b>&nbsp;${dtoTrend.trendSubject}</a></li>
+	                         </c:forEach>
                         </ul>
                         
                         <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
@@ -235,15 +225,13 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Development&nbsp;Tip</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Development&nbsp;Tip(리스트불러)</h4>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
-                        	<li><a href="#">개발 팀 공유 1</a></li>
-                        	<li><a href="#">개발 팀 공유 2</a></li>
-                        	<li><a href="#">개발 팀 공유 3</a></li>
-                        	<li><a href="#">개발 팀 공유 4</a></li>
-                        	<li><a href="#">개발 팀 공유 5</a></li>
+                        	<c:forEach var="dtoTip" items="${listTip}">
+	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoTip.tipHead}]</b>&nbsp;${dtoTip.tipSubject}</a></li>
+	                         </c:forEach>
                         </ul>
                         
                         <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
@@ -253,15 +241,13 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Q&nbsp;&#38;&nbsp;A</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i> Q&nbsp;&#38;&nbsp;A(리스트불러)</h4>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">
-                        	<li><a href="#">개발 질문 답변 게시판 1</a></li>
-                        	<li><a href="#">개발 질문 답변 게시판 2</a></li>
-                        	<li><a href="#">개발 질문 답변 게시판 3</a></li>
-                        	<li><a href="#">개발 질문 답변 게시판 4</a></li>
-                        	<li><a href="#">개발 질문 답변 게시판 5</a></li>
+                        	<c:forEach var="dtoQuest" items="${listQuest}">
+	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoQuest.questHead}]</b>&nbsp;${dtoQuest.questSubject}</a></li>
+	                         </c:forEach>
                         </ul>
                         
                         <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	

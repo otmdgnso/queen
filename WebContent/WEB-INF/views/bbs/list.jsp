@@ -83,7 +83,7 @@
 	                <tbody>
 					  <c:forEach var="dto" items="${list}">
 	                    <tr>
-	                        <td class="text-center">${dto.shareNum}</td>
+	                        <td class="text-center">${dto.listShareNum}</td>
 	                        <td><a href='${articleUrl}&shareNum=${dto.shareNum}'>${dto.shareSubject}</a></td>
 	                        <td class="text-center">${dto.memId}</td>
 	                        <td class="text-center">${dto.shareCreated}</td>

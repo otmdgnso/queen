@@ -85,6 +85,15 @@ function check() {
    }else {
       $("#recruitStep + .help-block").html("");
    }
+   
+   var mode="${mode}";
+	  if(mode=="created"||mode=="update" && f.upload.value!="") {
+		if(! /(\.gif|\.jpg|\.png|\.jpeg)$/i.test(f.upload.value)) {
+			alert('이미지 파일만 가능합니다. !!!');
+			f.upload.focus();
+			return false;
+		}
+	  }
 
    
     var mode="created";
@@ -110,7 +119,7 @@ function check() {
   </div>
 
   <div class="bodyFrame">
-  <form class="form-horizontal" name="memberForm" method="post" onsubmit="return check();">
+  <form class="form-horizontal" name="memberForm" method="post" onsubmit="return check();" enctype="multipart/form-data">
     <div class="form-group" style="margin-bottom:0px;">
         <label class="col-sm-2 control-label" for="recruitCompany">기업 이름</label>
         <div class="col-sm-7">
@@ -172,19 +181,26 @@ function check() {
             <input style="width:200px; " class="form-control" id="recruitStep" name="recruitStep" 
                   type="text" placeholder="채용 절차">
         <p class="help-block">채용 절차를 입력해주세요.</p>
-        </div>
-        
+        </div>  
     </div>
+    
+    <div>
+    	<label class="col-sm-2 control-label" for="recruitImg">이미지</label>
+    	<div class="col-sm-7">
+    	<input type="file" name="upload" class="form-control input-sm">
+    	 <p class="help-block">jpg, png, gif의 확장자를 가진 이미지 파일만 가능합니다.</p>
+    	</div>
+   </div>
 
 
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
    
-            <button type="submit" name="sendButton" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;">회원가입 <span class="glyphicon glyphicon-ok"></span></button>
-            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">가입취소 <span class="glyphicon glyphicon-remove"></span></button>
+            <button type="submit" name="sendButton" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;">등록완료 <span class="glyphicon glyphicon-ok"></span></button>
+            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">등록취소 <span class="glyphicon glyphicon-remove"></span></button>
      
    <c:if test="${mode=='update'}">
-            <button type="submit" class="btn btn-primary">정보수정 <span class="glyphicon glyphicon-ok"></span></button>
+            <button type="submit" class="btn btn-primary">일정수정 <span class="glyphicon glyphicon-ok"></span></button>
             <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';">수정취소 <span class="glyphicon glyphicon-remove"></span></button>
    </c:if>            
     </div>

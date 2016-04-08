@@ -1,7 +1,7 @@
 package com.share;
 
 public class ShareDTO {
- private int shareNum,shareHitCount;
+ private int shareNum,shareHitCount, listShareNum;
  private String  shareSubject,shareContent;
  private String shareCreated, shareModified;
  private String memId;
@@ -46,6 +46,12 @@ public String getMemId() {
 }
 public void setMemId(String memId) {
 	this.memId = memId;
+}
+public int getListShareNum() {
+	return listShareNum;
+}
+public void setListShareNum(int listShareNum) {
+	this.listShareNum = listShareNum;
 }
  
  

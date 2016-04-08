@@ -16,8 +16,6 @@ import com.member.SessionInfo;
 import com.util.MyServlet;
 import com.util.MyUtil;
 
-import javafx.scene.control.Alert;
-
 @WebServlet("/bbs/*")
 public class ShareServlet extends MyServlet {
 	private static final long serialVersionUID = 1L;
@@ -218,6 +216,19 @@ public class ShareServlet extends MyServlet {
 			dao.ShareUpdate(dto);
 			
 			resp.sendRedirect(cp + "/bbs/article.sst?page="+page+ "&shareNum="+dto.getShareNum());
+		} else if (uri.indexOf("delete.sst")!=-1) {
+			String page=req.getParameter("page");
+			int shareNum= Integer.parseInt(req.getParameter("shareNum"));
+			
+			ShareDTO dto=dao.readShare(shareNum);
+			if(dto==null || (!dto.getMemId().equals(info.getMemId())
+					&& !info.getMemId().equals("admin"))) {
+				resp.sendRedirect(cp +"/bbs/list.sst?page=" +page);
+				return;
+			}
+			
+			dao.deleteShare(shareNum);
+			resp.sendRedirect(cp +"/bbs/list.sst?page=" +page);
 		}
 
 	}

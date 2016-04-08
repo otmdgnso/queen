@@ -114,6 +114,27 @@ function sendReply(){
 		}
 	});
 }
+// 댓글 삭제
+function deleteReply(shareR_num, pageNo, memId){
+	var mId="${sessionScope.member.memId}";
+	if(! mId){
+		login();
+		return false;
+	}
+	
+	if(confirm("게시물을 삭제하시겠습니까?")){
+		var url="<%=cp%>/bbs/deleteReply.sst";
+		$.post(url,{shareR_num:shareR_num, memId:memId}, function(data){
+			var state=data.state;
+			if(state=="loginFail"){
+				login();
+			}else{
+				listPage(pageNo);
+			}
+			
+		},"json");
+	}
+}
 </script>
 
 </head>

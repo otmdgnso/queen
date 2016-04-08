@@ -77,12 +77,12 @@ public class ShareServlet extends MyServlet {
 				list=dao.listShare(start, end, searchKey, searchValue);
 
 			// 리스트 글번호
-			int shareNum, n = 0;
+			int listShareNum, n = 0;
 			Iterator<ShareDTO> it = list.iterator();
 			while (it.hasNext()) {
 				ShareDTO dto = it.next();
-				shareNum = dataCount - (start + n - 1);
-				dto.setShareNum(shareNum);
+				listShareNum = dataCount - (start + n - 1);
+				dto.setListShareNum(listShareNum);
 				n++;
 			}
 

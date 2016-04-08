@@ -20,13 +20,13 @@
     <title>Modern Business - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=cp %>/res/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="res/css/modern-business.css" rel="stylesheet">
+    <link href="<%=cp %>/res/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<%=cp %>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -112,7 +112,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i>Class&nbsp;materials(리스트불러)</h4>
+                        <h4><i class="fa fa-fw fa-check"></i> Class Docu</h4>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -128,7 +128,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Portfolio (리스트불러)</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Portfolio </h4>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -144,7 +144,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i>Self&nbsp;Introduction(리스트불러)</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i>Resume</h4>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">
@@ -160,7 +160,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Company&nbsp;Info (리스트불러)</h4>
+                        <h4><i class="fa fa-fw fa-check"></i> Company&nbsp;Info </h4>
                     </div>
                     <div class="panel-body">
                           
@@ -178,7 +178,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Recruits&nbsp;Information (리스트불러)</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Recruits&nbsp;Information </h4>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">
@@ -193,7 +193,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Team&nbsp;Member(리스트불러)</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i> Team&nbsp;Member</h4>
                     </div>
                     <div class="panel-body">
                       <ul type="disc">
@@ -225,7 +225,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Development&nbsp;Tip(리스트불러)</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Development&nbsp;Tip</h4>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -241,7 +241,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Q&nbsp;&#38;&nbsp;A(리스트불러)</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i> Q&nbsp;&#38;&nbsp;A</h4>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">

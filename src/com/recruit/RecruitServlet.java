@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.member.SessionInfo;
 import com.util.MyServlet;
 
 @WebServlet("/recruit/*")
@@ -23,6 +24,7 @@ public class RecruitServlet extends MyServlet{
 		RecruitDAO dao=new RecruitDAO();
 		
 		HttpSession session=req.getSession();
+		SessionInfo info=(SessionInfo)session.getAttribute("member");
 
 		if(uri.indexOf("recruit.sst")!=-1){
 			String articleUrl = cp + "/recruit/article.sst";
@@ -43,9 +45,13 @@ public class RecruitServlet extends MyServlet{
 			dto.setRecruitQual(req.getParameter("recruitQual"));
 			dto.setRecruitStep(req.getParameter("recruitStep"));
 			dto.setRecruitImg(req.getParameter("recruitImg"));
+			dto.setMemId(info.getMemId());
+	
+		
 			
 			String company=req.getParameter("recruitCompany");
 			String head=req.getParameter("recruitHead");
+			
 			
 			dto.setRecruitSubject(company+"["+head+"]");
 			

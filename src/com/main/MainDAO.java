@@ -95,4 +95,47 @@ public class MainDAO {
 		}
 		return listPfo;
 	}
+	
+	public List<MainDTO> mainWanted(){
+		List<MainDTO> listWanted = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuffer sb = new StringBuffer();
+		
+		try {
+			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
+			sb.append(" SELECT wantedNum ,wantedSubject, wantedHead FROM wanted ORDER BY wantedNum DESC)tb, ");  
+			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
+			
+			pstmt=conn.prepareStatement(sb.toString());
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				MainDTO dto = new MainDTO();
+				
+				dto.setWantedNum(rs.getInt("wantedNum"));
+				dto.setWantedSubject(rs.getString("wantedSubject"));
+				dto.setWantedHead(rs.getString("wantedHead"));
+				
+				listWanted.add(dto);				
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if(rs!=null){
+				try {
+					rs.close();
+				} catch (SQLException e2) {
+				}
+			}
+			
+			if(pstmt!=null){
+				try{
+					pstmt.close();
+				} catch (SQLException e){
+				}
+			}
+		}
+		return listWanted;
+	}
 }

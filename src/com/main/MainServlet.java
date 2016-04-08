@@ -23,13 +23,15 @@ public class MainServlet extends MyServlet {
 		MainDAO dao = new MainDAO();
 		
 		if(uri.indexOf("main.sst")!=-1) {
-			List<MainDTO> listShare, listPfo;
+			List<MainDTO> listShare, listPfo, listWanted;
 			
 			listShare=dao.mainShare();
 			listPfo=dao.mainPortfolio();
+			listWanted=dao.mainWanted();
 			
 			Iterator<MainDTO> itShare= listShare.iterator();
 			Iterator<MainDTO> itPfo= listPfo.iterator();
+			Iterator<MainDTO> itWanted=listWanted.iterator();
 			
 			while(itShare.hasNext()){
 				MainDTO dtoShare = itShare.next();
@@ -39,8 +41,13 @@ public class MainServlet extends MyServlet {
 				MainDTO dtoPfo = itPfo.next();
 			}
 			
+			while(itWanted.hasNext()){
+				MainDTO dtoWanted=itWanted.next();
+			}
+			
 			req.setAttribute("listShare", listShare);
 			req.setAttribute("listPfo", listPfo);
+			req.setAttribute("listWanted", listWanted);
 			
 			forward(req, resp, "/WEB-INF/views/main/main.jsp");
 		}

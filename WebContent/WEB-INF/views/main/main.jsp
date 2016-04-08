@@ -43,7 +43,7 @@
 	<div>
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
-
+ <br><br>
  <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -130,7 +130,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Portfolio</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Portfolio (링크완료)</h4>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -184,10 +184,10 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Employment&nbsp;Information</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Employment&nbsp;Information (링크완료)</h4>
                     </div>
                     <div class="panel-body">
-                         <ul type="square">
+                         <ul type="disc">
 	                    	 <c:forEach var="dtoShare" items="${listShare}">
 	                        	<li><a href="<%=cp%>/bbs/article.sst?page=1&shareNum=${dtoShare.shareNum}">${dtoShare.shareSubject}</a></li>
 	                         </c:forEach>
@@ -203,11 +203,9 @@
                     </div>
                     <div class="panel-body">
                       <ul type="disc">
-                        	<li><a href="#">팀원 구하기 제목 1</a></li>
-                        	<li><a href="#">팀원 구하기 제목 2</a></li>
-                        	<li><a href="#">팀원 구하기 제목 3</a></li>
-                        	<li><a href="#">팀원 구하기 제목 4</a></li>
-                        	<li><a href="#">팀원 구하기 제목 5</a></li>
+                        	<c:forEach var="dtoWanted" items="${listWanted}">
+	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoWanted.wantedHead}]</b>&nbsp;${dtoWanted.wantedSubject}</a></li>
+	                         </c:forEach>
                         </ul>
                         
                         <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	

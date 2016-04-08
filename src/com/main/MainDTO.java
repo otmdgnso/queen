@@ -7,9 +7,29 @@ public class MainDTO {
 	private int pfoNum;
 	private String pfoSubject;
 	
+	private int wantedNum;
+	private String wantedSubject;
+	private String wantedHead;
 	
 	
-	
+	public int getWantedNum() {
+		return wantedNum;
+	}
+	public void setWantedNum(int wantedNum) {
+		this.wantedNum = wantedNum;
+	}
+	public String getWantedSubject() {
+		return wantedSubject;
+	}
+	public void setWantedSubject(String wantedSubject) {
+		this.wantedSubject = wantedSubject;
+	}
+	public String getWantedHead() {
+		return wantedHead;
+	}
+	public void setWantedHead(String wantedHead) {
+		this.wantedHead = wantedHead;
+	}
 	public int getPfoNum() {
 		return pfoNum;
 	}

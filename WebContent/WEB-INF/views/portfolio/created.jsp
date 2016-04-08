@@ -53,8 +53,6 @@
   		f.action="<%=cp%>/portfolio/created_ok.sst";
   	  else if(mode=="update")
   		f.action="<%=cp%>/portfolio/update_ok.sst";
-
-		// <input type='submit' ..>,  <input type='image' ..>, <button>은 submit() 메소드 호출하면 두번전송
 		return true;
 	}
 
@@ -136,7 +134,7 @@
 											onclick="javascript:location.href='<%=cp%>/portfolio/list.sst';">
 											취소</button> <c:if test="${mode=='update'}">
 											<input type="hidden" name="num" value="${dto.num}">
-											<input type="hidden" name="userId" value="${dto.userId}">
+											<input type="hidden" name="memId" value="${dto.memId}">
 											<input type="hidden" name="imageFilename"
 												value="${dto.imageFilename}">
 											<input type="hidden" name="page" value="${page}">

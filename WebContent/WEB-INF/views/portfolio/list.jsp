@@ -24,9 +24,6 @@
 <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
-<style type="text/css">
-
-</style>
 
 <script type="text/javascript">
 	function article(num) {
@@ -47,13 +44,12 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Three Column Portfolio
+                <h1 class="page-header">Portfolio
                     <small>Subheading</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">Three Column Portfolio</li>
+				<li><a href="<%=cp %>/index.jsp">Home</a></li>
+                    <li class="active">Portfolio</li>
                 </ol>
             </div>
         </div>
@@ -79,7 +75,7 @@
 									value="</div><div style='clear: both; margin: 0px auto;'>"
 									escapeXml="false" />
 							</c:if>
-							<div class="col-md-4 img-portfolio">
+							<div class="col-md-4 img-portfolio" >
 		                     <img class="img-responsive img-hover" src="<%=cp%>/uploads/portfolio/${dto.imageFilename}" onclick="javascript:article('${dto.num}');" style="height: 150px">
 				             	<h3><span class="subject" onclick="javascript:article('${dto.num}');" >
 				                   ${dto.subject}

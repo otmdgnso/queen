@@ -74,9 +74,9 @@
                             <td colspan="2" style="height: 230px;">
                              	  접수 기간 : ${dto.recruitStart} ~ ${dto.recruitEnd}<br>
                              	  지원 자격 : ${dto.recruitQual}<br>
-                             	  전형 절차 : ${dto.recruitStep}<br>
-                             	 <img src="<%=cp%>/res/image/recommend.jpg">
-                            </td>
+                             	  전형 절차 : ${dto.recruitStep}<br><br>
+                                 <img src="<%=cp%>/uploads/recruit/${dto.recruitImg}" style="max-width:100%; height:auto; resize:both;">
+                             </td>
                         </tr>
                         <tr>
                         	<td style="text-align: center;">

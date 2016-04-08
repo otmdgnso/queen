@@ -96,7 +96,6 @@ function check() {
 	  }
 
    
-    var mode="created";
     if(mode=="created") {
        f.action = "<%=cp%>/recruit/created_ok.sst";
     } else if(mode=="update") {
@@ -152,7 +151,7 @@ function check() {
     <div style=""class="form-group">
         <label class="col-sm-2 control-label" for="recruitStart">채용 시작일</label>
         <div class="col-sm-7">
-            <input style="width:200px; " class="form-control" id="recruitStart" name="recruitStart" type="text" placeholder="채용 시작일">
+            <input style="width:200px; " class="form-control" id="recruitStart" name="recruitStart" type="text" placeholder="채용 시작일" value="${dto.recruitStart}">
             <p class="help-block">시작일은 2000-01-01 식으로 입력해주세요.</p>
         </div>
     </div>
@@ -160,7 +159,7 @@ function check() {
         <div style=""class="form-group">
         <label class="col-sm-2 control-label" for="recruitEnd">채용 종료일</label>
         <div class="col-sm-7">
-            <input style="width:200px; " class="form-control" id="recruitEnd" name="recruitEnd" type="text" placeholder="채용 종료일">
+            <input style="width:200px; " class="form-control" id="recruitEnd" name="recruitEnd" type="text" placeholder="채용 종료일" value="${dto.recruitEnd}">
             <p class="help-block">종료일은 2000-01-01 식으로 입력해주세요.</p>
         </div>
     </div>
@@ -170,7 +169,7 @@ function check() {
     <div class="form-group">
         <label class="col-sm-2 control-label" for="recruitQual">지원 자격</label>
         <div class="col-sm-7">
-            <input style="width:200px; "class="form-control" id="recruitQual" name="recruitQual" type="text" placeholder="지원 자격">
+            <input style="width:200px; "class="form-control" id="recruitQual" name="recruitQual" type="text" placeholder="지원 자격" value="${dto.recruitQual}">
             <p class="help-block">지원 자격을 입력해주세요.</p>
         </div>
     </div>
@@ -179,7 +178,7 @@ function check() {
         <label class="col-sm-2 control-label" for="recruitStep">채용 절차</label>
         <div class="col-sm-7">
             <input style="width:200px; " class="form-control" id="recruitStep" name="recruitStep" 
-                  type="text" placeholder="채용 절차">
+                  type="text" placeholder="채용 절차" value="${dto.recruitStep}">>
         <p class="help-block">채용 절차를 입력해주세요.</p>
         </div>  
     </div>
@@ -195,13 +194,14 @@ function check() {
 
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
-   
+   <c:if test="${mode=='created'}">
             <button type="submit" name="sendButton" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;">등록완료 <span class="glyphicon glyphicon-ok"></span></button>
             <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">등록취소 <span class="glyphicon glyphicon-remove"></span></button>
-     
+   </c:if>
    <c:if test="${mode=='update'}">
             <button type="submit" class="btn btn-primary">일정수정 <span class="glyphicon glyphicon-ok"></span></button>
             <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';">수정취소 <span class="glyphicon glyphicon-remove"></span></button>
+            <input type="hidden" name="recruitNum" value="${dto.recruitNum}">
    </c:if>            
     </div>
 </div>

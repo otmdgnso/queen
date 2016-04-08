@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
    String cp = request.getContextPath();
 %>
@@ -9,6 +10,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -30,6 +32,26 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+<script type="text/javascript">
+
+function deleteRecruit(){
+	var recruitNum=${dto.recruitNum};
+	var params="recruitNum="+recruitNum;
+	var url="<%=cp%>/recruit/delete.sst?"+params;
+	
+	if(confirm("위 자료를 삭제 하시 겠습니까 ? "))
+	    	location.href=url;
+}
+
+
+
+
+
+
+</script>
+
+
 
 </head>
 
@@ -87,9 +109,11 @@
                    </tbody>
                    <tfoot>
                       <tr>
-                         <td>                          
-                                 <input type="button" value="수정" onclick="javascript:location.href='<%=cp%>/recruit/update.sst?shareNum=${dto.recruitNum}';">
-                                 <button type="button" class="btn btn-default btn-sm wbtn" onclick="deleteRecruit();">삭제</button>
+                         <td>           
+                         <c:if test="${sessionScope.member.memId=='admin'}">	               
+                                 <input type="button" value="수정" onclick="javascript:location.href='<%=cp%>/recruit/update.sst?recruitNum=${dto.recruitNum}';">
+                                 <input type="button" value="삭제" class="btn btn-default btn-sm wbtn" onclick="deleteRecruit();">
+                         </c:if>
                          </td>
                          <td align="right">
 					           <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/recruit/recruit.sst';">

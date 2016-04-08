@@ -101,7 +101,7 @@
                    <tfoot>
                       <tr>
                          <td>                          
-                                 <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/bbs/update.sst?shareNum=${dto.shareNum}';">
+                                 <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/bbs/update.sst?shareNum=${dto.shareNum}&page=${page}';">
                                  <button type="button" class="btn btn-default btn-sm wbtn" onclick="deleteBoard();">삭제</button>
                          </td>
                          <td align="right">

@@ -194,30 +194,30 @@ public class ShareServlet extends MyServlet {
 			forward(req, resp, "/WEB-INF/views/bbs/article.jsp");
 		} else if (uri.indexOf("update.sst") != -1) {
 			//수정 폼
+			int shareNum = Integer.parseInt(req.getParameter("shareNum"));
+			String page=req.getParameter("page");
 			
-			if(info == null){  //로그인 되지 않은경우 메인페이지로넘어감
-			    
-				resp.sendRedirect(cp+"/"); 
+			ShareDTO dto = dao.readShare(shareNum);
+			if(dto==null || ! dto.getMemId().equals(info.getMemId())) {
+				resp.sendRedirect(cp+"/bbs/list.sst?page=" +page);
 				return;
 			}
 		    
-			int shareNum = Integer.parseInt(req.getParameter("shareNum"));
-
-			ShareDTO dto = dao.readShare(shareNum);
-			
-		    
-				
 			req.setAttribute("dto", dto);
 			req.setAttribute("mode", "update");
+			req.setAttribute("page", page);
 			forward(req, resp, "/WEB-INF/views/bbs/created.jsp");
 		} else if (uri.indexOf("update_ok.sst") != -1) {
+			String page=req.getParameter("page");
+			
 			ShareDTO dto = new ShareDTO();
 			dto.setShareNum(Integer.parseInt(req.getParameter("shareNum")));
 			dto.setShareSubject(req.getParameter("shareSubject"));
 			dto.setShareContent(req.getParameter("shareContent"));
 
 			dao.ShareUpdate(dto);
-			resp.sendRedirect(cp + "/bbs/article.sst?shareNum=" + dto.getShareNum());
+			
+			resp.sendRedirect(cp + "/bbs/article.sst?page="+page+ "&shareNum="+dto.getShareNum());
 		}
 
 	}

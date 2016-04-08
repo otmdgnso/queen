@@ -287,14 +287,45 @@ public class ShareDAO {
 			pstmt.setInt(3, dto.getShareNum());
 
 			result = pstmt.executeUpdate();
-			pstmt.close();
+			
 		} catch (Exception e) {
 			System.out.println(e.toString());
+		} finally {
+			if(pstmt!=null){
+				try {
+					pstmt.close();
+				} catch (Exception e2) {
+					
+				}
+			}
 		}
 
 		return result;
 	}
-
+    
+	public int deleteShare(int shareNum){
+		int result=0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		sql="DELETE FROM share WHERE shareNum=?";
+		try {
+		   pstmt = conn.prepareStatement(sql);
+		   pstmt.setInt(1, shareNum);
+		   result = pstmt.executeUpdate();
+		   
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if(pstmt !=null){
+				try {
+					pstmt.close();
+				} catch (Exception e2) {					
+				}
+			}
+		}
+		return result;
+	}
 	// 조회수 증가
 	public int ShareHitCount(int num) {
 		int result = 0;

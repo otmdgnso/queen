@@ -8,14 +8,6 @@
 %>
 
 <link rel="stylesheet" href="<%=cp%>/res/css/login.css" type="text/css"/>
-<%-- 
-<link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
-
-<link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
-<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
---%>
 
 <script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script> 
 
@@ -51,94 +43,6 @@ function sendLogin() {
        
         return true;
   }
-/*  
-$(function() {
-    
-    var $formLogin = $('#login-form');
-    var $formLost = $('#lost-form');
-    var $formRegister = $('#register-form');
-    var $divForms = $('#div-forms');
-    var $modalAnimateTime = 300;
-    var $msgAnimateTime = 150;
-    var $msgShowTime = 2000;
-
-    $("#login-form").submit(function () {
-        switch(this.id) {
-            case "login-form":
-                var $lg_username=$('#login_username').val();
-                var $lg_password=$('#login_password').val();
-                if ($lg_username == "ERROR") {
-                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
-                } else {
-                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
-                }
-                return false;
-                break;
-            case "lost-form":
-                var $ls_email=$('#lost_email').val();
-                if ($ls_email == "ERROR") {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Send error");
-                } else {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-ok", "Send OK");
-                }
-                return false;
-                break;
-            case "register-form":
-                var $rg_username=$('#register_username').val();
-                var $rg_email=$('#register_email').val();
-                var $rg_password=$('#register_password').val();
-                if ($rg_username == "ERROR") {
-                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error");
-                } else {
-                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Register OK");
-                }
-                return false;
-                break;
-            default:
-                return false;
-        }
-        return false;
-    });
-    
-    $('#login_register_btn').click( function () { modalAnimate($formLogin, $formRegister) });
-    $('#register_login_btn').click( function () { modalAnimate($formRegister, $formLogin); });
-    $('#login_lost_btn').click( function () { modalAnimate($formLogin, $formLost); });
-    $('#lost_login_btn').click( function () { modalAnimate($formLost, $formLogin); });
-    $('#lost_register_btn').click( function () { modalAnimate($formLost, $formRegister); });
-    $('#register_lost_btn').click( function () { modalAnimate($formRegister, $formLost); });
-    
-    function modalAnimate ($oldForm, $newForm) {
-        var $oldH = $oldForm.height();
-        var $newH = $newForm.height();
-        $divForms.css("height",$oldH);
-        $oldForm.fadeToggle($modalAnimateTime, function(){
-            $divForms.animate({height: $newH}, $modalAnimateTime, function(){
-                $newForm.fadeToggle($modalAnimateTime);
-            });
-        });
-    }
-    
-    function msgFade ($msgId, $msgText) {
-        $msgId.fadeOut($msgAnimateTime, function() {
-            $(this).text($msgText).fadeIn($msgAnimateTime);
-        });
-    }
-    
-    function msgChange($divTag, $iconTag, $textTag, $divClass, $iconClass, $msgText) {
-        var $msgOld = $divTag.text();
-        msgFade($textTag, $msgText);
-        $divTag.addClass($divClass);
-        $iconTag.removeClass("glyphicon-chevron-right");
-        $iconTag.addClass($iconClass + " " + $divClass);
-        setTimeout(function() {
-            msgFade($textTag, $msgOld);
-            $divTag.removeClass($divClass);
-            $iconTag.addClass("glyphicon-chevron-right");
-            $iconTag.removeClass($iconClass + " " + $divClass);
-  		}, $msgShowTime);
-    }
-});
-*/
 
 </script>
 
@@ -212,7 +116,7 @@ $(function() {
                         </ul>
                     </li>
                     <!-- 로그인/ 혹은 000님 -->
-                     <li>
+                     <li class="dropdown">
                     
 	                    <c:if test="${empty sessionScope.member}">
 	             			   <button  style="margin-top:10px; border-radius:4px;" type="button" class="btn btn-default btn-sm btn-block" 
@@ -224,16 +128,18 @@ $(function() {
 	          			<c:if test="${not empty sessionScope.member}">
 	                		
 	                		<c:if test="${sessionScope.member.memId=='admin'}">
-	                			<span style="margin-top:5px;">관리자 </span> <i></i>
+		                		<a href="#" style="color:white; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown">관리자</a>
+	                			
 	                		</c:if>
 	                		<c:if test="${sessionScope.member.memId!='admin' }" >
-	                		  <span style="font-weight:bold; color:white;">${sessionScope.member.memName}</span> <i></i>
+	                		  <a href="#" style="color:white; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.member.memName}</a>
+	                			             		 
 	                		</c:if>
 	            		</c:if>
                       
                     </li>
                     <!-- 로그아웃 / 혹은 회원가입 -->
-                    <li>
+                    <li >
 						<c:if test="${empty sessionScope.member}">  
 					   		<a href="<%=cp%>/member/member.do" >회원가입</a>
 					   </c:if>
@@ -273,7 +179,8 @@ $(function() {
 		                <div class="modal-body">
 				    		<div id="div-login-msg">
 				    		
-                                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                             <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                             	
                                 <span id="text-login-msg" style="font-size:13px;"> 아이디와 비밀번호를 입력해주세요  </span>
                             </div>
 				    		<input name="userId" id="login_username" class="form-control" type="text" placeholder="ID" required>

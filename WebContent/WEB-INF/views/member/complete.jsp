@@ -4,42 +4,51 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%
-   String cp = request.getContextPath();
+	request.setCharacterEncoding("utf-8");
+	String cp=request.getContextPath();
 %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
 <title>회원가입 완료 페이지 </title>
 
+    <!-- Bootstrap Core CSS -->
+    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
-<script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>
+    <!-- Custom CSS -->
+    <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
 
+    <!-- Custom Fonts -->
+    <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
 <link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
-
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
-
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
-
 
 </head>
 <body>
 
 <div class="layoutMain">
-	<div class="layoutHeader">
+	<div>
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
 	
 	<div class="layoutBody">
 
-		<div style="min-height: 90%">
+		<div style="min-height: 100%">
 				<div style="margin-top:150px; width:100%;	height: 40px;  line-height:40px;clear: both; border-top: 1px solid #DAD9FF;border-bottom: 1px solid #DAD9FF;">
-				    <div style="width:600px; height:30px; line-height:30px; margin:5px auto;">
+				    <div style="width:600px; height:30px; line-height:30px; margin:0 auto;">
 				        
-				        <span style="text-align:center; font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">
+				        <span style="margin-left:250px; font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">
 				        	${title}</span>
 				    </div>
 				</div>
@@ -66,20 +75,11 @@
 
     </div>
     <!-- /.container -->
- <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="res/js/jquery.js"></script>
+  <!-- jQuery -->
+    <script src="<%=cp%>/res/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="res/js/bootstrap.min.js"></script>
+    <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
-   
 </body>
 </html>

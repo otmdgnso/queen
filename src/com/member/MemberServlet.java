@@ -69,17 +69,21 @@ public class MemberServlet extends MyServlet {
 			int result = dao.insertMember(dto);
 			
 			if (result != 1) {
-				String message = "회원 가입이 실패 했습니다.";
-
+				String message = "회원 가입에 실패했어요 ㅠ..ㅠ;; ";
+				
 				req.setAttribute("title", "회원 가입");
 				req.setAttribute("mode", "created");
 				req.setAttribute("message", message);
+				
+				req.setAttribute("failed", "true");
+				req.setAttribute("message", message);
+				
 				forward(req, resp, "/WEB-INF/views/member/member.jsp");
 				return;
 			}
 			System.out.println("회원가입 완료 !!!!!!");
 			StringBuffer sb=new StringBuffer();
-			sb.append("<b>"+dto.getMemName()+ "</b>님 회원가입이 되었습니다.<br>");
+			sb.append("<b>"+dto.getMemName()+ " </b>님 회원가입이 되었습니다.<br>");
 			sb.append("메인화면으로 이동하여 로그인 하시기 바랍니다.<br>");
 			
 			req.setAttribute("title", "회원 가입");
@@ -121,8 +125,13 @@ public class MemberServlet extends MyServlet {
 			}
 			
 			// 로그인 실패인 경우(다시 로그인 폼으로)
-			System.out.println("실패!!!!!!!");
-			resp.sendRedirect(cp);
+			else {				
+				String msg="아이디 또는 패스워드가 일치하지 않습니다.";
+				req.setAttribute("message", msg);
+				
+				String path="/WEB-INF/views/member/login.jsp";
+				forward(req, resp, path);
+			}
 			
 		} else if(uri.indexOf("logout.do")!=-1) {
 			// 로그아웃

@@ -135,10 +135,14 @@ function check() {
 		$("#tel3 + .help-block").html("");
 	}
     
+    var failed="${failed}";
+	if(failed=="true"){
+		alert("회원가입에 실패했습니다!");
+	}
+	
     var mode="created";
     if(mode=="created") {
-    	alert("성공!");
-    	f.action = "<%=cp%>/member/member_ok.do";
+       	f.action = "<%=cp%>/member/member_ok.do";
     } else if(mode=="update") {
     	f.action = "<%=cp%>/member/update_ok.do";
     }
@@ -350,7 +354,12 @@ function changeEmail() {
         </div>
     </div>
 
-
+<div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+                <p class="form-control-static">${message}</p>
+        </div>
+    </div>
+    
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
 	
@@ -364,11 +373,7 @@ function changeEmail() {
     </div>
 </div>
 
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-                <p class="form-control-static">${message}</p>
-        </div>
-    </div>
+    
      
   </form>
   </div>

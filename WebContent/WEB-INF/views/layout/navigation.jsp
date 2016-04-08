@@ -23,25 +23,25 @@ function bgLabel(ob, id) {
 }
 
 function sendLogin() {
-	
-        var f = document.loginForm;
 
-    	var str = f.userId.value;
-        if(!str) {
-            f.userId.focus();
-            return false;
-        }
+    var f = document.loginForm;
 
-        str = f.userPwd.value;
-        
-        if(!str) {
-            f.userPwd.focus();
-            return false;
-        }
+	var str = f.memId.value;
+    if(!str) {
+        f.memId.focus();
+        return false;
+    }
 
-        f.action ="<%=cp%>/member/login_ok.do";
-       
-        return true;
+    str = f.memPwd.value;
+    
+    if(!str) {
+        f.memPwd.focus();
+        return false;
+    }
+
+    f.action ="<%=cp%>/member/login_ok.sst";
+   
+    return true;
   }
 
 </script>
@@ -76,7 +76,7 @@ function sendLogin() {
                                 <a href="sidebar.jsp">주절주절</a>
                             </li>
                             <li>
-                                <a href="<%=cp%>/portfolio/list.sst">포트폴리오</a>
+                                <a href="lIst.jsp">포트폴리오</a>
                             </li>                                                     
                         </ul>
                     </li>
@@ -115,37 +115,47 @@ function sendLogin() {
                             </li>
                         </ul>
                     </li>
+                    <li role="separator" class="divider"></li>
                     <!-- 로그인/ 혹은 000님 -->
                      <li class="dropdown">
                     
 	                    <c:if test="${empty sessionScope.member}">
-	             			   <button  style="margin-top:10px; border-radius:4px;" type="button" class="btn btn-default btn-sm btn-block" 
+	             			   <button  style="margin-top:10px; border-radius:4px; " type="button" class="btn btn-default btn-sm btn-block" 
 	                        			data-toggle="modal" data-target="#login-modal" >
-							 로그인
+							<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; 로그인
 							</button>
 	            		</c:if>
 	            		
 	          			<c:if test="${not empty sessionScope.member}">
 	                		
 	                		<c:if test="${sessionScope.member.memId=='admin'}">
-		                		<a href="#" style="color:white; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown">관리자</a>
+		                		<a href="<%=cp%>/member/pwd.sst?mode=update" style="color:white; font-weight:bold;" class="dropdown-toggle" >
+		                		 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;관리자</a>
 	                			
 	                		</c:if>
-	                		<c:if test="${sessionScope.member.memId!='admin' }" >
-	                		  <a href="#" style="color:white; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.member.memName}</a>
-	                			             		 
+	                		<c:if test="${sessionScope.member.memId!='admin'}" >
+	                			<a href="<%=cp%>/member/pwd.sst?mode=update" style="color:white; font-weight:bold;" class="dropdown-toggle" >
+	                		  	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>&nbsp;&nbsp;${sessionScope.member.memName} 님</a>
+	                		  	
 	                		</c:if>
 	            		</c:if>
                       
                     </li>
                     <!-- 로그아웃 / 혹은 회원가입 -->
                     <li >
+                   			     
 						<c:if test="${empty sessionScope.member}">  
-					   		<a href="<%=cp%>/member/member.do" >회원가입</a>
+								<button  style="margin-left:10px; margin-top:10px; border-radius:4px;" type="button" class="btn btn-default btn-sm btn-block" 
+		                        onclick="location.href='<%=cp%>/member/member.sst';"	>
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp; 회원가입
+								</button>
+     <%-- 
+								<a href="<%=cp%>/member/member.sst" >회원가입</a> --%>
 					   </c:if>
                  
                       <c:if test="${not empty sessionScope.member}">
-                        <a href="<%=cp%>/member/logout.do"> 로그아웃</a>
+                     		
+                        <a href="<%=cp%>/member/logout.sst"> 로그아웃</a>
                       </c:if>
                    
                    </li>
@@ -183,8 +193,8 @@ function sendLogin() {
                              	
                                 <span id="text-login-msg" style="font-size:13px;"> 아이디와 비밀번호를 입력해주세요  </span>
                             </div>
-				    		<input name="userId" id="login_username" class="form-control" type="text" placeholder="ID" required>
-				    		<input name="userPwd" id="login_password" class="form-control" type="password" placeholder="Password" required>
+				    		<input name="memId" id="login_username" class="form-control" type="text" placeholder="ID" required>
+				    		<input name="memPwd" id="login_password" class="form-control" type="password" placeholder="Password" required>
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Remember me

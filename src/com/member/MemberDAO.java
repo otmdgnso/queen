@@ -17,7 +17,7 @@ public class MemberDAO {
 		StringBuffer sb=new StringBuffer();
 		System.out.println("dao 작업중..");
 		try {
-			sb.append("SELECT m1.memId, memName, memPwd,");
+			sb.append("SELECT m1.memId, memName, memPwd, memCourse,");
 			sb.append("      enabled, memCreated, memModified,");
 			sb.append("      DATE_FORMAT(birth, '%Y-%m-%d') birth, ");
 			sb.append("      email, tel, job,");
@@ -40,6 +40,7 @@ public class MemberDAO {
 				dto.setEnabled(rs.getInt("enabled"));
 				dto.setMemCreated(rs.getString("memCreated"));
 				dto.setMemModify(rs.getString("memModified"));
+				dto.setMemCourse(rs.getString("memCourse"));
 				dto.setBirth(rs.getString("birth"));
 				
 				dto.setTel(rs.getString("tel"));
@@ -63,8 +64,7 @@ public class MemberDAO {
 				dto.setJob(rs.getString("job"));
 				dto.setAddr2(rs.getString("add2"));
 
-				System.out.println("성공! :"+dto.getMemId());
-				System.out.println("성공! :"+dto.getMemName());
+				System.out.println("dao에서 멤버 읽기 성공");
 			}
 			else{
 				System.out.println("그런아이디 없다...");
@@ -122,39 +122,41 @@ public class MemberDAO {
 		
 		return result;
 	}
-	/*
+	
 	public int updateMember(MemberDTO dto) {
+		
 		int result=0;
 		PreparedStatement pstmt=null;
 		StringBuffer sb=new StringBuffer();
-		
+		System.out.println("memberDAO에 들어왓어여");
 		try {
-			sb.append("UPDATE member1 SET userPwd=?, modify_date=SYSDATE  WHERE userId=?");
+			sb.append("UPDATE member1 SET memPwd=?, memModified=current_timestamp, memCourse=?  WHERE memId=?" );
 			pstmt=conn.prepareStatement(sb.toString());
+
+			System.out.println("member1 완료!");
 			
-			pstmt.setString(1, dto.getUserPwd());
-			pstmt.setString(2, dto.getUserId());
+			pstmt.setString(1, dto.getMemPwd());
+			pstmt.setString(2, dto.getMemCourse());
+			pstmt.setString(3, dto.getMemId());
 			
 			result=pstmt.executeUpdate();
 			pstmt.close();
 			pstmt=null;
 			
 			sb.delete(0, sb.length());
-			
-			sb.append("UPDATE member2 SET birth=?, email=?, tel=?, job=?, zip=?, addr1=?, addr2=? WHERE userId=?");
+			sb.append("UPDATE member2 SET birth=?, email=?, tel=?, job=?, add2=? WHERE memId=?");
 			pstmt=conn.prepareStatement(sb.toString());
 			pstmt.setString(1, dto.getBirth());
 			pstmt.setString(2, dto.getEmail());
 			pstmt.setString(3, dto.getTel());
 			pstmt.setString(4, dto.getJob());
-			pstmt.setString(5, dto.getZip());
-			pstmt.setString(6, dto.getAddr1());
-			pstmt.setString(7, dto.getAddr2());
-			pstmt.setString(8, dto.getUserId());
+			pstmt.setString(5, dto.getAddr2());
+			pstmt.setString(6, dto.getMemId());
 			
 			pstmt.executeUpdate();
 			pstmt.close();
 			pstmt=null;
+			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
@@ -162,22 +164,24 @@ public class MemberDAO {
 		return result;
 	}
 	
-	public int deleteMember(String userId) {
+	public int deleteMember(String memId) {
 		int result=0;
 		PreparedStatement pstmt=null;
 		String sql;
 		
 		try {
-			sql="UPDATE member1 SET enabled=0 WHERE userId=?";
+			sql="UPDATE member1 SET enabled=0 WHERE memId=?";
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
+			pstmt.setString(1, memId);
+			
 			result=pstmt.executeUpdate();
 			pstmt.close();
 			pstmt=null;
 			
-			sql="DELETE FROM  member2 WHERE userId=?";
+			sql="DELETE FROM  member2 WHERE memId=?";
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
+			pstmt.setString(1, memId);
+			
 			result=pstmt.executeUpdate();
 			pstmt.close();
 			pstmt=null;
@@ -187,6 +191,6 @@ public class MemberDAO {
 		}
 		
 		return result;
-	}*/
 
+	}
 }

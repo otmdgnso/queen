@@ -32,44 +32,43 @@ function check() {
 	var f = document.memberForm;
 	var str;
 
-	str=f.userId.value;
+	str=f.memId.value;
 	if(!/^[a-z][a-z0-9_]{4,9}$/i.test(str)) { 
-		$("#userId + .help-block").html("<span style='color:red;'>아이디를 확인해주세요! <span>");
-		f.userId.focus();
+		$("#memId + .help-block").html("<span style='color:red;'>아이디를 확인해주세요! <span>");
+		f.memId.focus();
 		return false;
 	}else {
-		$("#userId + .help-block").html("아이디는 5~10자 이내이며, 첫글자는 영문자로 시작해야 합니다.");
+		$("#memId + .help-block").html("아이디는 5~10자 이내이며, 첫글자는 영문자로 시작해야 합니다.");
 	}
 	
-	str = f.userPwd.value;
+	str = f.memPwd.value;
 	if(!/^(?=.*[a-z])(?=.*[!@#$%^*+=-]|.*[0-9]).{5,10}$/i.test(str)) { 
-		$("#userPwd + .help-block").html("<span style='color:red;'>비밀번호 형식을 확인해주세요! <span>");
-		f.userPwd.focus();
+		$("#memPwd + .help-block").html("<span style='color:red;'>비밀번호 형식을 확인해주세요! <span>");
+		f.memPwd.focus();
 		return false;
 	}else {
-		$("#userPwd + .help-block").html("패스워드는 5~10자이며 하나 이상의 숫자나 특수문자가 포함되어야 합니다.");
+		$("#memPwd + .help-block").html("패스워드는 5~10자이며 하나 이상의 숫자나 특수문자가 포함되어야 합니다.");
 	}
 	
-	if(f.userPwdCheck.value != str) {
-		$("#userPwdCheck + .help-block").html("<span style='color:red;'>비밀번호가 일치하지 않습니다! <span>");
-		f.userPwdCheck.focus();
+	if(f.memPwdCheck.value != str) {
+		$("#memPwdCheck + .help-block").html("<span style='color:red;'>비밀번호가 일치하지 않습니다! <span>");
+		f.memPwdCheck.focus();
 		return false;
 	} else {
-		$("#userPwdCheck + .help-block").html("비밀번호를 한번 더 입력해주세요");
+		$("#memPwdCheck + .help-block").html("비밀번호를 한번 더 입력해주세요");
 	}
 	
-    str = f.userName.value;
+    str = f.memName.value;
 	str = $.trim(str);
 
     if(!/^[\uac00-\ud7a3]{2,4}$/g.test(str)) {
-    	$("#userName + .help-block").html("<span style='color:red;'>이름을 확인해주세요! <span>");
-        f.userName.focus();
+    	$("#memName + .help-block").html("<span style='color:red;'>이름을 확인해주세요! <span>");
+        f.memName.focus();
         return false;
     } 
     else {
-		$("#userName + .help-block").html("이름은 한글로 2자이상 4자 이하입니다.");
-	}
-    
+		$("#memName + .help-block").html("이름은 한글로 2자이상 4자 이하입니다.");
+	}   
     
     str = f.selectCourse.value;
             
@@ -140,11 +139,11 @@ function check() {
 		alert("회원가입에 실패했습니다!");
 	}
 	
-    var mode="created";
+    var mode="${mode}"
     if(mode=="created") {
-       	f.action = "<%=cp%>/member/member_ok.do";
+       	f.action = "<%=cp%>/member/member_ok.sst";
     } else if(mode=="update") {
-    	f.action = "<%=cp%>/member/update_ok.do";
+    	f.action = "<%=cp%>/member/update_ok.sst";
     }
 
     return true;
@@ -184,36 +183,36 @@ function changeEmail() {
   <div class="bodyFrame">
   <form class="form-horizontal" name="memberForm" method="post" onsubmit="return check();">
     <div class="form-group" style="margin-bottom:0px;">
-        <label class="col-sm-2 control-label" for="userId">아이디</label>
+        <label class="col-sm-2 control-label" for="memId">아이디</label>
         <div class="col-sm-7">
-            <input style="width:200px;"class="form-control" id="userId" name="userId" type="text" 
-            		placeholder="아이디"  value="${dto.userId}"
+            <input style="width:200px;"class="form-control" id="memId" name="memId" type="text" 
+            		placeholder="아이디"  value="${dto.memId}"
               ${mode=="update" ? "readonly='readonly' style='border:none;'":""}>
             <p class="help-block"> 아이디는 5~10자 이내이며, 첫글자는 영문자로 시작해야 합니다.</p>
         </div>
     </div>
  
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="userPwd">패스워드</label>
+    <div class="form-group" style="margin-bottom:0px;">
+        <label class="col-sm-2 control-label" for="memPwd">패스워드</label>
         <div class="col-sm-7">
-            <input style="width:200px; " class="form-control" id="userPwd" name="userPwd" type="password" placeholder="비밀번호">
+            <input style="width:200px;  " class="form-control" id="memPwd" name="memPwd" type="password" placeholder="비밀번호">
             <p class="help-block">패스워드는 5~10자이며 하나 이상의 숫자나 특수문자가 포함되어야 합니다.</p>
         </div>
     </div>
     
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="userPwdCheck">패스워드 확인</label>
+        <label class="col-sm-2 control-label" for="memPwdCheck">패스워드 확인</label>
         <div class="col-sm-7">
-            <input style="width:200px; "class="form-control" id="userPwdCheck" name="userPwdCheck" type="password" placeholder="비밀번호 확인">
+            <input style="width:200px; "class="form-control" id="memPwdCheck" name="memPwdCheck" type="password" placeholder="비밀번호 확인">
             <p class="help-block">패스워드를 한번 더 입력해주세요.</p>
         </div>
     </div>
  
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="userName">이름</label>
+        <label class="col-sm-2 control-label" for="memName">이름</label>
         <div class="col-sm-7">
-            <input style="width:200px; " class="form-control" id="userName" name="userName" 
-		            type="text" placeholder="이름"   value="${dto.userName}" ${mode=="update" ? "readonly='readonly'
+            <input style="width:200px; " class="form-control" id="memName" name="memName" 
+		            type="text" placeholder="이름"   value="${dto.memName}" ${mode=="update" ? "readonly='readonly'
 		            style='border:none;' ":""}>
         <p class="help-block">이름은 한글로 2자이상 4자 이하입니다.</p>
         </div>
@@ -238,9 +237,9 @@ function changeEmail() {
 						쌍용 웹기획 개발자 과정 </option>
 			</select>
 			
-			<label class="col-sm-2 control-label" for="course">기수</label>
+			<label class="col-sm-2 control-label" for="kisu">기수</label>
 			<input style="width:100px; float:left; margin-bottom:8px;" class="form-control" id="course" name="kisu" 
-		            type="text" placeholder="기수입력" maxlength="2">
+		            type="text" placeholder="기수입력" maxlength="2" value="${dto.kisu}" >
 		  	
         		<p style="clear:both; " class="help-block">자신이 수강 중인 과정과 기수를 기입하세요. </p>
         	  
@@ -273,7 +272,7 @@ function changeEmail() {
 		 		maxlength="30" id="email"  class="form-control" value="${dto.email1}">
 			
 		<input style="width:150px;  float:left; margin-right:10px; " type="text" name="email2" size="13"
-				 maxlength="30" id="email"  class="form-control" value="${dto.email2}" readonly="readonly">
+				 maxlength="30" id="email"  class="form-control" value="@${dto.email2}" readonly="readonly">
          <p class="help-block"> </p>
          </div>
     </div>
@@ -338,7 +337,7 @@ function changeEmail() {
     <div class="form-group">
         <label class="col-sm-2 control-label" for="job">직업</label>
         <div class="col-sm-2">
-            <input class="form-control" id="job" name="job" type="text" placeholder="직업" value="${dto.zip}">
+            <input class="form-control" id="job" name="job" type="text" placeholder="직업" value="${dto.job}">
         </div>
     </div>
     
@@ -354,26 +353,29 @@ function changeEmail() {
         </div>
     </div>
 
-<div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-                <p class="form-control-static">${message}</p>
-        </div>
-    </div>
     
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
-	
-            <button type="submit" name="sendButton" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;">회원가입 <span class="glyphicon glyphicon-ok"></span></button>
-            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">가입취소 <span class="glyphicon glyphicon-remove"></span></button>
-	  
+		<c:if test="${mode=='created'}">
+            <button type="submit" name="sendButton" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;">
+            		회원가입<span class="glyphicon glyphicon-ok"></span></button>
+            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">
+            		가입취소 <span class="glyphicon glyphicon-remove"></span></button>
+	 	</c:if>
 	<c:if test="${mode=='update'}">
-            <button type="submit" class="btn btn-primary">정보수정 <span class="glyphicon glyphicon-ok"></span></button>
-            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';">수정취소 <span class="glyphicon glyphicon-remove"></span></button>
+            <button type="submit" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;" >
+            		정보수정 <span class="glyphicon glyphicon-ok"></span></button>
+            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">
+            		수정취소 <span class="glyphicon glyphicon-remove"></span></button>
 	</c:if>            
     </div>
 </div>
 
-    
+  <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+                <p style=" text-align:center; color:tomato; font-weight:bold; font-size:13px; "class="form-control-static">${message}</p>
+        </div>
+    </div>  
      
   </form>
   </div>

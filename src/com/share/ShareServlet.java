@@ -229,8 +229,60 @@ public class ShareServlet extends MyServlet {
 			
 			dao.deleteShare(shareNum);
 			resp.sendRedirect(cp +"/bbs/list.sst?page=" +page);
+		} else if (uri.indexOf("listReply.sst")!=-1) {
+			// 리플 리스트 ---------------------------------------
+			int shareNum= Integer.parseInt(req.getParameter("shareNum"));
+			String pageNo= req.getParameter("pageNo");// 댓글의 페이지번호
+			int current_page = 1;
+			if (pageNo != null)
+				current_page = Integer.parseInt(pageNo);
+			
+			int numPerPage = 5;
+			int total_page = 0;
+			int dataCount = 0;
+			
+			dataCount= dao.dataCountShareReply(shareNum);
+			total_page = util.pageCount(numPerPage, dataCount);
+			if (current_page > total_page)
+				current_page = total_page;
+			
+			int start = (current_page - 1) * numPerPage + 1;
+			int end = current_page * numPerPage;
+			
+			// 리스트에 출력할 댓글 데이터
+			List<ShareReplyDTO> list= dao.listShareReply(shareNum, start, end);
+			
+			// 엔터를 <br>
+			Iterator<ShareReplyDTO> it= list.iterator();
+			while(it.hasNext()) {
+				ShareReplyDTO dto=it.next();
+				dto.setShareR_content(dto.getShareR_content().replaceAll("\n", "<br>"));
+			}
+			
+			// 페이징처리(인수2개 짜리 js로 처리)
+			String paging = util.paging(current_page, total_page);
+			
+			req.setAttribute("list", list);
+			req.setAttribute("pageNo", current_page);
+			req.setAttribute("dataCount", dataCount);
+			req.setAttribute("total_page", total_page);
+			req.setAttribute("paging", paging);
+			
+			// 포워딩
+			String path = "/WEB-INF/views/bbs/listReply.jsp";
+			forward(req, resp, path);
 		}
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

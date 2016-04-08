@@ -17,6 +17,7 @@
 
     <title>글 보기</title>
 
+
     <!-- Bootstrap Core CSS -->
     <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
@@ -33,6 +34,21 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<style type="text/css">
+.bbs-reply {
+    font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
+}
+
+.bbs-reply-write {
+    border: #d5d5d5 solid 1px;
+    padding: 10px;
+    min-height: 50px;
+}
+</style>
+
+<!-- jQuery -->
+<script src="<%=cp%>/res/js/jquery.js"></script>
+
 <script type="text/javascript">
 <c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
 function deleteShare(shareNum) {
@@ -42,6 +58,20 @@ function deleteShare(shareNum) {
 	}
 }
 </c:if>
+
+//-- 댓글 ------------------------------------
+//댓글 리스트
+$(function(){
+	listPage(1);
+});
+
+function listPage(page) {
+	var url="<%=cp%>/bbs/listReply.sst";
+	var shareNum="${dto.shareNum}";
+	$.post(url, {shareNum:shareNum, pageNo:page}, function(data){
+		$("#listReply").html(data);
+	});
+}
 </script>
 
 </head>
@@ -76,20 +106,23 @@ function deleteShare(shareNum) {
                    <thead>
                     <tbody>
                         <tr>
-                            <td style="text-align: left;"> 이름 :${dto.memId}</td>
+                            <td style="text-align: left;"> 작성자: ${dto.memId}</td>
                             <td style="text-align: right;">
-                             ${dto.shareCreated} <i></i>조회 : ${dto.shareHitCount}
+                             ${dto.shareCreated} 조회 : ${dto.shareHitCount}
+                            </td>
+                            <td style="text-align: right;">
+                            <img src="<%=cp%>/res/image/recommend.jpg"> 57
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" style="height: 230px;">
+                            <td colspan="3" style="height: 230px;">
                                  ${dto.shareContent}
                             </td>
                         </tr>
                         
                         <tr>
-                        <td>추천하기<img src="<%=cp%>/res/image/recommend.jpg"></td>
-                        <td>총 추천수:</td>
+                        <td><img src="<%=cp%>/res/image/recommend.jpg"></td>
+                        <td>추천</td>
                         </tr>
                         
                         <tr height="30">
@@ -151,8 +184,6 @@ function deleteShare(shareNum) {
     </div>
 </div>
  <!-- jQuery -->
-    <script src="<%=cp%>/res/js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 </body>

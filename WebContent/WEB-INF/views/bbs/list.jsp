@@ -32,7 +32,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    
+ <!-- jQuery -->
+    <script src="<%=cp%>/res/js/jquery.js"></script>
+    
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript">
 	function searchList() {
@@ -126,8 +129,7 @@
 
     </div>
 </div>
- <!-- jQuery -->
-    <script src="<%=cp%>/res/js/jquery.js"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>

@@ -459,9 +459,149 @@ public class ShareDAO {
 		return dto;
 	}
 	
+	// ¸®ÇÃ ==========================
+	//´ñ±Û µî·Ï
+	public int insertShareReply(ShareReplyDTO dto){
+	      int result=0;
+	      PreparedStatement pstmt=null;
+	      StringBuffer sb=new StringBuffer();
+	      
+	      try {
+	         sb.append("INSERT INTO shareReply(shareR_content, memId, shareNum)");
+	         sb.append("VALUES (?, ?, ?)");
+	         
+	         pstmt=conn.prepareStatement(sb.toString());
+	         pstmt.setString(1, dto.getShareR_content());
+	         pstmt.setString(2, dto.getMemId());
+	         pstmt.setInt(3, dto.getShareNum());
+	         
+	         result=pstmt.executeUpdate();
+	      } catch (Exception e) {
+	         System.out.println(e.toString());
+	      } finally {
+	         if(pstmt!=null)
+	            try {
+	               pstmt.close();
+	            } catch (SQLException e) {   
+	            }
+	      }
+	      return result;
+	   }
+	   
+	// ´ñ±Û °¹¼ö
+	public int dataCountShareReply(int shareNum) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql;
+		
+		try {
+			sql="SELECT IFNULL(COUNT(*), 0) FROM shareReply where shareNum=?";
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, shareNum);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				result=rs.getInt(1);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			}
+				
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		
+		return result;
+	}
 	
+	// ´ñ±Û ¸®½ºÆ®
+	public List<ShareReplyDTO> listShareReply(int shareNum, int start, int end) {
+		List<ShareReplyDTO> list= new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		StringBuffer sb=new StringBuffer();
+		
+		try {
+			sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
+			sb.append(" SELECT shareR_Num, shareNum, memId, shareR_Content,");
+			sb.append(" DATE_FORMAT(shareR_Created , '%Y-%m-%d') shareR_Created FROM shareReply");
+			sb.append(" WHERE shareNum=?");
+			sb.append(" ORDER BY shareR_Num DESC) tb,");
+			sb.append(" (SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
+			
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, shareNum);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ShareReplyDTO dto= new ShareReplyDTO();
+				
+				dto.setShareR_num(rs.getInt("shareR_num"));
+				dto.setShareNum(rs.getInt("shareNum"));
+				dto.setMemId(rs.getString("memId"));
+				dto.setShareR_content(rs.getString("shareR_content"));
+				dto.setShareR_created(rs.getString("shareR_created"));
+				
+				list.add(dto);
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			}
+				
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return list;
+	}
 	
-	
+	// ´ñ±Û »èÁ¦
+	   public int deleteShareReply(int shareR_num){
+		      int result = 0;
+		      PreparedStatement pstmt=null;
+		      String sql;
+		      
+		      sql="DELETE FROM shareReply WHERE shareR_num=?";
+		      try {
+		         pstmt =conn.prepareStatement(sql);
+		         pstmt.setInt(1, shareR_num);
+		         result = pstmt.executeUpdate();
+		      } catch (Exception e) {
+		         System.out.println(e.toString());
+		      } finally {
+		         if(pstmt!=null){
+		            try {
+		               pstmt.close();
+		            } catch (Exception e2) {      
+		            }
+		         }
+		      }
+		      return result;
+		   }
 	
 	
 	

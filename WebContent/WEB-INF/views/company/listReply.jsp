@@ -15,15 +15,15 @@
     <c:forEach var="dto" items="${list}">    
          <div  style="clear:both; margin-top:5px; padding: 10px; border: #d5d5d5 solid 1px; min-height: 100px;">
               <div style="clear: both;">
-                  <div style="float: left;">${dto.memId} | ${dto.created}</div>
+                  <div style="float: left;">${dto.memId} | ${dto.companyR_created}</div>
                   <div style="float: right;  text-align: rigth;">
                         <c:if test="${sessionScope.member.memId==dto.memId || sessionScope.member.memId=='admin'}">
-                           <a onclick='deleteReply("${dto.replyNum}", "${pageNo}", "${dto.memId}");'>삭제</a>
+                           <a onclick='deleteReply("${dto.companyR_num}", "${pageNo}", "${dto.memId}");'>삭제</a>
                         </c:if>
                   </div>
               </div>
               <div  style="clear: both; padding: 5px 0 5px 0px;  min-height: 40px;">
-                       ${dto.content}
+                       ${dto.companyR_content}
               </div>
          </div>
     </c:forEach>

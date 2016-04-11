@@ -36,8 +36,8 @@ public class RecruitServlet extends MyServlet{
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		if(info==null) { // 로그인되지 않은 경우
 			
-			String msg=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 로그인 후 사용하실 수 있습니다";
-			req.setAttribute("message", msg);
+			String msg2=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 로그인 후 사용하실 수 있습니다";
+			req.setAttribute("message", msg2);
 			
 			String path="/WEB-INF/views/member/login.jsp";
 			forward(req, resp, path);

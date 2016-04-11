@@ -1,4 +1,4 @@
-package com.share;
+package com.company;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,8 +17,8 @@ import com.member.SessionInfo;
 import com.util.MyServlet;
 import com.util.MyUtil;
 
-@WebServlet("/bbs/*")
-public class ShareServlet extends MyServlet {
+@WebServlet("/company/*")
+public class CompanyServlet extends MyServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -28,7 +28,7 @@ public class ShareServlet extends MyServlet {
 		String uri = req.getRequestURI();
 		String cp = req.getContextPath();
 		
-		ShareDAO dao = new ShareDAO();
+		CompanyDAO dao = new CompanyDAO();
 		MyUtil util = new MyUtil();
 		
 		//로그인 정보를 세션에서 가져오기
@@ -59,7 +59,7 @@ public class ShareServlet extends MyServlet {
 			String searchKey = req.getParameter("searchKey");
 			String searchValue = req.getParameter("searchValue");
 			if (searchKey == null) {
-				searchKey = "shareSubject";
+				searchKey = "CompanySubject";
 				searchValue = "";
 			}
 			// GET 방식인 경우 디코딩
@@ -82,19 +82,19 @@ public class ShareServlet extends MyServlet {
 			int start = (current_page - 1) * numPerPage + 1;
 			int end = current_page * numPerPage;
             //게시물 가져오기
- 			List<ShareDTO> list;
+ 			List<CompanyDTO> list;
 			if(searchValue.length()==0)
-				list=dao.listShare(start, end);
+				list=dao.listCompany(start, end);
 			else
-				list=dao.listShare(start, end, searchKey, searchValue);
+				list=dao.listCompany(start, end, searchKey, searchValue);
 
 			// 리스트 글번호
-			int listShareNum, n = 0;
-			Iterator<ShareDTO> it = list.iterator();
+			int listCompanyNum, n = 0;
+			Iterator<CompanyDTO> it = list.iterator();
 			while (it.hasNext()) {
-				ShareDTO dto = it.next();
-				listShareNum = dataCount - (start + n - 1);
-				dto.setListShareNum(listShareNum);
+				CompanyDTO dto = it.next();
+				listCompanyNum = dataCount - (start + n - 1);
+				dto.setListCompanyNum(listCompanyNum);
 				n++;
 			}
 
@@ -104,8 +104,8 @@ public class ShareServlet extends MyServlet {
 						+ URLEncoder.encode(searchValue, "UTF-8");
 			}
 			//페이징 처리
-			String listUrl = cp + "/bbs/list.sst";
-			String articleUrl = cp + "/bbs/article.sst?page=" + current_page;
+			String listUrl = cp + "/company/list.sst";
+			String articleUrl = cp + "/company/article.sst?page=" + current_page;
 			if (params.length() != 0) {
 				listUrl += "?" + params;
 				articleUrl += "&" + params;
@@ -119,7 +119,7 @@ public class ShareServlet extends MyServlet {
 			req.setAttribute("total_page", total_page);
 			req.setAttribute("articleUrl", articleUrl);
 
-			forward(req, resp, "/WEB-INF/views/bbs/list.jsp");
+			forward(req, resp, "/WEB-INF/views/company/list.jsp");
 		} else if(uri.indexOf("created.sst")!=-1) {
 			
 			// 글쓰기폼
@@ -129,7 +129,7 @@ public class ShareServlet extends MyServlet {
 				return;
 			}
 			req.setAttribute("mode", "created");
-			forward(req, resp, "/WEB-INF/views/bbs/created.jsp");
+			forward(req, resp, "/WEB-INF/views/company/created.jsp");
 		} else if(uri.indexOf("created_ok.sst")!=-1) {
 			// 게시물 저장
 			if(info == null){
@@ -138,18 +138,19 @@ public class ShareServlet extends MyServlet {
 				return;
 			}
 			
-			ShareDTO dto= new ShareDTO();
+			CompanyDTO dto= new CompanyDTO();
 			
 			// userId는 세션에 저장된 정보
 			dto.setMemId(info.getMemId());
 			
 			//파라미터
-			dto.setShareContent(req.getParameter("shareContent"));
-			dto.setShareSubject(req.getParameter("shareSubject"));
-						
-			dao.insertShare(dto);
+			dto.setCompanyContent(req.getParameter("CompanyContent"));
+			dto.setCompanySubject(req.getParameter("CompanySubject"));
+			
+			dao.insertCompany(dto);
+			
 			req.setAttribute("mode", "created");
-			resp.sendRedirect(cp+ "/bbs/list.sst");
+			resp.sendRedirect(cp+ "/company/list.sst");
 		} else if (uri.indexOf("article.sst") != -1) {
 			//글보기
 	        if(info == null){
@@ -158,32 +159,32 @@ public class ShareServlet extends MyServlet {
 				return;
 			}
 			
-	        //파라미터 : shareNum, page,[searchKey,searchValue]
-			int shareNum = Integer.parseInt(req.getParameter("shareNum"));
+	        //파라미터 : CompanyNum, page,[searchKey,searchValue]
+			int CompanyNum = Integer.parseInt(req.getParameter("CompanyNum"));
 			String page = req.getParameter("page");
 			String searchKey=req.getParameter("searchKey");
 			String searchValue=req.getParameter("searchValue");
 			if(searchKey==null) {
-				searchKey="shareSubject";
+				searchKey="CompanySubject";
 				searchValue="";
 			}
 			searchValue=URLDecoder.decode(searchValue,"UTF-8");
             //조회수 증가
-			dao.ShareHitCount(shareNum);
+			dao.CompanyHitCount(CompanyNum);
            //게시물 가져오기
-			ShareDTO dto = dao.readShare(shareNum);
+			CompanyDTO dto = dao.readCompany(CompanyNum);
 
 			if (dto == null) { //게시물 없으면 다시 리스트로 감
-				resp.sendRedirect(cp + "/bbs/list.sst?page=" + page);
+				resp.sendRedirect(cp + "/company/list.sst?page=" + page);
 				return;
 			}
 
-			int linesu = dto.getShareContent().split("\n").length;
-			dto.setShareContent(dto.getShareContent().replaceAll("\n", "<br>"));
+			int linesu = dto.getCompanyContent().split("\n").length;
+			dto.setCompanyContent(dto.getCompanyContent().replaceAll("\n", "<br>"));
 			
 			//이전글 다음글
-			ShareDTO preReadDto=dao.preReadShare(shareNum, searchKey, searchValue);
-			ShareDTO nextReadDto=dao.nextReadShare(shareNum, searchKey, searchValue);
+			CompanyDTO preReadDto=dao.preReadCompany(CompanyNum, searchKey, searchValue);
+			CompanyDTO nextReadDto=dao.nextReadCompany(CompanyNum, searchKey, searchValue);
 			
 			//리스트나 이전글/다음글에서 사용할 파라미터
 			String params = "page=" + page;
@@ -200,49 +201,49 @@ public class ShareServlet extends MyServlet {
 			req.setAttribute("linesu", linesu);
 			req.setAttribute("page", page);
 
-			forward(req, resp, "/WEB-INF/views/bbs/article.jsp");
+			forward(req, resp, "/WEB-INF/views/company/article.jsp");
 		} else if (uri.indexOf("update.sst") != -1) {
 			//수정 폼
-			int shareNum = Integer.parseInt(req.getParameter("shareNum"));
+			int CompanyNum = Integer.parseInt(req.getParameter("CompanyNum"));
 			String page=req.getParameter("page");
 			
-			ShareDTO dto = dao.readShare(shareNum);
+			CompanyDTO dto = dao.readCompany(CompanyNum);
 			if(dto==null || ! dto.getMemId().equals(info.getMemId())) {
-				resp.sendRedirect(cp+"/bbs/list.sst?page=" +page);
+				resp.sendRedirect(cp+"/company/list.sst?page=" +page);
 				return;
 			}
 		    
 			req.setAttribute("dto", dto);
 			req.setAttribute("mode", "update");
 			req.setAttribute("page", page);
-			forward(req, resp, "/WEB-INF/views/bbs/created.jsp");
+			forward(req, resp, "/WEB-INF/views/company/created.jsp");
 		} else if (uri.indexOf("update_ok.sst") != -1) {
 			String page=req.getParameter("page");
 			
-			ShareDTO dto = new ShareDTO();
-			dto.setShareNum(Integer.parseInt(req.getParameter("shareNum")));
-			dto.setShareSubject(req.getParameter("shareSubject"));
-			dto.setShareContent(req.getParameter("shareContent"));
+			CompanyDTO dto = new CompanyDTO();
+			dto.setCompanyNum(Integer.parseInt(req.getParameter("CompanyNum")));
+			dto.setCompanySubject(req.getParameter("CompanySubject"));
+			dto.setCompanyContent(req.getParameter("CompanyContent"));
 
-			dao.ShareUpdate(dto);
+			dao.CompanyUpdate(dto);
 			
-			resp.sendRedirect(cp + "/bbs/article.sst?page="+page+ "&shareNum="+dto.getShareNum());
+			resp.sendRedirect(cp + "/company/article.sst?page="+page+ "&CompanyNum="+dto.getCompanyNum());
 		} else if (uri.indexOf("delete.sst")!=-1) {
 			String page=req.getParameter("page");
-			int shareNum= Integer.parseInt(req.getParameter("shareNum"));
+			int CompanyNum= Integer.parseInt(req.getParameter("CompanyNum"));
 			
-			ShareDTO dto=dao.readShare(shareNum);
+			CompanyDTO dto=dao.readCompany(CompanyNum);
 			if(dto==null || (!dto.getMemId().equals(info.getMemId())
 					&& !info.getMemId().equals("admin"))) {
-				resp.sendRedirect(cp +"/bbs/list.sst?page=" +page);
+				resp.sendRedirect(cp +"/company/list.sst?page=" +page);
 				return;
 			}
 			
-			dao.deleteShare(shareNum);
-			resp.sendRedirect(cp +"/bbs/list.sst?page=" +page);
+			dao.deleteCompany(CompanyNum);
+			resp.sendRedirect(cp +"/company/list.sst?page=" +page);
 		} else if (uri.indexOf("listReply.sst")!=-1) {
 			// 리플 리스트 ---------------------------------------
-			int shareNum= Integer.parseInt(req.getParameter("shareNum"));
+			int CompanyNum= Integer.parseInt(req.getParameter("CompanyNum"));
 			String pageNo= req.getParameter("pageNo");// 댓글의 페이지번호
 			int current_page = 1;
 			if (pageNo != null)
@@ -252,7 +253,7 @@ public class ShareServlet extends MyServlet {
 			int total_page = 0;
 			int dataCount = 0;
 			
-			dataCount= dao.dataCountShareReply(shareNum);
+			dataCount= dao.dataCountCompanyReply(CompanyNum);
 			total_page = util.pageCount(numPerPage, dataCount);
 			if (current_page > total_page)
 				current_page = total_page;
@@ -261,13 +262,13 @@ public class ShareServlet extends MyServlet {
 			int end = current_page * numPerPage;
 			
 			// 리스트에 출력할 댓글 데이터
-			List<ShareReplyDTO> list= dao.listShareReply(shareNum, start, end);
+			List<CompanyReplyDTO> list= dao.listCompanyReply(CompanyNum, start, end);
 			
 			// 엔터를 <br>
-			Iterator<ShareReplyDTO> it= list.iterator();
+			Iterator<CompanyReplyDTO> it= list.iterator();
 			while(it.hasNext()) {
-				ShareReplyDTO dto=it.next();
-				dto.setShareR_content(dto.getShareR_content().replaceAll("\n", "<br>"));
+				CompanyReplyDTO dto=it.next();
+				dto.setCompanyR_content(dto.getCompanyR_content().replaceAll("\n", "<br>"));
 			}
 			
 			// 페이징처리(인수2개 짜리 js로 처리)
@@ -280,7 +281,7 @@ public class ShareServlet extends MyServlet {
 			req.setAttribute("paging", paging);
 			
 			// 포워딩
-			String path = "/WEB-INF/views/bbs/listReply.jsp";
+			String path = "/WEB-INF/views/company/listReply.jsp";
 			forward(req, resp, path);
 		} else if(uri.indexOf("insertReply.sst") != -1){
 			//리플 저장하기 ------
@@ -288,13 +289,13 @@ public class ShareServlet extends MyServlet {
 			if(info == null){ //로그인 되지 않은 경우
 				state="loginFail";
 			}else {
-				int shareNum = Integer.parseInt(req.getParameter("shareNum"));
-				ShareReplyDTO dto= new ShareReplyDTO();
-				dto.setShareNum(shareNum);
+				int CompanyNum = Integer.parseInt(req.getParameter("CompanyNum"));
+				CompanyReplyDTO dto= new CompanyReplyDTO();
+				dto.setCompanyNum(CompanyNum);
 				dto.setMemId(info.getMemId());
-				dto.setShareR_content(req.getParameter("shareR_content"));
+				dto.setCompanyR_content(req.getParameter("CompanyR_content"));
 				
-				int result=dao.insertShareReply(dto);
+				int result=dao.insertCompanyReply(dto);
 				if(result==0)
 					state="false";
 			}
@@ -308,14 +309,14 @@ public class ShareServlet extends MyServlet {
 			out.println(sb.toString());
 		} else if(uri.indexOf("deleteReply.sst")!= -1){
 			//리플 삭제-----------------------
-			int shareR_num = Integer.parseInt(req.getParameter("shareR_num"));
+			int CompanyR_num = Integer.parseInt(req.getParameter("CompanyR_num"));
 			String memId=req.getParameter("memId");
 			
 			String state="false";
 			if(info == null){ //로그인 되지 않은 경우
 				state= "loginFail";				
 			} else if(info.getMemId().equals("admin") || info.getMemId().equals(memId)){
-				dao.deleteShareReply(shareR_num);
+				dao.deleteCompanyReply(CompanyR_num);
 				state="true";
 				
 			}

@@ -12,8 +12,6 @@
 <script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script> 
 
 <script type="text/javascript">
-
-
 function bgLabel(ob, id) {
 	    if(!ob.value) {
 		    document.getElementById(id).style.display="";

@@ -20,7 +20,7 @@
     <title>Modern Business - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<%=cp %>/res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<%=cp %>/res/css/modern-business.css" rel="stylesheet">
@@ -112,7 +112,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Class Docu</h4>
+                        <h5><i class="fa fa-fw fa-paperclip"></i> 수업자료</h5>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -128,7 +128,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Portfolio </h4>
+                        <h5><i class="fa fa-fw fa-film"></i> 포트폴리오</h5>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -144,7 +144,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i>Resume</h4>
+                        <h5><i class="fa fa-fw fa-file-text"></i> 자소서 공유</h5>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">
@@ -160,7 +160,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Company&nbsp;Info </h4>
+                        <h5><i class="fa fa-fw fa-info"></i> 회사정보  </h5>
                     </div>
                     <div class="panel-body">
                           
@@ -178,7 +178,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Recruits&nbsp;Information </h4>
+                        <h5><i class="fa fa-fw fa-user"></i> 취업정보나눔 </h5>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">
@@ -193,7 +193,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Team&nbsp;Member</h4>
+                        <h5><i class="fa fa-fw fa-user"></i> 팀원구하기</h5>
                     </div>
                     <div class="panel-body">
                       <ul type="disc">
@@ -209,7 +209,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> IT&nbsp;Trend&nbsp;Info</h4>
+                        <h5><i class="fa fa-fw fa-info"></i> IT동향</h5>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -225,7 +225,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Development&nbsp;Tip</h4>
+                        <h5><i class="fa fa-fw fa-gittip"></i> 개발Tip</h5>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -241,7 +241,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Q&nbsp;&#38;&nbsp;A</h4>
+                        <h5><i class="fa fa-fw fa-question"></i>개발Q&nbsp;&#38;&nbsp;A</h5>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">

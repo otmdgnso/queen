@@ -94,10 +94,14 @@ public class MemberServlet extends MyServlet {
 		}
 		//////////////////////////////////////////////////////////////////////////////////	로그인 ///////////////////
 		//dao. readMember 필요 
+		else if(uri.indexOf("login.sst")!=-1) {
+			// 로그인 폼
+			String path="/WEB-INF/views/member/login.jsp";
+			forward(req, resp, path);
+			
+		}
 		else if(uri.indexOf("login_ok.sst")!=-1) {
-			
-			
-			
+						
 			// 로그인 처리
 			String memId=req.getParameter("memId");
 			String memPwd=req.getParameter("memPwd");

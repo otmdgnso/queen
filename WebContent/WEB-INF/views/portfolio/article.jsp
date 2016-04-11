@@ -111,7 +111,7 @@ function deleteReply(replyNum, pageNo, memId) {
 	
 	if(confirm("게시물을 삭제하시겠습니까 ? ")) {	
 		var url="<%=cp%>/portfolio/deleteReply.sst";
-		$.post(url, {replyNum:replyNum, MemId:MemId}, function(data){
+		$.post(url, {replyNum:replyNum, memId:memId}, function(data){
 		        var state=data.state;
 				if(state=="loginFail") {
 					login();
@@ -159,8 +159,8 @@ function deleteReply(replyNum, pageNo, memId) {
 								src="<%=cp%>/uploads/portfolio/${dto.imageFilename}"
 								style="max-width: 100%; height: auto; resize: both;"></td>
 						</tr>
-						<tr>
-							<td colspan="2" style="min-height: 30px;">${dto.content}</td>
+						<tr height="100">
+							<td colspan="2" >${dto.content}</td>
 						</tr>
 					</tbody>
 					<tfoot>

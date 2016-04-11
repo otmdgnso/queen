@@ -186,7 +186,8 @@ public class PortfolioServlet extends MyServlet {
 			String imageFilename = mreq.getParameter("imageFilename");
 
 			PortfolioDTO dto = new PortfolioDTO();
-			dto.setNum(Integer.parseInt(mreq.getParameter("num")));
+			int num=Integer.parseInt(mreq.getParameter("num"));
+			dto.setNum(num);
 			dto.setSubject(mreq.getParameter("subject"));
 			dto.setContent(mreq.getParameter("content"));
 
@@ -209,7 +210,9 @@ public class PortfolioServlet extends MyServlet {
 
 			dao.updatePortfolio(dto);
 
-			resp.sendRedirect(cp + "/portfolio/list.sst?page=" + page);
+			resp.sendRedirect(cp + "/portfolio/article.sst?page=" + page+"&num="+num);
+			
+			
 
 		} else if (uri.indexOf("delete.sst") != -1) {
 			// 삭제 완료

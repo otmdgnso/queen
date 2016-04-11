@@ -59,7 +59,7 @@ public class CompanyServlet extends MyServlet {
 			String searchKey = req.getParameter("searchKey");
 			String searchValue = req.getParameter("searchValue");
 			if (searchKey == null) {
-				searchKey = "CompanySubject";
+				searchKey = "companySubject";
 				searchValue = "";
 			}
 			// GET 방식인 경우 디코딩
@@ -144,8 +144,8 @@ public class CompanyServlet extends MyServlet {
 			dto.setMemId(info.getMemId());
 			
 			//파라미터
-			dto.setCompanyContent(req.getParameter("CompanyContent"));
-			dto.setCompanySubject(req.getParameter("CompanySubject"));
+			dto.setCompanyContent(req.getParameter("companyContent"));
+			dto.setCompanySubject(req.getParameter("companySubject"));
 			
 			dao.insertCompany(dto);
 			
@@ -160,19 +160,19 @@ public class CompanyServlet extends MyServlet {
 			}
 			
 	        //파라미터 : CompanyNum, page,[searchKey,searchValue]
-			int CompanyNum = Integer.parseInt(req.getParameter("CompanyNum"));
+			int companyNum = Integer.parseInt(req.getParameter("companyNum"));
 			String page = req.getParameter("page");
 			String searchKey=req.getParameter("searchKey");
 			String searchValue=req.getParameter("searchValue");
 			if(searchKey==null) {
-				searchKey="CompanySubject";
+				searchKey="companySubject";
 				searchValue="";
 			}
 			searchValue=URLDecoder.decode(searchValue,"UTF-8");
             //조회수 증가
-			dao.CompanyHitCount(CompanyNum);
+			dao.companyHitCount(companyNum);
            //게시물 가져오기
-			CompanyDTO dto = dao.readCompany(CompanyNum);
+			CompanyDTO dto = dao.readCompany(companyNum);
 
 			if (dto == null) { //게시물 없으면 다시 리스트로 감
 				resp.sendRedirect(cp + "/company/list.sst?page=" + page);
@@ -183,8 +183,8 @@ public class CompanyServlet extends MyServlet {
 			dto.setCompanyContent(dto.getCompanyContent().replaceAll("\n", "<br>"));
 			
 			//이전글 다음글
-			CompanyDTO preReadDto=dao.preReadCompany(CompanyNum, searchKey, searchValue);
-			CompanyDTO nextReadDto=dao.nextReadCompany(CompanyNum, searchKey, searchValue);
+			CompanyDTO preReadDto=dao.preReadCompany(companyNum, searchKey, searchValue);
+			CompanyDTO nextReadDto=dao.nextReadCompany(companyNum, searchKey, searchValue);
 			
 			//리스트나 이전글/다음글에서 사용할 파라미터
 			String params = "page=" + page;
@@ -204,10 +204,10 @@ public class CompanyServlet extends MyServlet {
 			forward(req, resp, "/WEB-INF/views/company/article.jsp");
 		} else if (uri.indexOf("update.sst") != -1) {
 			//수정 폼
-			int CompanyNum = Integer.parseInt(req.getParameter("CompanyNum"));
+			int companyNum = Integer.parseInt(req.getParameter("companyNum"));
 			String page=req.getParameter("page");
 			
-			CompanyDTO dto = dao.readCompany(CompanyNum);
+			CompanyDTO dto = dao.readCompany(companyNum);
 			if(dto==null || ! dto.getMemId().equals(info.getMemId())) {
 				resp.sendRedirect(cp+"/company/list.sst?page=" +page);
 				return;
@@ -221,29 +221,29 @@ public class CompanyServlet extends MyServlet {
 			String page=req.getParameter("page");
 			
 			CompanyDTO dto = new CompanyDTO();
-			dto.setCompanyNum(Integer.parseInt(req.getParameter("CompanyNum")));
-			dto.setCompanySubject(req.getParameter("CompanySubject"));
-			dto.setCompanyContent(req.getParameter("CompanyContent"));
+			dto.setCompanyNum(Integer.parseInt(req.getParameter("companyNum")));
+			dto.setCompanySubject(req.getParameter("companySubject"));
+			dto.setCompanyContent(req.getParameter("companyContent"));
 
-			dao.CompanyUpdate(dto);
+			dao.companyUpdate(dto);
 			
-			resp.sendRedirect(cp + "/company/article.sst?page="+page+ "&CompanyNum="+dto.getCompanyNum());
+			resp.sendRedirect(cp + "/company/article.sst?page="+page+ "&companyNum="+dto.getCompanyNum());
 		} else if (uri.indexOf("delete.sst")!=-1) {
 			String page=req.getParameter("page");
-			int CompanyNum= Integer.parseInt(req.getParameter("CompanyNum"));
+			int companyNum= Integer.parseInt(req.getParameter("companyNum"));
 			
-			CompanyDTO dto=dao.readCompany(CompanyNum);
+			CompanyDTO dto=dao.readCompany(companyNum);
 			if(dto==null || (!dto.getMemId().equals(info.getMemId())
 					&& !info.getMemId().equals("admin"))) {
 				resp.sendRedirect(cp +"/company/list.sst?page=" +page);
 				return;
 			}
 			
-			dao.deleteCompany(CompanyNum);
+			dao.deleteCompany(companyNum);
 			resp.sendRedirect(cp +"/company/list.sst?page=" +page);
 		} else if (uri.indexOf("listReply.sst")!=-1) {
 			// 리플 리스트 ---------------------------------------
-			int CompanyNum= Integer.parseInt(req.getParameter("CompanyNum"));
+			int companyNum= Integer.parseInt(req.getParameter("companyNum"));
 			String pageNo= req.getParameter("pageNo");// 댓글의 페이지번호
 			int current_page = 1;
 			if (pageNo != null)
@@ -253,7 +253,7 @@ public class CompanyServlet extends MyServlet {
 			int total_page = 0;
 			int dataCount = 0;
 			
-			dataCount= dao.dataCountCompanyReply(CompanyNum);
+			dataCount= dao.dataCountCompanyReply(companyNum);
 			total_page = util.pageCount(numPerPage, dataCount);
 			if (current_page > total_page)
 				current_page = total_page;
@@ -262,7 +262,7 @@ public class CompanyServlet extends MyServlet {
 			int end = current_page * numPerPage;
 			
 			// 리스트에 출력할 댓글 데이터
-			List<CompanyReplyDTO> list= dao.listCompanyReply(CompanyNum, start, end);
+			List<CompanyReplyDTO> list= dao.listCompanyReply(companyNum, start, end);
 			
 			// 엔터를 <br>
 			Iterator<CompanyReplyDTO> it= list.iterator();
@@ -289,11 +289,11 @@ public class CompanyServlet extends MyServlet {
 			if(info == null){ //로그인 되지 않은 경우
 				state="loginFail";
 			}else {
-				int CompanyNum = Integer.parseInt(req.getParameter("CompanyNum"));
+				int companyNum = Integer.parseInt(req.getParameter("companyNum"));
 				CompanyReplyDTO dto= new CompanyReplyDTO();
-				dto.setCompanyNum(CompanyNum);
+				dto.setCompanyNum(companyNum);
 				dto.setMemId(info.getMemId());
-				dto.setCompanyR_content(req.getParameter("CompanyR_content"));
+				dto.setCompanyR_content(req.getParameter("companyR_content"));
 				
 				int result=dao.insertCompanyReply(dto);
 				if(result==0)
@@ -309,14 +309,14 @@ public class CompanyServlet extends MyServlet {
 			out.println(sb.toString());
 		} else if(uri.indexOf("deleteReply.sst")!= -1){
 			//리플 삭제-----------------------
-			int CompanyR_num = Integer.parseInt(req.getParameter("CompanyR_num"));
+			int companyR_num = Integer.parseInt(req.getParameter("companyR_num"));
 			String memId=req.getParameter("memId");
 			
 			String state="false";
 			if(info == null){ //로그인 되지 않은 경우
 				state= "loginFail";				
 			} else if(info.getMemId().equals("admin") || info.getMemId().equals(memId)){
-				dao.deleteCompanyReply(CompanyR_num);
+				dao.deleteCompanyReply(companyR_num);
 				state="true";
 				
 			}

@@ -297,7 +297,7 @@ public class CompanyDAO {
 	}
 
 	// 게시글 수정
-	public int CompanyUpdate(CompanyDTO dto) {
+	public int companyUpdate(CompanyDTO dto) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		StringBuffer sb = new StringBuffer();
@@ -365,7 +365,7 @@ public class CompanyDAO {
 		return result;
 	}
 	// 조회수 증가
-	public int CompanyHitCount(int companyNum) {
+	public int companyHitCount(int companyNum) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;

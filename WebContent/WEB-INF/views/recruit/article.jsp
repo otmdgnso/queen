@@ -33,6 +33,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+	 <!-- jQuery -->
+    <script src="<%=cp%>/res/js/jquery.js"></script>
+
 <script type="text/javascript">
 
 function deleteRecruit(){
@@ -44,7 +47,82 @@ function deleteRecruit(){
 	    	location.href=url;
 }
 
+//-- 댓글 ------------------------------------
+//댓글 리스트
+$(function(){
+	listPage(1);
+});
 
+function listPage(page) {
+	var url="<%=cp%>/recruit/listReply.sst";
+	var recruitNum="${dto.recruitNum}";
+	$.post(url, {recruitNum:recruitNum, pageNo:page}, function(data){
+		$("#listReply").html(data);
+	});
+}
+//리플 저장
+
+function sendReply(){
+	var mId="${sessionScope.member.memId}";
+	if(! mId){
+		login();
+		return false;
+	}
+	
+	var recruitNum="${dto.recruitNum}"; //해당 게시물 번호
+	var recruitR_content=$.trim($("#recruitR_content").val());
+	if(!recruitR_content){
+		alert("댓글내용을  입력하세요!");
+		$("#recruitR_content").focus();
+		return false;
+	}
+	
+	var params="recruitNum="+recruitNum;
+	params+="&recruitR_content="+recruitR_content;
+	
+	$.ajax({
+		type:"POST"
+		,url:"<%=cp%>/recruit/insertReply.sst"
+		,data:params
+		,dataType:"json"
+		,success:function(data) {
+			$("#recruitR_content").val("");
+			
+			var state=data.state;
+			if(state=="true") {
+				listPage(1);
+			} else if(state=="false") {
+				alert("댓글을 등록하지 못했습니다. !!!");
+			} else if(state=="loginFail") {
+				login();
+			}
+		}
+		,error:function(e) {
+			alert(e.responseText);
+		}
+	});
+}
+//댓글 삭제
+function deleteReply(recruitR_num, pageNo, memId){
+	var mId="${sessionScope.member.memId}";
+	if(! mId){
+		login();
+		return false;
+	}
+	
+	if(confirm("게시물을 삭제하시겠습니까?")){
+		var url="<%=cp%>/recruit/deleteReply.sst";
+		$.post(url,{recruitR_num:recruitR_num, memId:memId}, function(data){
+			var state=data.state;
+			if(state=="loginFail"){
+				login();
+			}else{
+				listPage(pageNo);
+			}
+			
+		},"json");
+	}
+}
 
 
 
@@ -130,22 +208,21 @@ function deleteRecruit(){
                         <div style="float: right; text-align: right;"></div>
                   </div>
                   <div style="clear: both; padding-top: 10px;">
-                      <textarea id="content" class="form-control" rows="3" required="required"></textarea>
+                      <textarea id="recruitR_content" class="form-control" rows="3" required="required"></textarea>
                   </div>
                   <div style="text-align: right; padding-top: 10px;">
                       <button type="button" class="btn btn-primary btn-sm" onclick="sendReply();"> 댓글등록 <span class="glyphicon glyphicon-ok"></span></button>
                   </div>           
               </div>
           
-              <div id="recruitReply"></div>
+              <div id="listReply"></div>
           </div>
           
       </div>
 
     </div>
 </div>
- <!-- jQuery -->
-    <script src="<%=cp%>/res/js/jquery.js"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>

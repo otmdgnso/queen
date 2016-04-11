@@ -229,7 +229,7 @@ public class ShareDAO {
 
 		try {
 			sb.append("SELECT shareNum, memId, shareSubject, shareContent,");
-			sb.append(" shareHitCount, shareCreated");
+			sb.append(" shareHitCount, DATE_FORMAT(shareCreated , '%Y-%m-%d %h:%i:%s') shareCreated");
 			sb.append(" FROM share");
 			sb.append(" WHERE shareNum=?");
 

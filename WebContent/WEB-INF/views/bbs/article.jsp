@@ -169,12 +169,12 @@ function deleteReply(shareR_num, pageNo, memId){
                    <thead>
                     <tbody>
                         <tr>
-                            <td style="text-align: left; width:200px; height:60px; margin"> 작성자: ${dto.memId}</td>
+                            <td style="text-align: left; width:200px; height:45px; "> 작성자: ${dto.memId}</td>
                             <td style="text-align: right;">
-                             ${dto.shareCreated} 조회 : ${dto.shareHitCount}
+                             ${dto.shareCreated} 
                             </td>
-                            <td style="text-align: right;">
-                            <img src="<%=cp%>/res/image/recommend.jpg"> 57
+                            <td style="text-align: right; width:100px;">
+                                                                         조회 수: ${dto.shareHitCount}
                             </td>
                         </tr>
                         <tr>
@@ -184,7 +184,7 @@ function deleteReply(shareR_num, pageNo, memId){
                         </tr>
                         
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg">&nbsp;추천</td>
+                        <td><img src="<%=cp%>/res/image/recommend.jpg">&nbsp;5</td>
                         </tr>
                         
                         <tr height="30">

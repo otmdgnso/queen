@@ -162,14 +162,14 @@ function deleteReply(shareR_num, pageNo, memId){
                <table class="table">
                     <thead>
                         <tr>
-                            <th colspan="2" style="text-align: center;">
+                            <th colspan="3" style="text-align: center;">
                                     ${dto.shareSubject}
                             </th>
                         </tr>
                    <thead>
                     <tbody>
                         <tr>
-                            <td style="text-align: left;"> 작성자: ${dto.memId}</td>
+                            <td style="text-align: left; width:200px; height:60px; margin"> 작성자: ${dto.memId}</td>
                             <td style="text-align: right;">
                              ${dto.shareCreated} 조회 : ${dto.shareHitCount}
                             </td>
@@ -184,8 +184,7 @@ function deleteReply(shareR_num, pageNo, memId){
                         </tr>
                         
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg"></td>
-                        <td>추천</td>
+                        <td><img src="<%=cp%>/res/image/recommend.jpg">&nbsp;추천</td>
                         </tr>
                         
                         <tr height="30">
@@ -211,14 +210,13 @@ function deleteReply(shareR_num, pageNo, memId){
 					    <c:if test="${dto.memId == sessionScope.member.memId}">
 					          <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/bbs/update.sst?shareNum=${dto.shareNum}&page=${page}';">
    						</c:if>
-   						</td>
-   						<td align="left">
+   						&nbsp;
    						<c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
 					          <input type="image" src="<%=cp%>/res/image/btn_delete.gif" onclick="deleteShare('${dto.shareNum}')">
 					    </c:if>
-					    </td>
-					    <td align="right">
-					           <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/bbs/list.sst?${params}';">
+   						</td>
+   						<td align="right" colspan="2">
+					          <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/bbs/list.sst?${params}';">
 					    </td>
 					    </tr>
                    </tfoot>

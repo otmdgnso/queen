@@ -26,6 +26,11 @@
 <link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
 
 
+<script type="text/javascript" src="<%=cp%>/res/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/res/js/jquery.ui.datepicker-ko.js"></script>
+<script type="text/javascript" src="<%=cp%>/res/js/bootstrap.min.js"></script>
+
+
 <script type="text/javascript">
 
 function check() {
@@ -196,11 +201,11 @@ function check() {
   <div class="col-sm-offset-2 col-sm-10">
    <c:if test="${mode=='created'}">
             <button type="submit" name="sendButton" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;">등록완료 <span class="glyphicon glyphicon-ok"></span></button>
-            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">등록취소 <span class="glyphicon glyphicon-remove"></span></button>
+            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>//recruit/recruit.sst';" style="margin-right:20px; height:40px; width:130px;">등록취소 <span class="glyphicon glyphicon-remove"></span></button>
    </c:if>
    <c:if test="${mode=='update'}">
             <button type="submit" class="btn btn-primary">일정수정 <span class="glyphicon glyphicon-ok"></span></button>
-            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';">수정취소 <span class="glyphicon glyphicon-remove"></span></button>
+            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>//recruit/recruit.sst';">수정취소 <span class="glyphicon glyphicon-remove"></span></button>
             <input type="hidden" name="recruitNum" value="${dto.recruitNum}">
    </c:if>            
     </div>
@@ -229,8 +234,5 @@ function check() {
     </div>
     <!-- /.container -->
 
-<script type="text/javascript" src="<%=cp%>/res/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/res/js/jquery.ui.datepicker-ko.js"></script>
-<script type="text/javascript" src="<%=cp%>/res/js/bootstrap.min.js"></script>
 </body>
 </html>

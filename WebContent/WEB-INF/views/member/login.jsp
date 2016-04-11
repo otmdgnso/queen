@@ -73,7 +73,7 @@ function bgLabel(ob, id) {
 	    }
 }
 
-function sendLogin() {
+function sendLogin2() {
 	
         var f = document.loginForm;
 
@@ -106,7 +106,7 @@ function sendLogin() {
 <div class="container" role="main" style="min-height:80%">
 
     <div class="bodyFrame">
-    <form class="form-signin" name="loginForm" method="post"  onsubmit="return sendLogin();">
+    <form class="form-signin" name="loginForm" method="post"  onsubmit="return sendLogin2();">
         <h2 class="form-signin-heading">Log In</h2>
         
         <label for="memId" id="lblUserId" class="lbl">아이디</label>
@@ -119,7 +119,7 @@ function sendLogin() {
                   onfocus="document.getElementById('lblUserPwd').style.display='none';"
 	              onblur="bgLabel(this, 'lblUserPwd');">
         
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="sendLogin();">로그인 
+        <button class="btn btn-lg btn-primary btn-block" type="submit">로그인 
         	<span class="glyphicon glyphicon-ok"></span></button>
         
        

@@ -82,6 +82,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+	 <!-- jQuery -->
+    <script src="<%=cp%>/res/js/jquery.js"></script>
+
+	
 </head>
 
 <body>
@@ -449,9 +453,7 @@
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="<%=cp%>/res/js/jquery.js"></script>
-
+   
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 

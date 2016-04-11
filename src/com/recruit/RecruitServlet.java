@@ -2,6 +2,9 @@ package com.recruit;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +17,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.FileManager;
 import com.util.MyServlet;
+import com.util.MyUtil;
 
 @WebServlet("/recruit/*")
 public class RecruitServlet extends MyServlet{
@@ -26,12 +30,13 @@ public class RecruitServlet extends MyServlet{
 		String cp=req.getContextPath();
 		
 		RecruitDAO dao=new RecruitDAO();
+		MyUtil util=new MyUtil();
 		
 		HttpSession session=req.getSession();
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		if(info==null) { // 로그인되지 않은 경우
 			
-			resp.sendRedirect(cp+"/memeber/login.sst");
+			resp.sendRedirect(cp+"/member/login.sst");
 			return;
 		}
 		
@@ -178,7 +183,95 @@ public class RecruitServlet extends MyServlet{
 						
 			resp.sendRedirect(cp+"/recruit/recruit.sst");			
 			
+		} else if (uri.indexOf("listReply.sst")!=-1) {
+			// 리플 리스트 ---------------------------------------
+			int recruitNum= Integer.parseInt(req.getParameter("recruitNum"));
+			String pageNo= req.getParameter("pageNo");// 댓글의 페이지번호
+			int current_page = 1;
+			if (pageNo != null)
+				current_page = Integer.parseInt(pageNo);
+			
+			int numPerPage = 5;
+			int total_page = 0;
+			int dataCount = 0;
+			
+			dataCount= dao.dataCountRecruitReply(recruitNum);
+			total_page = util.pageCount(numPerPage, dataCount);
+			if (current_page > total_page)
+				current_page = total_page;
+			
+			int start = (current_page - 1) * numPerPage + 1;
+			int end = current_page * numPerPage;
+			
+			// 리스트에 출력할 댓글 데이터
+			List<RecruitReplyDTO> list= dao.listRecruitReply(recruitNum, start, end);
+			
+			// 엔터를 <br>
+			Iterator<RecruitReplyDTO> it= list.iterator();
+			while(it.hasNext()) {
+				RecruitReplyDTO dto=it.next();
+				dto.setRecruitR_content(dto.getRecruitR_content().replaceAll("\n", "<br>"));
+			}
+			
+			// 페이징처리(인수2개 짜리 js로 처리)
+			String paging = util.paging(current_page, total_page);
+			
+			req.setAttribute("list", list);
+			req.setAttribute("pageNo", current_page);
+			req.setAttribute("dataCount", dataCount);
+			req.setAttribute("total_page", total_page);
+			req.setAttribute("paging", paging);
+			
+			// 포워딩
+			String path = "/WEB-INF/views/recruit/listReply.jsp";
+			forward(req, resp, path);
+		} else if(uri.indexOf("insertReply.sst") != -1){
+			//리플 저장하기 ------
+			String state="true";
+			if(info == null){ //로그인 되지 않은 경우
+				state="loginFail";
+			}else {
+				int recruitNum = Integer.parseInt(req.getParameter("recruitNum"));
+				RecruitReplyDTO dto= new RecruitReplyDTO();
+				dto.setRecruitNum(recruitNum);
+				dto.setMemId(info.getMemId());
+				dto.setRecruitR_content(req.getParameter("recruitR_content"));
+				
+				int result=dao.insertRecruitReply(dto);
+				if(result==0)
+					state="false";
+			}
+			StringBuffer sb=new StringBuffer();
+			sb.append("{");
+			sb.append("\"state\":"+"\""+state+"\"");
+			sb.append("}");
+			
+			resp.setContentType("text/html);charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.println(sb.toString());
+		} else if(uri.indexOf("deleteReply.sst")!= -1){
+			//리플 삭제-----------------------
+			int recruitR_num = Integer.parseInt(req.getParameter("recruitR_num"));
+			String memId=req.getParameter("memId");
+			
+			String state="false";
+			if(info == null){ //로그인 되지 않은 경우
+				state= "loginFail";				
+			} else if(info.getMemId().equals("admin") || info.getMemId().equals(memId)){
+				dao.deleteRecruitReply(recruitR_num);
+				state="true";
+				
+			}
+			StringBuffer sb=new StringBuffer();
+			sb.append("{");
+			sb.append("\"state\":"+"\""+state+"\"");
+			sb.append("}");
+
+			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.println(sb.toString());
 		}
+ 
 	}
 
 }

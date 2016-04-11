@@ -228,9 +228,7 @@ public class RecruitServlet extends MyServlet{
 		} else if(uri.indexOf("insertReply.sst") != -1){
 			//리플 저장하기 ------
 			String state="true";
-			if(info == null){ //로그인 되지 않은 경우
-				state="loginFail";
-			}else {
+			if(info != null){ 
 				int recruitNum = Integer.parseInt(req.getParameter("recruitNum"));
 				RecruitReplyDTO dto= new RecruitReplyDTO();
 				dto.setRecruitNum(recruitNum);
@@ -255,9 +253,7 @@ public class RecruitServlet extends MyServlet{
 			String memId=req.getParameter("memId");
 			
 			String state="false";
-			if(info == null){ //로그인 되지 않은 경우
-				state= "loginFail";				
-			} else if(info.getMemId().equals("admin") || info.getMemId().equals(memId)){
+			if(info.getMemId().equals("admin") || info.getMemId().equals(memId)){
 				dao.deleteRecruitReply(recruitR_num);
 				state="true";
 				

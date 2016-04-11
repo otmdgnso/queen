@@ -30,7 +30,8 @@ public class RecruitServlet extends MyServlet{
 		HttpSession session=req.getSession();
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		if(info==null) { // 로그인되지 않은 경우
-			resp.sendRedirect(cp+"/member/login.sst");
+			
+			resp.sendRedirect(cp+"/memeber/login.sst");
 			return;
 		}
 		
@@ -47,6 +48,7 @@ public class RecruitServlet extends MyServlet{
 			String articleUrl = cp + "/recruit/article.sst";
 			req.setAttribute("articleUrl", articleUrl);
 			forward(req, resp, "/WEB-INF/views/recruit/recruit.jsp");
+
 		}else if(uri.indexOf("created.sst")!=-1){
 			
 			req.setAttribute("mode", "created");			

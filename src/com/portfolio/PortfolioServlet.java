@@ -305,12 +305,12 @@ public class PortfolioServlet extends MyServlet {
 		} else if (uri.indexOf("deleteReply.sst") != -1) {
 			// 리플 삭제 ---------------------------------------
 			int replyNum = Integer.parseInt(req.getParameter("replyNum"));
-			String userId=req.getParameter("userId");
+			String memId=req.getParameter("memId");
 			
 			String state="false";
 			if (info == null) { // 로그인되지 않은 경우
 				state="loginFail";
-			} else if(info.getMemId().equals("admin") || info.getMemId().equals(userId)) {
+			} else if(info.getMemId().equals("admin") || info.getMemId().equals(memId)) {
 				dao.deleteReply(replyNum);
 				state="true";
 			}

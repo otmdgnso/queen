@@ -102,7 +102,7 @@ function sendReply() {
 }
 
 // 리플 삭제
-function deleteReply(replyNum, pageNo, userId) {
+function deleteReply(replyNum, pageNo, memId) {
 	var uid="${sessionScope.member.memId}";
 	if(! uid) {
 		login();
@@ -111,7 +111,7 @@ function deleteReply(replyNum, pageNo, userId) {
 	
 	if(confirm("게시물을 삭제하시겠습니까 ? ")) {	
 		var url="<%=cp%>/portfolio/deleteReply.sst";
-		$.post(url, {replyNum:replyNum, userId:userId}, function(data){
+		$.post(url, {replyNum:replyNum, MemId:MemId}, function(data){
 		        var state=data.state;
 				if(state=="loginFail") {
 					login();

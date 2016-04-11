@@ -18,7 +18,7 @@
                   <div style="float: left;">${dto.memId} | ${dto.created}</div>
                   <div style="float: right;  text-align: rigth;">
                         <c:if test="${sessionScope.member.memId==dto.memId || sessionScope.member.memId=='admin'}">
-                           <a onclick='deleteReply("${dto.replyNum}", "${pageNo}", "${dto.userId}");'>삭제</a>
+                           <a onclick='deleteReply("${dto.replyNum}", "${pageNo}", "${dto.memId}");'>삭제</a>
                         </c:if>
                   </div>
               </div>

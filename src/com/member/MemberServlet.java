@@ -219,7 +219,7 @@ public class MemberServlet extends MyServlet {
 				
 				return;
 			}
-			/*
+			
 			if(mode.equals("delete")) {
 				// È¸¿øÅ»Åð
 				dao.deleteMember(info.getMemId());
@@ -238,7 +238,7 @@ public class MemberServlet extends MyServlet {
 				
 				return;
 			}
-			*/
+			
 			// È¸¿øÁ¤º¸¼öÁ¤
 			if(dto.getTel()!=null) {
 				String []s=dto.getTel().split("-");
@@ -266,7 +266,6 @@ public class MemberServlet extends MyServlet {
 
 			req.setAttribute("mode", "update");
 			forward(req, resp, "/WEB-INF/views/member/member.jsp");
-			
 			
 		}
 		 else if(uri.indexOf("update_ok.sst")!=-1) {
@@ -322,5 +321,7 @@ public class MemberServlet extends MyServlet {
 				forward(req, resp, "/WEB-INF/views/member/complete.jsp");
 			}
 		}
+	
+	
 	}
 

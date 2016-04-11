@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-<title>회원가입 완료 페이지 </title>
+<title>  </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
@@ -45,18 +45,24 @@
 	<div class="layoutBody">
 
 		<div style="min-height: 100%">
-				<div style="margin-top:150px; width:100%;	height: 40px;  line-height:40px;clear: both; border-top: 1px solid #DAD9FF;border-bottom: 1px solid #DAD9FF;">
-				    <div style="width:600px; height:30px; line-height:30px; margin:0 auto;">
+				<div style="margin-top:150px; width:100%;	height: 40px;  line-height:40px;clear: both; ">
+				   <div style="width: 600px; border-top: 2px solid #FFCC66 ; border-bottom: 2px solid #FFCC66; ">
+				    <div style="width:600px; height:30px; line-height:30px; margin:0 auto; 
+				    	margin-top:10px; margin-bottom:10px;">
 				        
-				        <span style="margin-left:250px; font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">
+				        <span style=" margin-left:250px; font-weight: bold;font-size:18pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">
 				        	${title}</span>
 				    </div>
+					</div>
 				</div>
 				
 				<div style="margin: 30px auto; width: 400px; min-height: 400px;">
-					<div style="margin: 0px auto; padding:10px; min-height: 50px; line-height: 130%;  text-align: center;">${message}</div>
-					<div style="height: 50px; text-align: center;">
-					    <input type="button" value=" 메인화면으로 이동 >> "
+					
+					<div style="margin: 0px auto; padding:10px; min-height: 50px; line-height: 130%;  text-align: center;">
+						${message}
+					</div>
+					<div style="height: 50px; text-align: center; margin-bottom:30px;">
+					    <input type="button" value=" 메인화면으로 이동 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>"
 					              class="moveButton"
 					              onclick="javascript:location.href='<%=cp%>/';">
 					</div>  
@@ -64,15 +70,15 @@
 		</div>
 
     </div>
-	<!-- Footer -->
+<!-- Footer -->
         <footer>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12"  style="margin-left: 50px;">
                     <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
         </footer>
-
+	
     </div>
     <!-- /.container -->
   <!-- jQuery -->

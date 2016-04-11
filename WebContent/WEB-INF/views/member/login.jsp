@@ -130,7 +130,7 @@ function sendLogin2() {
          
         <div style="margin-top:10px; text-align: center;">
             <button type="button" class="btn btn-link" onclick="location.href='<%=cp%>/member/member.do';">
-            		아직 회원이 아니신가요?
+            		아직 회원이 아니신가요? <span class="glyphicon glyphicon-chevron-right" style="color:gray; margin-right:10px;" ></span> JOIN US!
             </button>
         </div>
     </form>

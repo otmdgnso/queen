@@ -8,7 +8,11 @@
 %>
 
 <link rel="stylesheet" href="<%=cp%>/res/css/login.css" type="text/css"/>
+<style>
+#btn1:hover{
 
+}
+</style>
 <script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script> 
 
 <script type="text/javascript">
@@ -61,7 +65,7 @@ function sendLogin() {
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul style="color:#E6E6E6;"class="nav navbar-nav navbar-right">
                     <li>
                         <a href="about.jsp">About</a>
                     </li>
@@ -76,7 +80,7 @@ function sendLogin() {
                                 <a href="sidebar.jsp">주절주절</a>
                             </li>
                             <li>
-                                <a href="<%=cp%>/portfolio/list.sst">포트폴리오</a>
+                                <a href="lIst.jsp">포트폴리오</a>
                             </li>                                                     
                         </ul>
                     </li>
@@ -120,8 +124,8 @@ function sendLogin() {
                      <li class="dropdown">
                     
 	                    <c:if test="${empty sessionScope.member}">
-	             			   <button  style="margin-top:10px; border-radius:4px; " type="button" class="btn btn-default btn-sm btn-block" 
-	                        			data-toggle="modal" data-target="#login-modal" >
+	             			   <button  class="dropdown-toggle" style="margin-left:10px;margin-top:16px; border-radius:2px; background:none; border:none; color: #E6E6E6; font-size:13px;" type="button" 
+	                        			data-toggle="modal" data-target="#login-modal"  >
 							<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; 로그인
 							</button>
 	            		</c:if>
@@ -134,19 +138,31 @@ function sendLogin() {
 	                			
 	                		</c:if>
 	                		<c:if test="${sessionScope.member.memId!='admin'}" >
-	                			<a href="<%=cp%>/member/pwd.sst?mode=update" style="color:white; font-weight:bold;" class="dropdown-toggle" >
+	                			 
+	                			 <a href="#" style="color:white; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown">
+	                			 		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>&nbsp;&nbsp;${sessionScope.member.memName} 님<b class="caret"></b></a>
+                        		<ul class="dropdown-menu" style="text-align:center;">
+                            		<li>
+		                                <a href="<%=cp%>/member/pwd.sst?mode=update">정보수정</a>
+		                            </li>
+		                            <li>
+		                                <a href="<%=cp%>/member/pwd.sst?mode=delete">회원탈퇴</a>
+		                            </li>
+		                          
+		                        </ul>
+	                			
+	                			<%-- <a href="<%=cp%>/member/pwd.sst?mode=update" style="color:white; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown">
 	                		  	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>&nbsp;&nbsp;${sessionScope.member.memName} 님</a>
-	                		  	
+	                		  	 --%>
 	                		</c:if>
 	            		</c:if>
                       
                     </li>
-                    <!-- 로그아웃 / 혹은 회원가입 -->
-                    <li >
-                   			     
+                    <!-- 로그아웃 / 혹은 회원가입  margin-left:10px; margin-top:10px; border-radius:4px; -->
+                    <li >                   			     
 						<c:if test="${empty sessionScope.member}">  
-								<button  style="margin-left:10px; margin-top:10px; border-radius:4px;" type="button" class="btn btn-default btn-sm btn-block" 
-		                        onclick="location.href='<%=cp%>/member/member.sst';"	>
+								<button id="btn1" style="margin-left:10px;margin-top:16px;background:none; border:none; color:#E6E6E6; font-size:13px; " type="button" 
+								onclick="location.href='<%=cp%>/member/member.sst';"class="dropdown-toggle"	>
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp; 회원가입
 								</button>
      <%-- 
@@ -155,7 +171,7 @@ function sendLogin() {
                  
                       <c:if test="${not empty sessionScope.member}">
                      		
-                        <a href="<%=cp%>/member/logout.sst"> 로그아웃</a>
+                        <a href="<%=cp%>/member/logout.sst" style="color:color:#E6E6E6; "> 로그아웃</a>
                       </c:if>
                    
                    </li>

@@ -45,6 +45,17 @@ public class PortfolioServlet extends MyServlet {
 
 		// uri에 따른 작업 구분
 		if (uri.indexOf("list.sst") != -1) {
+			
+			if(info==null) { // 로그인되지 않은 경우
+				
+				String msg2=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 로그인 후 사용하실 수 있습니다";
+				req.setAttribute("message", msg2);
+				
+				String path="/WEB-INF/views/member/login.jsp";
+				forward(req, resp, path);
+				return ;
+			}
+			
 			// 게시물 리스트
 			String page = req.getParameter("page");
 			int current_page = 1;

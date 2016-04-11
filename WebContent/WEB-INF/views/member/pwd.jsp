@@ -9,13 +9,14 @@
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-<title>사자의 심장을 가져롸 </title>
- <!-- Bootstrap Core CSS -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>비밀번호 확인</title>
+<!-- Bootstrap Core CSS -->
     <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -28,9 +29,11 @@
 <link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
-<style type="text/css">
+
+
+ <style type="text/css">
 .form-signin {
-  max-width: 400px;
+  max-width: 440px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -43,7 +46,7 @@
 
 .form-signin-heading {
   text-align: center;
-  font-weight:bold;  
+  font-weight:bold;
   font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", sans-serif;
   margin-bottom: 30px;
 }
@@ -61,6 +64,12 @@
   padding-left: 15px;
   margin-top:5px; margin-bottom:15px;
 }
+
+.boxLayout {
+    max-width:420px;
+    padding:20px;
+    border: 1px solid #DAD9FF;
+}
 </style>
 
 <script type="text/javascript">
@@ -73,13 +82,15 @@ function bgLabel(ob, id) {
 	    }
 }
 
-function sendLogin() {
+function sendOk(){
 	
-        var f = document.loginForm;
-
+        var f = document.confirmForm;
+		
     	var str = f.memId.value;
-        if(!str) {
+    	
+    	if(!str) {
             f.memId.focus();
+            alert("아이디를 입력하세요");
             return false;
         }
 
@@ -90,69 +101,62 @@ function sendLogin() {
             return false;
         }
 
-        f.action ="<%=cp%>/member/login_ok.sst";
-       
-        return true;
+        f.action ="<%=cp%>/member/pwd_ok.sst";
+       	f.submit();
   }
 </script>
+
 </head>
 <body>
 
 	<div>
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
-	
 
-<div class="container" role="main" style="min-height:80%">
+<div class="container" role="main" >
+    <div class="bodyFrame" style="min-height:850px;">
 
-    <div class="bodyFrame">
-    <form class="form-signin" name="loginForm" method="post"  onsubmit="return sendLogin();">
-        <h2 class="form-signin-heading">Log In</h2>
+    <form class="form-signin" name="confirmForm" method="post">
+       
+        <h2 class="form-signin-heading">패스워드 재확인</h2>
+       
+        <div class="boxLayout">
         
-        <label for="memId" id="lblUserId" class="lbl">아이디</label>
-        <input type="text" id="memId" name="memId" class="form-control loginTF" autofocus="autofocus"
-                  onfocus="document.getElementById('lblUserId').style.display='none';"
-	              onblur="bgLabel(this, 'lblUserId');">
-	              
-        <label for="memPwd" id="lblUserPwd" class="lbl">패스워드</label>
-        <input type="password" id="memPwd" name="memPwd" class="form-control loginTF"
+            <div style="text-align: left; padding-bottom: 10px; ">정보보호를 위해 패스워드를 다시 한 번 입력해주세요</div>
+            
+            <input type="text" id="memId" name="memId" class="form-control loginTF"
+	              value="${sessionScope.member.memId}"
+                  readonly="readonly"
+	              >
+            <label for="memPwd" id="lblUserPwd" class="lbl">패스워드</label>
+            <input type="password" id="memPwd" name="memPwd" class="form-control loginTF" autofocus="autofocus"
                   onfocus="document.getElementById('lblUserPwd').style.display='none';"
 	              onblur="bgLabel(this, 'lblUserPwd');">
-        
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="sendLogin();">로그인 
-        	<span class="glyphicon glyphicon-ok"></span></button>
-        
-       
-      	<div style=" margin-left:57px;margin-top:20px; width:370px;">
-              <span style=" text-align:center; color:tomato; font-weight:bold; font-size:13px; " class="form-control-static">
-              ${message}</span>
-         </div>
-         
-        <div style="margin-top:10px; text-align: center;">
-            <button type="button" class="btn btn-link" onclick="location.href='<%=cp%>/member/member.do';">
-            		아직 회원이 아니신가요?
-            </button>
+	              
+            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="sendOk();">확인 <span class="glyphicon glyphicon-ok"></span></button>
+            <input type="hidden" name="mode" value="${mode}">
+            
         </div>
+        
+        <div style="margin-top:15px; text-align: center;">${message}</div>
+        
     </form>
     </div>
-</div>
+    
+
 <!-- Footer -->
-        <footer>
+        <footer >
             <div class="row">
                 <div class="col-lg-12" style="margin-left: 50px;">
                     <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
         </footer>
+	</div>
+	<script src="<%=cp%>/res/js/jquery.js"></script>
 
- <!-- jQuery -->
-    <script src="<%=cp%>/res/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
-    <%-- 
-
-<script type="text/javascript" src="<%=cp%>/res/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/res/js/jquery.ui.datepicker-ko.js"></script> --%>
+<<%-- script type="text/javascript" src="<%=cp%>/res/jquery/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/res/jquery/js/jquery.ui.datepicker-ko.js"></script> --%>
 </body>
 </html>

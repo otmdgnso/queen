@@ -7,6 +7,7 @@ public class MemberDTO {
 	private String birth, job;
 	private String zip, addr1, addr2;
 	private int enabled;
+	private String kisu, course;
 	//member1:  memId,memNick, memName, memPwd, memCreated, memModify,memCourse, enabled; 
 	//member2:	memId, birth DATE,	email VARCHAR(50),tel VARCHAR(20) ,	job	VARCHAR(50),zip	VARACHAR(7),
 	//			addr1 	VARCHAR(50), add2  	VARCHAR(50)
@@ -14,6 +15,18 @@ public class MemberDTO {
 	
 	public String getEmail() {
 		return email;
+	}
+	public String getKisu() {
+		return kisu;
+	}
+	public void setKisu(String kisu) {
+		this.kisu = kisu;
+	}
+	public String getCourse() {
+		return course;
+	}
+	public void setCourse(String course) {
+		this.course = course;
 	}
 	public void setEmail(String email) {
 		this.email = email;

@@ -296,8 +296,29 @@ public class ShareServlet extends MyServlet {
 			resp.setContentType("text/html);charset=utf-8");
 			PrintWriter out=resp.getWriter();
 			out.println(sb.toString());
-		}
+		} else if(uri.indexOf("deleteReply.sst")!= -1){
+			//리플 삭제-----------------------
+			int shareR_num = Integer.parseInt(req.getParameter("shareR_num"));
+			String memId=req.getParameter("memId");
+			
+			String state="false";
+			if(info == null){ //로그인 되지 않은 경우
+				state= "loginFail";				
+			} else if(info.getMemId().equals("admin") || info.getMemId().equals(memId)){
+				dao.deleteShareReply(shareR_num);
+				state="true";
+				
+			}
+			StringBuffer sb=new StringBuffer();
+			sb.append("{");
+			sb.append("\"state\":"+"\""+state+"\"");
+			sb.append("}");
 
+			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.println(sb.toString());
+		}
+ 
 		
 		
 		

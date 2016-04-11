@@ -12,7 +12,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<!-- jQuery -->
+	<script src="<%=cp%>/res/js/jquery.js"></script>
+	
 <!-- Bootstrap Core CSS -->
 <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,6 +24,7 @@
 <!-- Custom Fonts -->
 <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+		
 <script type="text/javascript">
 function updatePortfolio(num) {
    <c:if test="${sessionScope.member.memId==dto.memId}">
@@ -37,6 +40,86 @@ function deletePortfolio(num) {
             location.href=url;
          }   
    </c:if>
+}
+//-- 댓글 ------------------------------------
+function login() {
+	location.href="<%=cp%>/member/login.sst";
+}
+
+//댓글 리스트
+$(function(){
+	listPage(1);
+});
+
+function listPage(page) {
+	var url="<%=cp%>/portfolio/listReply.sst";
+	var num="${dto.num}";
+	$.post(url, {num:num, pageNo:page}, function(data){
+		$("#listReply").html(data);
+	});
+}
+
+//리플 저장
+function sendReply() {
+	var uid="${sessionScope.member.memId}";
+	if(! uid) {
+		login();
+		return false;
+	}
+
+	var num="${dto.num}"; // 해당 게시물 번호
+	var content=$.trim($("#content").val());
+	if(! content ) {
+		alert("내용을 입력하세요 !!! ");
+		$("#content").focus();
+		return false;
+	}
+	
+	var params="num="+num;
+	params+="&content="+content;
+	
+	$.ajax({
+		type:"POST"
+		,url:"<%=cp%>/portfolio/insertReply.sst"
+		,data:params
+		,dataType:"json"
+		,success:function(data) {
+			$("#content").val("");
+			
+  			var state=data.state;
+			if(state=="true") {
+				listPage(1);
+			} else if(state=="false") {
+				alert("댓글을 등록하지 못했습니다. !!!");
+			} else if(state=="loginFail") {
+				login();
+			}
+		}
+		,error:function(e) {
+			alert(e.responseText);
+		}
+	});
+}
+
+// 리플 삭제
+function deleteReply(replyNum, pageNo, userId) {
+	var uid="${sessionScope.member.memId}";
+	if(! uid) {
+		login();
+		return false;
+	}
+	
+	if(confirm("게시물을 삭제하시겠습니까 ? ")) {	
+		var url="<%=cp%>/portfolio/deleteReply.sst";
+		$.post(url, {replyNum:replyNum, userId:userId}, function(data){
+		        var state=data.state;
+				if(state=="loginFail") {
+					login();
+				} else {
+					listPage(pageNo);
+				}
+		}, "json");
+	}
 }
 </script>
 </head>
@@ -113,10 +196,11 @@ function deletePortfolio(num) {
 					댓글등록 <span class="glyphicon glyphicon-ok"></span>
 				</button>
 			</div>
+								<div id="listReply"></div>
+			
 		</div>
 	</div>
-	<!-- jQuery -->
-	<script src="<%=cp%>/res/js/jquery.js"></script>
+
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="<%=cp%>/res/js/bootstrap.min.js"></script>

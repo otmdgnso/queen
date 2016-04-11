@@ -279,8 +279,8 @@ private Connection conn=DBConn.getConnection();
 			sb.append("SELECT * FROM (SELECT @rownum:=@rownum+1 AS rnum, tb.* FROM (");    
 			sb.append("		  SELECT replyNum, portfolioReply.num, portfolioReply.memId, portfolioReply.content, ");
 			sb.append("		DATE_FORMAT(portfolioReply.Created , '%Y-%m-%d') Created");
-			sb.append("			 FROM portfolioReply JOIN  portfolio ON portfolioReply.num=portfolio.num   ");
-			sb.append("			WHERE portfolioReply.num=?  ORDER BY replyNum DESC) tb,(SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
+			sb.append("			 FROM portfolioReply  ");
+			sb.append("			WHERE num=?  ORDER BY replyNum DESC) tb,(SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
 
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setInt(1, num);

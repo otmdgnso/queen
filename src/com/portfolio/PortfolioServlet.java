@@ -20,7 +20,7 @@ import com.util.MyServlet;
 import com.util.MyUtil;
 
 @WebServlet("/portfolio/*")
-public class portfolioServlet extends MyServlet {
+public class PortfolioServlet extends MyServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -224,6 +224,93 @@ public class portfolioServlet extends MyServlet {
 			dao.deletePortfolio(num);
 
 			resp.sendRedirect(cp + "/portfolio/list.sst?page=" + page);
+		}else if (uri.indexOf("listReply.sst") != -1) {
+			// 리플 리스트 ---------------------------------------
+			int num = Integer.parseInt(req.getParameter("num"));
+			String pageNo = req.getParameter("pageNo");
+			int current_page = 1;
+			if (pageNo != null)
+				current_page = Integer.parseInt(pageNo);
+
+			int numPerPage = 5;
+			int total_page = 0;
+			int dataCount = 0;
+
+			dataCount = dao.dataCountReply(num);
+			total_page = util.pageCount(numPerPage, dataCount);
+			if (current_page > total_page)
+				current_page = total_page;
+
+			int start = (current_page - 1) * numPerPage + 1;
+			int end = current_page * numPerPage;
+
+			// 리스트에 출력할 데이터
+			List<PortfolioReplyDTO> list = dao.listReply(num, start, end);
+
+			// 엔터를 <br>
+			Iterator<PortfolioReplyDTO> it = list.iterator();
+			while (it.hasNext()) {
+				PortfolioReplyDTO dto = it.next();
+				dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
+			}
+
+			// 페이징처리(인수2개 짜리 js로 처리)
+			String paging = util.paging(current_page, total_page);
+
+			req.setAttribute("list", list);
+			req.setAttribute("pageNo", current_page);
+			req.setAttribute("dataCount", dataCount);
+			req.setAttribute("total_page", total_page);
+			req.setAttribute("paging", paging);
+
+			// 포워딩
+			String path = "/WEB-INF/views/portfolio/portfolioReply.jsp";
+			forward(req, resp, path);
+		} else if (uri.indexOf("insertReply.sst") != -1) {
+			// 리플 저장하기 ---------------------------------------
+			String state="true";
+			if (info == null) { // 로그인되지 않은 경우
+				state="loginFail";
+			} else {
+				int num = Integer.parseInt(req.getParameter("num"));
+				PortfolioReplyDTO rdto = new PortfolioReplyDTO();
+				rdto.setNum(num);
+				rdto.setMemId(info.getMemId());
+				rdto.setContent(req.getParameter("content"));
+
+				int result=dao.insertReply(rdto);
+				if(result==0)
+					state="false";
+			}
+
+			StringBuffer sb=new StringBuffer();
+			sb.append("{");
+			sb.append("\"state\":"+"\""+state+"\"");
+			sb.append("}");
+			
+			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.println(sb.toString());
+		} else if (uri.indexOf("deleteReply.sst") != -1) {
+			// 리플 삭제 ---------------------------------------
+			int replyNum = Integer.parseInt(req.getParameter("replyNum"));
+			String userId=req.getParameter("userId");
+			
+			String state="false";
+			if (info == null) { // 로그인되지 않은 경우
+				state="loginFail";
+			} else if(info.getMemId().equals("admin") || info.getMemId().equals(userId)) {
+				dao.deleteReply(replyNum);
+				state="true";
+			}
+			StringBuffer sb=new StringBuffer();
+			sb.append("{");
+			sb.append("\"state\":"+"\""+state+"\"");
+			sb.append("}");
+			
+			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.println(sb.toString());
 		}
 	}
 }

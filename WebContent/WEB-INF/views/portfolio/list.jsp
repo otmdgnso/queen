@@ -113,9 +113,6 @@
 			</div>
 			</div>
 
-	<!-- jQuery -->
-	<script src="<%=cp%>/res/js/jquery.js"></script>
-
 	<!-- Bootstrap Core JavaScript -->
 	<script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 

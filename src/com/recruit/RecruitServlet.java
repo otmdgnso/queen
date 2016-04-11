@@ -36,8 +36,12 @@ public class RecruitServlet extends MyServlet{
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		if(info==null) { // 로그인되지 않은 경우
 			
-			resp.sendRedirect(cp+"/member/login.sst");
-			return;
+			String msg=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 로그인 후 사용하실 수 있습니다";
+			req.setAttribute("message", msg);
+			
+			String path="/WEB-INF/views/member/login.jsp";
+			forward(req, resp, path);
+			return ;
 		}
 		
 		// 이미지를 저장할 경로(pathname)

@@ -107,7 +107,8 @@ public class MemberServlet extends MyServlet {
 			String memPwd=req.getParameter("memPwd");
 			
 			MemberDTO dto=dao.readMember(memId);
-			// 로그인 성공 : 로그인정보를 서버에 저장
+			
+			// 로그인 성공했다면 : 로그인정보를 서버에 저장
 			if(dto!=null) {
 
 				if(memPwd.equals(dto.getMemPwd()) && dto.getEnabled()==1) {

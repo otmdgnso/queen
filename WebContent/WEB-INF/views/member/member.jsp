@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>회원가입</title>
+<title>spring</title>
 
 <script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
@@ -176,8 +176,8 @@ function changeEmail() {
 
 <div class="container" role="main" style="margin-top:50px;">
   <div class="jumbotron">
-    <h1><span class="glyphicon glyphicon-user" style="color:gray; margin-right:10px;" ></span> 회원가입 </h1>
-    <p>사자의 심장을 가져라! 쌍용 수강생만 가입 가능합니다</p>
+    <h1><span class="glyphicon glyphicon-user" style="color:gray; margin-right:10px;" ></span> ${mode=="created"?"회원 가입":"회원정보 수정"} </h1>
+    <p> ${mode=="created"?"사자의 심장을 가져라! 쌍용 수강생만 가입 가능합니다 ":"사자의 심장을 가져라! 아이디와 이름을 제외한 정보 수정이 가능합니다"}</p>
   </div>
 
   <div class="bodyFrame">

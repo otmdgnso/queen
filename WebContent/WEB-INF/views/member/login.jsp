@@ -24,7 +24,6 @@
     <!-- Custom Fonts -->
     <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    
 <link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
@@ -73,9 +72,10 @@ function bgLabel(ob, id) {
 	    }
 }
 
+//양희의 에러노트: navigation에서의 폼이름과 함수이름이 같아서 계속 뭔지도 모르고 에러가 났던 것이었다..!
 function sendLogin2() {
 	
-        var f = document.loginForm;
+        var f = document.loginForm2;
 
     	var str = f.memId.value;
         if(!str) {
@@ -91,7 +91,7 @@ function sendLogin2() {
         }
 
         f.action ="<%=cp%>/member/login_ok.sst";
-       
+
         return true;
   }
 </script>
@@ -106,7 +106,7 @@ function sendLogin2() {
 <div class="container" role="main" style="min-height:80%">
 
     <div class="bodyFrame">
-    <form class="form-signin" name="loginForm" method="post"  onsubmit="return sendLogin2();">
+    <form class="form-signin" name="loginForm2" method="post"  onsubmit="return sendLogin2();">
         <h2 class="form-signin-heading">Log In</h2>
         
         <label for="memId" id="lblUserId" class="lbl">아이디</label>
@@ -119,7 +119,7 @@ function sendLogin2() {
                   onfocus="document.getElementById('lblUserPwd').style.display='none';"
 	              onblur="bgLabel(this, 'lblUserPwd');">
         
-        <button class="btn btn-lg btn-primary btn-block" type="submit">로그인 
+        <button class="btn btn-lg btn-primary btn-block" type="submit" >로그인 
         	<span class="glyphicon glyphicon-ok"></span></button>
         
        
@@ -130,7 +130,7 @@ function sendLogin2() {
          
         <div style="margin-top:10px; text-align: center;">
             <button type="button" class="btn btn-link" onclick="location.href='<%=cp%>/member/member.do';">
-            		아직 회원이 아니신가요? <span class="glyphicon glyphicon-chevron-right" style="color:gray; margin-right:10px;" >JOIN US!</span>
+            		아직 회원이 아니신가요?
             </button>
         </div>
     </form>
@@ -150,9 +150,6 @@ function sendLogin2() {
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
-    <%-- 
-
-<script type="text/javascript" src="<%=cp%>/res/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/res/js/jquery.ui.datepicker-ko.js"></script> --%>
+   
 </body>
 </html>

@@ -146,9 +146,8 @@ public class ShareServlet extends MyServlet {
 			//파라미터
 			dto.setShareContent(req.getParameter("shareContent"));
 			dto.setShareSubject(req.getParameter("shareSubject"));
-			
+						
 			dao.insertShare(dto);
-			
 			req.setAttribute("mode", "created");
 			resp.sendRedirect(cp+ "/bbs/list.sst");
 		} else if (uri.indexOf("article.sst") != -1) {

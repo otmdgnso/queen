@@ -20,8 +20,6 @@
 
     <!-- Custom Fonts -->
     <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css">
-<link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css">
 
 <!-- jQuery -->
 <script src="<%=cp%>/res/js/jquery.js"></script>
@@ -29,18 +27,16 @@
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript">
     function check() {
-        var f = document.boardForm;
+        var f = document.shareForm;
 
     	var str = f.shareSubject.value;
         if(!str) {
-            alert("제목을 입력하세요. ");
             f.shareSubject.focus();
             return false;
         }
-
+        
     	str = f.shareContent.value;
         if(!str) {
-            alert("내용을 입력하세요. ");
             f.shareContent.focus();
             return false;
         }
@@ -63,66 +59,82 @@
 	</div>
 
 	
-	<div class="layoutBody">
+	<div class="container" role="main">
+		<div class="bodyFrame col-sm-10"
+			style="float: none; margin-left: auto; margin-right: auto;">
 
-		<div style="min-height: 450px;">
-				<div style="width:100%;	height: 40px; line-height:40px;clear: both; border-top: 1px solid #DAD9FF;border-bottom: 1px solid #DAD9FF;">
-				    <div style="width:600px; height:30px; line-height:30px; margin:5px auto;">
-				        <img src="<%=cp%>/res/image/arrow.gif" alt="" style="padding-left: 5px; padding-right: 5px;">
-				        <span style="font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">게시판</span>
-				    </div>
-				</div>
-			
-				<div style="margin: 10px auto; margin-top: 20px; width:600px; min-height: 400px;">
-		
-					<form name="boardForm" method="post" onsubmit="return check();">
-					  <table style="width: 600px; margin: 0px auto; border-spacing: 0px;">
-					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
-					
-					  <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="shareSubject" size="75" maxlength="100" class="boxTF" value="${dto.shareSubject}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					  <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">작 성 자</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        ${sessionScope.member.memId}
-					      </td>
-					  </tr>
-				      <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-					  <tr align="left"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center; padding-top:5px;" valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-					      <td width="500" valign="top" style="padding:5px 0px 5px 10px;"> 
-					        <textarea name="shareContent" cols="75" rows="12" class="boxTA">${dto.shareContent}</textarea>
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
-					  </table>
-					
-					  <table style="width: 600px; margin: 0px auto; border-spacing: 0px;">
-					     <tr height="45"> 
-					      <td align="center" >
-						    <input type="image" src="<%=cp%>/res/image/btn_submit.gif" >
-		        		    <a href="javascript:location.href='<%=cp%>/bbs/list.sst';"><img src="<%=cp%>/res/image/btn_cancel.gif" border="0"></a>
-		
-							<c:if test="${mode=='update'}">
-								<input type="hidden" name="shareNum" value="${dto.shareNum}">
-								<input type="hidden" name="page" value="${page}">
-							</c:if>
-		
-					      </td>
-					    </tr>
-					  </table>
-					</form>
-				</div>
+			<div>
+				<form name="shareForm" method="post" onsubmit="return check();">
+					<div class="bs-write">
+						<table class="table">
+							<tbody>
+								<tr>
+									<td class="td1">작성자명</td>
+									<td class="td2 col-md-5 col-sm-5">
+										<p class="form-control-static">${sessionScope.member.memId}</p>
+									</td>
+									<td class="td1" align="center">&nbsp;</td>
+									<td class="td2 col-md-5 col-sm-5">&nbsp;</td>
+
+								</tr>
+								<tr>
+									<td class="td1">제목</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="shareSubject" class="form-control input-sm"
+										value="${dto.shareSubject}" required="required"></td>
+								</tr>
+								<tr>
+									<td class="td1" colspan="4" style="padding-bottom: 0px;">설명</td>
+								</tr>
+								<tr>
+									<td colspan="4" class="td4"><textarea name="shareContent"
+											class="form-control" rows="7" required="required">${dto.shareContent}</textarea>
+									</td>
+								</tr>
+
+								
+
+
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="4" style="text-align: center; padding-top: 15px;">
+										<button type="submit" class="btn btn-primary">
+											확인 <span class="glyphicon glyphicon-ok"></span>
+										</button>
+										<button type="button" class="btn btn-danger"
+											onclick="javascript:location.href='<%=cp%>/bbs/list.sst';"> 취소</button>
+											 <c:if test="${mode=='update'}">
+											      <input type="hidden" name="shareNum" value="${dto.shareNum}">
+											      <input type="hidden" name="memId" value="${dto.memId}">
+											      <input type="hidden" name="page" value="${page}">
+										  </c:if>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</form>
+			</div>
+
 		</div>
+	</div>
 
-    </div>
+
+	<div class="modal fade" id="imageViewModal" tabindex="-1" role="dialog"
+		aria-labelledby="imageViewModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+			</div>
+		</div>
+	</div>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>

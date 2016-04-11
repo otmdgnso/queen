@@ -89,7 +89,7 @@ function sendLogin() {
                                 <a href="portfolio-2-col.jsp">자소서 공유 </a>
                             </li>
                             <li>
-                                <a href="portfolio-3-col.jsp">회사정보</a>
+                                <a href="<%=cp%>/company/list.sst">회사정보</a>
                             </li>
                             <li>
                                 <a href="<%=cp%>/bbs/list.sst">취업정보나눔 </a>

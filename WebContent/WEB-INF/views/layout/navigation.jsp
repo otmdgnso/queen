@@ -107,7 +107,7 @@ function sendLogin() {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">IT정보<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="blog-home-1.jsp">IT동향</a>
+                                <a href="<%=cp%>/trend/list.sst">IT동향</a>
                             </li>
                             <li>
                                 <a href="<%=cp%>/tip/list.sst">개발Tip </a>

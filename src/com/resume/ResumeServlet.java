@@ -144,8 +144,17 @@ public class ResumeServlet extends MyServlet {
 			dto.setMemId(info.getMemId());
 			
 			//파라미터
-			dto.setResumeContent(req.getParameter("resumeContent"));
 			dto.setResumeSubject(req.getParameter("resumeSubject"));
+			dto.setResumeSubject(req.getParameter("resumeCompany"));
+			dto.setResumeSubject(req.getParameter("resumeDate"));
+			dto.setResumeSubject(req.getParameter("resumeJob"));
+			dto.setResumeSubject(req.getParameter("resumeSchool"));
+			dto.setResumeSubject(req.getParameter("resumeMajor"));
+			dto.setResumeSubject(req.getParameter("resumeScore"));
+			dto.setResumeSubject(req.getParameter("resumeLanguage"));
+			dto.setResumeSubject(req.getParameter("resumeEx"));
+			dto.setResumeSubject(req.getParameter("resumeAbility"));
+			dto.setResumeSubject(req.getParameter("resumeContent"));
 			
 			dao.insertResume(dto);
 			
@@ -223,7 +232,16 @@ public class ResumeServlet extends MyServlet {
 			ResumeDTO dto = new ResumeDTO();
 			dto.setResumeNum(Integer.parseInt(req.getParameter("resumeNum")));
 			dto.setResumeSubject(req.getParameter("resumeSubject"));
-			dto.setResumeContent(req.getParameter("resumeContent"));
+			dto.setResumeSubject(req.getParameter("resumeCompany"));
+			dto.setResumeSubject(req.getParameter("resumeDate"));
+			dto.setResumeSubject(req.getParameter("resumeJob"));
+			dto.setResumeSubject(req.getParameter("resumeSchool"));
+			dto.setResumeSubject(req.getParameter("resumeMajor"));
+			dto.setResumeSubject(req.getParameter("resumeScore"));
+			dto.setResumeSubject(req.getParameter("resumeLanguage"));
+			dto.setResumeSubject(req.getParameter("resumeEx"));
+			dto.setResumeSubject(req.getParameter("resumeAbility"));
+			dto.setResumeSubject(req.getParameter("resumeContent"));
 
 			dao.resumeUpdate(dto);
 			
@@ -329,16 +347,6 @@ public class ResumeServlet extends MyServlet {
 			PrintWriter out=resp.getWriter();
 			out.println(sb.toString());
 		}
- 
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 

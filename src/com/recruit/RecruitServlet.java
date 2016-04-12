@@ -117,10 +117,13 @@ public class RecruitServlet extends MyServlet{
 			dto.setRecruitQual(dto.getRecruitQual().replaceAll("\n", "<br>"));
 			dto.setRecruitStep(dto.getRecruitStep().replaceAll("\n", "<br>"));
 			
-			String companyUrl=cp + "/company/article.sst?companyNum="+cdto.getCompanyNum();
+			if(cdto!=null){
+				String companyUrl=cp + "/company/article.sst?companyNum="+cdto.getCompanyNum();
+				req.setAttribute("companyUrl", companyUrl);
+			}
 			
 			req.setAttribute("dto", dto);
-			req.setAttribute("companyUrl", companyUrl);
+			
 			
 			String path = "/WEB-INF/views/recruit/article.jsp";
 			forward(req, resp, path);

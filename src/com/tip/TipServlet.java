@@ -143,9 +143,19 @@ public class TipServlet extends MyServlet {
 			// userId는 세션에 저장된 정보
 			dto.setMemId(info.getMemId());
 			
+			
 			//파라미터
-			dto.setTipContent(req.getParameter("tipContent"));
 			dto.setTipSubject(req.getParameter("tipSubject"));
+			//dto.setTipName(req.getParameter("tipName"));
+			//dto.setTipWeb(req.getParameter("tipWeb"));
+			//dto.setTipForm(req.getParameter("tipForm"));
+			//dto.setTipDate(req.getParameter("tipDate"));
+			//dto.setTip(req.getParameter("tipIndustry"));
+			dto.setTipSubject(req.getParameter("tipSales"));
+			dto.setTipSubject(req.getParameter("tipSalary"));
+			dto.setTipSubject(req.getParameter("tipScore"));
+			dto.setTipSubject(req.getParameter("tipPlanet"));
+			dto.setTipSubject(req.getParameter("tipContent"));
 			
 			dao.insertTip(dto);
 			
@@ -329,15 +339,6 @@ public class TipServlet extends MyServlet {
 			PrintWriter out=resp.getWriter();
 			out.println(sb.toString());
 		}
- 
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 	}

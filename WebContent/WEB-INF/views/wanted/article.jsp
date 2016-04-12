@@ -163,7 +163,7 @@ function deleteReply(wantedR_num, pageNo, memId){
                     <thead>
                         <tr>
                             <th colspan="3" style="text-align: center;">
-                                    ${dto.wantedSubject}
+                                   [${dto.wantedHead}] ${dto.wantedSubject}
                             </th>
                         </tr>
                    <thead>

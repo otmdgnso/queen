@@ -85,7 +85,18 @@
 										value="${dto.wantedSubject}" required="required"></td>
 								</tr>
 								<tr>
-									<td class="td1" colspan="4" style="padding-bottom: 0px;">설명</td>
+									<td class="td1">말머리</td>
+									<td colspan="3" class="td3">
+									<select name="wantedHead" >
+									<option value="자바" ${dto.wantedHead=="자바"?"selected='selected'" : ""}>자바</option>
+									<option value="스프링" ${dto.wantedHead=="스프링"?"selected='selected'" : ""}>스프링</option>
+									<option value="JSP" ${dto.wantedHead=="JSP"?"selected='selected'" : ""}>JSP</option>
+									<option value="오라클" ${dto.wantedHead=="오라클"?"selected='selected'" : ""}>오라클</option>
+									</select>
+										</td>
+								</tr>
+								<tr>
+									<td class="td1" colspan="4" style="padding-bottom: 0px;">내용</td>
 								</tr>
 								<tr>
 									<td colspan="4" class="td4"><textarea name="wantedContent"

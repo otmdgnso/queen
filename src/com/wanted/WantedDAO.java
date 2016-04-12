@@ -152,6 +152,7 @@ public class WantedDAO {
 				dto.setMemId(rs.getString("memId"));
 				dto.setWantedCreated(rs.getString("WantedCreated"));
 				dto.setWantedHitCount(rs.getInt("WantedHitCount"));
+				dto.setWantedHead(rs.getString("WantedHead"));
 
 				list.add(dto);
 			}
@@ -208,6 +209,8 @@ public class WantedDAO {
 					dto.setMemId(rs.getString("memId"));
 					dto.setWantedCreated(rs.getString("WantedCreated"));
 					dto.setWantedHitCount(rs.getInt("WantedHitCount"));
+					dto.setWantedHead(rs.getString("WantedHead"));
+					dto.setWantedHead(rs.getString("WantedHead"));
 					
 					list.add(dto);
 				}
@@ -247,6 +250,7 @@ public class WantedDAO {
 				dto.setWantedContent(rs.getString("wantedContent"));
 				dto.setWantedHitCount(rs.getInt("wantedHitCount"));
 				dto.setWantedCreated(rs.getString("wantedCreated"));
+				dto.setWantedHead(rs.getString("WantedHead"));
 			}
 
 		} catch (Exception e) {

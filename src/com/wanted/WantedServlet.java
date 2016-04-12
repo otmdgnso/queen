@@ -146,6 +146,7 @@ public class WantedServlet extends MyServlet {
 			//파라미터
 			dto.setWantedContent(req.getParameter("wantedContent"));
 			dto.setWantedSubject(req.getParameter("wantedSubject"));
+			dto.setWantedHead(req.getParameter("wantedHead"));
 						
 			dao.insertWanted(dto);
 			req.setAttribute("mode", "created");

@@ -77,7 +77,7 @@
 	                <thead>
 	                    <tr>
 	                        <th class="text-center" style="width: 70px;">번호</th>
-	                        <th >말머리</th>
+	                        <th style="width: 70px;" >말머리</th>
 	                        <th >제목</th>
 	                        <th class="text-center" style="width: 100px;">글쓴이</th>
 	                        <th class="text-center" style="width: 100px;">날짜</th>

@@ -207,7 +207,8 @@ function deleteReply(replyNum, pageNo, memId) {
 				<h3>Project Details</h3>
 				<p>${dto.content}</p>
 			</div>
-		</div>
+
+				</div>
 		<hr>
 		<!-- /.row -->
 		<table>

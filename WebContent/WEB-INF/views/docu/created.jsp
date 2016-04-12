@@ -52,8 +52,9 @@
         return true;
     }
     <c:if test="${mode=='update'}">
-    function deleteFile(num) {
-  	  var url="<%=cp%>/docu/deleteFile.do?docuNum="+docuNum+"&page=${page}";
+    function deleteFile(docuNum) {
+    	alert(docuNum);
+  	  var url="<%=cp%>/docu/deleteFile.sst?docuNum="+docuNum+"&page=${page}";
   	  location.href=url;
     }
   </c:if>
@@ -71,6 +72,7 @@
 			style="float: none; margin-left: auto; margin-right: auto;">
 
 			<div>
+			 
 				<form name="docuForm" method="post" onsubmit="return check();" enctype="multipart/form-data">
 					<div class="bs-write">
 						<table class="table">

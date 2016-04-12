@@ -175,7 +175,18 @@ public class DocuServlet extends MyServlet {
 			dao.insertDocu(dto);
 			req.setAttribute("mode", "created");
 			resp.sendRedirect(cp+ "/docu/list.sst");
-		} else if (uri.indexOf("article.sst") != -1) {
+		} else if(uri.indexOf("recomm.sst")!=-1) {  
+	          //////// 추천수 증가
+	         int docuNum= Integer.parseInt(req.getParameter("docuNum"));
+	         String page= req.getParameter("page");
+	         
+	         int dataCount= dao.dataCount(docuNum, info.getMemId());
+	         
+	         if (dataCount==0)
+	            dao.DocuRecomm(docuNum, info.getMemId());
+	         
+	         resp.sendRedirect(cp + "/docu/article.sst?page="+page+"&docuNum="+docuNum);
+	      } else if (uri.indexOf("article.sst") != -1) {
 			//글보기
 	        if(info == null){
 			    
@@ -185,6 +196,7 @@ public class DocuServlet extends MyServlet {
 			
 	        //파라미터 : docuNum, page,[searchKey,searchValue]
 			int docuNum = Integer.parseInt(req.getParameter("docuNum"));
+			int dataCount= dao.dataCount(docuNum, info.getMemId());
 			String page = req.getParameter("page");
 			String searchKey=req.getParameter("searchKey");
 			String searchValue=req.getParameter("searchValue");
@@ -224,6 +236,7 @@ public class DocuServlet extends MyServlet {
 			req.setAttribute("params", params);
 			req.setAttribute("linesu", linesu);
 			req.setAttribute("page", page);
+			req.setAttribute("dataCount", dataCount);
 
 			forward(req, resp, "/WEB-INF/views/docu/article.jsp");
 		} else if (uri.indexOf("update.sst") != -1) {
@@ -238,6 +251,7 @@ public class DocuServlet extends MyServlet {
 				return;
 			}
 		    
+			req.setAttribute("docuNum", docuNum);
 			req.setAttribute("dto", dto);
 			req.setAttribute("mode", "update");
 			req.setAttribute("page", page);
@@ -279,11 +293,11 @@ public class DocuServlet extends MyServlet {
 			dao.DocuUpdate(dto);
 			
 			resp.sendRedirect(cp + "/docu/article.sst?page="+page+ "&docuNum="+dto.getDocuNum());
-		}  else if(uri.indexOf("deleteFile.do")!=-1) {
-			int num=Integer.parseInt(req.getParameter("num"));
+		}  else if(uri.indexOf("deleteFile.sst")!=-1) {
+			int docuNum=Integer.parseInt(req.getParameter("docuNum"));
 			String page=req.getParameter("page");
 			
-			DocuDTO dto=dao.readDocu(num);
+			DocuDTO dto=dao.readDocu(docuNum);
 			if(dto==null) {
 				resp.sendRedirect(cp+"/docu/list.sst?page="+page);
 				return;

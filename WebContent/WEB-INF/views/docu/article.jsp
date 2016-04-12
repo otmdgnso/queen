@@ -59,6 +59,21 @@ function deleteDocu(docuNum) {
 }
 </c:if>
 
+function  recommCheck() {
+		var c="${dataCount}";
+		if(c=="")
+			c="0";
+		
+		if(c=="1") {
+			alert("이미 추천 하셨습니다.");
+			return;
+		} else {
+			var url="<%=cp%>/docu/recomm.sst?page=${page}&docuNum=${dto.docuNum}";
+			location.href=url;
+		}
+		
+	} 
+
 //-- 댓글 ------------------------------------
 //댓글 리스트
 $(function(){
@@ -193,7 +208,7 @@ function deleteReply(docuR_num, pageNo, memId){
 		               </tr>
                         
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg">&nbsp;5</td>
+                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.docuRecomm}</td>
                         </tr>
                         
                         <tr height="30">
@@ -253,6 +268,7 @@ function deleteReply(docuR_num, pageNo, memId){
 
     </div>
 </div>
+<input type="hidden" name="memId" value="${dto.memId}">
  <!-- jQuery -->
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>

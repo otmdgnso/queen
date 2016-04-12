@@ -43,7 +43,7 @@
 	<div>
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
- 	<br>
+ 	
  <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -56,12 +56,12 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-            	<div class="fill" style="background-image:url('<%=cp%>/res/image/mainslide/fill1.jpg');"></div>
+            	<div class="fill" style="background-image:url('<%=cp%>/res/image/mainslide/fill1_2.jpg');"></div>
                 <div class="carousel-caption">
                     <h2></h2>
                 </div>
             </div>
-            <div class="item">
+            <div class="item">	
                 <div class="fill" style="background-image:url('<%=cp%>/res/image/mainslide/fill2.jpg');"></div>
                 <div class="carousel-caption">
                     <h2></h2>
@@ -83,20 +83,12 @@
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
             <span class="icon-next"></span>
         </a>
+        
+        <br><br>
+		<br><br>
+        
+        <img style="margin: 0px auto;" src ="<%=cp%>/res/image/newbar1.png">
     </header>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
     <!-- Page Content -->
@@ -105,12 +97,11 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <!-- <h1 class="page-header">
-                    Welcome to SIST Community
-                </h1> -->
 				<br><br>
-                <img src ="<%=cp%>/res/image/newBar.png">
+				<br><br>
                 <br><br>
+                <br><br>
+                <br>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">

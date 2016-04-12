@@ -111,11 +111,11 @@
                     <div class="panel-body">
                         <ul type="disc">
                           <c:forEach var="dtoDocu" items="${listDocu}">
-                        	<li><a href="#">${dtoDocu.docuSubject}</a></li>
+                        	<li><a href="<%=cp%>/docu/article.sst?page=1&docuNum=${dtoDocu.docuNum}">${dtoDocu.docuSubject}</a></li>
                           </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
+                        <a href="<%=cp%>/docu/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
                     </div>
                 </div>
             </div>
@@ -160,11 +160,11 @@
                           
                           <ul type="disc">
                         	<c:forEach var="dtoCompany" items="${listCompany}">
-                        		<li><a href="#">${dtoCompany.companySubject}</a></li>
+                        		<li><a href="<%=cp %>/company/article.sst?page=1&companyNum=${dtoCompany.companyNum}">${dtoCompany.companySubject}</a></li>
                           </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
+                        <a href="<%=cp %>/company/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
                         	
                     </div>
                 </div>
@@ -192,11 +192,11 @@
                     <div class="panel-body">
                       <ul type="disc">
                         	<c:forEach var="dtoWanted" items="${listWanted}">
-	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoWanted.wantedHead}]</b>&nbsp;${dtoWanted.wantedSubject}</a></li>
+	                        	<li><a href="<%=cp%>/wanted/article.sst?page=1&wantedNum=${dtoWanted.wantedNum}"><b style="color:#FF7012;">[${dtoWanted.wantedHead}]</b>&nbsp;${dtoWanted.wantedSubject}</a></li>
 	                         </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                        <a href="<%=cp%>/wanted/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>
                 </div>
             </div>
@@ -224,11 +224,11 @@
                     <div class="panel-body">
                         <ul type="disc">
                         	<c:forEach var="dtoTip" items="${listTip}">
-	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoTip.tipHead}]</b>&nbsp;${dtoTip.tipSubject}</a></li>
+	                        	<li><a href="<%=cp%>/tip/article.sst?page=1&tipNum=${dtoTip.tipNum}"><b style="color:#FF7012;">[${dtoTip.tipHead}]</b>&nbsp;${dtoTip.tipSubject}</a></li>
 	                         </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                        <a href="<%=cp%>/tip/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>
                 </div>
             </div>

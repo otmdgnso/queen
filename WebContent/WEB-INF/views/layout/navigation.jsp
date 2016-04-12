@@ -78,7 +78,7 @@ function sendLogin() {
                                 <a href="sidebar.jsp">주절주절</a>
                             </li>
                             <li>
-                                <a href="lIst.jsp">포트폴리오</a>
+                                <a href="<%=cp%>/portfolio/list.sst">포트폴리오</a>
                             </li>                                                     
                         </ul>
                     </li>

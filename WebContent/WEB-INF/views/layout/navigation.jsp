@@ -72,7 +72,7 @@ function sendLogin() {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">과정별 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="full-width.jsp">수업자료</a>
+                                <a href="<%=cp%>/docu/list.sst">수업자료</a>
                             </li>
                             <li>
                                 <a href="sidebar.jsp">주절주절</a>

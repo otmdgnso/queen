@@ -90,7 +90,7 @@ function sendLogin() {
                                 <a href="<%=cp%>/recruit/recruit.sst">취업달력</a>
                             </li>
                             <li>
-                                <a href="portfolio-2-col.jsp">자소서 공유 </a>
+                                <a href="<%=cp%>/resume/list.sst">자소서 공유 </a>
                             </li>
                             <li>
                                 <a href="<%=cp%>/company/list.sst">회사정보</a>

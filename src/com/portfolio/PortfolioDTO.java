@@ -1,8 +1,35 @@
 package com.portfolio;
 
 public class PortfolioDTO {
-	private int num, recomm, hitCount;
-	private String subject, content, created,imageFilename, memId;
+	private int num, recomm, hitCount, imgCnt;
+	
+	private String subject, content, created, memId;
+	private String imageFilename, imageFilename2,imageFilename3,imageFilename4;
+	
+	public int getImgCnt() {
+		return imgCnt;
+	}
+	public void setImgCnt(int imgCnt) {
+		this.imgCnt = imgCnt;
+	}
+	public String getImageFilename2() {
+		return imageFilename2;
+	}
+	public void setImageFilename2(String imageFilename2) {
+		this.imageFilename2 = imageFilename2;
+	}
+	public String getImageFilename3() {
+		return imageFilename3;
+	}
+	public void setImageFilename3(String imageFilename3) {
+		this.imageFilename3 = imageFilename3;
+	}
+	public String getImageFilename4() {
+		return imageFilename4;
+	}
+	public void setImageFilename4(String imageFilename4) {
+		this.imageFilename4 = imageFilename4;
+	}
 	public String getImageFilename() {
 		return imageFilename;
 	}

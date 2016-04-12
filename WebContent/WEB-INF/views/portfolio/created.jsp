@@ -25,7 +25,7 @@
 </style>
 
 <script type="text/javascript">
-  function check() {
+function check() {
       var f = document.portfolioForm;
 
   	var str = f.subject.value;
@@ -43,11 +43,33 @@
       var mode="${mode}";
   	  if(mode=="created"||mode=="update" && f.upload.value!="") {
   		if(! /(\.gif|\.jpg|\.png|\.jpeg)$/i.test(f.upload.value)) {
-  			alert('이미지 파일만 가능합니다. !!!');
+  			alert('1이미지 파일만 가능합니다. !!!');
   			f.upload.focus();
   			return false;
   		}
-  	  }
+  		 if(f.upload2.value!="") {
+  	  		if(! /(\.gif|\.jpg|\.png|\.jpeg)$/i.test(f.upload2.value)) {
+  	  			alert('2이미지 파일만 가능합니다. !!!');
+  	  			f.upload2.focus();
+  	  			return false;
+  	  		}
+  		 }
+  	  		 if(f.upload3.value!="") {
+  	    		if(! /(\.gif|\.jpg|\.png|\.jpeg)$/i.test(f.upload3.value)) {
+  	      			alert('3이미지 파일만 가능합니다. !!!');
+  	      			f.upload.focus();
+  	      			return false;
+  	      		}
+  	  		 }
+  	  		 if(f.upload4.value!="") {
+  	  		if(! /(\.gif|\.jpg|\.png|\.jpeg)$/i.test(f.upload4.value)) {
+  	  			alert('4이미지 파일만 가능합니다. !!!');
+  	  			f.upload.focus();
+  	  			return false;
+  	  	  }
+  	  		 }
+  	  	 }
+  	  
       
   	  if(mode=="created")
   		f.action="<%=cp%>/portfolio/created_ok.sst";
@@ -69,7 +91,7 @@
 <body>
 
 	<div>
-    <jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
 
 	<div class="container" role="main">
@@ -111,15 +133,52 @@
 									<td colspan="3" class="td3"><input type="file"
 										name="upload" class="form-control input-sm"></td>
 								</tr>
+								<tr>
+									<td class="td1">이미지</td>
+									<td colspan="3" class="td3"><input type="file"
+										name="upload2" class="form-control input-sm"></td>
+								</tr>
+								<tr>
+									<td class="td1">이미지</td>
+									<td colspan="3" class="td3"><input type="file"
+										name="upload3" class="form-control input-sm"></td>
+								</tr>
+								<tr>
+									<td class="td1">이미지</td>
+									<td colspan="3" class="td3"><input type="file"
+										name="upload4" class="form-control input-sm"></td>
+								</tr>
 
 								<c:if test="${mode=='update'}">
 									<tr>
 										<td class="td1">등록이미지</td>
-										<td colspan="3" class="td3"><img
-											src="<%=cp%>/uploads/portfolio/${dto.imageFilename}" width="30"
-											height="30" border="0"
+										<td class="td3"><img
+											src="<%=cp%>/uploads/portfolio/${dto.imageFilename}"
+											width="30" height="30" border="0"
 											onclick="imageViewer('<%=cp%>/uploads/portfolio/${dto.imageFilename}');"
-											style="cursor: pointer;"></td>
+											style="cursor: pointer;">
+											<c:if test="${dto.imgCnt>1}">
+											<img
+											src="<%=cp%>/uploads/portfolio/${dto.imageFilename2}"
+											height="30" border="0"
+											onclick="imageViewer('<%=cp%>/uploads/portfolio/${dto.imageFilename2}');"
+											style="cursor: pointer;">
+											</c:if>
+											<c:if test="${dto.imgCnt>2}">
+											<img
+											src="<%=cp%>/uploads/portfolio/${dto.imageFilename3}"
+											height="30" border="0"
+											onclick="imageViewer('<%=cp%>/uploads/portfolio/${dto.imageFilename3}');"
+											style="cursor: pointer;">
+											</c:if>
+											<c:if test="${dto.imgCnt>3}">
+											<img
+											src="<%=cp%>/uploads/portfolio/${dto.imageFilename4}"
+											height="30" border="0"
+											onclick="imageViewer('<%=cp%>/uploads/portfolio/${dto.imageFilename4}');"
+											style="cursor: pointer;">
+											</c:if>
+											</td>
 									</tr>
 								</c:if>
 

@@ -45,17 +45,6 @@ public class PortfolioServlet extends MyServlet {
 
 		// uri에 따른 작업 구분
 		if (uri.indexOf("list.sst") != -1) {
-			
-			if(info==null) { // 로그인되지 않은 경우
-				
-				String msg2=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 로그인 후 사용하실 수 있습니다";
-				req.setAttribute("message", msg2);
-				
-				String path="/WEB-INF/views/member/login.jsp";
-				forward(req, resp, path);
-				return ;
-			}
-			
 			// 게시물 리스트
 			String page = req.getParameter("page");
 			int current_page = 1;
@@ -106,12 +95,13 @@ public class PortfolioServlet extends MyServlet {
 			// 파라미터를 넘겨 받을 수 없다.
 			String encType = "utf-8";
 			int maxSize = 5 * 1024 * 1024;
-
+			int cnt=0;
+			
 			MultipartRequest mreq = new MultipartRequest(req, pathname, maxSize, encType,
 					new DefaultFileRenamePolicy());
 
 			PortfolioDTO dto = new PortfolioDTO();
-
+			
 			// 이미지 파일을 업로드 한경우
 			if (mreq.getFile("upload") != null) {
 				dto.setMemId(info.getMemId());
@@ -126,10 +116,55 @@ public class PortfolioServlet extends MyServlet {
 				saveFilename = FileManager.doFilerename(pathname, saveFilename);
 
 				dto.setImageFilename(saveFilename);
+				cnt++;
+				dto.setImgCnt(cnt);
 
-				// 저장
-				dao.insertPortfolio(dto);
 			}
+			if(mreq.getFile("upload2") != null){
+				// 서버에 저장된 파일명
+				String saveFilename2 = mreq.getFilesystemName("upload2");
+
+				// 파일이름변경
+				saveFilename2 = FileManager.doFilerename(pathname, saveFilename2);
+
+				dto.setImageFilename2(saveFilename2);
+				// 저장
+				cnt++;
+				dto.setImgCnt(cnt);
+
+			}
+			if(mreq.getFile("upload3") != null){
+				dto.setMemId(info.getMemId());
+
+				// 서버에 저장된 파일명
+				String saveFilename3 = mreq.getFilesystemName("upload3");
+
+				// 파일이름변경
+				saveFilename3 = FileManager.doFilerename(pathname, saveFilename3);
+
+				dto.setImageFilename3(saveFilename3);
+				cnt++;
+				dto.setImgCnt(cnt);
+
+			}
+			if(mreq.getFile("upload4") != null){
+				dto.setMemId(info.getMemId());
+
+				// 서버에 저장된 파일명
+				String saveFilename4 = mreq.getFilesystemName("upload4");
+
+				// 파일이름변경
+				saveFilename4 = FileManager.doFilerename(pathname, saveFilename4);
+
+				dto.setImageFilename4(saveFilename4);
+				cnt++;
+				
+				dto.setImgCnt(cnt);
+			}
+
+			// 저장
+			dao.insertPortfolio(dto,cnt);
+			
 			resp.sendRedirect(cp + "/portfolio/list.sst");
 
 		} else if (uri.indexOf("article.sst") != -1) {
@@ -184,10 +219,12 @@ public class PortfolioServlet extends MyServlet {
 
 			String page = mreq.getParameter("page");
 			String imageFilename = mreq.getParameter("imageFilename");
+			String imageFilename2 = mreq.getParameter("imageFilename2");
+			String imageFilename3 = mreq.getParameter("imageFilename3");
+			String imageFilename4 = mreq.getParameter("imageFilename4");
 
 			PortfolioDTO dto = new PortfolioDTO();
-			int num=Integer.parseInt(mreq.getParameter("num"));
-			dto.setNum(num);
+			dto.setNum(Integer.parseInt(mreq.getParameter("num")));
 			dto.setSubject(mreq.getParameter("subject"));
 			dto.setContent(mreq.getParameter("content"));
 
@@ -207,12 +244,54 @@ public class PortfolioServlet extends MyServlet {
 				// 새로운 이미지 파일을 올리지 않은 경우 기존 이미지 파일로
 				dto.setImageFilename(imageFilename);
 			}
+			if (mreq.getFile("upload2") != null) {
+				// 기존 이미지 파일 지우기
+				FileManager.doFiledelete(pathname, imageFilename2);
+
+				// 서버에 저장된 파일명
+				String saveFilename2 = mreq.getFilesystemName("upload2");
+
+				// 파일 이름 변경
+				saveFilename2 = FileManager.doFilerename(pathname, saveFilename2);
+
+				dto.setImageFilename(saveFilename2);
+			} else {
+				// 새로운 이미지 파일을 올리지 않은 경우 기존 이미지 파일로
+				dto.setImageFilename2(imageFilename2);
+			}
+			if (mreq.getFile("upload3") != null) {
+				// 기존 이미지 파일 지우기
+				FileManager.doFiledelete(pathname, imageFilename3);
+
+				// 서버에 저장된 파일명
+				String saveFilename3 = mreq.getFilesystemName("upload3");
+
+				// 파일 이름 변경
+				saveFilename3 = FileManager.doFilerename(pathname, saveFilename3);
+
+				dto.setImageFilename(saveFilename3);
+			} else {
+				// 새로운 이미지 파일을 올리지 않은 경우 기존 이미지 파일로
+				dto.setImageFilename3(imageFilename3);
+			}if (mreq.getFile("upload4") != null) {
+				// 기존 이미지 파일 지우기
+				FileManager.doFiledelete(pathname, imageFilename4);
+
+				// 서버에 저장된 파일명
+				String saveFilename4 = mreq.getFilesystemName("upload4");
+
+				// 파일 이름 변경
+				saveFilename4 = FileManager.doFilerename(pathname, saveFilename4);
+
+				dto.setImageFilename(saveFilename4);
+			} else {
+				// 새로운 이미지 파일을 올리지 않은 경우 기존 이미지 파일로
+				dto.setImageFilename4(imageFilename4);
+			}
 
 			dao.updatePortfolio(dto);
 
-			resp.sendRedirect(cp + "/portfolio/article.sst?page=" + page+"&num="+num);
-			
-			
+			resp.sendRedirect(cp + "/portfolio/list.sst?page=" + page);
 
 		} else if (uri.indexOf("delete.sst") != -1) {
 			// 삭제 완료
@@ -246,7 +325,7 @@ public class PortfolioServlet extends MyServlet {
 			if (pageNo != null)
 				current_page = Integer.parseInt(pageNo);
 
-			int numPerPage = 5;
+			int numPerPage = 15;
 			int total_page = 0;
 			int dataCount = 0;
 

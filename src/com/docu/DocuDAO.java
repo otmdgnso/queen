@@ -277,7 +277,7 @@ public class DocuDAO {
 
 		try {
 			sb.append("UPDATE docu set docuSubject=?, docuContent=?,");
-			sb.append(" docuModified=NOW()");
+			sb.append(" docuCreated=NOW()");
 			sb.append(" WHERE docuNum=?");
 
 			pstmt = conn.prepareStatement(sb.toString());

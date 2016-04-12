@@ -110,7 +110,7 @@ function sendLogin() {
                                 <a href="blog-home-1.jsp">IT동향</a>
                             </li>
                             <li>
-                                <a href="blog-home-2.jsp">개발Tip </a>
+                                <a href="<%=cp%>/tip/list.sst">개발Tip </a>
                             </li>
                             <li>
                                 <a href="blog-post.jsp">개발Q&nbsp;&#38;&nbsp;A</a>

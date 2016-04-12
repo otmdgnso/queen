@@ -2,10 +2,10 @@ package com.company;
 
 public class CompanyDTO {
 	
-	int companyNum, companyRecomm, companyHitCount, listCompanyNum;
-	String companySubject, companyCreated, companyModified, companyName, companyDate;
-	String companySales, companyForm, companyIndustry, companyPlanet, companyWeb;
-	String companySalary, companyScore, companyContent, memId;
+	private int companyNum, companyRecomm, companyHitCount, listCompanyNum;
+	private String companySubject, companyCreated, companyModified, companyName, companyDate;
+	private String companySales, companyForm, companyIndustry, companyPlanet, companyWeb;
+	private String companySalary, companyScore, companyContent, memId;
 	
 	public int getListCompanyNum() {
 		return listCompanyNum;

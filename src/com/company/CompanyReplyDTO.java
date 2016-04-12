@@ -2,8 +2,8 @@ package com.company;
 
 public class CompanyReplyDTO {
 
-	int companyR_num, companyNum;
-	String companyR_content, companyR_created, memId;
+	private int companyR_num, companyNum;
+	private String companyR_content, companyR_created, memId;
 	public int getCompanyR_num() {
 		return companyR_num;
 	}

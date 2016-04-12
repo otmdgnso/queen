@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.company.CompanyDTO;
 import com.member.SessionInfo;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -111,10 +112,15 @@ public class RecruitServlet extends MyServlet{
 				return;
 			}
 			
+			CompanyDTO cdto=dao.readCompany(dto.getRecruitCompany());
+			
 			dto.setRecruitQual(dto.getRecruitQual().replaceAll("\n", "<br>"));
 			dto.setRecruitStep(dto.getRecruitStep().replaceAll("\n", "<br>"));
 			
+			String companyUrl=cp + "/company/article.sst?companyNum="+cdto.getCompanyNum();
+			
 			req.setAttribute("dto", dto);
+			req.setAttribute("companyUrl", companyUrl);
 			
 			String path = "/WEB-INF/views/recruit/article.jsp";
 			forward(req, resp, path);

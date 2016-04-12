@@ -180,7 +180,7 @@ function deleteReply(recruitR_num, pageNo, memId){
                         </tr>
                         <tr>
                         	<td style="text-align: center;">
-								<a href='#'>${dto.recruitCompany} 에 대한 상세 정보를 알고 싶다면 클릭!</a>                        	
+								<a href="${companyUrl}">${dto.recruitCompany} 에 대한 상세 정보를 알고 싶다면 클릭!</a>                        	
                         	</td>
                         </tr>
                         

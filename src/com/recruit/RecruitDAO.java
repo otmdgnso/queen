@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.company.CompanyDTO;
 import com.util.DBConn;
 
 public class RecruitDAO {
@@ -143,6 +145,46 @@ public List<RecruitDTO> listEndRecruit(String start, String end){
 		
 		return dto;
 	}
+	
+	public CompanyDTO readCompany(String recruitCompany) {
+		CompanyDTO dto = null;
+		PreparedStatement pstmt = null;
+		StringBuffer sb = new StringBuffer();
+		ResultSet rs = null;
+
+		try {
+			sb.append("SELECT companyNum FROM company WHERE companyName=?");
+
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setString(1, recruitCompany);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				dto = new CompanyDTO();
+				dto.setCompanyNum(rs.getInt("companyNum"));
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			}
+
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return dto;
+	}
+	
 	
 	public int insertRecruit(RecruitDTO dto){
 		int result=0;

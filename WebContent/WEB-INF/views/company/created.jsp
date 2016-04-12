@@ -94,6 +94,83 @@
 					      </td>
 					  </tr>
 				      <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+				      <!-- 내용 넣기 -->
+				      
+				       <tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">회 사 명</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="companyName" size="75" maxlength="100" class="boxTF" value="${dto.companyName}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+				      
+				       <tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">웹 사 이 트</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="companyWeb" size="75" maxlength="100" class="boxTF" value="${dto.companyWeb}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+				      
+				       <tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">기 업 형 태</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="companyForm" size="75" maxlength="100" class="boxTF" value="${dto.companyForm}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+					  
+					  
+					  
+					   <tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">설 립 일</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="companyDate" size="75" maxlength="100" class="boxTF" value="${dto.companyDate}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+					  
+					   <tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">산 업 군</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="companyIndustry" size="75" maxlength="100" class="boxTF" value="${dto.companyIndustry}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+					  
+					   <tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">매 출 액</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="companySales" size="75" maxlength="100" class="boxTF" value="${dto.companySales}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+					  
+					   <tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">초 봉 평 균</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="companySalary" size="75" maxlength="100" class="boxTF" value="${dto.companySalary}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+				      
+				       <tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">평&nbsp;&nbsp;&nbsp;점</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="companyScore" size="75" maxlength="100" class="boxTF" value="${dto.companyScore}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+					  
+					   <tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">잡 플 래 닛</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="companyPlanet" size="75" maxlength="100" class="boxTF" value="${dto.companyPlanet}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+				      	      
+				      
 				      
 					  <tr align="left"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center; padding-top:5px;" valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>

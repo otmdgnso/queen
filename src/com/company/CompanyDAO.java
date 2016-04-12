@@ -303,9 +303,9 @@ public class CompanyDAO {
 		StringBuffer sb = new StringBuffer();
 
 		try {
-			sb.append("UPDATE company set companySubject=?, companyDate=?, companyContent=?,");
+			sb.append("UPDATE company set companySubject=?, companyDate=?, companyContent=?, companyName=?,");
 			sb.append(" companySales=?, companyForm=?, companyIndustry=?, companyPlanet=?, companyWeb=?, companySalary=?,");
-			sb.append(" companyScore=?");
+			sb.append(" companyScore=?,");
 			sb.append(" companyModified=NOW()");
 			sb.append(" WHERE companyNum=?");
 
@@ -314,15 +314,15 @@ public class CompanyDAO {
 			pstmt.setString(1, dto.getCompanySubject());
 			pstmt.setString(2, dto.getCompanyDate());
 			pstmt.setString(3, dto.getCompanyContent());
-			
-			pstmt.setString(4, dto.getCompanySales());
-			pstmt.setString(5, dto.getCompanyForm());
-			pstmt.setString(6, dto.getCompanyIndustry());
-			pstmt.setString(7, dto.getCompanyPlanet());
-			pstmt.setString(8, dto.getCompanyWeb());
-			pstmt.setString(9, dto.getCompanySalary());
-			pstmt.setString(10, dto.getCompanyScore());
-			pstmt.setInt(11, dto.getCompanyNum());
+			pstmt.setString(4, dto.getCompanyName());
+			pstmt.setString(5, dto.getCompanySales());
+			pstmt.setString(6, dto.getCompanyForm());
+			pstmt.setString(7, dto.getCompanyIndustry());
+			pstmt.setString(8, dto.getCompanyPlanet());
+			pstmt.setString(9, dto.getCompanyWeb());
+			pstmt.setString(10, dto.getCompanySalary());
+			pstmt.setString(11, dto.getCompanyScore());
+			pstmt.setInt(12, dto.getCompanyNum());
 
 			result = pstmt.executeUpdate();
 			

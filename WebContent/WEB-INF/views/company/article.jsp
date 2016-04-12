@@ -154,7 +154,7 @@ function deleteReply(companyR_num, pageNo, memId){
        </div>
        
        <div class="alert alert-info">
-           <i class="glyphicon glyphicon-info-sign"></i> 회원과 자유로이 토론할 수 있는 공간입니다.
+           <i class="glyphicon glyphicon-info-sign"></i> 기업에 대한 자세한 정보를 볼 수 있는 게시판입니다.
        </div>
        
        <div class="table-responsive" style="clear: both;">
@@ -162,11 +162,14 @@ function deleteReply(companyR_num, pageNo, memId){
                <table class="table">
                     <thead>
                         <tr>
-                            <th colspan="3" style="text-align: center;">
+                       		<th colspan="1" style="text-align: center; background-color: #B2CCFF;">
+                                    ${dto.companyForm}
+                            </th>
+                            <th colspan="3" style="text-align: center; background-color: #B2CCFF;">
                                     ${dto.companySubject}
                             </th>
                         </tr>
-                   <thead>
+                   </thead>
                     <tbody>
                         <tr>
                             <td style="text-align: left; width:200px; height:45px; "> 작성자: ${dto.memId}</td>
@@ -176,6 +179,34 @@ function deleteReply(companyR_num, pageNo, memId){
                             <td style="text-align: right; width:100px;">
                                                                          조회 수: ${dto.companyHitCount}
                             </td>
+                        </tr>
+                        <tr>
+                        	<td style="text-align: left; width:200px; height:45px; ">회사명</td>
+                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyName}</td>
+                            <td style="text-align: left; width:200px; height:45px; ">웹사이트</td>
+                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyWeb}</td>
+                        </tr>
+                        <tr>
+                        	<td style="text-align: left; width:200px; height:45px; ">기업형태</td>
+                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyForm}</td>
+                            <td style="text-align: left; width:200px; height:45px; ">설립일</td>
+                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyDate}</td>
+                        </tr>
+                        <tr>
+                        	<td style="text-align: left; width:200px; height:45px; ">산업군</td>
+                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyIndustry}</td>
+                            <td style="text-align: left; width:200px; height:45px; ">매출액</td>
+                            <td style="text-align: left; width:200px; height:45px; ">${dto.companySales}</td>
+                        </tr>
+                        <tr>
+                        	<td style="text-align: left; width:200px; height:45px; ">초봉 평균</td>
+                            <td style="text-align: left; width:200px; height:45px; ">${dto.companySalary}</td>
+                            <td style="text-align: left; width:200px; height:45px; ">평점</td>
+                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyScore}</td>
+                        </tr>
+                        <tr>
+                        	<td style="text-align: left; width:200px; height:45px; ">잡 플래닛</td>
+                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyPlanet}</td>
                         </tr>
                         <tr>
                             <td colspan="3" style="height: 230px;">
@@ -244,7 +275,7 @@ function deleteReply(companyR_num, pageNo, memId){
 
     </div>
 </div>
- <!-- jQuery -->
+
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 </body>

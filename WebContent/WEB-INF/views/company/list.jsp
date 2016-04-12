@@ -63,7 +63,7 @@
 	    </div>
 	    
 	    <div class="alert alert-info">
-	        <i class="glyphicon glyphicon-info-sign"></i> 회원과 자유로이 토론할 수 있는 공간입니다.
+	        <i class="glyphicon glyphicon-info-sign"></i> 여러 회사의 상세 정보를 알려주는 게시판입니다.
 	    </div>
 	
 	    <div>
@@ -77,6 +77,8 @@
 	                <thead>
 	                    <tr>
 	                        <th class="text-center" style="width: 70px;">번호</th>
+	                        <th class="text-center" style="width: 70px;">추천수</th>
+	                        <th class="text-center" style="width: 70px;">말머리</th>
 	                        <th >제목</th>
 	                        <th class="text-center" style="width: 100px;">글쓴이</th>
 	                        <th class="text-center" style="width: 100px;">날짜</th>
@@ -87,6 +89,8 @@
 					  <c:forEach var="dto" items="${list}">
 	                    <tr>
 	                        <td class="text-center">${dto.listCompanyNum}</td>
+	                        <td class="text-center">${dto.companyRecomm}</td>
+	                        <td class="text-center">${dto.companyForm}</td>
 	                        <td><a href='${articleUrl}&companyNum=${dto.companyNum}'>${dto.companySubject}</a></td>
 	                        <td class="text-center">${dto.memId}</td>
 	                        <td class="text-center">${dto.companyCreated}</td>
@@ -116,6 +120,11 @@
 							      <option value="companySubject">제목</option>
 							      <option value="memId">작성자</option>
 							      <option value="companyContent">내용</option>
+							      <option value="companySalary">연봉</option>
+							      <option value="companySales">연수익</option>
+							      <option value="companyForm">기업형태</option>
+							      <option value="companyIndustry">업종</option>
+							      <option value="companyScore">평점</option>
 							  </select>
 							  <input type="text" class="form-control input-sm input-search" name="searchValue">
 							  <button type="button" class="btn btn-info btn-sm btn-search" onclick="searchList();"><span class="glyphicon glyphicon-search"></span> 검색</button>

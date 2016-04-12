@@ -75,7 +75,7 @@ function sendLogin() {
                                 <a href="<%=cp%>/docu/list.sst">수업자료</a>
                             </li>
                             <li>
-                                <a href="sidebar.jsp">주절주절</a>
+                                <a href="<%=cp%>/free/free.sst">주절주절</a>
                             </li>
                             <li>
                                 <a href="<%=cp%>/portfolio/list.sst">포트폴리오</a>

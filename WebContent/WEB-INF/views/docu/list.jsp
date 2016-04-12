@@ -81,7 +81,6 @@
 	                        <th class="text-center" style="width: 100px;">글쓴이</th>
 	                        <th class="text-center" style="width: 100px;">날짜</th>
 	                        <th class="text-center" style="width: 70px;">조회수</th> 
-	                        <th class="text-center" style="width: 70px;">추천수</th> 
 	                    </tr>
 	                </thead>
 	                <tbody>
@@ -92,7 +91,6 @@
 	                        <td class="text-center">${dto.memId}</td>
 	                        <td class="text-center">${dto.docuCreated}</td>
 	                        <td class="text-center">${dto.docuHitCount}</td> 
-	                        <td class="text-center">${dto.docuRecomm}</td> 
 	                    </tr>
 	                   </c:forEach> 
 	                </tbody>

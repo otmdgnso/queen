@@ -1,5 +1,6 @@
 package com.docu;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
@@ -14,6 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.member.SessionInfo;
+import com.docu.DocuDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.util.FileManager;
 import com.util.MyServlet;
 import com.util.MyUtil;
 
@@ -28,14 +33,21 @@ public class DocuServlet extends MyServlet {
 		String uri = req.getRequestURI();
 		String cp = req.getContextPath();
 		
-		DocuDAO dao = new DocuDAO();
-		MyUtil util = new MyUtil();
 		
 		//로그인 정보를 세션에서 가져오기
 		HttpSession session=req.getSession();
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		
-		
+		// 파일을 저장할 경로(pathname)
+				String root=session.getServletContext().getRealPath("/");
+				String pathname=root+File.separator+"uploads"+File.separator+"docu";
+				File f=new File(pathname);
+				if(! f.exists()) {
+					f.mkdirs();
+				}
+				
+				DocuDAO dao = new DocuDAO();
+				MyUtil util = new MyUtil();
 		//uri에 따른 작업
 		if (uri.indexOf("list.sst") != -1) {
 			
@@ -138,15 +150,28 @@ public class DocuServlet extends MyServlet {
 				return;
 			}
 			
+			String encType="utf-8";
+			int maxFilesize=10*1024*1024;
+			
+		    MultipartRequest mreq=new MultipartRequest(
+		    		req, pathname, maxFilesize, encType,
+		    		new DefaultFileRenamePolicy()
+		    		);
+		    
 			DocuDTO dto= new DocuDTO();
 			
 			// userId는 세션에 저장된 정보
 			dto.setMemId(info.getMemId());
 			
-			//파라미터
-			dto.setDocuContent(req.getParameter("docuContent"));
-			dto.setDocuSubject(req.getParameter("docuSubject"));
-						
+			dto.setDocuContent(mreq.getParameter("docuContent"));
+			dto.setDocuSubject(mreq.getParameter("docuSubject"));
+			
+			if(mreq.getFile("upload")!=null){
+				dto.setDocuFile(mreq.getFilesystemName("upload"));
+				dto.setOriginalFilename(mreq.getOriginalFileName("upload"));
+			    dto.setFileSize(mreq.getFile("upload").length());
+				
+			}
 			dao.insertDocu(dto);
 			req.setAttribute("mode", "created");
 			resp.sendRedirect(cp+ "/docu/list.sst");
@@ -163,7 +188,6 @@ public class DocuServlet extends MyServlet {
 			String page = req.getParameter("page");
 			String searchKey=req.getParameter("searchKey");
 			String searchValue=req.getParameter("searchValue");
-			int dataCount= dao.dataCount(docuNum, info.getMemId());
 			if(searchKey==null) {
 				searchKey="docuSubject";
 				searchValue="";
@@ -200,7 +224,6 @@ public class DocuServlet extends MyServlet {
 			req.setAttribute("params", params);
 			req.setAttribute("linesu", linesu);
 			req.setAttribute("page", page);
-			req.setAttribute("dataCount", dataCount);
 
 			forward(req, resp, "/WEB-INF/views/docu/article.jsp");
 		} else if (uri.indexOf("update.sst") != -1) {
@@ -209,6 +232,7 @@ public class DocuServlet extends MyServlet {
 			String page=req.getParameter("page");
 			
 			DocuDTO dto = dao.readDocu(docuNum);
+			//글을 등록한 사람이거나 관리자만 삭제가능
 			if(dto==null || ! dto.getMemId().equals(info.getMemId())) {
 				resp.sendRedirect(cp+"/docu/list.sst?page=" +page);
 				return;
@@ -219,29 +243,115 @@ public class DocuServlet extends MyServlet {
 			req.setAttribute("page", page);
 			forward(req, resp, "/WEB-INF/views/docu/created.jsp");
 		} else if (uri.indexOf("update_ok.sst") != -1) {
-			String page=req.getParameter("page");
+			String encType="utf-8";
+			int maxFilesize=10*1024*1024;
 			
-			DocuDTO dto = new DocuDTO();
-			dto.setDocuNum(Integer.parseInt(req.getParameter("docuNum")));
-			dto.setDocuSubject(req.getParameter("docuSubject"));
-			dto.setDocuContent(req.getParameter("docuContent"));
-
+		    MultipartRequest mreq=new MultipartRequest(
+		    		req, pathname, maxFilesize, encType,
+		    		new DefaultFileRenamePolicy()
+		    		);
+			
+		    DocuDTO dto = new DocuDTO();
+		    
+		    int docuNum=Integer.parseInt(mreq.getParameter("docuNum"));
+			String page=mreq.getParameter("page");
+			System.out.println(page);
+			
+			dto.setDocuNum(docuNum);
+			if(mreq.getFile("upload")!=null){
+				
+				dto.setDocuNum(Integer.parseInt(mreq.getParameter("docuNum")));
+				dto.setDocuSubject(mreq.getParameter("docuSubject"));
+				dto.setDocuContent(mreq.getParameter("docuContent"));
+				dto.setDocuFile(mreq.getParameter("docuFile"));
+				dto.setOriginalFilename(mreq.getParameter("originalFilename"));
+				dto.setFileSize(Long.parseLong(mreq.getParameter("fileSize")));
+							
+			}
+			if(mreq.getFile("upload")!=null) {
+				// 기존 파일 삭제
+				FileManager.doFiledelete(pathname, mreq.getParameter("docuFile"));
+				
+		    	dto.setDocuFile(mreq.getFilesystemName("upload"));
+		    	dto.setOriginalFilename(mreq.getOriginalFileName("upload"));
+			    dto.setFileSize(mreq.getFile("upload").length());
+			}
 			dao.DocuUpdate(dto);
 			
 			resp.sendRedirect(cp + "/docu/article.sst?page="+page+ "&docuNum="+dto.getDocuNum());
-		} else if (uri.indexOf("delete.sst")!=-1) {
+		}  else if(uri.indexOf("deleteFile.do")!=-1) {
+			int num=Integer.parseInt(req.getParameter("num"));
+			String page=req.getParameter("page");
+			
+			DocuDTO dto=dao.readDocu(num);
+			if(dto==null) {
+				resp.sendRedirect(cp+"/docu/list.sst?page="+page);
+				return;
+			}
+			
+			if(info==null || ! info.getMemId().equals(dto.getMemId())) {
+				resp.sendRedirect(cp+"/docu/list.sst?page="+page);
+				return;
+			}
+			
+			FileManager.doFiledelete(pathname, dto.getDocuFile());
+			dto.setOriginalFilename("");
+			dto.setDocuFile("");
+			dto.setFileSize(0);
+			
+			dao.DocuUpdate(dto);
+			
+			req.setAttribute("dto", dto);
+			req.setAttribute("page", page);
+			
+			req.setAttribute("mode", "update");
+			String path="/WEB-INF/views/docu/created.jsp";
+			forward(req, resp, path);			
+			
+		}else if (uri.indexOf("delete.sst")!=-1) { //삭제
 			String page=req.getParameter("page");
 			int docuNum= Integer.parseInt(req.getParameter("docuNum"));
 			
 			DocuDTO dto=dao.readDocu(docuNum);
+			
+			//글을 등록한 사람이거나 관리자만 삭제가능
 			if(dto==null || (!dto.getMemId().equals(info.getMemId())
 					&& !info.getMemId().equals("admin"))) {
 				resp.sendRedirect(cp +"/docu/list.sst?page=" +page);
 				return;
 			}
+			if(dto.getDocuFile()!=null && dto.getDocuFile().length()!=0)
+				   FileManager.doFiledelete(pathname, dto.getDocuFile());
 			
 			dao.deleteDocu(docuNum);
+			
 			resp.sendRedirect(cp +"/docu/list.sst?page=" +page);
+			
+		} else if(uri.indexOf("download.do")!=-1) {
+			// 파일 다운로드
+			if(info==null) {
+				resp.sendRedirect(cp+"/member/login.do");
+				return;
+			}
+			
+			int docuNum=Integer.parseInt(req.getParameter("docuNum"));
+			String page=req.getParameter("page");
+			
+			DocuDTO dto=dao.readDocu(docuNum);
+			if(dto==null) {
+				resp.sendRedirect(cp+"/docu/list.sst"+page);
+				return;
+			}
+			
+			boolean b = FileManager.doFiledownload(dto.getDocuFile(),
+					dto.getOriginalFilename(), pathname, resp);
+			
+			if(! b) {
+				resp.setContentType("text/html;charset=utf-8");
+		    	PrintWriter pw=resp.getWriter();
+		    	pw.print("<script>alert('파일다운로드가 실패했습니다. !!!');history.back();</script>");
+		    	return;
+			}
 		} else if (uri.indexOf("listReply.sst")!=-1) {
 			// 리플 리스트 ---------------------------------------
 			int docuNum= Integer.parseInt(req.getParameter("docuNum"));
@@ -329,16 +439,6 @@ public class DocuServlet extends MyServlet {
 			resp.setContentType("text/html;charset=utf-8");
 			PrintWriter out=resp.getWriter();
 			out.println(sb.toString());
-		} else if(uri.indexOf("recomm.sst")!=-1) {
-			int docuNum= Integer.parseInt(req.getParameter("docuNum"));
-			String page= req.getParameter("page");
-			
-			int dataCount= dao.dataCount(docuNum, info.getMemId());
-			
-			if (dataCount==0)
-				dao.DocuRecomm(docuNum, info.getMemId());
-			
-			resp.sendRedirect(cp + "/docu/article.sst?page="+page+"&docuNum="+docuNum);
 		}
  
 		

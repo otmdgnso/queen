@@ -3,8 +3,11 @@ package com.docu;
 public class DocuDTO {
  private int docuNum,docuHitCount, listDocuNum, docuRecomm;
  private String  docuSubject,docuContent;
- private String docuCreated, docuModified;
+ private String docuCreated;
  private String memId;
+ private String docuFile;
+ private String originalFilename;
+ private long fileSize;
 public int getDocuNum() {
 	return docuNum;
 }
@@ -16,6 +19,12 @@ public int getDocuHitCount() {
 }
 public void setDocuHitCount(int docuHitCount) {
 	this.docuHitCount = docuHitCount;
+}
+public int getListDocuNum() {
+	return listDocuNum;
+}
+public void setListDocuNum(int listDocuNum) {
+	this.listDocuNum = listDocuNum;
 }
 public String getDocuSubject() {
 	return docuSubject;
@@ -35,23 +44,17 @@ public String getDocuCreated() {
 public void setDocuCreated(String docuCreated) {
 	this.docuCreated = docuCreated;
 }
-public String getDocuModified() {
-	return docuModified;
-}
-public void setDocuModified(String docuModified) {
-	this.docuModified = docuModified;
-}
 public String getMemId() {
 	return memId;
 }
 public void setMemId(String memId) {
 	this.memId = memId;
 }
-public int getListDocuNum() {
-	return listDocuNum;
+public String getDocuFile() {
+	return docuFile;
 }
-public void setListDocuNum(int listDocuNum) {
-	this.listDocuNum = listDocuNum;
+public void setDocuFile(String docuFile) {
+	this.docuFile = docuFile;
 }
 public int getDocuRecomm() {
 	return docuRecomm;
@@ -59,7 +62,18 @@ public int getDocuRecomm() {
 public void setDocuRecomm(int docuRecomm) {
 	this.docuRecomm = docuRecomm;
 }
-
+public String getOriginalFilename() {
+	return originalFilename;
+}
+public void setOriginalFilename(String originalFilename) {
+	this.originalFilename = originalFilename;
+}
+public long getFileSize() {
+	return fileSize;
+}
+public void setFileSize(long fileSize) {
+	this.fileSize = fileSize;
+}
 
  
  

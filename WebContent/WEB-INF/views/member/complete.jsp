@@ -45,12 +45,12 @@
 	<div class="layoutBody">
 
 		<div style="min-height: 100%">
-				<div style="margin-top:150px; width:100%;	height: 40px;  line-height:40px;clear: both; ">
-				   <div style="width: 600px; border-top: 2px solid #FFCC66 ; border-bottom: 2px solid #FFCC66; ">
+				<div style="margin-top:150px; height: 40px;  line-height:40px; ">
+				   <div style="margin:0 auto; width: 600px; border-top: 2px solid #FFCC66 ; border-bottom: 2px solid #FFCC66; ">
 				    <div style="width:600px; height:30px; line-height:30px; margin:0 auto; 
-				    	margin-top:10px; margin-bottom:10px;">
+				    	margin-top:10px; margin-bottom:30px;">
 				        
-				        <span style=" margin-left:250px; font-weight: bold;font-size:18pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">
+				        <span style="margin-left:43%; font-weight: bold;font-size:18pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">
 				        	${title}</span>
 				    </div>
 					</div>
@@ -62,9 +62,10 @@
 						${message}
 					</div>
 					<div style="height: 50px; text-align: center; margin-bottom:30px;">
-					    <input type="button" value=" 메인화면으로 이동 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>"
+					   <button type="button" onclick="javascript:location.href='<%=cp%>/';" class="moveButton"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 메인화면으로 이동 </button>
+				<%-- 	    <input type="button" value=" 메인화면으로 이동 "
 					              class="moveButton"
-					              onclick="javascript:location.href='<%=cp%>/';">
+					              onclick="javascript:location.href='<%=cp%>/';"> --%>
 					</div>  
 				</div>
 		</div>

@@ -8,7 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.member.SessionInfo;
 import com.util.MyServlet;
 
 @WebServlet("/main.sst")
@@ -19,6 +21,9 @@ public class MainServlet extends MyServlet {
 	protected void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String uri=req.getRequestURI();
+		HttpSession session=req.getSession();
+		SessionInfo info = (SessionInfo)session.getAttribute("member");
+		
 		MainDAO dao = new MainDAO();
 		
 		if(uri.indexOf("main.sst")!=-1) {
@@ -89,6 +94,7 @@ public class MainServlet extends MyServlet {
 			req.setAttribute("listCompany", listCompany);
 			req.setAttribute("listDocu", listDocu);
 			req.setAttribute("listTrend", listTrend);
+			req.setAttribute("member", info);
 			
 			forward(req, resp, "/WEB-INF/views/main/main.jsp");
 		}

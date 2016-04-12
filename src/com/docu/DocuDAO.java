@@ -131,7 +131,7 @@ public class DocuDAO {
 
 		try {
 			sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
-			sb.append(" SELECT docuNum, docuSubject,memId,");
+			sb.append(" SELECT docuNum, docuSubject,memId, docuRecomm,");
 			sb.append(" DATE_FORMAT(docuCreated , '%Y-%m-%d') docuCreated, docuHitCount FROM docu");
 			sb.append(" ORDER BY docuNum DESC) tb,");
 			sb.append(" (SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
@@ -151,6 +151,7 @@ public class DocuDAO {
 				dto.setMemId(rs.getString("memId"));
 				dto.setDocuCreated(rs.getString("DocuCreated"));
 				dto.setDocuHitCount(rs.getInt("DocuHitCount"));
+				dto.setDocuRecomm(rs.getInt("docuRecomm"));
 
 				list.add(dto);
 			}
@@ -182,7 +183,7 @@ public class DocuDAO {
 	      
 	      try {
 	    	  	sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
-				sb.append(" SELECT docuNum, docuSubject,memId,");
+				sb.append(" SELECT docuNum, docuSubject,memId, docuRecomm,");
 				sb.append(" DATE_FORMAT(docuCreated , '%Y-%m-%d') docuCreated, docuHitCount FROM docu");
 				if(searchKey.equals("memId"))
 					sb.append(" WHERE memId =?");
@@ -207,6 +208,7 @@ public class DocuDAO {
 					dto.setMemId(rs.getString("memId"));
 					dto.setDocuCreated(rs.getString("DocuCreated"));
 					dto.setDocuHitCount(rs.getInt("DocuHitCount"));
+					dto.setDocuRecomm(rs.getInt("docuRecomm"));
 					
 					list.add(dto);
 				}
@@ -228,7 +230,7 @@ public class DocuDAO {
 		ResultSet rs = null;
 
 		try {
-			sb.append("SELECT docuNum, memId, docuSubject, docuContent,");
+			sb.append("SELECT docuNum, memId, docuSubject, docuContent, docuRecomm,");
 			sb.append(" docuHitCount, DATE_FORMAT(docuCreated , '%Y-%m-%d %h:%i:%s') docuCreated");
 			sb.append(" FROM docu");
 			sb.append(" WHERE docuNum=?");
@@ -246,6 +248,7 @@ public class DocuDAO {
 				dto.setDocuContent(rs.getString("docuContent"));
 				dto.setDocuHitCount(rs.getInt("docuHitCount"));
 				dto.setDocuCreated(rs.getString("docuCreated"));
+				dto.setDocuRecomm(rs.getInt("docuRecomm"));
 			}
 
 		} catch (Exception e) {
@@ -349,6 +352,83 @@ public class DocuDAO {
 		return result;
 	}
 	
+	// 추천수 증가
+		public int DocuRecomm(int docuNum, String memId) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			String sql;
+			String sql2;
+
+			try {
+				// 추천수 +1
+				sql = "UPDATE docu SET docuRecomm= docuRecomm+1 WHERE docuNum=?";
+
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setInt(1, docuNum);
+				
+				pstmt.executeUpdate();
+				pstmt.close();
+				pstmt=null;
+				
+				//추천 테이블에 추천체크하는데 필요한 정보 추가
+				sql2=" INSERT INTO docuRecomm VALUES(?,?)";
+				
+				pstmt= conn.prepareStatement(sql2);
+				
+				pstmt.setString(1, memId);
+				pstmt.setInt(2, docuNum);
+
+				result = pstmt.executeUpdate();
+				pstmt.close();
+				pstmt = null;
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+
+			return result;
+		}
+		
+		// 추천 체크
+		public int dataCount(int docuNum, String memId) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			StringBuffer sb= new StringBuffer();
+
+			try {
+				// 게시물 번호에 아이디가 없을 경우 0 있을경우 1
+				sb.append("SELECT IFNULL(COUNT(*), 0) FROM docuRecomm");
+				sb.append(" WHERE docuNum=? AND memId=?");
+				pstmt = conn.prepareStatement(sb.toString());
+				pstmt.setInt(1, docuNum);
+				pstmt.setString(2, memId);
+
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					result = rs.getInt(1);
+
+				}
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			} finally {
+				if (rs != null) {
+					try {
+						rs.close();
+					} catch (Exception e2) {
+					}
+				}
+				if (pstmt != null) {
+					try {
+						pstmt.close();
+					} catch (Exception e2) {
+					}
+				}
+			}
+
+			return result;
+		}
+		
 	 // 이전글
 	public DocuDTO preReadDocu(int docuNum, String searchKey, String searchValue) {
 		DocuDTO dto =null;
@@ -361,7 +441,7 @@ public class DocuDAO {
 			if(searchValue!=null && searchValue.length() != 0) {
 				sb.append("SELECT * FROM (");
 				sb.append(" SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
-				sb.append(" SELECT docuNum, docuSubject,memId,");
+				sb.append(" SELECT docuNum, docuSubject,memId, docuRecomm,");
 				sb.append(" DATE_FORMAT(docuCreated , '%Y-%m-%d') docuCreated, docuHitCount FROM docu");
 				if(searchKey.equals("memId"))
 					sb.append(" WHERE memId =?");
@@ -378,7 +458,7 @@ public class DocuDAO {
 			} else {
 				sb.append("SELECT * FROM (");
 				sb.append(" SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
-				sb.append(" SELECT docuNum, docuSubject,memId,");
+				sb.append(" SELECT docuNum, docuSubject,memId, docuRecomm,");
 				sb.append(" DATE_FORMAT(docuCreated , '%Y-%m-%d') docuCreated, docuHitCount FROM docu");
 				sb.append(" WHERE docuNum > ?");
 				sb.append(" ORDER BY docuNum ASC) tb,");
@@ -416,7 +496,7 @@ public class DocuDAO {
 			if(searchValue!=null && searchValue.length() != 0) {
 				sb.append("SELECT * FROM (");
 				sb.append(" SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
-				sb.append(" SELECT docuNum, docuSubject,memId,");
+				sb.append(" SELECT docuNum, docuSubject,memId, docuRecomm,");
 				sb.append(" DATE_FORMAT(docuCreated , '%Y-%m-%d') docuCreated, docuHitCount FROM docu");
 				if(searchKey.equals("memId"))
 					sb.append(" WHERE memId =?");
@@ -433,7 +513,7 @@ public class DocuDAO {
 			} else {
 				sb.append("SELECT * FROM (");
 				sb.append(" SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
-				sb.append(" SELECT docuNum, docuSubject,memId,");
+				sb.append(" SELECT docuNum, docuSubject,memId, docuRecomm,");
 				sb.append(" DATE_FORMAT(docuCreated , '%Y-%m-%d') docuCreated, docuHitCount FROM docu");
 				sb.append(" WHERE docuNum < ?");
 				sb.append(" ORDER BY docuNum DESC) tb,");

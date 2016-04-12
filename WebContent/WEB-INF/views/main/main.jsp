@@ -5,6 +5,8 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String cp=request.getContextPath();
+	
+	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +38,12 @@
     <![endif]-->
 	<%-- <script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>  --%>
 
+<script type="text/javascript">
+function logincheck(){
+	alert("체크!");
+}
+
+</script>
 </head>
 
 <body>
@@ -111,7 +119,7 @@
                     <div class="panel-body">
                         <ul type="disc">
                           <c:forEach var="dtoDocu" items="${listDocu}">
-                        	<li><a href="<%=cp%>/docu/article.sst?page=1&docuNum=${dtoDocu.docuNum}">${dtoDocu.docuSubject}</a></li>
+                        	<li><a href="<%=cp%>/docu/article.sst?page=1&docuNum=${dtoDocu.docuNum}" onclick="logincheck();">${dtoDocu.docuSubject}</a></li>
                           </c:forEach>
                         </ul>
                         

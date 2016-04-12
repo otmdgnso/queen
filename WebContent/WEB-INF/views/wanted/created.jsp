@@ -28,25 +28,25 @@
 <script type="text/javascript">
 // enctype="multipart/form-data" 파일첨부 안할건데 이거쓰면 에러남 1시간30분동안 못잡음
     function check() {
-        var f = document.shareForm;
+        var f = document.wantedForm;
 
-    	var str = f.shareSubject.value;
+    	var str = f.wantedSubject.value;
         if(!str) {
-            f.shareSubject.focus();
+            f.wantedSubject.focus();
             return false;
         }
         
-    	str = f.shareContent.value;
+    	str = f.wantedContent.value;
         if(!str) {
-            f.shareContent.focus();
+            f.wantedContent.focus();
             return false;
         }
 
     	var mode="${mode}";
     	if(mode=="created")
-    		f.action="<%=cp%>/bbs/created_ok.sst";
+    		f.action="<%=cp%>/wanted/created_ok.sst";
     	else if(mode=="update")
-    		f.action="<%=cp%>/bbs/update_ok.sst";
+    		f.action="<%=cp%>/wanted/update_ok.sst";
 
     	// image 버튼, submit은 submit() 메소드 호출하면 두번전송
         return true;
@@ -65,7 +65,7 @@
 			style="float: none; margin-left: auto; margin-right: auto;">
 
 			<div>
-				<form name="shareForm" method="post" onsubmit="return check();">
+				<form name="wantedForm" method="post" onsubmit="return check();">
 					<div class="bs-write">
 						<table class="table">
 							<tbody>
@@ -81,15 +81,15 @@
 								<tr>
 									<td class="td1">제목</td>
 									<td colspan="3" class="td3"><input type="text"
-										name="shareSubject" class="form-control input-sm"
-										value="${dto.shareSubject}" required="required"></td>
+										name="wantedSubject" class="form-control input-sm"
+										value="${dto.wantedSubject}" required="required"></td>
 								</tr>
 								<tr>
 									<td class="td1" colspan="4" style="padding-bottom: 0px;">설명</td>
 								</tr>
 								<tr>
-									<td colspan="4" class="td4"><textarea name="shareContent"
-											class="form-control" rows="7" required="required">${dto.shareContent}</textarea>
+									<td colspan="4" class="td4"><textarea name="wantedContent"
+											class="form-control" rows="7" required="required">${dto.wantedContent}</textarea>
 									</td>
 								</tr>
 
@@ -104,9 +104,9 @@
 											확인 <span class="glyphicon glyphicon-ok"></span>
 										</button>
 										<button type="button" class="btn btn-danger"
-											onclick="javascript:location.href='<%=cp%>/bbs/list.sst';"> 취소</button>
+											onclick="javascript:location.href='<%=cp%>/wanted/list.sst';"> 취소</button>
 											 <c:if test="${mode=='update'}">
-											      <input type="hidden" name="shareNum" value="${dto.shareNum}">
+											      <input type="hidden" name="wantedNum" value="${dto.wantedNum}">
 											      <input type="hidden" name="memId" value="${dto.memId}">
 											      <input type="hidden" name="page" value="${page}">
 										  </c:if>

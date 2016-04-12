@@ -99,7 +99,7 @@ function sendLogin() {
                                 <a href="<%=cp%>/bbs/list.sst">취업정보나눔 </a>
                             </li>
                             <li>
-                                <a href="portfolio-item.jsp">팀원구하기 </a>
+                                <a href="<%=cp%>/wanted/list.sst">팀원구하기 </a>
                             </li>
                         </ul>
                     </li>

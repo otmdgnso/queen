@@ -51,6 +51,12 @@
     	// image 버튼, submit은 submit() 메소드 호출하면 두번전송
         return true;
     }
+    <c:if test="${mode=='update'}">
+    function deleteFile(num) {
+  	  var url="<%=cp%>/docu/deleteFile.do?docuNum="+docuNum+"&page=${page}";
+  	  location.href=url;
+    }
+  </c:if>
 </script>
 </head>
 <body>
@@ -65,7 +71,7 @@
 			style="float: none; margin-left: auto; margin-right: auto;">
 
 			<div>
-				<form name="docuForm" method="post" onsubmit="return check();">
+				<form name="docuForm" method="post" onsubmit="return check();" enctype="multipart/form-data">
 					<div class="bs-write">
 						<table class="table">
 							<tbody>
@@ -92,7 +98,24 @@
 											class="form-control" rows="7" required="required">${dto.docuContent}</textarea>
 									</td>
 								</tr>
+                             <tr>
+			                    <td class="td1">첨부</td>
+				                <td colspan="3" class="td3">
+					                <input type="file" name="upload" class="form-control input-sm">
+						        </td>
+							</tr>
 
+		                   <c:if test="${mode=='update'}">
+		                    <tr> 
+		                        <td class="td1">첨부된파일</td>
+		                        <td colspan="3" class="td3"> 
+		                            <c:if test="${not empty dto.docuFile}">
+		                                ${dto.originalFilename}
+		                                | <a href="javascript:deleteFile('${dto.docuNum}');">삭제</a>
+		                            </c:if>	        
+		                        </td>
+		                    </tr>
+		                   </c:if>			
 								
 
 
@@ -108,6 +131,9 @@
 											 <c:if test="${mode=='update'}">
 											      <input type="hidden" name="docuNum" value="${dto.docuNum}">
 											      <input type="hidden" name="memId" value="${dto.memId}">
+											      <input type="hidden" name="fileSize" value="${dto.fileSize}">
+	                                              <input type="hidden" name="docuFile" value="${dto.docuFile}">
+	                                              <input type="hidden" name="originalFilename" value="${dto.originalFilename}">
 											      <input type="hidden" name="page" value="${page}">
 										  </c:if>
 									</td>

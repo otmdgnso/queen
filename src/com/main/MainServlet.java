@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.util.MyServlet;
-import com.util.MyUtil;
 
 @WebServlet("/main.sst")
 public class MainServlet extends MyServlet {
@@ -34,7 +33,7 @@ public class MainServlet extends MyServlet {
 			listCompany=dao.mainCompany();
 			listDocu=dao.mainDocu();
 			listTrend=dao.mainTrend();
-			
+
 			Iterator<MainDTO> itShare= listShare.iterator();
 			Iterator<MainDTO> itPfo= listPfo.iterator();
 			Iterator<MainDTO> itWanted=listWanted.iterator();

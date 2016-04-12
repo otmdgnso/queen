@@ -172,21 +172,21 @@ function deleteReply(replyNum, pageNo, memId) {
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
 						<div class="item active">
-							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename}" alt="" style="width: 700px; height: 500px;">
+							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename}" alt="" style="width: 100%; height: 500px;">
 						</div>
 						<c:if test="${dto.imgCnt>1}">
 						<div class="item">
-							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename2}" alt="" style="width: 700px; height: 500px;">
+							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename2}" alt="" style="width: 100%; height: 500px;">
 						</div>
 						</c:if>
 						<c:if test="${dto.imgCnt>2}">
 						<div class="item">
-							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename3}" alt="" style="width: 700px; height: 500px;">
+							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename3}" alt="" style="width: 100%; height: 500px;">
 						</div>
 						</c:if>
 						<c:if test="${dto.imgCnt>3}">
 						<div class="item">
-							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename4}" alt="" style="width: 700px; height: 500px;">
+							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename4}" alt="" style="width: 100%; height: 500px;">
 						</div>
 						</c:if>
 					</div>

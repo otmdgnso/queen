@@ -163,6 +163,7 @@ public class DocuServlet extends MyServlet {
 			String page = req.getParameter("page");
 			String searchKey=req.getParameter("searchKey");
 			String searchValue=req.getParameter("searchValue");
+			int dataCount= dao.dataCount(docuNum, info.getMemId());
 			if(searchKey==null) {
 				searchKey="docuSubject";
 				searchValue="";
@@ -199,6 +200,7 @@ public class DocuServlet extends MyServlet {
 			req.setAttribute("params", params);
 			req.setAttribute("linesu", linesu);
 			req.setAttribute("page", page);
+			req.setAttribute("dataCount", dataCount);
 
 			forward(req, resp, "/WEB-INF/views/docu/article.jsp");
 		} else if (uri.indexOf("update.sst") != -1) {
@@ -327,6 +329,16 @@ public class DocuServlet extends MyServlet {
 			resp.setContentType("text/html;charset=utf-8");
 			PrintWriter out=resp.getWriter();
 			out.println(sb.toString());
+		} else if(uri.indexOf("recomm.sst")!=-1) {
+			int docuNum= Integer.parseInt(req.getParameter("docuNum"));
+			String page= req.getParameter("page");
+			
+			int dataCount= dao.dataCount(docuNum, info.getMemId());
+			
+			if (dataCount==0)
+				dao.DocuRecomm(docuNum, info.getMemId());
+			
+			resp.sendRedirect(cp + "/docu/article.sst?page="+page+"&docuNum="+docuNum);
 		}
  
 		

@@ -78,7 +78,7 @@ function sendLogin() {
                                 <a href="sidebar.jsp">주절주절</a>
                             </li>
                             <li>
-                                <a href="lIst.jsp">포트폴리오</a>
+                                <a href="<%=cp%>/portfolio/list.sst">포트폴리오</a>
                             </li>                                                     
                         </ul>
                     </li>
@@ -187,7 +187,7 @@ function sendLogin() {
 			<div class="modal-content" style="border-radius:0px; padding:5px; padding-left:30px; 
 					padding-right:30px;">
 				<div style=""class="modal-header" align="center">
-					<img class="img-circle" id="img_logo" src="<%=cp%>/res/image/사자.png">
+					<img id="img_logo" src="<%=cp%>/res/image/사자.png">
 					
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

@@ -43,7 +43,7 @@
 	<div>
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
- 	<br>
+ 	
  <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -56,12 +56,12 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-            	<div class="fill" style="background-image:url('<%=cp%>/res/image/mainslide/fill1.jpg');"></div>
+            	<div class="fill" style="background-image:url('<%=cp%>/res/image/mainslide/fill1_2.jpg');"></div>
                 <div class="carousel-caption">
                     <h2></h2>
                 </div>
             </div>
-            <div class="item">
+            <div class="item">	
                 <div class="fill" style="background-image:url('<%=cp%>/res/image/mainslide/fill2.jpg');"></div>
                 <div class="carousel-caption">
                     <h2></h2>
@@ -83,20 +83,12 @@
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
             <span class="icon-next"></span>
         </a>
+        
+        <br><br>
+		<br><br>
+        
+        <img style="margin: 0px auto;" src ="<%=cp%>/res/image/newbar1.png">
     </header>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
     <!-- Page Content -->
@@ -105,12 +97,11 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <!-- <h1 class="page-header">
-                    Welcome to SIST Community
-                </h1> -->
 				<br><br>
-                <img src ="<%=cp%>/res/image/newBar.png">
+				<br><br>
                 <br><br>
+                <br><br>
+                <br>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
@@ -120,11 +111,11 @@
                     <div class="panel-body">
                         <ul type="disc">
                           <c:forEach var="dtoDocu" items="${listDocu}">
-                        	<li><a href="#">${dtoDocu.docuSubject}</a></li>
+                        	<li><a href="<%=cp%>/docu/article.sst?page=1&docuNum=${dtoDocu.docuNum}">${dtoDocu.docuSubject}</a></li>
                           </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
+                        <a href="<%=cp%>/docu/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
                     </div>
                 </div>
             </div>
@@ -169,11 +160,11 @@
                           
                           <ul type="disc">
                         	<c:forEach var="dtoCompany" items="${listCompany}">
-                        		<li><a href="#">${dtoCompany.companySubject}</a></li>
+                        		<li><a href="<%=cp %>/company/article.sst?page=1&companyNum=${dtoCompany.companyNum}">${dtoCompany.companySubject}</a></li>
                           </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
+                        <a href="<%=cp %>/company/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
                         	
                     </div>
                 </div>
@@ -201,11 +192,11 @@
                     <div class="panel-body">
                       <ul type="disc">
                         	<c:forEach var="dtoWanted" items="${listWanted}">
-	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoWanted.wantedHead}]</b>&nbsp;${dtoWanted.wantedSubject}</a></li>
+	                        	<li><a href="<%=cp%>/wanted/article.sst?page=1&wantedNum=${dtoWanted.wantedNum}"><b style="color:#FF7012;">[${dtoWanted.wantedHead}]</b>&nbsp;${dtoWanted.wantedSubject}</a></li>
 	                         </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                        <a href="<%=cp%>/wanted/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>
                 </div>
             </div>
@@ -233,11 +224,11 @@
                     <div class="panel-body">
                         <ul type="disc">
                         	<c:forEach var="dtoTip" items="${listTip}">
-	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoTip.tipHead}]</b>&nbsp;${dtoTip.tipSubject}</a></li>
+	                        	<li><a href="<%=cp%>/tip/article.sst?page=1&tipNum=${dtoTip.tipNum}"><b style="color:#FF7012;">[${dtoTip.tipHead}]</b>&nbsp;${dtoTip.tipSubject}</a></li>
 	                         </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                        <a href="<%=cp%>/tip/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>
                 </div>
             </div>

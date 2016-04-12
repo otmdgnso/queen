@@ -1,7 +1,7 @@
 package com.docu;
 
 public class DocuDTO {
- private int docuNum,docuHitCount, listDocuNum;
+ private int docuNum,docuHitCount, listDocuNum, docuRecomm;
  private String  docuSubject,docuContent;
  private String docuCreated, docuModified;
  private String memId;
@@ -53,6 +53,14 @@ public int getListDocuNum() {
 public void setListDocuNum(int listDocuNum) {
 	this.listDocuNum = listDocuNum;
 }
+public int getDocuRecomm() {
+	return docuRecomm;
+}
+public void setDocuRecomm(int docuRecomm) {
+	this.docuRecomm = docuRecomm;
+}
+
+
  
  
 }

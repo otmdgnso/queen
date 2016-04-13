@@ -122,9 +122,9 @@ function sendLogin() {
                      <li class="dropdown">
                     
 	                    <c:if test="${empty sessionScope.member}">
-	             			   <button  class="dropdown-toggle" style="margin-left:10px;margin-top:16px; border-radius:2px; background:none; border:none; color: #E6E6E6; font-size:13px;" type="button" 
+	             			   <button  class="dropdown-toggle" style="margin-left:10px;margin-top:16px; border-radius:2px; background:none; border:none; color: #fff; font-size:13px;" type="button" 
 	                        			data-toggle="modal" data-target="#login-modal"  >
-							<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; 로그인
+							<span style="color:#f1be36;" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; 로그인
 							</button>
 	            		</c:if>
 	            		
@@ -159,9 +159,9 @@ function sendLogin() {
                     <!-- 로그아웃 / 혹은 회원가입  margin-left:10px; margin-top:10px; border-radius:4px; -->
                     <li >                   			     
 						<c:if test="${empty sessionScope.member}">  
-								<button id="btn1" style="margin-left:10px;margin-top:16px;background:none; border:none; color:#E6E6E6; font-size:13px; " type="button" 
+								<button id="btn1" style="margin-left:10px;margin-top:16px;background:none; border:none; color:#fff; font-size:13px; " type="button" 
 								onclick="location.href='<%=cp%>/member/member.sst';"class="dropdown-toggle"	>
-									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp; 회원가입
+									<span style="color:#f1be36;" class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp; 회원가입
 								</button>
      <%-- 
 								<a href="<%=cp%>/member/member.sst" >회원가입</a> --%>

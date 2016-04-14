@@ -59,6 +59,22 @@ function deleteCompany(companyNum) {
 }
 </c:if>
 
+function recommCheck() {
+	var c="${recommCount}";
+	if(c=="")
+		c="0";
+	if(c=="1") {
+		alert("이미 추천 하셨습니다.");
+		return;
+	} else {
+		var url="<%=cp%>/company/recomm.sst?page=${page}&companyNum=${dto.companyNum}";
+		location.href=url;
+	}
+	
+} 
+
+
+
 //-- 댓글 ------------------------------------
 //댓글 리스트
 $(function(){
@@ -214,8 +230,8 @@ function deleteReply(companyR_num, pageNo, memId){
                             </td>
                         </tr>
                         
-                        <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg">&nbsp;5</td>
+                     	<tr>
+                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.companyRecomm}</td>
                         </tr>
                         
                         <tr height="30">

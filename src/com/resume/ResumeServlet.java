@@ -170,6 +170,7 @@ public class ResumeServlet extends MyServlet {
 			
 	        //파라미터 : ResumeNum, page,[searchKey,searchValue]
 			int resumeNum = Integer.parseInt(req.getParameter("resumeNum"));
+			int recommCount=dao.recommCount(resumeNum, info.getMemId());
 			String page = req.getParameter("page");
 			String searchKey=req.getParameter("searchKey");
 			String searchValue=req.getParameter("searchValue");
@@ -209,6 +210,7 @@ public class ResumeServlet extends MyServlet {
 			req.setAttribute("params", params);
 			req.setAttribute("linesu", linesu);
 			req.setAttribute("page", page);
+			req.setAttribute("recommCount", recommCount);
 
 			forward(req, resp, "/WEB-INF/views/resume/article.jsp");
 		} else if (uri.indexOf("update.sst") != -1) {
@@ -346,8 +348,20 @@ public class ResumeServlet extends MyServlet {
 			resp.setContentType("text/html;charset=utf-8");
 			PrintWriter out=resp.getWriter();
 			out.println(sb.toString());
-		}
+			
+		}else if(uri.indexOf("recomm.sst")!=-1) {  
+	          //////// 추천수 증가
+	         int resumeNum= Integer.parseInt(req.getParameter("resumeNum"));
+	         String page= req.getParameter("page");
+	         
+	         int recommCount= dao.recommCount(resumeNum, info.getMemId());
+	         
+	         if (recommCount==0)
+	            dao.ResumeRecomm(resumeNum, info.getMemId());
+	         
+	         resp.sendRedirect(cp + "/resume/article.sst?page="+page+"&resumeNum="+resumeNum);
 		
 	}
 
+}
 }

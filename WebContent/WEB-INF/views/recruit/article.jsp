@@ -144,7 +144,7 @@ function deleteReply(recruitR_num, pageNo, memId){
     <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span> 게시판 </h3>
+             <h3><span class="glyphicon glyphicon-book"></span>공채 일정 게시판 </h3>
        </div>
        
        <div class="alert alert-info">

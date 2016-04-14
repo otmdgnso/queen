@@ -166,11 +166,11 @@ function deleteReply(companyR_num, pageNo, memId){
     <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span> 게시판 </h3>
+             <h3><span class="glyphicon glyphicon-book"></span> 회사정보 게시판 </h3>
        </div>
        
        <div class="alert alert-info">
-           <i class="glyphicon glyphicon-info-sign"></i> 기업에 대한 자세한 정보를 볼 수 있는 게시판입니다.
+           <i class="glyphicon glyphicon-info-sign"></i> 기업의 상세 정보를 알려주는 게시판입니다.
        </div>
        
        <div class="table-responsive" style="clear: both;">
@@ -220,10 +220,12 @@ function deleteReply(companyR_num, pageNo, memId){
                         </tr>
                         <tr>
                         	<td style="text-align: left; width:200px; height:45px; ">잡 플래닛</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyPlanet}</td>
+                            <td style="text-align: left; width:200px; height:45px; "><a href="http://${dto.companyPlanet}">${dto.companyPlanet}</a></td>
+                            <td style="text-align: left; width:200px; height:45px; "></td>
+                            <td style="text-align: left; width:200px; height:45px; "></td>
                         </tr>
                         <tr>
-                            <td colspan="3" style="height: 230px;">
+                            <td colspan="4" style="height: 230px;">
                                  ${dto.companyContent}
                             </td>
                         </tr>

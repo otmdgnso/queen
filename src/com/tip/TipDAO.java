@@ -19,16 +19,18 @@ public class TipDAO {
 	      PreparedStatement pstmt = null;
 	      StringBuffer sb = new StringBuffer();
 
+
+	      
 	      try {
-	         sb.append("INSERT INTO tip(memId, tipSubject, tipName, tipDate, tipSales");
-	         sb.append(" ,tipForm, tipIndustry, tipPlanet, tipWeb, tipContent, tipSalary");
-	         sb.append(" ,tipScore)");
-	         sb.append(" VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+	         sb.append("INSERT INTO tip(memId, tipSubject, tipHead, tipContent, tipSource)");
+	         sb.append(" VALUES (?,?,?,?,?)");
 
 	         pstmt = conn.prepareStatement(sb.toString());
 	         pstmt.setString(1, dto.getMemId());
 	         pstmt.setString(2, dto.getTipSubject());
-	         pstmt.setString(10, dto.getTipContent());
+	         pstmt.setString(3, dto.getTipHead());
+	         pstmt.setString(4, dto.getTipContent());
+	         pstmt.setString(5, dto.getTipSource());
 
 	         result = pstmt.executeUpdate();
 

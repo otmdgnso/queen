@@ -59,11 +59,11 @@
     <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
         
 	    <div class="body-title">
-	          <h3><span class="glyphicon glyphicon-book"></span> 합격 자소서 공유 </h3>
+	          <h3><span class="glyphicon glyphicon-book"></span> 자소서 공유 게시판  </h3>
 	    </div>
 	    
 	    <div class="alert alert-info">
-	        <i class="glyphicon glyphicon-info-sign"></i> 합격 자소서를 공유하는 게시판입니다.
+	        <i class="glyphicon glyphicon-info-sign"></i> 합격자기소개서 정보를 공유하는 게시판입니다.
 	    </div>
 	
 	    <div>

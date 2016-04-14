@@ -161,6 +161,7 @@ public class CompanyServlet extends MyServlet {
 			
 	        //파라미터 : CompanyNum, page,[searchKey,searchValue]
 			int companyNum = Integer.parseInt(req.getParameter("companyNum"));
+			int recommCount=dao.recommCount(companyNum, info.getMemId());
 			String page = req.getParameter("page");
 			String searchKey=req.getParameter("searchKey");
 			String searchValue=req.getParameter("searchValue");
@@ -200,6 +201,7 @@ public class CompanyServlet extends MyServlet {
 			req.setAttribute("params", params);
 			req.setAttribute("linesu", linesu);
 			req.setAttribute("page", page);
+			req.setAttribute("recommCount", recommCount);
 
 			forward(req, resp, "/WEB-INF/views/company/article.jsp");
 		} else if (uri.indexOf("update.sst") != -1) {
@@ -223,8 +225,17 @@ public class CompanyServlet extends MyServlet {
 			CompanyDTO dto = new CompanyDTO();
 			dto.setCompanyNum(Integer.parseInt(req.getParameter("companyNum")));
 			dto.setCompanySubject(req.getParameter("companySubject"));
+			dto.setCompanyDate(req.getParameter("companyDate"));
 			dto.setCompanyContent(req.getParameter("companyContent"));
-
+			dto.setCompanyName(req.getParameter("companyName"));
+			dto.setCompanySales(req.getParameter("companySales"));
+			dto.setCompanyForm(req.getParameter("companyForm"));
+			dto.setCompanyIndustry(req.getParameter("companyIndustry"));
+			dto.setCompanyPlanet(req.getParameter("companyPlanet"));
+			dto.setCompanyWeb(req.getParameter("companyWeb"));
+			dto.setCompanySalary(req.getParameter("companySalary"));
+			dto.setCompanyScore(req.getParameter("companyScore"));
+		
 			dao.companyUpdate(dto);
 			
 			resp.sendRedirect(cp + "/company/article.sst?page="+page+ "&companyNum="+dto.getCompanyNum());
@@ -328,7 +339,19 @@ public class CompanyServlet extends MyServlet {
 			resp.setContentType("text/html;charset=utf-8");
 			PrintWriter out=resp.getWriter();
 			out.println(sb.toString());
-		}
+		}else if(uri.indexOf("recomm.sst")!=-1) {  
+	          //////// 추천수 증가
+	         int companyNum= Integer.parseInt(req.getParameter("companyNum"));
+	         String page= req.getParameter("page");
+	         
+	         int recommCount= dao.recommCount(companyNum, info.getMemId());
+	         
+	         if (recommCount==0)
+	            dao.CompanyRecomm(companyNum, info.getMemId());
+	         
+	         resp.sendRedirect(cp + "/company/article.sst?page="+page+"&companyNum="+companyNum);
+		
+	}
  
 		
 		

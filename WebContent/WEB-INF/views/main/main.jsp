@@ -151,11 +151,11 @@ function logincheck(){
                     <div class="panel-body">
                          <ul type="disc">
                           <c:forEach var="dtoResume" items="${listResume}">
-                        	<li><a href="#">${dtoResume.resumeSubject}</a></li>
+                        	<li><a href="<%=cp %>/resume/article.sst?page=1&resumeNum=${dtoResume.resumeNum}">${dtoResume.resumeSubject}</a></li>
                           </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
+                        <a href="<%=cp %>/resume/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>
                     </div>
                 </div>
             </div>
@@ -216,11 +216,11 @@ function logincheck(){
                     <div class="panel-body">
                         <ul type="disc">
                         	<c:forEach var="dtoTrend" items="${listTrend}">
-	                        	<li><a href="#"><b style="color:#FF7012;">[${dtoTrend.trendHead}]</b>&nbsp;${dtoTrend.trendSubject}</a></li>
+	                        	<li><a href="<%=cp%>/trend/article.sst?page=1&trendNum=${dtoTrend.trendNum}"><b style="color:#FF7012;">[${dtoTrend.trendHead}]</b>&nbsp;${dtoTrend.trendSubject}</a></li>
 	                         </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                        <a href="<%=cp%>/trend/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>
                 </div>
             </div>

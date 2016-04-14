@@ -59,6 +59,22 @@ function deleteTip(tipNum) {
 }
 </c:if>
 
+function recommCheck() {
+	var c="${recommCount}";
+	if(c=="")
+		c="0";
+	if(c=="1") {
+		alert("이미 추천 하셨습니다.");
+		return;
+	} else {
+		var url="<%=cp%>/tip/recomm.sst?page=${page}&tipNum=${dto.tipNum}";
+		location.href=url;
+	}
+	
+} 
+
+
+
 //-- 댓글 ------------------------------------
 //댓글 리스트
 $(function(){
@@ -150,11 +166,11 @@ function deleteReply(tipR_num, pageNo, memId){
     <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span> 게시판 </h3>
+             <h3><span class="glyphicon glyphicon-book"></span> Tip 게시판 </h3>
        </div>
        
        <div class="alert alert-info">
-           <i class="glyphicon glyphicon-info-sign"></i> 기업에 대한 자세한 정보를 볼 수 있는 게시판입니다.
+           <i class="glyphicon glyphicon-info-sign"></i> 여러 Tip들을 공유하는 공간입니다.
        </div>
        
        <div class="table-responsive" style="clear: both;">
@@ -185,9 +201,13 @@ function deleteReply(tipR_num, pageNo, memId){
                                  ${dto.tipContent}
                             </td>
                         </tr>
-                        
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg">&nbsp;5</td>
+                            <td colspan="3" style="height: 230px;">
+                                 ${dto.tipSource}
+                            </td>
+                        </tr>
+                        <tr>
+                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.tipRecomm}</td>
                         </tr>
                         
                         <tr height="30">

@@ -79,6 +79,14 @@
 					  <table style="width: 600px; margin: 0px auto; border-spacing: 0px;">
 					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
 					
+					<tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">말 머 리</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="tipHead" size="75" maxlength="100" class="boxTF" value="${dto.tipHead}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+					
 					  <tr align="left" height="40"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 					      <td width="500" style="padding-left:10px;"> 
@@ -94,88 +102,19 @@
 					      </td>
 					  </tr>
 				      <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      <!-- 내용 넣기 -->
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">회 사 명</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipName" size="75" maxlength="100" class="boxTF" value="${dto.tipName}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">웹 사 이 트</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipWeb" size="75" maxlength="100" class="boxTF" value="${dto.tipWeb}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">기 업 형 태</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipForm" size="75" maxlength="100" class="boxTF" value="${dto.tipForm}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					  
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">설 립 일</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipDate" size="75" maxlength="100" class="boxTF" value="${dto.tipDate}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">산 업 군</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipIndustry" size="75" maxlength="100" class="boxTF" value="${dto.tipIndustry}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">매 출 액</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipSales" size="75" maxlength="100" class="boxTF" value="${dto.tipSales}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">초 봉 평 균</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipSalary" size="75" maxlength="100" class="boxTF" value="${dto.tipSalary}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">평&nbsp;&nbsp;&nbsp;점</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipScore" size="75" maxlength="100" class="boxTF" value="${dto.tipScore}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">잡 플 래 닛</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipPlanet" size="75" maxlength="100" class="boxTF" value="${dto.tipPlanet}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      	      
-				      
-				      
+				    
 					  <tr align="left"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center; padding-top:5px;" valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 					      <td width="500" valign="top" style="padding:5px 0px 5px 10px;"> 
 					        <textarea name="tipContent" cols="75" rows="12" class="boxTA">${dto.tipContent}</textarea>
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
+					  
+					  <tr align="left"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center; padding-top:5px;" valign="top">소스코드</td>
+					      <td width="500" valign="top" style="padding:5px 0px 5px 10px;"> 
+					        <textarea name="tipSource" cols="75" rows="12" class="boxTA">${dto.tipSource}</textarea>
 					      </td>
 					  </tr>
 					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>

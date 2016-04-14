@@ -146,16 +146,9 @@ public class TipServlet extends MyServlet {
 			
 			//파라미터
 			dto.setTipSubject(req.getParameter("tipSubject"));
-			//dto.setTipName(req.getParameter("tipName"));
-			//dto.setTipWeb(req.getParameter("tipWeb"));
-			//dto.setTipForm(req.getParameter("tipForm"));
-			//dto.setTipDate(req.getParameter("tipDate"));
-			//dto.setTip(req.getParameter("tipIndustry"));
-			dto.setTipSubject(req.getParameter("tipSales"));
-			dto.setTipSubject(req.getParameter("tipSalary"));
-			dto.setTipSubject(req.getParameter("tipScore"));
-			dto.setTipSubject(req.getParameter("tipPlanet"));
-			dto.setTipSubject(req.getParameter("tipContent"));
+			dto.setTipHead(req.getParameter("tipHead"));
+			dto.setTipContent(req.getParameter("tipContent"));
+			dto.setTipSource(req.getParameter("tipSource"));
 			
 			dao.insertTip(dto);
 			
@@ -171,6 +164,7 @@ public class TipServlet extends MyServlet {
 			
 	        //파라미터 : TipNum, page,[searchKey,searchValue]
 			int tipNum = Integer.parseInt(req.getParameter("tipNum"));
+			int recommCount=dao.recommCount(tipNum, info.getMemId());
 			String page = req.getParameter("page");
 			String searchKey=req.getParameter("searchKey");
 			String searchValue=req.getParameter("searchValue");
@@ -210,6 +204,7 @@ public class TipServlet extends MyServlet {
 			req.setAttribute("params", params);
 			req.setAttribute("linesu", linesu);
 			req.setAttribute("page", page);
+			req.setAttribute("recommCount", recommCount);
 
 			forward(req, resp, "/WEB-INF/views/tip/article.jsp");
 		} else if (uri.indexOf("update.sst") != -1) {
@@ -233,7 +228,9 @@ public class TipServlet extends MyServlet {
 			TipDTO dto = new TipDTO();
 			dto.setTipNum(Integer.parseInt(req.getParameter("tipNum")));
 			dto.setTipSubject(req.getParameter("tipSubject"));
+			dto.setTipHead(req.getParameter("tipHead"));
 			dto.setTipContent(req.getParameter("tipContent"));
+			dto.setTipSource(req.getParameter("tipSource"));
 
 			dao.tipUpdate(dto);
 			
@@ -338,7 +335,20 @@ public class TipServlet extends MyServlet {
 			resp.setContentType("text/html;charset=utf-8");
 			PrintWriter out=resp.getWriter();
 			out.println(sb.toString());
-		}
+			
+		}else if(uri.indexOf("recomm.sst")!=-1) {  
+	          //////// 추천수 증가
+	         int tipNum= Integer.parseInt(req.getParameter("tipNum"));
+	         String page= req.getParameter("page");
+	         
+	         int recommCount= dao.recommCount(tipNum, info.getMemId());
+	         
+	         if (recommCount==0)
+	            dao.TipRecomm(tipNum, info.getMemId());
+	         
+	         resp.sendRedirect(cp + "/tip/article.sst?page="+page+"&tipNum="+tipNum);
+		
+	}
 		
 		
 	}

@@ -34,11 +34,11 @@
 } 
 </style>
 
+
 <link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="<%=cp %>/res/css/bootstrap.css" >
 
 <script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
@@ -177,7 +177,7 @@ function deleteReply(freeR_num, pageNo, memId){
 	          <h3><span class="glyphicon glyphicon-pencil"></span> 주절주절  <small style="color:#7C96C9;">자유게시판</small></h3>
 	    </div>
 	    
-	    <div class="alert alert-info" style="background: #D9E5FF ; border:none; color:#5B6781">
+	    <div class="alert alert-info" >
 	         <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> &nbsp;&nbsp;&nbsp;수강생들과 자유롭게 대화를 나눠보세요
 	    </div>
 	

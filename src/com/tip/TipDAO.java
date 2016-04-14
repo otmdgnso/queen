@@ -614,6 +614,83 @@ public class TipDAO {
 		      }
 		      return result;
 		   }
+	   
+	   public int recommCount(int tipNum, String memId) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			StringBuffer sb= new StringBuffer();
+
+			try {
+				// 게시물 번호에 아이디가 없을 경우 0 있을경우 1
+				sb.append("SELECT IFNULL(COUNT(*), 0) FROM tipRecomm");
+				sb.append(" WHERE tipNum=? AND memId=?");
+				pstmt = conn.prepareStatement(sb.toString());
+				pstmt.setInt(1, tipNum);
+				pstmt.setString(2, memId);
+
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					result = rs.getInt(1);
+
+				}
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			} finally {
+				if (rs != null) {
+					try {
+						rs.close();
+					} catch (Exception e2) {
+					}
+				}
+				if (pstmt != null) {
+					try {
+						pstmt.close();
+					} catch (Exception e2) {
+					}
+				}
+			}
+
+			return result;
+		}	   
+		
+		// 추천수 증가
+		public int TipRecomm(int tipNum, String memId) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			String sql;
+			String sql2;
+
+			try {
+				// 추천수 +1
+				sql = "UPDATE tip SET tipRecomm= tipRecomm+1 WHERE tipNum=?";
+
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setInt(1, tipNum);
+				
+				pstmt.executeUpdate();
+				pstmt.close();
+				pstmt=null;
+				
+				//추천 테이블에 추천체크하는데 필요한 정보 추가
+				sql2=" INSERT INTO tipRecomm VALUES(?,?)";
+				
+				pstmt= conn.prepareStatement(sql2);
+				
+				pstmt.setString(1, memId);
+				pstmt.setInt(2, tipNum);
+
+				result = pstmt.executeUpdate();
+				pstmt.close();
+				pstmt = null;
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+
+			return result;
+		}				
+
 	
 	
 	

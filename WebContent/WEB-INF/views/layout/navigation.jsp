@@ -132,13 +132,13 @@ function sendLogin() {
 	                		
 	                		<c:if test="${sessionScope.member.memId=='admin'}">
 		                		<a href="<%=cp%>/member/pwd.sst?mode=update" style="color:white; font-weight:bold;" class="dropdown-toggle" >
-		                		 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;관리자</a>
+		                		 <span style="color:#f1be36;" class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;관리자</a>
 	                			
 	                		</c:if>
 	                		<c:if test="${sessionScope.member.memId!='admin'}" >
 	                			 
 	                			 <a href="#" style="color:white; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown">
-	                			 		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>&nbsp;&nbsp;${sessionScope.member.memName} 님<b class="caret"></b></a>
+	                			 		<span style="color:#f1be36;" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>&nbsp;&nbsp;${sessionScope.member.memName} 님<b class="caret"></b></a>
                         		<ul class="dropdown-menu" style="text-align:center;">
                             		<li>
 		                                <a href="<%=cp%>/member/pwd.sst?mode=update">정보수정</a>
@@ -169,7 +169,7 @@ function sendLogin() {
                  
                       <c:if test="${not empty sessionScope.member}">
                      		
-                        <a href="<%=cp%>/member/logout.sst" style="color:color:#E6E6E6; "> 로그아웃</a>
+                        <a href="<%=cp%>/member/logout.sst" style="color:#f1be36; "> <b>로그아웃</b></abbr></a>
                       </c:if>
                    
                    </li>

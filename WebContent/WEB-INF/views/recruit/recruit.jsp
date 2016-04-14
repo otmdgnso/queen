@@ -67,7 +67,7 @@
     <title>Modern Business - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
@@ -175,7 +175,7 @@
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<tr>");
-				out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
+				out.print("<td style='font-size: 3pt; background-color: #B2CCFF; border: solid black 1px;'>");
 				out.print("시작"+"</td>");
 				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 				out.print("</tr>");
@@ -194,7 +194,7 @@
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<tr>");
-				out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
+				out.print("<td style='font-size: 3pt; background-color: #FFC19E; border: solid black 1px;'>");
 				out.print("마감"+"</td>");
 				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 				out.print("</tr>");
@@ -280,7 +280,7 @@
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<tr>");
-				out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
+				out.print("<td style='font-size: 3pt; background-color: #B2CCFF; border: solid black 1px;'>");
 				out.print("시작"+"</td>");
 				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 				out.print("</tr>");
@@ -299,7 +299,7 @@
 				if(y==beforeyear && m==beforemonth && d==beforeday){
 					String subject=dto.getRecruitSubject();
 					out.print("<tr>");
-					out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
+					out.print("<td style='font-size: 3pt; background-color: #FFC19E; border: solid black 1px;'>");
 					out.print("마감"+"</td>");
 					out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 					out.print("</tr>");
@@ -382,7 +382,7 @@
          if(y==beforeyear && m==beforemonth && d==beforeday){
             String subject=dto.getRecruitSubject();
             out.print("<tr>");
-            out.print("<td style='font-size: 3pt; background-color: #B2CCFF'>");
+            out.print("<td style='font-size: 3pt; background-color: #B2CCFF; border: solid black 1px;'>");
             out.print("시작"+"</td>");
             out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
           	out.print("</tr>");
@@ -401,7 +401,7 @@
          if(y==beforeyear && m==beforemonth && d==beforeday){
             String subject=dto.getRecruitSubject();
             out.print("<tr>");
-            out.print("<td style='font-size: 3pt; background-color: #FFC19E'>");
+            out.print("<td style='font-size: 3pt; background-color: #FFC19E; border: solid black 1px;'>");
             out.print("마감"+"</td>");
             out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
             out.print("</tr>");

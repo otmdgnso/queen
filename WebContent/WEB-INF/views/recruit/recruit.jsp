@@ -108,7 +108,7 @@
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a>
                     </li>
-                    <li class="active">Full Width Page 여기는 헤더 입니다.</li>
+                    <li class="active">3주 간의 공채 일정을 달력을 통해 편하게 보세요!</li>
                 </ol>
             </div>
         </div>
@@ -194,8 +194,8 @@
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<tr>");
-				out.print("<td style='font-size: 3pt; background-color: #FFC19E; border: solid black 1px;'>");
-				out.print("마감"+"</td>");
+				out.print("<td style='color:white; font-size: 3pt; background-color: #ED006D; border: 1px #FFB85A;'><b>");
+				out.print("마감"+"</b></td>");
 				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 				out.print("</tr>");
 			}

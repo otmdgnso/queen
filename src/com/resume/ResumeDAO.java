@@ -306,7 +306,7 @@ public class ResumeDAO {
 		try {
 			sb.append("UPDATE resume set resumeSubject=?, resumeCompany=?, resumeDate=?, resumeJob=?,");
 			sb.append(" resumeSchool=?, resumeMajor=?, resumeScore=?, resumeLanguage=?, resumeEx=?, resumeAbility=?,");
-			sb.append(" resumeContent=?");
+			sb.append(" resumeContent=?,");
 			sb.append(" resumeModified=NOW()");
 			sb.append(" WHERE resumeNum=?");
 

@@ -4,7 +4,7 @@ public class TrendDTO {
  private int trendNum, listTrendNum;
  private String  trendSubject,trendContent, trendHead;
  private String trendCreated, trendModified;
- private String memId;
+ private String memId, imageFilename;
  
 public int getTrendNum() {
 	return trendNum;
@@ -53,6 +53,12 @@ public String getMemId() {
 }
 public void setMemId(String memId) {
 	this.memId = memId;
+}
+public String getImageFilename() {
+	return imageFilename;
+}
+public void setImageFilename(String imageFilename) {
+	this.imageFilename = imageFilename;
 }
 
 }

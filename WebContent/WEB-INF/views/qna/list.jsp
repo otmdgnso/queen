@@ -26,21 +26,13 @@
     <!-- Custom Fonts -->
     <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
  <!-- jQuery -->
     <script src="<%=cp%>/res/js/jquery.js"></script>
     
-<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript">
 	function searchList() {
 		var f=document.searchForm;
-		f.action="<%=cp%>/trend/list.sst";
+		f.action="<%=cp%>/qna/list.sst";
 		f.submit();
 	}
 </script>
@@ -63,7 +55,7 @@
 	    </div>
 	    
 	    <div class="alert alert-info">
-	        <i class="glyphicon glyphicon-info-sign"></i> 회원과 자유로이 토론할 수 있는 공간입니다.
+	        <i class="glyphicon glyphicon-info-sign"></i> 여러 회사의 상세 정보를 알려주는 게시판입니다.
 	    </div>
 	
 	    <div>
@@ -77,20 +69,24 @@
 	                <thead>
 	                    <tr>
 	                        <th class="text-center" style="width: 70px;">번호</th>
-	                        <th style="width: 70px;" >말머리</th>
+	                        <th class="text-center" style="width: 70px;">추천수</th>
+	                        <th class="text-center" style="width: 70px;">말머리</th>
 	                        <th >제목</th>
 	                        <th class="text-center" style="width: 100px;">글쓴이</th>
 	                        <th class="text-center" style="width: 100px;">날짜</th>
+	                        <th class="text-center" style="width: 70px;">조회수</th> 
 	                    </tr>
 	                </thead>
 	                <tbody>
 					  <c:forEach var="dto" items="${list}">
 	                    <tr>
-	                        <td class="text-center">${dto.listTrendNum}</td>
-	                        <td class="text-center">${dto.trendHead}</td>
-	                        <td><a href='${articleUrl}&trendNum=${dto.trendNum}'>${dto.trendSubject}</a></td>
+	                        <td class="text-center">${dto.listQnaNum}</td>
+	                        <td class="text-center">${dto.qnaRecomm}</td>
+	                        <td class="text-center">${dto.qnaHead}</td>
+	                        <td><a href='${articleUrl}&qnaNum=${dto.qnaNum}'>${dto.qnaSubject}</a></td>
 	                        <td class="text-center">${dto.memId}</td>
-	                        <td class="text-center">${dto.trendCreated}</td>
+	                        <td class="text-center">${dto.qnaCreated}</td>
+	                        <td class="text-center">${dto.qnaHitCount}</td> 
 	                    </tr>
 	                   </c:forEach> 
 	                </tbody>
@@ -108,21 +104,22 @@
 	        
 	        <div style="clear: both;">
 	        		<div style="float: left; width: 20%; min-width: 85px;">
-	        		    <button type="button" class="btn btn-default btn-sm wbtn" onclick="javascript:location.href='<%=cp%>/trend/list.sst';">새로고침</button>
+	        		    <button type="button" class="btn btn-default btn-sm wbtn" onclick="javascript:location.href='<%=cp%>/qna/list.sst';">새로고침</button>
 	        		</div>
 	        		<div style="float: left; width: 60%; text-align: center;">
 	        		     <form name="searchForm" method="post" class="form-inline">
 							  <select class="form-control input-sm" name="searchKey" >
-							      <option value="trendSubject">제목</option>
+							      <option value="questSubject">제목</option>
 							      <option value="memId">작성자</option>
-							      <option value="trendContent">내용</option>
+							      <option value="questContent">내용</option>
+							      <option value="questHead">말머리</option>
 							  </select>
 							  <input type="text" class="form-control input-sm input-search" name="searchValue">
 							  <button type="button" class="btn btn-info btn-sm btn-search" onclick="searchList();"><span class="glyphicon glyphicon-search"></span> 검색</button>
 	        		     </form>
 	        		</div>
 	        		<div style="float: left; width: 20%; min-width: 85px; text-align: right;">
-	        		    <input type="image" src="<%=cp%>/res/image/btn_write.gif" onclick="javascript:location.href='<%=cp%>/trend/created.sst';">
+	        		    <input type="image" src="<%=cp%>/res/image/btn_write.gif" onclick="javascript:location.href='<%=cp%>/qna/created.sst';">
 	        		</div>
 	        </div>
 	    </div>

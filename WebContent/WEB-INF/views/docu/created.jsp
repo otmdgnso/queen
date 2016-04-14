@@ -53,7 +53,7 @@
     }
     <c:if test="${mode=='update'}">
     function deleteFile(docuNum) {
-    	alert(docuNum);
+  
   	  var url="<%=cp%>/docu/deleteFile.sst?docuNum="+docuNum+"&page=${page}";
   	  location.href=url;
     }

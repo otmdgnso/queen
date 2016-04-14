@@ -267,21 +267,15 @@ public class DocuServlet extends MyServlet {
 			
 		    DocuDTO dto = new DocuDTO();
 		    
-		    int docuNum=Integer.parseInt(mreq.getParameter("docuNum"));
 			String page=mreq.getParameter("page");
-			System.out.println(page);
 			
-			dto.setDocuNum(docuNum);
-			if(mreq.getFile("upload")!=null){
-				
-				dto.setDocuNum(Integer.parseInt(mreq.getParameter("docuNum")));
-				dto.setDocuSubject(mreq.getParameter("docuSubject"));
-				dto.setDocuContent(mreq.getParameter("docuContent"));
-				dto.setDocuFile(mreq.getParameter("docuFile"));
-				dto.setOriginalFilename(mreq.getParameter("originalFilename"));
-				dto.setFileSize(Long.parseLong(mreq.getParameter("fileSize")));
-							
-			}
+			dto.setDocuNum(Integer.parseInt(mreq.getParameter("docuNum")));
+			dto.setDocuSubject(mreq.getParameter("docuSubject"));
+			dto.setDocuContent(mreq.getParameter("docuContent"));
+			dto.setDocuFile(mreq.getParameter("docuFile"));
+			dto.setOriginalFilename(mreq.getParameter("originalFilename"));
+			dto.setFileSize(Long.parseLong(mreq.getParameter("fileSize")));
+			
 			if(mreq.getFile("upload")!=null) {
 				// 기존 파일 삭제
 				FileManager.doFiledelete(pathname, mreq.getParameter("docuFile"));

@@ -210,27 +210,22 @@ function deleteReply(replyNum, pageNo, memId) {
 		</div>
 		<hr>
 		<!-- /.row -->
-		<div class="row">
-		<table>
-			<tfoot>
-				<tr>
-					<td><c:if test="${sessionScope.member.memId==dto.memId}">
+		
+					<div style="float: left;"><c:if test="${sessionScope.member.memId==dto.memId}">
 							<button type="button" class="btn btn-default btn-sm wbtn"
 								onclick="updatePortfolio(${dto.num});">수정</button>
 						</c:if> <c:if
 							test="${sessionScope.member.memId==dto.memId || sessionScope.member.memId=='admin'}">
 							<button type="button" class="btn btn-default btn-sm wbtn"
 								onclick="deletePortfolio(${dto.num});">삭제</button>
-						</c:if></td>
-					<td align="right">
+						</c:if></div>
+					<div style="float: right;">
 						<button type="button" class="btn btn-default btn-sm wbtn"
 							onclick="javascript:location.href='<%=cp%>/portfolio/list.sst?page=${page}';">
 							목록으로</button>
-					</td>
-				</tr>
-			</tfoot>
-		</table>
-		</div>
+					</div>
+				<div style="clear: both;"></div>
+	
 		<hr>
 			<div style="float: left;">
 				<span style="font-weight: bold;">댓글쓰기</span>

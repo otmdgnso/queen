@@ -43,6 +43,7 @@
 .form-signin-heading {
   text-align: center;
   font-weight:bold;  
+   color: #4A5C82;
   font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", sans-serif;
   margin-bottom: 30px;
 }
@@ -50,7 +51,7 @@
 .lbl {
    position:absolute; 
    margin-left:15px; margin-top: 13px;
-   color: #999999;
+   color: #687ead;
    font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
 }
 
@@ -103,10 +104,11 @@ function sendLogin2() {
 	</div>
 	
 
-<div class="container" role="main" style="min-height:80%">
+<div class="container" role="main" style="min-height:90%">
 
     <div class="bodyFrame">
     <form class="form-signin" name="loginForm2" method="post"  onsubmit="return sendLogin2();">
+    <img alt="" src="<%=cp%>/res/image/사자.png" style="margin-left:90px; width:180px; height:208px; ">
         <h2 class="form-signin-heading">Log In</h2>
         
         <label for="memId" id="lblUserId" class="lbl">아이디</label>
@@ -123,13 +125,13 @@ function sendLogin2() {
         	<span class="glyphicon glyphicon-ok"></span></button>
         
        
-      	<div style=" margin-left:57px;margin-top:20px; width:370px;">
-              <span style=" text-align:center; color:tomato; font-weight:bold; font-size:13px; " class="form-control-static">
+      	<div style=" margin-left:40px;margin-top:20px; width:370px;">
+              <span style=" text-align:center; color:tomato; font-weight:bold; font-size:15px; " class="form-control-static">
               ${message}</span>
          </div>
          
         <div style="margin-top:10px; text-align: center;">
-            <button type="button" class="btn btn-link" onclick="location.href='<%=cp%>/member/member.do';">
+            <button type="button" class="btn btn-link" style="font-size:15px;"onclick="location.href='<%=cp%>/member/member.do';">
             		아직 회원이 아니신가요? <span class="glyphicon glyphicon-chevron-right" style="color:gray; margin-right:10px;" ></span> JOIN US!
             </button>
         </div>
@@ -139,7 +141,7 @@ function sendLogin2() {
 <!-- Footer -->
         <footer>
             <div class="row">
-                <div class="col-lg-12" style="margin-left: 50px;">
+                <div class="col-lg-12" style="margin-left: 50px; ">
                     <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>

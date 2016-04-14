@@ -124,7 +124,7 @@ function sendLogin() {
 	                    <c:if test="${empty sessionScope.member}">
 	             			   <button  class="dropdown-toggle" style="margin-left:10px;margin-top:16px; border-radius:2px; background:none; border:none; color: #fff; font-size:13px;" type="button" 
 	                        			data-toggle="modal" data-target="#login-modal"  >
-							<span style="color:#f1be36;" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; 로그인
+							<span style="color:#CCD9ED;" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; 로그인
 							</button>
 	            		</c:if>
 	            		
@@ -132,13 +132,13 @@ function sendLogin() {
 	                		
 	                		<c:if test="${sessionScope.member.memId=='admin'}">
 		                		<a href="<%=cp%>/member/pwd.sst?mode=update" style="color:white; font-weight:bold;" class="dropdown-toggle" >
-		                		 <span style="color:#f1be36;" class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;관리자</a>
+		                		 <span style="color:#CCD9ED;" class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;관리자</a>
 	                			
 	                		</c:if>
 	                		<c:if test="${sessionScope.member.memId!='admin'}" >
 	                			 
 	                			 <a href="#" style="color:white; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown">
-	                			 		<span style="color:#f1be36;" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>&nbsp;&nbsp;${sessionScope.member.memName} 님<b class="caret"></b></a>
+	                			 		<span style="color:#CCD9ED;" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>&nbsp;&nbsp;${sessionScope.member.memName} 님<b class="caret"></b></a>
                         		<ul class="dropdown-menu" style="text-align:center;">
                             		<li>
 		                                <a href="<%=cp%>/member/pwd.sst?mode=update">정보수정</a>
@@ -161,7 +161,7 @@ function sendLogin() {
 						<c:if test="${empty sessionScope.member}">  
 								<button id="btn1" style="margin-left:10px;margin-top:16px;background:none; border:none; color:#fff; font-size:13px; " type="button" 
 								onclick="location.href='<%=cp%>/member/member.sst';"class="dropdown-toggle"	>
-									<span style="color:#f1be36;" class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp; 회원가입
+									<span style="color:#CCD9ED;" class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp; 회원가입
 								</button>
      <%-- 
 								<a href="<%=cp%>/member/member.sst" >회원가입</a> --%>
@@ -169,7 +169,7 @@ function sendLogin() {
                  
                       <c:if test="${not empty sessionScope.member}">
                      		
-                        <a href="<%=cp%>/member/logout.sst" style="color:#f1be36; "> <b>로그아웃</b></abbr></a>
+                        <a href="<%=cp%>/member/logout.sst" style="color:#CCD9ED; "> <b>로그아웃</b></abbr></a>
                       </c:if>
                    
                    </li>

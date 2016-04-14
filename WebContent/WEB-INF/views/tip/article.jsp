@@ -204,7 +204,7 @@ function deleteReply(tipR_num, pageNo, memId){
                             </td>
                         </tr>
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.tipRecomm}</td>
+                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png" onclick="recommCheck()">&nbsp;${dto.tipRecomm}</td>
                         </tr>
                         
                         <tr height="30">

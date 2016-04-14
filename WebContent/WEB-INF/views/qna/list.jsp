@@ -18,7 +18,7 @@
     <title>Modern Business - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
+    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
@@ -26,21 +26,13 @@
     <!-- Custom Fonts -->
     <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
  <!-- jQuery -->
     <script src="<%=cp%>/res/js/jquery.js"></script>
     
-<script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript">
 	function searchList() {
 		var f=document.searchForm;
-		f.action="<%=cp%>/tip/list.sst";
+		f.action="<%=cp%>/qna/list.sst";
 		f.submit();
 	}
 </script>
@@ -59,11 +51,11 @@
     <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
         
 	    <div class="body-title">
-	          <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> 개발TIP </h3>
+	          <h3><span class="glyphicon glyphicon-book"></span> 게시판 </h3>
 	    </div>
 	    
 	    <div class="alert alert-info">
-	        <i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;&nbsp;  개발과 관련된 유용한 TIP을 공유해주세요
+	        <i class="glyphicon glyphicon-info-sign"></i> 여러 회사의 상세 정보를 알려주는 게시판입니다.
 	    </div>
 	
 	    <div>
@@ -72,7 +64,7 @@
 	            <div style="float: right;">&nbsp;</div>
 	        </div>
 	        
-	        <div class="table-responsive" style="clear: both; border-top:1px "> <!-- 테이블 반응형 -->
+	        <div class="table-responsive" style="clear: both;"> <!-- 테이블 반응형 -->
 	            <table class="table table-hover">
 	                <thead>
 	                    <tr>
@@ -88,13 +80,13 @@
 	                <tbody>
 					  <c:forEach var="dto" items="${list}">
 	                    <tr>
-	                        <td class="text-center">${dto.listTipNum}</td>
-	                        <td class="text-center">${dto.tipRecomm}</td>
-	                        <td class="text-center">${dto.tipHead}</td>
-	                        <td ><a style="" href='${articleUrl}&tipNum=${dto.tipNum}'>${dto.tipSubject}</a></td>
+	                        <td class="text-center">${dto.listQnaNum}</td>
+	                        <td class="text-center">${dto.qnaRecomm}</td>
+	                        <td class="text-center">${dto.qnaHead}</td>
+	                        <td><a href='${articleUrl}&qnaNum=${dto.qnaNum}'>${dto.qnaSubject}</a></td>
 	                        <td class="text-center">${dto.memId}</td>
-	                        <td class="text-center">${dto.tipCreated}</td>
-	                        <td class="text-center">${dto.tipHitCount}</td> 
+	                        <td class="text-center">${dto.qnaCreated}</td>
+	                        <td class="text-center">${dto.qnaHitCount}</td> 
 	                    </tr>
 	                   </c:forEach> 
 	                </tbody>
@@ -112,24 +104,22 @@
 	        
 	        <div style="clear: both;">
 	        		<div style="float: left; width: 20%; min-width: 85px;">
-	        		    <button type="button" class="btn btn-default btn-sm wbtn" onclick="javascript:location.href='<%=cp%>/tip/list.sst';">새로고침</button>
+	        		    <button type="button" class="btn btn-default btn-sm wbtn" onclick="javascript:location.href='<%=cp%>/qna/list.sst';">새로고침</button>
 	        		</div>
 	        		<div style="float: left; width: 60%; text-align: center;">
 	        		     <form name="searchForm" method="post" class="form-inline">
 							  <select class="form-control input-sm" name="searchKey" >
-							      <option value="tipSubject">제목</option>
+							      <option value="questSubject">제목</option>
 							      <option value="memId">작성자</option>
-							      <option value="tipContent">내용</option>
-							      <option value="tipHead">말머리</option>
+							      <option value="questContent">내용</option>
+							      <option value="questHead">말머리</option>
 							  </select>
 							  <input type="text" class="form-control input-sm input-search" name="searchValue">
 							  <button type="button" class="btn btn-info btn-sm btn-search" onclick="searchList();"><span class="glyphicon glyphicon-search"></span> 검색</button>
 	        		     </form>
 	        		</div>
 	        		<div style="float: left; width: 20%; min-width: 85px; text-align: right;">
-	        		 	<button style=""type="button" class="write" onclick="javascript:location.href='<%=cp%>/tip/created.sst';">
-	        		 		 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 글쓰기 </button>
-	        		    <%-- <input type="image" src="<%=cp%>/res/image/btn_write.gif" onclick="javascript:location.href='<%=cp%>/tip/created.sst';"> --%>
+	        		    <input type="image" src="<%=cp%>/res/image/btn_write.gif" onclick="javascript:location.href='<%=cp%>/qna/created.sst';">
 	        		</div>
 	        </div>
 	    </div>

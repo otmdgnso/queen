@@ -18,7 +18,7 @@
     <title>Modern Business - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
@@ -86,6 +86,19 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
+	                <c:forEach var="dto" items="${listBestResume}">
+	                    <tr style="background-color: #FFA7A7">
+                            <td class="text-center"><span style="display: inline-block;width: 28px;height:18px;line-height:18px; background: #ED4C00;color: #FFFFFF">Best</span></td>
+                            <td class="text-center">${dto.resumeRecomm}</td>
+	                        <td class="text-center">${dto.resumeJob}</td>
+	                        <td><a href='${articleUrl}&resumeNum=${dto.resumeNum}'>${dto.resumeSubject}</a></td>
+	                        <td class="text-center">${dto.memId}</td>
+	                        <td class="text-center">${dto.resumeCreated}</td>
+	                        <td class="text-center">${dto.resumeHitCount}</td> 
+	                    </tr>
+    				 </c:forEach>         
+	                
+	                
 					  <c:forEach var="dto" items="${list}">
 	                    <tr>
 	                        <td class="text-center">${dto.listResumeNum}</td>

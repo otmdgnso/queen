@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.company.CompanyDTO;
 import com.member.SessionInfo;
 import com.util.MyServlet;
 import com.util.MyUtil;
@@ -88,6 +89,11 @@ public class TipServlet extends MyServlet {
 			else
 				list=dao.listTip(start, end, searchKey, searchValue);
 
+			//추천글
+			List<TipDTO> listBestTip=null;
+			listBestTip=dao.listBestTip();
+			
+			
 			// 리스트 글번호
 			int listTipNum, n = 0;
 			Iterator<TipDTO> it = list.iterator();
@@ -118,6 +124,7 @@ public class TipServlet extends MyServlet {
 			req.setAttribute("page", current_page);
 			req.setAttribute("total_page", total_page);
 			req.setAttribute("articleUrl", articleUrl);
+			req.setAttribute("listBestTip", listBestTip);
 
 			forward(req, resp, "/WEB-INF/views/tip/list.jsp");
 		} else if(uri.indexOf("created.sst")!=-1) {

@@ -19,7 +19,7 @@
     font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
 }
 .guest-write {
-    border: #d5d5d5 solid 1px;
+    border: #B5C1DB solid 1px;
     padding: 10px;
     min-height: 50px;
 }
@@ -174,7 +174,7 @@ function deleteReply(freeR_num, pageNo, memId){
     <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto; margin-top:100px;">
         
 	    <div class="body-title">
-	          <h3><span class="glyphicon glyphicon-pencil"></span> 주절주절  <small>자유게시판</small></h3>
+	          <h3><span class="glyphicon glyphicon-pencil"></span> 주절주절  <small style="color:#7C96C9;">자유게시판</small></h3>
 	    </div>
 	    
 	    <div class="alert alert-info" >
@@ -192,12 +192,12 @@ function deleteReply(freeR_num, pageNo, memId){
 	                   
 	                   <form name="freeForm" method="post" action="">
 	                   
-	                       <textarea name="content" id="content" class="form-control" rows="3" required="required"></textarea>
+	                       <textarea style="border:1px solid #C7D3ED;"name="content" id="content" class="form-control" rows="3" required="required"></textarea>
 	                   
 	                    </form>
 	               </div>
 	               <div style="text-align: right; padding-top: 10px;">
-	                   <button type="button" class="btn btn-primary btn-sm" onclick="sendGuest();"> 등록하기 <span class="glyphicon glyphicon-ok"></span></button>
+	                   <button type="button" class="btn btn-primary btn-sm" style="background:#5587ED; "onclick="sendGuest();"> 등록하기 <span class="glyphicon glyphicon-ok"></span></button>
 	               </div>           
 	           </div>
 	       

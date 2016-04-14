@@ -21,7 +21,7 @@
 <title>  </title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">

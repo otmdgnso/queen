@@ -208,7 +208,7 @@ function deleteReply(docuR_num, pageNo, memId){
 		               </tr>
                         
                         <tr>
-                        <td style="font-weight:bold; font-size:13px;"><img src="<%=cp%>/res/image/social.png" onclick="recommCheck()">&nbsp;&nbsp;&nbsp;${dto.docuRecomm}</td>
+                        <td style="align:center; font-weight:bold; font-size:13px;"><img src="<%=cp%>/res/image/social.png" onclick="recommCheck()">&nbsp;&nbsp;&nbsp;${dto.docuRecomm}</td>
                         </tr>
                         
                         <tr height="30">
@@ -272,6 +272,7 @@ function deleteReply(docuR_num, pageNo, memId){
  <!-- jQuery -->
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
+    
 </body>
 
 </html>

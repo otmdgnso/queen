@@ -21,6 +21,8 @@
     <!-- Custom Fonts -->
     <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+	<!-- SYNTAX HIGHLIGHT -->
+	<link rel="stylesheet" href="<%=cp%>/res/css/prettify.css" />
 <!-- jQuery -->
 <script src="<%=cp%>/res/js/jquery.js"></script>
 
@@ -167,6 +169,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
+    
 
 </body>
 </html>

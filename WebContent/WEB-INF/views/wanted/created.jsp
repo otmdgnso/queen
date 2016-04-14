@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <title>study</title>
 <!-- Bootstrap Core CSS -->
-    <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
+    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
@@ -133,21 +133,7 @@
 	</div>
 
 
-	<div class="modal fade" id="imageViewModal" tabindex="-1" role="dialog"
-		aria-labelledby="imageViewModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body"></div>
-			</div>
-		</div>
-	</div>
-
+	
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 

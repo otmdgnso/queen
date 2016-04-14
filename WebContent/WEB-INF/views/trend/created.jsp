@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%
-   String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -13,13 +13,14 @@
 <meta charset="UTF-8">
 <title>study</title>
 <!-- Bootstrap Core CSS -->
-    <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
+<link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Custom Fonts -->
+<link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 
 <!-- jQuery -->
 <script src="<%=cp%>/res/js/jquery.js"></script>
@@ -42,30 +43,38 @@
             return false;
         }
 
-    	var mode="${mode}";
+        var mode="${mode}";
+  	  if(mode=="created"||mode=="update" && f.upload.value!="") {
+  		if(! /(\.gif|\.jpg|\.png|\.jpeg)$/i.test(f.upload.value)) {
+  			alert('이미지 파일만 가능합니다. !!!');
+  			f.upload.focus();
+  			return false;
+  		}
+  	  }
+        
     	if(mode=="created")
     		f.action="<%=cp%>/trend/created_ok.sst";
     	else if(mode=="update")
     		f.action="<%=cp%>/trend/update_ok.sst";
 
-    	// image 버튼, submit은 submit() 메소드 호출하면 두번전송
-        return true;
-    }
+		// image 버튼, submit은 submit() 메소드 호출하면 두번전송
+		return true;
+	}
 </script>
 </head>
 <body>
-   <!-- Navigation -->
+	<!-- Navigation -->
 	<div>
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
 
-	
+
 	<div class="container" role="main">
 		<div class="bodyFrame col-sm-10"
 			style="float: none; margin-left: auto; margin-right: auto;">
 
 			<div>
-				<form name="trendForm" method="post" onsubmit="return check();">
+				<form name="trendForm" method="post" onsubmit="return check();" enctype="multipart/form-data">
 					<div class="bs-write">
 						<table class="table">
 							<tbody>
@@ -86,16 +95,16 @@
 								</tr>
 								<tr>
 									<td class="td1">말머리</td>
-									<td colspan="3" class="td3">
-									<select name="trendHead" >
-									<option value="자바" ${dto.trendHead=="자바"?"selected='selected'" : ""}>자바</option>
-									<option value="스프링" ${dto.trendHead=="스프링"?"selected='selected'" : ""}>스프링</option>
-									<option value="JSP" ${dto.trendHead=="JSP"?"selected='selected'" : ""}>JSP</option>
-									<option value="JQuery" ${dto.trendHead=="JQuery"?"selected='selected'" : ""}>JQuery</option>
-									<option value="C++" ${dto.trendHead=="C++"?"selected='selected'" : ""}>C++</option>
-									<option value="HTML" ${dto.trendHead=="HTML"?"selected='selected'" : ""}>HTML</option>
-									</select>
-										</td>
+									<td colspan="3" class="td3"><select name="trendHead">
+											<option value="자바"
+												${dto.trendHead=="자바"?"selected='selected'" : ""}>자바</option>
+											<option value="스프링"
+												${dto.trendHead=="스프링"?"selected='selected'" : ""}>스프링</option>
+											<option value="JSP"
+												${dto.trendHead=="JSP"?"selected='selected'" : ""}>JSP</option>
+											<option value="오라클"
+												${dto.trendHead=="오라클"?"selected='selected'" : ""}>오라클</option>
+									</select></td>
 								</tr>
 								<tr>
 									<td class="td1" colspan="4" style="padding-bottom: 0px;">내용</td>
@@ -105,11 +114,19 @@
 											class="form-control" rows="7" required="required">${dto.trendContent}</textarea>
 									</td>
 								</tr>
-
 								
+								<tr>
+		<td colspan="4">
+    	<label class="col-sm-2 control-label" for="imageFilename">이미지</label>
+    	<input type="file" name="upload" class="form-control input-sm">
+    	 <p class="help-block">jpg, png, gif의 확장자를 가진 이미지 파일만 가능합니다.</p>
+    	 </td>
 
-
+								</tr>
 							</tbody>
+							
+							
+							
 							<tfoot>
 								<tr>
 									<td colspan="4" style="text-align: center; padding-top: 15px;">
@@ -117,12 +134,12 @@
 											확인 <span class="glyphicon glyphicon-ok"></span>
 										</button>
 										<button type="button" class="btn btn-danger"
-											onclick="javascript:location.href='<%=cp%>/trend/list.sst';"> 취소</button>
-											 <c:if test="${mode=='update'}">
-											      <input type="hidden" name="trendNum" value="${dto.trendNum}">
-											      <input type="hidden" name="memId" value="${dto.memId}">
-											      <input type="hidden" name="page" value="${page}">
-										  </c:if>
+											onclick="javascript:location.href='<%=cp%>/trend/list.sst';">
+											취소</button> <c:if test="${mode=='update'}">
+											<input type="hidden" name="trendNum" value="${dto.trendNum}">
+											<input type="hidden" name="memId" value="${dto.memId}">
+											<input type="hidden" name="page" value="${page}">
+										</c:if>
 									</td>
 								</tr>
 							</tfoot>
@@ -135,23 +152,9 @@
 	</div>
 
 
-	<div class="modal fade" id="imageViewModal" tabindex="-1" role="dialog"
-		aria-labelledby="imageViewModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body"></div>
-			</div>
-		</div>
-	</div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 
 </body>
 </html>

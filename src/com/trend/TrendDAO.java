@@ -19,14 +19,15 @@ public class TrendDAO {
 	      StringBuffer sb = new StringBuffer();
 
 	      try {
-	         sb.append("INSERT INTO trend(memId, trendSubject, trendContent, trendHead) ");
-	         sb.append(" VALUES (?,?,?,?)");
+	         sb.append("INSERT INTO trend(memId, trendSubject, trendContent, trendHead, imageFilename) ");
+	         sb.append(" VALUES (?,?,?,?,?)");
 
 	         pstmt = conn.prepareStatement(sb.toString());
 	         pstmt.setString(1, dto.getMemId());
 	         pstmt.setString(2, dto.getTrendSubject());
 	         pstmt.setString(3, dto.getTrendContent());
 	         pstmt.setString(4, dto.getTrendHead());
+	         pstmt.setString(5, dto.getImageFilename());
 
 	         result = pstmt.executeUpdate();
 
@@ -151,6 +152,7 @@ public class TrendDAO {
 				dto.setTrendSubject(rs.getString("TrendSubject"));
 				dto.setMemId(rs.getString("memId"));
 				dto.setTrendCreated(rs.getString("TrendCreated"));
+				
 				dto.setTrendHead(rs.getString("TrendHead"));
 
 				list.add(dto);
@@ -207,6 +209,7 @@ public class TrendDAO {
 					dto.setTrendSubject(rs.getString("TrendSubject"));
 					dto.setMemId(rs.getString("memId"));
 					dto.setTrendCreated(rs.getString("TrendCreated"));
+					
 					dto.setTrendHead(rs.getString("TrendHead"));
 					dto.setTrendHead(rs.getString("TrendHead"));
 					
@@ -231,7 +234,7 @@ public class TrendDAO {
 
 		try {
 			sb.append("SELECT trendNum, memId, trendSubject, trendContent, trendHead,");
-			sb.append(" DATE_FORMAT(trendCreated , '%Y-%m-%d %h:%i:%s') trendCreated");
+			sb.append(" DATE_FORMAT(trendCreated , '%Y-%m-%d %h:%i:%s') trendCreated, imageFilename");
 			sb.append(" FROM trend");
 			sb.append(" WHERE trendNum=?");
 
@@ -246,8 +249,10 @@ public class TrendDAO {
 				dto.setMemId(rs.getString("memId"));
 				dto.setTrendSubject(rs.getString("trendSubject"));
 				dto.setTrendContent(rs.getString("trendContent"));
+				
 				dto.setTrendCreated(rs.getString("trendCreated"));
 				dto.setTrendHead(rs.getString("TrendHead"));
+				dto.setImageFilename(rs.getString("imageFilename"));
 			}
 
 		} catch (Exception e) {
@@ -279,15 +284,16 @@ public class TrendDAO {
 
 		try {
 			sb.append("UPDATE trend set trendSubject=?, trendContent=?, trendHead=?,");
-			sb.append(" trendModified=NOW()");
+			sb.append(" trendModified=NOW(), imageFilename=?");
 			sb.append(" WHERE trendNum=?");
 
 			pstmt = conn.prepareStatement(sb.toString());
 
 			pstmt.setString(1, dto.getTrendSubject());
 			pstmt.setString(2, dto.getTrendContent());
-			pstmt.setString(3, dto.getTrendHead());
-			pstmt.setInt(4, dto.getTrendNum());
+			pstmt.setString(3,dto.getTrendHead());
+			pstmt.setString(4, dto.getImageFilename());
+			pstmt.setInt(5, dto.getTrendNum());
 
 			result = pstmt.executeUpdate();
 			

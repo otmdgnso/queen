@@ -281,7 +281,7 @@ public class WantedDAO {
 		StringBuffer sb = new StringBuffer();
 
 		try {
-			sb.append("UPDATE wanted set wantedSubject=?, wantedContent=?,");
+			sb.append("UPDATE wanted set wantedSubject=?, wantedContent=?, wantedHead=?,");
 			sb.append(" wantedModified=NOW()");
 			sb.append(" WHERE wantedNum=?");
 
@@ -289,7 +289,8 @@ public class WantedDAO {
 
 			pstmt.setString(1, dto.getWantedSubject());
 			pstmt.setString(2, dto.getWantedContent());
-			pstmt.setInt(3, dto.getWantedNum());
+			pstmt.setString(3,dto.getWantedHead());
+			pstmt.setInt(4, dto.getWantedNum());
 
 			result = pstmt.executeUpdate();
 			

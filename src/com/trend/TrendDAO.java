@@ -278,7 +278,7 @@ public class TrendDAO {
 		StringBuffer sb = new StringBuffer();
 
 		try {
-			sb.append("UPDATE trend set trendSubject=?, trendContent=?,");
+			sb.append("UPDATE trend set trendSubject=?, trendContent=?, trendHead=?,");
 			sb.append(" trendModified=NOW()");
 			sb.append(" WHERE trendNum=?");
 
@@ -286,7 +286,8 @@ public class TrendDAO {
 
 			pstmt.setString(1, dto.getTrendSubject());
 			pstmt.setString(2, dto.getTrendContent());
-			pstmt.setInt(3, dto.getTrendNum());
+			pstmt.setString(3, dto.getTrendHead());
+			pstmt.setInt(4, dto.getTrendNum());
 
 			result = pstmt.executeUpdate();
 			

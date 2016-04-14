@@ -224,6 +224,7 @@ public class WantedServlet extends MyServlet {
 			dto.setWantedNum(Integer.parseInt(req.getParameter("wantedNum")));
 			dto.setWantedSubject(req.getParameter("wantedSubject"));
 			dto.setWantedContent(req.getParameter("wantedContent"));
+			dto.setWantedHead(req.getParameter("wantedHead"));
 
 			dao.WantedUpdate(dto);
 			

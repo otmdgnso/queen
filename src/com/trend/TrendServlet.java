@@ -223,6 +223,7 @@ public class TrendServlet extends MyServlet {
 			dto.setTrendNum(Integer.parseInt(req.getParameter("trendNum")));
 			dto.setTrendSubject(req.getParameter("trendSubject"));
 			dto.setTrendContent(req.getParameter("trendContent"));
+			dto.setTrendHead(req.getParameter("trendHead"));
 
 			dao.TrendUpdate(dto);
 			

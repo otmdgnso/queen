@@ -89,7 +89,7 @@
 									<td colspan="3" class="td3">
 									<select name="trendHead" >
 									<option value="자바" ${dto.trendHead=="자바"?"selected='selected'" : ""}>자바</option>
-									<option value="c++" ${dto.trendHead=="스프링"?"selected='selected'" : ""}>스프링</option>
+									<option value="스프링" ${dto.trendHead=="스프링"?"selected='selected'" : ""}>스프링</option>
 									<option value="JSP" ${dto.trendHead=="JSP"?"selected='selected'" : ""}>JSP</option>
 									<option value="JQuery" ${dto.trendHead=="JQuery"?"selected='selected'" : ""}>JQuery</option>
 									<option value="C++" ${dto.trendHead=="C++"?"selected='selected'" : ""}>C++</option>

@@ -19,11 +19,11 @@
 
 <link rel="stylesheet" href="<%=cp%>/res/css/jquery-ui.min.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/login.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap-theme.min.css" type="text/css"/>
+
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
 
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
+<link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
 
 
 <script type="text/javascript" src="<%=cp%>/res/js/jquery-ui.min.js"></script>
@@ -116,6 +116,12 @@ function check() {
 </style>
 </head>
 <body>
+
+    <!-- Navigation -->
+	<div>
+		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
+	</div>
+<br><br><br>
 
 <div class="container" role="main" style="margin-top:50px;">
   <div class="jumbotron">

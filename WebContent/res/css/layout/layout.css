@@ -108,11 +108,14 @@
 .body-title {
     color: #424951;
     padding-bottom: 5px;
+ 
     margin: 10px 0 20px 0;
     border-bottom: 1px solid #dddddd;
+    
 }
 .body-title h3{
 	min-width:300px;
+	font-size:35px;
     font-family: "Malgun Gothic", "Nanum Gothic", "Dotum";
     font-weight: bold;
     margin: 0 0 -5px 0;

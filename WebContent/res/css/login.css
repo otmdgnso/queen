@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 * {
     font-family: 'Roboto', sans-serif,"³ª´®°íµñ","¸¼Àº°íµñ";
+    ¤Ç
 }
 
 #login-modal .modal-dialog {
@@ -115,6 +116,8 @@
 
 .btn-lg, .btn-group-lg>.btn {
     border-radius: 0px;
+    background: #687EAD;
+    border:none;
 }
 
 .btn-link {

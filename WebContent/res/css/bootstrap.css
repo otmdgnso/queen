@@ -5,12 +5,12 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 #btnLike{
-	width: 35px;
-	height: 35px;
+   width: 35px;
+   height: 35px;
 }
-
 html {
-  font-family: sans-serif;
+  font-family:NanumGothic, ³ª´®°íµñ, "Malgun Gothic", "¸¼Àº °íµñ", sans-serif;
+  font-size: 12px;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -251,6 +251,7 @@ th {
   }
   .label {
     border: 1px solid #000;
+    
   }
   .table {
     border-collapse: collapse !important;
@@ -261,7 +262,11 @@ th {
   }
   .table-bordered th,
   .table-bordered td {
+  
     border: 1px solid #ddd !important;
+  }
+  .table td a {
+  	color: #687ead;
   }
 }
 @font-face {
@@ -1101,7 +1106,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #687ead;;
   text-decoration: none;
 }
 a:hover,
@@ -1790,6 +1795,7 @@ pre code {
     width: 91.66666667%;
   }
   .col-sm-10 {
+  margin-top:70px;
     width: 83.33333333%;
   }
   .col-sm-9 {
@@ -2271,20 +2277,33 @@ th {
   max-width: 100%;
   margin-bottom: 20px;
 }
+.table > thead {
+	
+	  border:none;
+	background:#687ead;
+	color:white;
+	padding:10px;
+	
+}
+.table > tbody{
+	
+	
+	border-bottom: 2px solid #687ead;
+}
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px;
+  padding: 13px;
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  /* border-bottom:3px solid #ddd; */
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -2403,6 +2422,10 @@ table th[class*="col-"] {
 .table-hover > tbody > tr.info:hover > th {
   background-color: #c4e3f3;
 }
+.table-hover > tbody> td > a{
+	
+	color:
+}
 .table > thead > tr > td.warning,
 .table > tbody > tr > td.warning,
 .table > tfoot > tr > td.warning,
@@ -2446,8 +2469,8 @@ table th[class*="col-"] {
   background-color: #ebcccc;
 }
 .table-responsive {
-  min-height: .01%;
-  
+  min-height: .01%;/* 
+  overflow-x: auto; */
 }
 @media screen and (max-width: 767px) {
   .table-responsive {
@@ -2557,7 +2580,7 @@ output {
   display: block;
   width: 100%;
   height: 34px;
-  padding: 6px 12px;
+  padding: 10px 15px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
@@ -2721,6 +2744,8 @@ fieldset[disabled] .checkbox label {
 select.input-sm {
   height: 30px;
   line-height: 30px;
+  padding:10px, 15px;
+  width:70px;
 }
 textarea.input-sm,
 select[multiple].input-sm {
@@ -2929,6 +2954,7 @@ select[multiple].input-lg {
     display: inline-block;
     width: auto;
     vertical-align: middle;
+    padding:10px, 15px;
   }
   .form-inline .form-control-static {
     display: inline-block;
@@ -3068,6 +3094,16 @@ fieldset[disabled] a.btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+  padding:10px;
+}
+.write{
+	background:#687ead; border:NONE; color:white; padding:10px 15px;
+	font-size:12px;
+}
+.write:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
 }
 .btn-default:focus,
 .btn-default.focus {
@@ -3235,9 +3271,11 @@ fieldset[disabled] .btn-success.focus {
   background-color: #fff;
 }
 .btn-info {
+   margin-left:10px;
   color: #fff;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  padding:5px;
+  background-color: #687ead;
+  border-color: #687ead;
 }
 .btn-info:focus,
 .btn-info.focus {
@@ -3293,26 +3331,26 @@ fieldset[disabled] .btn-info.focus {
 }
 .btn-warning {
   color: #fff;
-  background-color: #687EAD;
-  border-color: #3A4F6D;
+  background-color: #f0ad4e;
+  border-color: #eea236;
 }
 .btn-warning:focus,
 .btn-warning.focus {
   color: #fff;
-  background-color: #24558F;
+  background-color: #ec971f;
   border-color: #985f0d;
 }
 .btn-warning:hover {
   color: #fff;
-  background-color:#527195;
-  border-color: #bcbcbc;
+  background-color: #ec971f;
+  border-color: #d58512;
 }
 .btn-warning:active,
 .btn-warning.active,
 .open > .dropdown-toggle.btn-warning {
   color: #fff;
-  background-color: #7a7a7a;
-  border-color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
 }
 .btn-warning:active:hover,
 .btn-warning.active:hover,
@@ -3324,8 +3362,8 @@ fieldset[disabled] .btn-info.focus {
 .btn-warning.active.focus,
 .open > .dropdown-toggle.btn-warning.focus {
   color: #fff;
-  background-color: #557fb1;
-  border-color: #81aadc;
+  background-color: #d58512;
+  border-color: #985f0d;
 }
 .btn-warning:active,
 .btn-warning.active,
@@ -3398,6 +3436,7 @@ fieldset[disabled] .btn-danger:focus,
 .btn-danger.disabled.focus,
 .btn-danger[disabled].focus,
 fieldset[disabled] .btn-danger.focus {
+
   background-color: #d9534f;
   border-color: #d43f3a;
 }
@@ -3407,7 +3446,8 @@ fieldset[disabled] .btn-danger.focus {
 }
 .btn-link {
   font-weight: normal;
-  color: #337ab7;
+  color: #7B7B7B;
+  font-size:15px;
   border-radius: 0;
 }
 .btn-link,
@@ -3447,7 +3487,7 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-sm,
 .btn-group-sm > .btn {
-  padding: 5px 10px;
+  padding: 10px 15px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
@@ -4282,8 +4322,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 15px 15px;
-  font-size: 18px;
+ 
   line-height: 20px;
+
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4494,7 +4535,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-right {
     margin:5px;
     float: right !important;
-    margin-right: -15px;
+    margin-right: 25px;
+    font-size:15px;
+    font-family:NanumGothic, ³ª´®°íµñ, "Malgun Gothic", "¸¼Àº °íµñ", sans-serif;
     
   }
   .navbar-right ~ .navbar-right {
@@ -4602,7 +4645,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-inverse .navbar-brand {
 	margin-top:3px;
-	font-size:24px;
+	font-size:20px;
   color: #CCD9ED;
 }
 .navbar-inverse .navbar-brand:hover,
@@ -4626,6 +4669,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #fff;
   background-color: #080808;
+  
 }
 .navbar-inverse .navbar-nav > .disabled > a,
 .navbar-inverse .navbar-nav > .disabled > a:hover,
@@ -5468,6 +5512,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-body {
   padding: 15px;
+  heigth: 174px;
 }
 .panel-heading {
   padding: 10px 15px;

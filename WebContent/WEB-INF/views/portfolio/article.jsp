@@ -113,7 +113,7 @@ function deleteReply(replyNum, pageNo, memId) {
 	
 	if(confirm("게시물을 삭제하시겠습니까 ? ")) {	
 		var url="<%=cp%>/portfolio/deleteReply.sst";
-		$.post(url, {replyNum:replyNum, userId:userId}, function(data){
+		$.post(url, {replyNum:replyNum, memId:memId}, function(data){
 		        var state=data.state;
 				if(state=="loginFail") {
 					login();
@@ -172,21 +172,21 @@ function deleteReply(replyNum, pageNo, memId) {
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
 						<div class="item active">
-							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename}" alt="" style="width: 100%; height: 500px;">
+							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename}" alt="" style="width: 100%; height: 500px">
 						</div>
 						<c:if test="${dto.imgCnt>1}">
 						<div class="item">
-							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename2}" alt="" style="width: 100%; height: 500px;">
+							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename2}" alt=""style="width: 100%; height: 500px" >
 						</div>
 						</c:if>
 						<c:if test="${dto.imgCnt>2}">
 						<div class="item">
-							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename3}" alt="" style="width: 100%; height: 500px;">
+							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename3}" alt=""style="width: 100%; height: 500px">
 						</div>
 						</c:if>
 						<c:if test="${dto.imgCnt>3}">
 						<div class="item">
-							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename4}" alt="" style="width: 100%; height: 500px;">
+							<img class="img-responsive" src="<%=cp%>/uploads/portfolio/${dto.imageFilename4}" alt="" style="width: 100%; height: 500px">
 						</div>
 						</c:if>
 					</div>
@@ -207,10 +207,10 @@ function deleteReply(replyNum, pageNo, memId) {
 				<h3>Project Details</h3>
 				<p>${dto.content}</p>
 			</div>
-
-				</div>
+		</div>
 		<hr>
 		<!-- /.row -->
+		<div class="row">
 		<table>
 			<tfoot>
 				<tr>
@@ -230,8 +230,23 @@ function deleteReply(replyNum, pageNo, memId) {
 				</tr>
 			</tfoot>
 		</table>
+		</div>
 		<hr>
-
+			<div style="float: left;">
+				<span style="font-weight: bold;">댓글쓰기</span>
+				<div style="float: right; text-align: right;"></div>
+			</div>
+			<div style="clear: both; padding-top: 10px;">
+				<textarea id="content" class="form-control" rows="3"
+					required="required"></textarea>
+			</div>
+			<div style="text-align: right; padding-top: 10px;">
+				<button type="button" class="btn btn-primary btn-sm"
+					onclick="sendReply();">
+					댓글등록 <span class="glyphicon glyphicon-ok"></span>
+				</button>
+			</div>
+								<div id="listReply"></div>
 
 	</div>
 	<!-- /.container -->

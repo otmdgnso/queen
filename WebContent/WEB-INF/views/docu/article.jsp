@@ -208,7 +208,7 @@ function deleteReply(docuR_num, pageNo, memId){
 		               </tr>
                         
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.docuRecomm}</td>
+                        <td style="font-weight:bold; font-size:13px;"><img src="<%=cp%>/res/image/social.png" onclick="recommCheck()">&nbsp;&nbsp;&nbsp;${dto.docuRecomm}</td>
                         </tr>
                         
                         <tr height="30">

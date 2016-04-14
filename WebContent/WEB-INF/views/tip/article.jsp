@@ -35,11 +35,11 @@
     <![endif]-->
 
 <style type="text/css">
-.resume-reply {
+.tip-reply {
     font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
 }
 
-.resume-reply-write {
+.tip-reply-write {
     border: #d5d5d5 solid 1px;
     padding: 10px;
     min-height: 50px;
@@ -51,9 +51,9 @@
 
 <script type="text/javascript">
 <c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
-function deleteResume(resumeNum) {
+function deleteTip(tipNum) {
 	if(confirm("삭제 하시겠습니까 ?")) {
-		var url="<%=cp%>/resume/delete.sst?resumeNum="+resumeNum+"&page=${page}";
+		var url="<%=cp%>/tip/delete.sst?tipNum="+tipNum+"&page=${page}";
 		location.href=url;
 	}
 }
@@ -67,11 +67,12 @@ function recommCheck() {
 		alert("이미 추천 하셨습니다.");
 		return;
 	} else {
-		var url="<%=cp%>/resume/recomm.sst?page=${page}&resumeNum=${dto.resumeNum}";
+		var url="<%=cp%>/tip/recomm.sst?page=${page}&tipNum=${dto.tipNum}";
 		location.href=url;
 	}
 	
 } 
+
 
 
 //-- 댓글 ------------------------------------
@@ -81,9 +82,9 @@ $(function(){
 });
 
 function listPage(page) {
-	var url="<%=cp%>/resume/listReply.sst";
-	var resumeNum="${dto.resumeNum}";
-	$.post(url, {resumeNum:resumeNum, pageNo:page}, function(data){
+	var url="<%=cp%>/tip/listReply.sst";
+	var tipNum="${dto.tipNum}";
+	$.post(url, {tipNum:tipNum, pageNo:page}, function(data){
 		$("#listReply").html(data);
 	});
 }
@@ -96,24 +97,24 @@ function sendReply(){
 		return false;
 	}
 	
-	var resumeNum="${dto.resumeNum}"; //해당 게시물 번호
-	var resumeR_content=$.trim($("#resumeR_content").val());
-	if(! resumeR_content){
+	var tipNum="${dto.tipNum}"; //해당 게시물 번호
+	var tipR_content=$.trim($("#tipR_content").val());
+	if(! tipR_content){
 		alert("댓글내용을  입력하세요!");
-		$("#resumeR_content").focus();
+		$("#tipR_content").focus();
 		return false;
 	}
 	
-	var params="resumeNum="+resumeNum;
-	params+="&resumeR_content="+resumeR_content;
+	var params="tipNum="+tipNum;
+	params+="&tipR_content="+tipR_content;
 	
 	$.ajax({
 		type:"POST"
-		,url:"<%=cp%>/resume/insertReply.sst"
+		,url:"<%=cp%>/tip/insertReply.sst"
 		,data:params
 		,dataType:"json"
 		,success:function(data) {
-			$("#resumeR_content").val("");
+			$("#tipR_content").val("");
 			
   			var state=data.state;
 			if(state=="true") {
@@ -130,7 +131,7 @@ function sendReply(){
 	});
 }
 // 댓글 삭제
-function deleteReply(resumeR_num, pageNo, memId){
+function deleteReply(tipR_num, pageNo, memId){
 	var mId="${sessionScope.member.memId}";
 	if(! mId){
 		login();
@@ -138,8 +139,8 @@ function deleteReply(resumeR_num, pageNo, memId){
 	}
 	
 	if(confirm("게시물을 삭제하시겠습니까?")){
-		var url="<%=cp%>/resume/deleteReply.sst";
-		$.post(url,{resumeR_num:resumeR_num, memId:memId}, function(data){
+		var url="<%=cp%>/tip/deleteReply.sst";
+		$.post(url,{tipR_num:tipR_num, memId:memId}, function(data){
 			var state=data.state;
 			if(state=="loginFail"){
 				login();
@@ -165,20 +166,23 @@ function deleteReply(resumeR_num, pageNo, memId){
     <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span> 게시판 </h3>
+             <h3><span class="glyphicon glyphicon-book"></span> Tip 게시판 </h3>
        </div>
        
        <div class="alert alert-info">
-           <i class="glyphicon glyphicon-info-sign"></i> 기업에 대한 자세한 정보를 볼 수 있는 게시판입니다.
+           <i class="glyphicon glyphicon-info-sign"></i> 여러 Tip들을 공유하는 공간입니다.
        </div>
        
        <div class="table-responsive" style="clear: both;">
-           <div class="resume-article">
+           <div class="tip-article">
                <table class="table">
                     <thead>
                         <tr>
+                       		<th colspan="1" style="text-align: center; background-color: #B2CCFF;">
+                                    ${dto.tipHead}
+                            </th>
                             <th colspan="3" style="text-align: center; background-color: #B2CCFF;">
-                                    ${dto.resumeSubject}
+                                    ${dto.tipSubject}
                             </th>
                         </tr>
                    </thead>
@@ -186,55 +190,31 @@ function deleteReply(resumeR_num, pageNo, memId){
                         <tr>
                             <td style="text-align: left; width:200px; height:45px; "> 작성자: ${dto.memId}</td>
                             <td style="text-align: right;">
-                             ${dto.resumeCreated} 
+                             ${dto.tipCreated} 
                             </td>
                             <td style="text-align: right; width:100px;">
-                                                                         조회 수: ${dto.resumeHitCount}
+                                                                         조회 수: ${dto.tipHitCount}
                             </td>
-                        </tr>
-                        <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">지원회사</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.resumeCompany}</td>
-                            <td style="text-align: left; width:200px; height:45px; ">지원시기</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.resumeDate}</td>
-                        </tr>
-                        <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">지원직무</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.resumeJob}</td>
-                            <td style="text-align: left; width:200px; height:45px; ">출신학교</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.resumeSchool}</td>
-                        </tr>
-                        <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">전공</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.resumeMajor}</td>
-                            <td style="text-align: left; width:200px; height:45px; ">학점</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.resumeScore}</td>
-                        </tr>
-                        <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">어학성적</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.resumeLanguage}</td>
-                            <td style="text-align: left; width:200px; height:45px; ">대외활동</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.resumeEx}</td>
-                        </tr>
-                        <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">강조역량</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.resumeAbility}</td>
                         </tr>
                         <tr>
                             <td colspan="3" style="height: 230px;">
-                                 ${dto.resumeContent}
+                                 ${dto.tipContent}
                             </td>
                         </tr>
-                        
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.resumeRecomm}</td>
+                            <td colspan="3" style="height: 230px;">
+                                 ${dto.tipSource}
+                            </td>
+                        </tr>
+                        <tr>
+                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.tipRecomm}</td>
                         </tr>
                         
                         <tr height="30">
 					    <td width="80" bgcolor="#EEEEEE" align="center">이전글</td>
 					    <td width="520" align="left" style="padding-left:10px;" colspan="3">
 							<c:if test="${not empty preReadDto}">
-								<a href="<%=cp%>/resume/article.sst?resumeNum=${preReadDto.resumeNum}&${params}">${preReadDto.resumeSubject }</a>
+								<a href="<%=cp%>/tip/article.sst?tipNum=${preReadDto.tipNum}&${params}">${preReadDto.tipSubject }</a>
 							</c:if>
 						</td>
 					</tr>
@@ -242,7 +222,7 @@ function deleteReply(resumeR_num, pageNo, memId){
 					    <td width="80" bgcolor="#EEEEEE" align="center">다음글</td>
 					    <td width="520" align="left" style="padding-left:10px;" colspan="3">
 							<c:if test="${not empty nextReadDto}">
-								<a href="<%=cp%>/resume/article.sst?resumeNum=${nextReadDto.resumeNum}&${params}">${nextReadDto.resumeSubject }</a>
+								<a href="<%=cp%>/tip/article.sst?tipNum=${nextReadDto.tipNum}&${params}">${nextReadDto.tipSubject }</a>
 							</c:if>
 					    </td>
 					</tr>
@@ -251,29 +231,29 @@ function deleteReply(resumeR_num, pageNo, memId){
                     <tr>
 					    <td align="left">
 					    <c:if test="${dto.memId == sessionScope.member.memId}">
-					          <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/resume/update.sst?resumeNum=${dto.resumeNum}&page=${page}';">
+					          <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/tip/update.sst?tipNum=${dto.tipNum}&page=${page}';">
    						</c:if>
    						&nbsp;
    						<c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
-					          <input type="image" src="<%=cp%>/res/image/btn_delete.gif" onclick="deleteResume('${dto.resumeNum}')">
+					          <input type="image" src="<%=cp%>/res/image/btn_delete.gif" onclick="deleteTip('${dto.tipNum}')">
 					    </c:if>
    						</td>
    						<td align="right" colspan="2">
-					          <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/resume/list.sst?${params}';">
+					          <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/tip/list.sst?${params}';">
 					    </td>
 					    </tr>
                    </tfoot>
                </table>
           </div>
           
-          <div class="resume-reply">
-              <div class="resume-reply-write">
+          <div class="tip-reply">
+              <div class="tip-reply-write">
                   <div style="clear: both;">
                         <div style="float: left;"><span style="font-weight: bold;">댓글쓰기</span><span> - 타인을 비방하거나 개인정보를 유출하는 글의 게시를 삼가 주세요.</span></div>
                         <div style="float: right; text-align: right;"></div>
                   </div>
                   <div style="clear: both; padding-top: 10px;">
-                      <textarea id="resumeR_content" class="form-control" rows="3" required="required"></textarea>
+                      <textarea id="tipR_content" class="form-control" rows="3" required="required"></textarea>
                   </div>
                   <div style="text-align: right; padding-top: 10px;">
                       <button type="button" class="btn btn-primary btn-sm" onclick="sendReply();"> 댓글등록 <span class="glyphicon glyphicon-ok"></span></button>

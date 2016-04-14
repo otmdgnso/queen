@@ -31,25 +31,25 @@
     function check() {
         var f = document.boardForm;
 
-    	var str = f.resumeSubject.value;
+    	var str = f.tipSubject.value;
         if(!str) {
             alert("제목을 입력하세요. ");
-            f.resumeSubject.focus();
+            f.tipSubject.focus();
             return false;
         }
 
-    	str = f.resumeContent.value;
+    	str = f.tipContent.value;
         if(!str) {
             alert("내용을 입력하세요. ");
-            f.resumeContent.focus();
+            f.tipContent.focus();
             return false;
         }
 
     	var mode="${mode}";
     	if(mode=="created")
-    		f.action="<%=cp%>/resume/created_ok.sst";
+    		f.action="<%=cp%>/tip/created_ok.sst";
     	else if(mode=="update")
-    		f.action="<%=cp%>/resume/update_ok.sst";
+    		f.action="<%=cp%>/tip/update_ok.sst";
 
     	// image 버튼, submit은 submit() 메소드 호출하면 두번전송
         return true;
@@ -79,10 +79,18 @@
 					  <table style="width: 600px; margin: 0px auto; border-spacing: 0px;">
 					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
 					
+					<tr align="left" height="40"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">말 머 리</td>
+					      <td width="500" style="padding-left:10px;"> 
+					        <input type="text" name="tipHead" size="75" maxlength="100" class="boxTF" value="${dto.tipHead}">
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
+					
 					  <tr align="left" height="40"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeSubject" size="75" maxlength="100" class="boxTF" value="${dto.resumeSubject}">
+					        <input type="text" name="tipSubject" size="75" maxlength="100" class="boxTF" value="${dto.tipSubject}">
 					      </td>
 					  </tr>
 					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
@@ -94,88 +102,19 @@
 					      </td>
 					  </tr>
 				      <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      <!-- 내용 넣기 -->
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">지원회사</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeCompany" size="75" maxlength="100" class="boxTF" value="${dto.resumeCompany}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">지원시기</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeDate" size="75" maxlength="100" class="boxTF" value="${dto.resumeDate}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">지원직무</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeJob" size="75" maxlength="100" class="boxTF" value="${dto.resumeJob}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">출신학교</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeSchool" size="75" maxlength="100" class="boxTF" value="${dto.resumeSchool}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					  
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">전&nbsp;&nbsp;&nbsp;&nbsp;공</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeMajor" size="75" maxlength="100" class="boxTF" value="${dto.resumeMajor}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  				               
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">학&nbsp;&nbsp;&nbsp;&nbsp;점</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeScore" size="75" maxlength="100" class="boxTF" value="${dto.resumeScore}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">어학성적</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeLanguage" size="75" maxlength="100" class="boxTF" value="${dto.resumeLanguage}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">대외활동</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeEx" size="75" maxlength="100" class="boxTF" value="${dto.resumeEx}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">강조역량</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeAbility" size="75" maxlength="100" class="boxTF" value="${dto.resumeAbility}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      	      
-				      
-				      
+				    
 					  <tr align="left"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center; padding-top:5px;" valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
 					      <td width="500" valign="top" style="padding:5px 0px 5px 10px;"> 
-					        <textarea name="resumeContent" cols="75" rows="12" class="boxTA">${dto.resumeContent}</textarea>
+					        <textarea name="tipContent" cols="75" rows="12" class="boxTA">${dto.tipContent}</textarea>
+					      </td>
+					  </tr>
+					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
+					  
+					  <tr align="left"> 
+					      <td width="100" bgcolor="#EEEEEE" style="text-align: center; padding-top:5px;" valign="top">소스코드</td>
+					      <td width="500" valign="top" style="padding:5px 0px 5px 10px;"> 
+					        <textarea name="tipSource" cols="75" rows="12" class="boxTA">${dto.tipSource}</textarea>
 					      </td>
 					  </tr>
 					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
@@ -185,10 +124,10 @@
 					     <tr height="45"> 
 					      <td align="center" >
 						    <input type="image" src="<%=cp%>/res/image/btn_submit.gif" >
-		        		    <a href="javascript:location.href='<%=cp%>/resume/list.sst';"><img src="<%=cp%>/res/image/btn_cancel.gif" border="0"></a>
+		        		    <a href="javascript:location.href='<%=cp%>/tip/list.sst';"><img src="<%=cp%>/res/image/btn_cancel.gif" border="0"></a>
 		
 							<c:if test="${mode=='update'}">
-								<input type="hidden" name="resumeNum" value="${dto.resumeNum}">
+								<input type="hidden" name="tipNum" value="${dto.tipNum}">
 								<input type="hidden" name="page" value="${page}">
 							</c:if>
 		

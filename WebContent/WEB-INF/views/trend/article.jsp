@@ -181,7 +181,7 @@ function deleteReply(trendR_num, pageNo, memId){
                         </tr>
                         
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg">&nbsp;5</td>
+                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png">&nbsp;5</td>
                         </tr>
                         
                         <tr height="30">

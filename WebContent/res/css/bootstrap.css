@@ -3112,7 +3112,6 @@ fieldset[disabled] a.btn {
   border-color: #8c8c8c;
 }
 .btn-default:hover {
-  color: #FFF;
   background-color: #7b94c9;
 }
 .btn-default:active,
@@ -5512,7 +5511,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-body {
   padding: 15px;
-  heigth: 174px;
+  height: 182px;
 }
 .panel-heading {
   padding: 10px 15px;

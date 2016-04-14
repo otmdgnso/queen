@@ -272,6 +272,7 @@ function deleteReply(docuR_num, pageNo, memId){
  <!-- jQuery -->
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
+    
 </body>
 
 </html>

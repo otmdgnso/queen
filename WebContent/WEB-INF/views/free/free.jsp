@@ -30,7 +30,7 @@
 }
 .table .guest-header{
     border: #d5d5d5 solid 1px;
-    background: #eeeeee; color: #787878;
+    background: #eeeeee; color: #4B4B4B;
 } 
 </style>
 
@@ -177,8 +177,8 @@ function deleteReply(freeR_num, pageNo, memId){
 	          <h3><span class="glyphicon glyphicon-pencil"></span> 주절주절  <small>자유게시판</small></h3>
 	    </div>
 	    
-	    <div class="alert alert-info">
-	        <i class="glyphicon glyphicon-info-sign"></i> 수강생들과 자유롭게 대화를 나눠보세요
+	    <div class="alert alert-info" style="background: #D9E5FF ; border:none; color:#5B6781">
+	         <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> &nbsp;&nbsp;&nbsp;수강생들과 자유롭게 대화를 나눠보세요
 	    </div>
 	
 	    <div class="guest">
@@ -203,7 +203,7 @@ function deleteReply(freeR_num, pageNo, memId){
 	       
 	           <div id="listGuest">
 	               <div style='clear: both; padding-top: 20px;'>
-	                   <div style='float: left;'><span style='color: #3EA9CD; font-weight: bold;'>방명록 ${dataCount}개</span> <span>[목록, ${page}/${total_page} 페이지]</span></div>
+	                   <div style='float: left;'><span style='color: #4375DB; font-weight: bold;'>방명록 ${dataCount}개</span> <span>[목록, ${page}/${total_page} 페이지]</span></div>
 	                   <div style='float: right; text-align: right;'></div>
 	               </div>           
 	               <div class='table-responsive' style='clear: both; padding-top: 5px;'>
@@ -212,7 +212,7 @@ function deleteReply(freeR_num, pageNo, memId){
 	                   
 	                   <c:forEach var="dto" items="${list}">
 	                       <tr class='guest-header'>
-	                           <td style='width: 50%;'>
+	                           <td style='width: 50%; font-weight:bold;'>
 	                               ${dto.memName }
 	                           </td>
 	                           <td style='width: 50%; text-align: right;'>
@@ -222,13 +222,16 @@ function deleteReply(freeR_num, pageNo, memId){
 								   </c:if>
 	                           </td>
 	                       </tr>
-	                       <tr style='height: 50px;'>
-	                           <td colspan='2'>
+	                       <tr style='height: 50px; '>
+	                           <td colspan='2' style=" padding:30px; border:1px solid #ddd">
 	                               ${dto.freeContent}
 	                           </td>
-	                          
-	                           
-	                       </tr>
+ 	                       </tr>
+ 	                       
+ 	                       <tr style='height: 5px;'>
+	                           <td colspan='1'>&nbsp;</td>
+ 	                       </tr>
+ 	                       
 	                      <!--  <tr class="company-reply" style="width:100%;"> 댓글을 달려고 했으나 F A I L 
 	                            <td class="company-reply-write" style="width:100%;">
 						                  <div style="clear: both;">

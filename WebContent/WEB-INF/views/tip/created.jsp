@@ -44,6 +44,27 @@
             f.tipContent.focus();
             return false;
         }
+        
+        str = f.tipContent.value;
+        if(!str) {
+            alert("내용을 입력하세요. ");
+            f.tipContent.focus();
+            return false;
+        }
+        
+        str = f.tipContent.value;
+        if(!str) {
+            alert("내용을 입력하세요. ");
+            f.tipContent.focus();
+            return false;
+        }
+        
+        str = f.tipContent.value;
+        if(!str) {
+            alert("내용을 입력하세요. ");
+            f.tipContent.focus();
+            return false;
+        }
 
     	var mode="${mode}";
     	if(mode=="created")
@@ -82,7 +103,7 @@
 					<tr align="left" height="40"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">말 머 리</td>
 					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="tipHead" size="75" maxlength="100" class="boxTF" value="${dto.tipHead}">
+					      	<input type="text" name="tipHead" size="75" maxlength="100" class="boxTF" value="${dto.tipHead}">
 					      </td>
 					  </tr>
 					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>

@@ -38,7 +38,70 @@
             return false;
         }
 
-    	str = f.resumeContent.value;
+    	str = f.resumeCompany.value;
+        if(!str) {
+            alert("지원회사를 입력하세요. ");
+            f.resumeCompany.focus();
+            return false;
+        }
+        
+        str = f.resumeDate.value;
+        if(!str) {
+            alert("지원시기를 입력하세요. ");
+            f.resumeDate.focus();
+            return false;
+        }
+        
+        str = f.resumeJob.value;
+        if(!str) {
+            alert("지원직무를 입력하세요. ");
+            f.resumeJob.focus();
+            return false;
+        }
+        
+        str = f.resumeSchool.value;
+        if(!str) {
+            alert("출신학교를 입력하세요. ");
+            f.resumeSchool.focus();
+            return false;
+        }
+        
+        str = f.resumeMajor.value;
+        if(!str) {
+            alert("전공을 입력하세요. ");
+            f.resumeMajor.focus();
+            return false;
+        }
+        
+        str = f.resumeScore.value;
+        if(!str) {
+            alert("학점을 입력하세요. ");
+            f.resumeScore.focus();
+            return false;
+        }
+        
+        str = f.resumeLanguage.value;
+        if(!str) {
+            alert("어학성적을 입력하세요. ");
+            f.resumeLanguage.focus();
+            return false;
+        }
+        
+        str = f.resumeEx.value;
+        if(!str) {
+            alert("대외활동 내용을 입력하세요. ");
+            f.resumeEx.focus();
+            return false;
+        }
+        
+        str = f.resumeAbility.value;
+        if(!str) {
+            alert("강종 역량을 입력하세요. ");
+            f.resumeAbility.focus();
+            return false;
+        }
+        
+        str = f.resumeContent.value;
         if(!str) {
             alert("내용을 입력하세요. ");
             f.resumeContent.focus();

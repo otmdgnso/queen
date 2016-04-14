@@ -44,7 +44,70 @@
             f.companyContent.focus();
             return false;
         }
-
+        
+        str = f.companyName.value;
+        if(!str) {
+            alert("회사명을 입력하세요. ");
+            f.companyName.focus();
+            return false;
+        }
+        
+        str = f.companyWeb.value;
+        if(!str) {
+            alert("웹사이트를 입력하세요. ");
+            f.companyWeb.focus();
+            return false;
+        }
+        
+        str = f.companyForm.value;
+        if(!str) {
+            alert("기업형태를 입력하세요. ");
+            f.companyForm.focus();
+            return false;
+        }
+        
+        str = f.companyDate.value;
+        if(!str) {
+            alert("설립일을 입력하세요. ");
+            f.companyDate.focus();
+            return false;
+        }
+        
+        str = f.companyIndustry.value;
+        if(!str) {
+            alert("산업군을 입력하세요. ");
+            f.companyIndustry.focus();
+            return false;
+        }
+        
+        str = f.companySales.value;
+        if(!str) {
+            alert("매출액을 입력하세요. ");
+            f.companySales.focus();
+            return false;
+        }
+        
+        str = f.companySalary.value;
+        if(!str) {
+            alert("초봉 평균을 입력하세요. ");
+            f.companySalary.focus();
+            return false;
+        }
+        
+        str = f.companyScore.value;
+        if(!str) {
+            alert("평점을 입력하세요. ");
+            f.companyScore.focus();
+            return false;
+        }
+        
+        str = f.companyPlanet.value;
+        if(!str) {
+            alert("잡플래닛 연결 url을 입력하세요. ");
+            f.companyPlanet.focus();
+            return false;
+        }
+        
     	var mode="${mode}";
     	if(mode=="created")
     		f.action="<%=cp%>/company/created_ok.sst";

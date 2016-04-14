@@ -178,11 +178,8 @@ function deleteReply(tipR_num, pageNo, memId){
                <table class="table">
                     <thead>
                         <tr>
-                       		<th colspan="1" style="text-align: center; background-color: #B2CCFF;">
-                                    ${dto.tipHead}
-                            </th>
                             <th colspan="3" style="text-align: center; background-color: #B2CCFF;">
-                                    ${dto.tipSubject}
+                                   [${dto.tipHead}] ${dto.tipSubject}
                             </th>
                         </tr>
                    </thead>
@@ -207,7 +204,7 @@ function deleteReply(tipR_num, pageNo, memId){
                             </td>
                         </tr>
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.tipRecomm}</td>
+                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png" onclick="recommCheck()">&nbsp;${dto.tipRecomm}</td>
                         </tr>
                         
                         <tr height="30">

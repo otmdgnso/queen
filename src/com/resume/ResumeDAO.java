@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.company.CompanyDTO;
 import com.util.DBConn;
 
 public class ResumeDAO {
@@ -717,7 +718,50 @@ public class ResumeDAO {
 					}
 		
 					return result;
-				}				
+				}			
+				
+				
+				//베스트글 리스트
+				public List<ResumeDTO> listBestResume(){
+					
+					
+					List<ResumeDTO> list=new ArrayList<ResumeDTO>();
+					StringBuffer sb=new StringBuffer();
+					PreparedStatement pstmt=null;
+					ResultSet rs=null;
+
+					try {
+						sb.append(" SELECT resumeNum, resumeRecomm, resumeJob, resumeSubject, memId,");
+						sb.append(" DATE_FORMAT(resumeCreated , '%Y-%m-%d') resumeCreated, resumeHitCount");
+						sb.append(" FROM resume WHERE resumeRecomm>5 ORDER BY resumeRecomm DESC LIMIT 3");
+
+						pstmt = conn.prepareStatement(sb.toString());
+						rs = pstmt.executeQuery();
+
+						while (rs.next()) {
+							ResumeDTO dto = new ResumeDTO();
+
+							dto.setResumeNum(rs.getInt("resumeNum"));
+							dto.setResumeRecomm(rs.getInt("resumeRecomm"));
+							dto.setResumeJob(rs.getString("resumeJob"));
+							dto.setResumeSubject(rs.getString("resumeSubject"));
+							dto.setMemId(rs.getString("memId"));
+							dto.setResumeCreated(rs.getString("resumeCreated"));
+							dto.setResumeHitCount(rs.getInt("resumeHitCount"));
+
+							list.add(dto);
+						}
+						rs.close();
+						pstmt.close();
+						
+					} catch (Exception e) {
+						System.out.println(e.toString());
+					}
+					
+					return list;
+					
+					
+				}
 	
 	
 	

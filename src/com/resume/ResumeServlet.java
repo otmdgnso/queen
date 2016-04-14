@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.company.CompanyDTO;
 import com.member.SessionInfo;
 import com.util.MyServlet;
 import com.util.MyUtil;
@@ -88,6 +89,11 @@ public class ResumeServlet extends MyServlet {
 			else
 				list=dao.listResume(start, end, searchKey, searchValue);
 
+			//추천글
+			List<ResumeDTO> listBestResume=null;
+			listBestResume=dao.listBestResume();
+			
+			
 			// 리스트 글번호
 			int listResumeNum, n = 0;
 			Iterator<ResumeDTO> it = list.iterator();
@@ -118,6 +124,7 @@ public class ResumeServlet extends MyServlet {
 			req.setAttribute("page", current_page);
 			req.setAttribute("total_page", total_page);
 			req.setAttribute("articleUrl", articleUrl);
+			req.setAttribute("listBestResume", listBestResume);
 
 			forward(req, resp, "/WEB-INF/views/resume/list.jsp");
 		} else if(uri.indexOf("created.sst")!=-1) {
@@ -145,16 +152,16 @@ public class ResumeServlet extends MyServlet {
 			
 			//파라미터
 			dto.setResumeSubject(req.getParameter("resumeSubject"));
-			dto.setResumeSubject(req.getParameter("resumeCompany"));
-			dto.setResumeSubject(req.getParameter("resumeDate"));
-			dto.setResumeSubject(req.getParameter("resumeJob"));
-			dto.setResumeSubject(req.getParameter("resumeSchool"));
-			dto.setResumeSubject(req.getParameter("resumeMajor"));
-			dto.setResumeSubject(req.getParameter("resumeScore"));
-			dto.setResumeSubject(req.getParameter("resumeLanguage"));
-			dto.setResumeSubject(req.getParameter("resumeEx"));
-			dto.setResumeSubject(req.getParameter("resumeAbility"));
-			dto.setResumeSubject(req.getParameter("resumeContent"));
+			dto.setResumeCompany(req.getParameter("resumeCompany"));
+			dto.setResumeDate(req.getParameter("resumeDate"));
+			dto.setResumeJob(req.getParameter("resumeJob"));
+			dto.setResumeSchool(req.getParameter("resumeSchool"));
+			dto.setResumeMajor(req.getParameter("resumeMajor"));
+			dto.setResumeScore(req.getParameter("resumeScore"));
+			dto.setResumeLanguage(req.getParameter("resumeLanguage"));
+			dto.setResumeEx(req.getParameter("resumeEx"));
+			dto.setResumeAbility(req.getParameter("resumeAbility"));
+			dto.setResumeContent(req.getParameter("resumeContent"));
 			
 			dao.insertResume(dto);
 			

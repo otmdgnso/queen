@@ -88,6 +88,13 @@ public class CompanyServlet extends MyServlet {
 			else
 				list=dao.listCompany(start, end, searchKey, searchValue);
 
+			
+			//추천글
+			List<CompanyDTO> listBestCompany=null;
+			listBestCompany=dao.listBestCompany();
+			
+			
+			
 			// 리스트 글번호
 			int listCompanyNum, n = 0;
 			Iterator<CompanyDTO> it = list.iterator();
@@ -113,6 +120,7 @@ public class CompanyServlet extends MyServlet {
 			String paging = util.paging(current_page, total_page, listUrl);
             //포워딩할 JSP로 넘길 속성
 			req.setAttribute("list", list);
+			req.setAttribute("listBestCompany", listBestCompany);
 			req.setAttribute("paging", paging);
 			req.setAttribute("dataCount", dataCount);
 			req.setAttribute("page", current_page);

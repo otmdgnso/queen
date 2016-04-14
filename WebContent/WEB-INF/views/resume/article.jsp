@@ -177,7 +177,7 @@ function deleteReply(resumeR_num, pageNo, memId){
                <table class="table">
                     <thead>
                         <tr>
-                            <th colspan="3" style="text-align: center; background-color: #B2CCFF;">
+                            <th colspan="4" style="text-align: center; background-color: #B2CCFF;">
                                     ${dto.resumeSubject}
                             </th>
                         </tr>
@@ -185,10 +185,11 @@ function deleteReply(resumeR_num, pageNo, memId){
                     <tbody>
                         <tr>
                             <td style="text-align: left; width:200px; height:45px; "> 작성자: ${dto.memId}</td>
-                            <td style="text-align: right;">
-                             ${dto.resumeCreated} 
+                            <td style="text-align: left; width:200px; height:45px; "></td>
+                            <td style="text-align: right; width:200px">
+                                                                           작성일 : ${dto.resumeCreated} 
                             </td>
-                            <td style="text-align: right; width:100px;">
+                            <td style="text-align: right; width:200px;">
                                                                          조회 수: ${dto.resumeHitCount}
                             </td>
                         </tr>
@@ -227,7 +228,7 @@ function deleteReply(resumeR_num, pageNo, memId){
                         </tr>
                         
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.resumeRecomm}</td>
+                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png" onclick="recommCheck()">&nbsp;${dto.resumeRecomm}</td>
                         </tr>
                         
                         <tr height="30">

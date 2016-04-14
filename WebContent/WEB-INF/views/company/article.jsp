@@ -178,21 +178,19 @@ function deleteReply(companyR_num, pageNo, memId){
                <table class="table">
                     <thead>
                         <tr>
-                       		<th colspan="1" style="text-align: center; background-color: #B2CCFF;">
-                                    ${dto.companyForm}
-                            </th>
-                            <th colspan="3" style="text-align: center; background-color: #B2CCFF;">
-                                    ${dto.companySubject}
+                            <th colspan="4" style="text-align: center; background-color: #B2CCFF;">
+                                    [${dto.companyForm}] ${dto.companySubject}
                             </th>
                         </tr>
                    </thead>
                     <tbody>
                         <tr>
                             <td style="text-align: left; width:200px; height:45px; "> 작성자: ${dto.memId}</td>
-                            <td style="text-align: right;">
+                            <td style="text-align: left; width:200px; height:45px; "></td>
+                            <td style="text-align: right; width:200px;">
                              ${dto.companyCreated} 
                             </td>
-                            <td style="text-align: right; width:100px;">
+                            <td style="text-align: right; width:200px;">
                                                                          조회 수: ${dto.companyHitCount}
                             </td>
                         </tr>
@@ -231,7 +229,7 @@ function deleteReply(companyR_num, pageNo, memId){
                         </tr>
                         
                      	<tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg" onclick="recommCheck()">&nbsp;${dto.companyRecomm}</td>
+                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png" onclick="recommCheck()">&nbsp;${dto.companyRecomm}</td>
                         </tr>
                         
                         <tr height="30">

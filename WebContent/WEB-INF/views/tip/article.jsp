@@ -178,11 +178,8 @@ function deleteReply(tipR_num, pageNo, memId){
                <table class="table">
                     <thead>
                         <tr>
-                       		<th colspan="1" style="text-align: center; background-color: #B2CCFF;">
-                                    ${dto.tipHead}
-                            </th>
                             <th colspan="3" style="text-align: center; background-color: #B2CCFF;">
-                                    ${dto.tipSubject}
+                                   [${dto.tipHead}] ${dto.tipSubject}
                             </th>
                         </tr>
                    </thead>

@@ -717,6 +717,49 @@ public class CompanyDAO {
 
 			return result;
 		}				
+		
+		
+		//베스트글 리스트
+		public List<CompanyDTO> listBestCompany(){
+			
+			
+			List<CompanyDTO> list=new ArrayList<CompanyDTO>();
+			StringBuffer sb=new StringBuffer();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+
+			try {
+				sb.append("SELECT companyNum, companyRecomm, companyForm, companySubject, memId,");
+				sb.append(" DATE_FORMAT(companyCreated , '%Y-%m-%d') companyCreated, companyHitCount");
+				sb.append(" FROM company WHERE companyRecomm>5 ORDER BY companyRecomm DESC LIMIT 3");
+				
+				pstmt=conn.prepareStatement(sb.toString());
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()){
+					CompanyDTO dto=new CompanyDTO();
+					
+					dto.setCompanyNum(rs.getInt("companyNum"));
+					dto.setCompanyRecomm(rs.getInt("companyRecomm"));
+					dto.setCompanyForm(rs.getString("companyForm"));
+					dto.setCompanySubject(rs.getString("companySubject"));
+					dto.setCompanyCreated(rs.getString("companyCreated"));
+					dto.setCompanyHitCount(rs.getInt("companyHitCount"));
+					dto.setMemId(rs.getString("memId"));
+					
+					list.add(dto);
+				}
+				rs.close();
+				pstmt.close();
+				
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+			
+			return list;
+			
+			
+		}
 
 
 	   

@@ -86,6 +86,18 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
+	                <c:forEach var="dto" items="${listBestCompany}">
+	                    <tr style="background-color: #FFA7A7">
+                            <td class="text-center"><span style="display: inline-block;width: 28px;height:18px;line-height:18px; background: #ED4C00;color: #FFFFFF">Best</span></td>
+                            <td class="text-center">${dto.companyRecomm}</td>
+	                        <td class="text-center">${dto.companyForm}</td>
+                            <td><a href="${articleUrl}&companyNum=${dto.companyNum}">${dto.companySubject}</a></td>
+                            <td class="text-center">${dto.memId}</td>
+	                        <td class="text-center">${dto.companyCreated}</td>
+	                        <td class="text-center">${dto.companyHitCount}</td> 
+	                    </tr>
+    				 </c:forEach>               
+	                
 					  <c:forEach var="dto" items="${list}">
 	                    <tr>
 	                        <td class="text-center">${dto.listCompanyNum}</td>

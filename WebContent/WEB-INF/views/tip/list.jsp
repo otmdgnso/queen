@@ -86,6 +86,18 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
+	                <c:forEach var="dto" items="${listBestTip}">
+	                    <tr style="background-color: #FFA7A7">
+                            <td class="text-center"><span style="display: inline-block;width: 28px;height:18px;line-height:18px; background: #ED4C00;color: #FFFFFF">Best</span></td>
+                            <td class="text-center">${dto.tipRecomm}</td>
+	                        <td class="text-center">${dto.tipHead}</td>
+	                        <td><a href='${articleUrl}&tipNum=${dto.tipNum}'>${dto.tipSubject}</a></td>
+	                        <td class="text-center">${dto.memId}</td>
+	                        <td class="text-center">${dto.tipCreated}</td>
+	                        <td class="text-center">${dto.tipHitCount}</td>  
+	                    </tr>
+    				 </c:forEach>         
+	                
 					  <c:forEach var="dto" items="${list}">
 	                    <tr>
 	                        <td class="text-center">${dto.listTipNum}</td>

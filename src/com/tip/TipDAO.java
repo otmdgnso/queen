@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.company.CompanyDTO;
 import com.util.DBConn;
 
 public class TipDAO {
@@ -690,6 +691,51 @@ public class TipDAO {
 
 			return result;
 		}				
+		
+		
+		
+		//베스트글 리스트
+				public List<TipDTO> listBestTip(){
+					
+					
+					List<TipDTO> list = new ArrayList<>();
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					StringBuffer sb = new StringBuffer();
+
+					try {
+						sb.append(" SELECT tipNum, tipRecomm, tipHead, tipSubject, memId,");
+						sb.append(" DATE_FORMAT(tipCreated , '%Y-%m-%d') tipCreated, tipHitCount");
+						sb.append(" FROM tip WHERE tipRecomm>5 ORDER BY tipRecomm DESC LIMIT 3");
+
+						pstmt = conn.prepareStatement(sb.toString());
+
+						rs = pstmt.executeQuery();
+
+						while (rs.next()) {
+							TipDTO dto = new TipDTO();
+
+							dto.setTipNum(rs.getInt("tipNum"));
+							dto.setTipRecomm(rs.getInt("tipRecomm"));
+							dto.setTipHead(rs.getString("tipHead"));
+							dto.setTipSubject(rs.getString("tipSubject"));
+							dto.setMemId(rs.getString("memId"));
+							dto.setTipCreated(rs.getString("tipCreated"));
+							dto.setTipHitCount(rs.getInt("tipHitCount"));
+
+							list.add(dto);
+						}
+						rs.close();
+						pstmt.close();
+						
+					} catch (Exception e) {
+						System.out.println(e.toString());
+					}
+					
+					return list;
+					
+					
+				}
 
 	
 	

@@ -232,6 +232,7 @@ function logincheck(){
                     <div class="panel-body">
                         <ul type="disc">
                         	<c:forEach var="dtoTip" items="${listTip}">
+                        	
 	                        	<li><a href="<%=cp%>/tip/article.sst?page=1&tipNum=${dtoTip.tipNum}"><b style="color:#687ead;">[${dtoTip.tipHead}]</b>&nbsp;${dtoTip.tipSubject}</a></li>
 	                         </c:forEach>
                         </ul>
@@ -248,11 +249,12 @@ function logincheck(){
                     <div class="panel-body">
                          <ul type="disc">
                         	<c:forEach var="dtoQuest" items="${listQuest}">
-	                        	<li><a href="#"><b style="color:#687ead;">[${dtoQuest.questHead}]</b>&nbsp;${dtoQuest.questSubject}</a></li>
+                        	
+	                        	<li><a href="<%=cp%>/qna/article.sst?page=1&qnaNum=${dtoQuest.questNum}"><b style="color:#687ead;">[${dtoQuest.questHead}]</b>&nbsp;${dtoQuest.questSubject}</a></li>
 	                         </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                        <a href="<%=cp%>/qna/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>
                 </div>
             </div>

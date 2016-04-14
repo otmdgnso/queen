@@ -19,7 +19,7 @@
 
 
     <!-- Bootstrap Core CSS -->
-    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=cp%>/res/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
@@ -182,7 +182,7 @@ function deleteReply(trendR_num, pageNo, memId){
                         </tr>
                         
                         <tr>
-                        <td><img src="<%=cp%>/res/image/recommend.jpg">&nbsp;5</td>
+                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png">&nbsp;5</td>
                         </tr>
                         
                         <tr height="30">

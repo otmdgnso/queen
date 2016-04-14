@@ -16,7 +16,7 @@
     <meta name="author" content="">
 <title>사자의 심장을 가져롸 </title>
  <!-- Bootstrap Core CSS -->
-    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">

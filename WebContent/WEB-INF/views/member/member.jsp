@@ -23,8 +23,8 @@
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css"/>
 
-<link rel="stylesheet" href="<%=cp%>/res/css/bootstrap.min.css" type="text/css"/>
 
+<link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
 
 <script type="text/javascript">
 

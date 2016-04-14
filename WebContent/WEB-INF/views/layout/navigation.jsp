@@ -113,7 +113,7 @@ function sendLogin() {
                                 <a href="<%=cp%>/tip/list.sst">개발Tip </a>
                             </li>
                             <li>
-                                <a href="blog-post.jsp">개발Q&nbsp;&#38;&nbsp;A</a>
+                                 <a href="<%=cp%>/qna/list.sst">개발Q&nbsp;&#38;&nbsp;A</a>
                             </li>
                         </ul>
                     </li>

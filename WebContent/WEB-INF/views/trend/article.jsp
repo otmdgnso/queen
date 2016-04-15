@@ -52,88 +52,88 @@
 <script type="text/javascript">
 <c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
 function deleteTrend(trendNum) {
-	if(confirm("삭제 하시겠습니까 ?")) {
-		var url="<%=cp%>/trend/delete.sst?trendNum="+trendNum+"&page=${page}";
-		location.href=url;
-	}
+   if(confirm("삭제 하시겠습니까 ?")) {
+      var url="<%=cp%>/trend/delete.sst?trendNum="+trendNum+"&page=${page}";
+      location.href=url;
+   }
 }
 </c:if>
 
 //-- 댓글 ------------------------------------
 //댓글 리스트
 $(function(){
-	listPage(1);
+   listPage(1);
 });
 
 function listPage(page) {
-	var url="<%=cp%>/trend/listReply.sst";
-	var trendNum="${dto.trendNum}";
-	$.post(url, {trendNum:trendNum, pageNo:page}, function(data){
-		$("#listReply").html(data);
-	});
+   var url="<%=cp%>/trend/listReply.sst";
+   var trendNum="${dto.trendNum}";
+   $.post(url, {trendNum:trendNum, pageNo:page}, function(data){
+      $("#listReply").html(data);
+   });
 }
 //리플 저장
 
 function sendReply(){
-	var mId="${sessionScope.member.memId}";
-	if(! mId){
-		login();
-		return false;
-	}
-	
-	var trendNum="${dto.trendNum}"; //해당 게시물 번호
-	var trendR_content=$.trim($("#trendR_content").val());
-	if(! trendR_content){
-		alert("댓글내용을  입력하세요!");
-		$("#trendR_content").focus();
-		return false;
-	}
-	
-	var params="trendNum="+trendNum;
-	params+="&trendR_content="+trendR_content;
-	
-	$.ajax({
-		type:"POST"
-		,url:"<%=cp%>/trend/insertReply.sst"
-		,data:params
-		,dataType:"json"
-		,success:function(data) {
-			$("#trendR_content").val("");
-			
-  			var state=data.state;
-			if(state=="true") {
-				listPage(1);
-			} else if(state=="false") {
-				alert("댓글을 등록하지 못했습니다. !!!");
-			} else if(state=="loginFail") {
-				login();
-			}
-		}
-		,error:function(e) {
-			alert(e.responseText);
-		}
-	});
+   var mId="${sessionScope.member.memId}";
+   if(! mId){
+      login();
+      return false;
+   }
+   
+   var trendNum="${dto.trendNum}"; //해당 게시물 번호
+   var trendR_content=$.trim($("#trendR_content").val());
+   if(! trendR_content){
+      alert("댓글내용을  입력하세요!");
+      $("#trendR_content").focus();
+      return false;
+   }
+   
+   var params="trendNum="+trendNum;
+   params+="&trendR_content="+trendR_content;
+   
+   $.ajax({
+      type:"POST"
+      ,url:"<%=cp%>/trend/insertReply.sst"
+      ,data:params
+      ,dataType:"json"
+      ,success:function(data) {
+         $("#trendR_content").val("");
+         
+           var state=data.state;
+         if(state=="true") {
+            listPage(1);
+         } else if(state=="false") {
+            alert("댓글을 등록하지 못했습니다. !!!");
+         } else if(state=="loginFail") {
+            login();
+         }
+      }
+      ,error:function(e) {
+         alert(e.responseText);
+      }
+   });
 }
 // 댓글 삭제
 function deleteReply(trendR_num, pageNo, memId){
-	var mId="${sessionScope.member.memId}";
-	if(! mId){
-		login();
-		return false;
-	}
-	
-	if(confirm("게시물을 삭제하시겠습니까?")){
-		var url="<%=cp%>/trend/deleteReply.sst";
-		$.post(url,{trendR_num:trendR_num, memId:memId}, function(data){
-			var state=data.state;
-			if(state=="loginFail"){
-				login();
-			}else{
-				listPage(pageNo);
-			}
-			
-		},"json");
-	}
+   var mId="${sessionScope.member.memId}";
+   if(! mId){
+      login();
+      return false;
+   }
+   
+   if(confirm("게시물을 삭제하시겠습니까?")){
+      var url="<%=cp%>/trend/deleteReply.sst";
+      $.post(url,{trendR_num:trendR_num, memId:memId}, function(data){
+         var state=data.state;
+         if(state=="loginFail"){
+            login();
+         }else{
+            listPage(pageNo);
+         }
+         
+      },"json");
+   }
 }
 </script>
 
@@ -176,7 +176,9 @@ function deleteReply(trendR_num, pageNo, memId){
                         </tr>
                         <tr>
                             <td colspan="3" style="height: 230px;">
+                            <c:if test="${not empty dto.imageFilename}">
                             <img src="<%=cp%>/uploads/trend/${dto.imageFilename}" style="max-width:100%; height:auto; resize:both;">
+                            </c:if>
                                  ${dto.trendContent}
                             </td>
                         </tr>
@@ -186,37 +188,37 @@ function deleteReply(trendR_num, pageNo, memId){
                         </tr>
                         
                         <tr height="30">
-					    <td width="80" bgcolor="#EEEEEE" align="center">이전글</td>
-					    <td width="520" align="left" style="padding-left:10px;" colspan="3">
-							<c:if test="${not empty preReadDto}">
-								<a href="<%=cp%>/trend/article.sst?trendNum=${preReadDto.trendNum}&${params}">${preReadDto.trendSubject }</a>
-							</c:if>
-						</td>
-					</tr>
+                   <td width="80" bgcolor="#EEEEEE" align="center">이전글</td>
+                   <td width="520" align="left" style="padding-left:10px;" colspan="3">
+                     <c:if test="${not empty preReadDto}">
+                        <a href="<%=cp%>/trend/article.sst?trendNum=${preReadDto.trendNum}&${params}">${preReadDto.trendSubject }</a>
+                     </c:if>
+                  </td>
+               </tr>
                         <tr height="30">
-					    <td width="80" bgcolor="#EEEEEE" align="center">다음글</td>
-					    <td width="520" align="left" style="padding-left:10px;" colspan="3">
-							<c:if test="${not empty nextReadDto}">
-								<a href="<%=cp%>/trend/article.sst?trendNum=${nextReadDto.trendNum}&${params}">${nextReadDto.trendSubject }</a>
-							</c:if>
-					    </td>
-					</tr>
+                   <td width="80" bgcolor="#EEEEEE" align="center">다음글</td>
+                   <td width="520" align="left" style="padding-left:10px;" colspan="3">
+                     <c:if test="${not empty nextReadDto}">
+                        <a href="<%=cp%>/trend/article.sst?trendNum=${nextReadDto.trendNum}&${params}">${nextReadDto.trendSubject }</a>
+                     </c:if>
+                   </td>
+               </tr>
                    </tbody>
                    <tfoot>
                     <tr>
-					    <td align="left">
-					    <c:if test="${dto.memId == sessionScope.member.memId}">
-					          <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/trend/update.sst?trendNum=${dto.trendNum}&page=${page}';">
-   						</c:if>
-   						&nbsp;
-   						<c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
-					          <input type="image" src="<%=cp%>/res/image/btn_delete.gif" onclick="deleteTrend('${dto.trendNum}')">
-					    </c:if>
-   						</td>
-   						<td align="right" colspan="2">
-					          <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/trend/list.sst?${params}';">
-					    </td>
-					    </tr>
+                   <td align="left">
+                   <c:if test="${dto.memId == sessionScope.member.memId}">
+                         <input type="image" src="<%=cp%>/res/image/btn_modify.gif" onclick="javascript:location.href='<%=cp%>/trend/update.sst?trendNum=${dto.trendNum}&page=${page}';">
+                     </c:if>
+                     &nbsp;
+                     <c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
+                         <input type="image" src="<%=cp%>/res/image/btn_delete.gif" onclick="deleteTrend('${dto.trendNum}')">
+                   </c:if>
+                     </td>
+                     <td align="right" colspan="2">
+                         <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/trend/list.sst?${params}';">
+                   </td>
+                   </tr>
                    </tfoot>
                </table>
           </div>

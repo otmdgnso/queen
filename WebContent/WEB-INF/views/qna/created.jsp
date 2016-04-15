@@ -61,7 +61,13 @@
 <div class="container" role="main">
 		<div class="col-sm-10_2"
 			style="float: none; margin-left: auto; margin-right: auto;">
-
+     <div class="body-title">
+             <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> 개발 Q&A </h3>
+       </div>
+       
+       <div class="alert alert-info">
+           <i class="glyphicon glyphicon-info-sign"></i> &nbsp;&nbsp;&nbsp;개발 관련 질문과 답변을 위한 게시판입니다 - 코딩과 관련한 내용만 올려주세요
+       </div>
 			<div>
 				<form name="qnaForm" method="post" onsubmit="return check();">
 					<div class="bs-write">

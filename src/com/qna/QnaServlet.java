@@ -221,6 +221,7 @@ public class QnaServlet extends MyServlet {
 			dto.setQnaNum(Integer.parseInt(req.getParameter("qnaNum")));
 			dto.setQnaSubject(req.getParameter("qnaSubject"));
 			dto.setQnaContent(req.getParameter("qnaContent"));
+			dto.setQnaHead(req.getParameter("qnaHead"));
 
 			dao.qnaUpdate(dto);
 

@@ -338,11 +338,18 @@ public class QnaDAO {
 		PreparedStatement pstmt = null;
 		String sql;
 
-		sql = "DELETE FROM question WHERE questNum=?";
 		try {
+			sql = "DELETE FROM answer WHERE questNum=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, qnaNum);
 			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			sql = "DELETE FROM question WHERE questNum=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qnaNum);
+			result = pstmt.executeUpdate();
+			
 
 		} catch (Exception e) {
 			System.out.println(e.toString());

@@ -131,7 +131,7 @@
 
 
 		<div class="body-title">
-	          <h3 style="font-size:30px;" ><span class="glyphicon glyphicon-book"></span> 회사정보 등록 </h3>
+	          <h3 style="font-size:30px;" ><span class="glyphicon glyphicon-book"></span> 회사정보 글쓰기  </h3>
 	    </div>
 	    
 	    <div class="alert alert-info">

@@ -36,7 +36,7 @@
 
 @media (min-width: 768px) {
   .form-signin {
-    padding-top: 70px;
+    /* padding-top: 70px; */
   }
 }
 

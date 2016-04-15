@@ -59,11 +59,11 @@
     <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
         
 	    <div class="body-title">
-	          <h3><span class="glyphicon glyphicon-book"></span> 취업정보 나눔 게시판 </h3>
+	          <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> 취업정보나눔 </h3>
 	    </div>
 	    
 	    <div class="alert alert-info">
-	        <i class="glyphicon glyphicon-info-sign"></i> 취업정보나눔 게시판입니다.
+	        <i class="glyphicon glyphicon-info-sign"></i> &nbsp;&nbsp;&nbsp;IT 취업과 관련된 유용한 정보를 공유해주세요 
 	    </div>
 	
 	    <div>
@@ -122,7 +122,9 @@
 	        		     </form>
 	        		</div>
 	        		<div style="float: left; width: 20%; min-width: 85px; text-align: right;">
-	        		    <input type="image" src="<%=cp%>/res/image/btn_write.gif" onclick="javascript:location.href='<%=cp%>/bbs/created.sst';">
+	        			<button style=""type="button" class="write" onclick="javascript:location.href='<%=cp%>/bbs/created.sst';">
+	        		 		 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 글쓰기 </button>
+	        		    <%-- <input type="image" src="<%=cp%>/res/image/btn_write.gif" onclick="javascript:location.href='<%=cp%>/bbs/created.sst';"> --%>
 	        		</div>
 	        </div>
 	    </div>

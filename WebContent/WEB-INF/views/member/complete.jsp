@@ -42,27 +42,29 @@
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
 	
-	<div class="layoutBody">
+	<div class="layoutBody" style="min-height: 100%;">
 
-		<div style="min-height: 100%">
+		<div >
 				<div style="margin-top:150px; height: 40px;  line-height:40px; ">
-				   <div style="margin:0 auto; width: 600px; border-top: 2px solid #FFCC66 ; border-bottom: 2px solid #FFCC66; ">
+				   <div style="margin:0 auto; width: 600px; "><!-- border-top: 2px solid #FFCC66 ; border-bottom: 2px solid #FFCC66;  */ --> 
 				    <div style="width:600px; height:30px; line-height:30px; margin:0 auto; 
 				    	margin-top:10px; margin-bottom:30px;">
-				        
-				        <span style="margin-left:43%; font-weight: bold;font-size:18pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">
-				        	${title}</span>
+				       
+				        <span style="margin-left:24%; font-weight: bold;font-size:30pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">
+				        	
+						<span class="glyphicon glyphicon-ok " aria-hidden="true"></span> &nbsp;${title}회원가입완료</span>
 				    </div>
 					</div>
 				</div>
 				
-				<div style="margin: 30px auto; width: 400px; min-height: 400px;">
+				<div style="margin: 30px auto; width: 800px; min-height: 400px;">
 					
-					<div style="margin: 0px auto; padding:10px; min-height: 50px; line-height: 130%;  text-align: center;">
-						${message}
+					<div style="font-size:20px; margin: 0px auto; padding:10px; min-height: 70px; line-height: 130%;  text-align: center;">
+						${message}최양희님 축하드려요 회원가입에 완료했습니다. 
 					</div>
-					<div style="height: 50px; text-align: center; margin-bottom:30px;">
-					   <button type="button" onclick="javascript:location.href='<%=cp%>/';" class="moveButton"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 메인화면으로 이동 </button>
+					<div style="height: 50px; text-align: center; margin-bottom:50px; margin-left:-5px;">
+					   <button type="button" onclick="javascript:location.href='<%=cp%>/';" style="padding:15px 35px; font-size:20px;"class="btn btn-info btn-sm btn-search">
+					   	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 메인화면으로 이동 </button>
 				<%-- 	    <input type="button" value=" 메인화면으로 이동 "
 					              class="moveButton"
 					              onclick="javascript:location.href='<%=cp%>/';"> --%>

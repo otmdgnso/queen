@@ -109,7 +109,7 @@ function sendLogin2() {
     <div class="bodyFrame">
     <form class="form-signin" name="loginForm2" method="post"  onsubmit="return sendLogin2();">
     <img alt="" src="<%=cp%>/res/image/사자.png" style="margin-top:30px; margin-left:90px; width:180px; height:210px; ">
-        <h2 class="form-signin-heading" >Log In</h2>
+        <h1 class="form-signin-heading" >Log In</h1>
         
         <label for="memId" id="lblUserId" class="lbl">아이디</label>
         <input type="text" id="memId" name="memId" class="form-control loginTF" autofocus="autofocus"
@@ -125,8 +125,8 @@ function sendLogin2() {
         	<span class="glyphicon glyphicon-ok"></span></button>
         
        
-      	<div style=" margin-left:40px;margin-top:20px; width:370px;">
-              <span style=" text-align:center; color:tomato; font-weight:bold; font-size:15px; " class="form-control-static">
+      	<div style=" margin-left:20px;margin-top:20px; width:370px;">
+              <span style=" text-align:center; color:tomato; font-weight:bold; font-size:17px; " class="form-control-static">
               ${message}</span>
          </div>
          

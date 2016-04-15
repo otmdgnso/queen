@@ -221,10 +221,10 @@ function changeEmail() {
     
  	<div class="form-group">
         <label class="col-sm-2 control-label" for="course">과정</label>
-         <div class="col-sm-10">
+         <div class="col-sm-10" style="margin-top:0px;">
          
            <select name="selectCourse" id="course" class="form-control" 
-           		style="width:320px; float: left; margin-right:-40px; "  >
+           		style="width:320px; float: left; margin-right:0px; clear:both; margin:0px; padding:0px;"  >
            			
 				<option value="">선 택</option>
 				<option value="빅데이터 개발자 과정" ${dto.course=="빅데이터 개발자 과정" ? "selected='selected'" : ""}>
@@ -259,8 +259,8 @@ function changeEmail() {
 
     <div class="form-group">
         <label class="col-sm-2 control-label" for="email">이메일</label>
-        <div class="col-sm-10">
-           <select name="selectEmail" onchange="changeEmail();" class="form-control" style="width:130px; float: left; margin-right:10px;" >
+        <div class="col-sm-10" style="margin-top:0px;">
+           <select name="selectEmail" onchange="changeEmail();" class="form-control" style="width:130px; float: left; margin-right:10px; margin:0px; padding:0px;" >
 											<option value="">선 택</option>
 											<option value="@naver.com" ${dto.email2=="naver.com" ? "selected='selected'" : ""}>네이버 메일</option>
 											<option value="@hanmail.net" ${dto.email2=="hanmail.net" ? "selected='selected'" : ""}>한 메일</option>
@@ -282,7 +282,7 @@ function changeEmail() {
         <div class="col-sm-7">
              <div class="row" >
                   <div class="col-sm-3" style="padding-right: 5px;">
-						  <select class="form-control" style="width:130px; float: left; id="tel1" name="tel1" >
+						  <select class="form-control" style="width:130px; float: left; margin:0px; padding:0px;"id="tel1" name="tel1" >
 								<option value="">선 택</option>
 								<option value="010" ${dto.tel1=="010" ? "selected='selected'" : ""}>010</option>
 								<option value="011" ${dto.tel1=="011" ? "selected='selected'" : ""}>011</option>
@@ -357,15 +357,15 @@ function changeEmail() {
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
 		<c:if test="${mode=='created'}">
-            <button type="submit" name="sendButton" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;">
+            <button type="submit" name="sendButton" class="btn btn-info btn-sm btn-search" style="margin-right:20px; height:40px; width:130px;">
             		회원가입<span class="glyphicon glyphicon-ok"></span></button>
-            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">
+            <button type="button" class="btn btn-default btn-sm wbtn" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">
             		가입취소 <span class="glyphicon glyphicon-remove"></span></button>
 	 	</c:if>
 	<c:if test="${mode=='update'}">
-            <button type="submit" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;" >
+            <button type="submit" class="btn btn-info btn-sm btn-search" style="margin-right:20px; height:40px; width:130px;" >
             		정보수정 <span class="glyphicon glyphicon-ok"></span></button>
-            <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">
+            <button type="button" class="btn btn-default btn-sm wbtn" onclick="javascript:location.href='<%=cp%>/';" style="margin-right:20px; height:40px; width:130px;">
             		수정취소 <span class="glyphicon glyphicon-remove"></span></button>
 	</c:if>            
     </div>

@@ -171,10 +171,10 @@ function deleteReply(freeR_num, pageNo, memId){
 	</div>
 	
 <div class="container" role="main">
-    <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto; margin-top:100px;">
+    <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto; margin-top:110px;">
         
 	    <div class="body-title">
-	          <h3><span class="glyphicon glyphicon-pencil"></span> 주절주절  <small style="color:#7C96C9;">자유게시판</small></h3>
+	          <h3  style="font-size:30px;"><span class="glyphicon glyphicon-pencil"></span> 주절주절  <small style="color:#7C96C9;"></small></h3>
 	    </div>
 	    
 	    <div class="alert alert-info" >

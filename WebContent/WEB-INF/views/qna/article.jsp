@@ -205,7 +205,7 @@ function sendAnswer(){
 			
   			var state=data.state;
 			if(state=="true") {
-				listPage(1);
+				listAnswerPage(1);
 			} else if(state=="false") {
 				alert("답변을 등록하지 못했습니다. !!!");
 			} else if(state=="loginFail") {
@@ -231,11 +231,18 @@ function deleteAnswer(a_num, pageNo, memId){
 			if(state=="loginFail"){
 				login();
 			}else{
-				listPage(pageNo);
+				listAnswerPage(pageNo);
 			}
 			
 		},"json");
 	}
+}
+
+function selectAnswer(a_num){
+	var url="<%=cp%>/qna/selectAnswer.sst";
+	$.post(url,{a_num:a_num}, function(data){
+			listAnswerPage(1);
+	},"json");
 }
 </script>
 

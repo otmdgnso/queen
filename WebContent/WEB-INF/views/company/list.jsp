@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>사자의 심장을 가져라 </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">

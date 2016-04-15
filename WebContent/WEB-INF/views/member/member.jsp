@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>spring</title>
+<title>사자의 심장을 가져라 </title>
 
 <script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>

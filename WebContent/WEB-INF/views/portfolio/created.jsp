@@ -86,7 +86,7 @@ function check() {
 		$('#imageViewModal').modal('show');
 	}
 </script>
-
+<title>사자의 심장을 가져라 </title>
 </head>
 <body>
 

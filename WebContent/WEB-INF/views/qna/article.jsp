@@ -37,7 +37,6 @@
 
 
 	<!-- 신택스 하이라이터 (css) -->
-	<%-- <link href="<%=cp%>/res/css/shCss/shCoreMidnight.css" rel="stylesheet" type="text/css"> --%>
 	<link type="text/css" rel="stylesheet" href="<%=cp%>/res/sh/shCoreEclipse.css"/>
 	<link type="text/css" rel="stylesheet" href="<%=cp%>/res/sh/shThemeEclipse.css"/>
 	

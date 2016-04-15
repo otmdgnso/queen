@@ -235,10 +235,10 @@
 							<tfoot>
 								<tr>
 									<td colspan="4" style="text-align: center; padding-top: 15px;">
-										<button type="submit" class="btn btn-primary">
+										<button type="submit" class="btn btn-info btn-sm btn-search">
 											확인 <span class="glyphicon glyphicon-ok"></span>
 										</button>
-										<button type="button" class="btn btn-danger"
+										<button type="button" class="btn btn-default btn-sm wbtn"
 											onclick="javascript:location.href='<%=cp%>/company/list.sst';"> 취소</button>
 											 <c:if test="${mode=='update'}">
 											      <input type="hidden" name="companyNum" value="${dto.companyNum}">

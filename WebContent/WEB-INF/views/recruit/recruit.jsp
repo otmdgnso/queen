@@ -120,14 +120,14 @@
         	
         <!-- 달력 출력 시작  -->
         	<table style="width: 1050px; border: solid #BDBDBD  1px; border-spacing: 0; margin: 5px auto 0; background: #F6F6F6;">
-	<tr height="30" align="center">
-		<td width="150px" bgcolor="#EAEAEA" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">월(MON)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">화(TUE)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">수(WED)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">목(THU)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">금(FRI)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
+	<tr height="30" align="center" style="padding:5px;">
+		<td width="150px" bgcolor="#d9e5ff" style="color: red; border: solid #BDBDBD 1px; ">일(SUN)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">월(MON)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">화(TUE)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">수(WED)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">목(THU)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">금(FRI)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
 	</tr>
 <%
 	out.print("<tr height='30' align='center'>");
@@ -220,13 +220,13 @@
 
 <table style="width: 1050px; border: solid #BDBDBD 1px; border-spacing: 0; margin: 5px auto 0; background: #F6F6F6;">
 	<tr height="30" align="center">
-		<td width="150px" bgcolor="#EAEAEA" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">월(MON)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">화(TUE)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">수(WED)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">목(THU)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">금(FRI)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">월(MON)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">화(TUE)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">수(WED)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">목(THU)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">금(FRI)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
 	</tr>
 <%
 	out.print("<tr height='30' align='center'>");
@@ -323,14 +323,14 @@
 </table>
 
 <table style="width: 1050px; border: solid #BDBDBD 1px; border-spacing: 0; margin: 5px auto 0; background: #F6F6F6;">
-<tr height="30" align="center">
-		<td width="150px" bgcolor="#EAEAEA" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">월(MON)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">화(TUE)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">수(WED)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">목(THU)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">금(FRI)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
+<tr height="40" align="center">
+		<td width="150px" bgcolor="#d9e5ff" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">월(MON)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">화(TUE)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">수(WED)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">목(THU)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">금(FRI)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
 </tr>
 
 <%

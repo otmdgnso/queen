@@ -13,21 +13,20 @@
 <meta charset="UTF-8">
 <title>study</title>
 <!-- Bootstrap Core CSS -->
-    <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
+    <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<%=cp%>/res/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="<%=cp%>/res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css">
-<link rel="stylesheet" href="<%=cp%>/res/css/layout/layout.css" type="text/css">
 
 <!-- jQuery -->
 <script src="<%=cp%>/res/js/jquery.js"></script>
 
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript">
+// enctype="multipart/form-data" 파일첨부 안할건데 이거쓰면 에러남 1시간30분동안 못잡음
     function check() {
         var f = document.boardForm;
 
@@ -126,144 +125,133 @@
 	</div>
 
 	
-	<div class="layoutBody">
+	<div class="container" role="main">
+		<div class="bodyFrame col-sm-10"
+			style="float: none; margin-left: auto; margin-right: auto;">
 
-		<div style="min-height: 450px;">
-				<div style="width:100%;	height: 40px; line-height:40px;clear: both; border-top: 1px solid #DAD9FF;border-bottom: 1px solid #DAD9FF;">
-				    <div style="width:600px; height:30px; line-height:30px; margin:5px auto;">
-				        <img src="<%=cp%>/res/image/arrow.gif" alt="" style="padding-left: 5px; padding-right: 5px;">
-				        <span style="font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">게시판</span>
-				    </div>
-				</div>
-			
-				<div style="margin: 10px auto; margin-top: 20px; width:600px; min-height: 400px;">
-		
-					<form name="boardForm" method="post" onsubmit="return check();">
-					  <table style="width: 600px; margin: 0px auto; border-spacing: 0px;">
-					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
-					
-					  <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeSubject" size="75" maxlength="100" class="boxTF" value="${dto.resumeSubject}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					  <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">작 성 자</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        ${sessionScope.member.memId}
-					      </td>
-					  </tr>
-				      <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      <!-- 내용 넣기 -->
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">지원회사</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeCompany" size="75" maxlength="100" class="boxTF" value="${dto.resumeCompany}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">지원시기</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeDate" size="75" maxlength="100" class="boxTF" value="${dto.resumeDate}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">지원직무</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeJob" size="75" maxlength="100" class="boxTF" value="${dto.resumeJob}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">출신학교</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeSchool" size="75" maxlength="100" class="boxTF" value="${dto.resumeSchool}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					  
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">전&nbsp;&nbsp;&nbsp;&nbsp;공</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeMajor" size="75" maxlength="100" class="boxTF" value="${dto.resumeMajor}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  				               
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">학&nbsp;&nbsp;&nbsp;&nbsp;점</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeScore" size="75" maxlength="100" class="boxTF" value="${dto.resumeScore}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">어학성적</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeLanguage" size="75" maxlength="100" class="boxTF" value="${dto.resumeLanguage}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-					  
-					   <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">대외활동</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeEx" size="75" maxlength="100" class="boxTF" value="${dto.resumeEx}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      
-				       <tr align="left" height="40"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">강조역량</td>
-					      <td width="500" style="padding-left:10px;"> 
-					        <input type="text" name="resumeAbility" size="75" maxlength="100" class="boxTF" value="${dto.resumeAbility}">
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
-				      	      
-				      
-				      
-					  <tr align="left"> 
-					      <td width="100" bgcolor="#EEEEEE" style="text-align: center; padding-top:5px;" valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-					      <td width="500" valign="top" style="padding:5px 0px 5px 10px;"> 
-					        <textarea name="resumeContent" cols="75" rows="12" class="boxTA">${dto.resumeContent}</textarea>
-					      </td>
-					  </tr>
-					  <tr><td colspan="2" height="3" bgcolor="#507CD1"></td></tr>
-					  </table>
-					
-					  <table style="width: 600px; margin: 0px auto; border-spacing: 0px;">
-					     <tr height="45"> 
-					      <td align="center" >
-						    <input type="image" src="<%=cp%>/res/image/btn_submit.gif" >
-		        		    <a href="javascript:location.href='<%=cp%>/resume/list.sst';"><img src="<%=cp%>/res/image/btn_cancel.gif" border="0"></a>
-		
-							<c:if test="${mode=='update'}">
-								<input type="hidden" name="resumeNum" value="${dto.resumeNum}">
-								<input type="hidden" name="page" value="${page}">
-							</c:if>
-		
-					      </td>
-					    </tr>
-					  </table>
-					</form>
-				</div>
+
+		<div class="body-title">
+	          <h3><span class="glyphicon glyphicon-book"></span> 자소성 정보 등록 </h3>
+	    </div>
+	    
+	    <div class="alert alert-info">
+	        <i class="glyphicon glyphicon-info-sign"></i> 합격 자기소개서의 상세 정보를 등록합니다.
+	    </div>
+	    
+	    
+			<div>
+				<form name="boardForm" method="post" onsubmit="return check();">
+					<div class="bs-write">
+						<table class="table">
+							<tbody>
+								<tr>
+									<td class="td1">작성자명</td>
+									<td class="td2 col-md-5 col-sm-5">
+										<p class="form-control-static">${sessionScope.member.memId}</p>
+									</td>
+									<td class="td1" align="center">&nbsp;</td>
+									<td class="td2 col-md-5 col-sm-5">&nbsp;</td>
+
+								</tr>
+								<tr>
+									<td class="td1">제목</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeSubject" class="form-control input-sm"
+										value="${dto.resumeSubject}" required="required"></td>
+								</tr>
+								
+								<tr>
+									<td class="td1">지원회사</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeCompany" class="form-control input-sm"
+										value="${dto.resumeCompany}" required="required"></td>
+								</tr>
+								<tr>
+									<td class="td1">지원시기</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeDate" class="form-control input-sm"
+										value="${dto.resumeDate}" required="required"></td>
+								</tr>
+								<tr>
+									<td class="td1">지원직무</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeJob" class="form-control input-sm"
+										value="${dto.resumeJob}" required="required"></td>
+								</tr>
+								<tr>
+									<td class="td1">출신학교</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeSchool" class="form-control input-sm"
+										value="${dto.resumeSchool}" required="required"></td>
+								</tr>
+								<tr>
+									<td class="td1">전공</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeMajor" class="form-control input-sm"
+										value="${dto.resumeMajor}" required="required"></td>
+								</tr>
+								<tr>
+									<td class="td1">학점</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeScore" class="form-control input-sm"
+										value="${dto.resumeScore}" required="required"></td>
+								</tr>
+								<tr>
+									<td class="td1">어학성적</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeLanguage" class="form-control input-sm"
+										value="${dto.resumeLanguage}" required="required"></td>
+								</tr>
+								<tr>
+									<td class="td1">대외활동</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeEx" class="form-control input-sm"
+										value="${dto.resumeEx}" required="required"></td>
+								</tr>
+								<tr>
+									<td class="td1">강조역량</td>
+									<td colspan="3" class="td3"><input type="text"
+										name="resumeAbility" class="form-control input-sm"
+										value="${dto.resumeAbility}" required="required"></td>
+								</tr>
+								
+								
+								<tr>
+									<td class="td1" colspan="4" style="padding-bottom: 0px;">내용</td>
+								</tr>
+								<tr>
+									<td colspan="4" class="td4"><textarea name="resumeContent"
+											class="form-control" rows="7" required="required">${dto.resumeContent}</textarea>
+									</td>
+								</tr>
+
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="4" style="text-align: center; padding-top: 15px;">
+										<button type="submit" class="btn btn-primary">
+											확인 <span class="glyphicon glyphicon-ok"></span>
+										</button>
+										<button type="button" class="btn btn-danger"
+											onclick="javascript:location.href='<%=cp%>/resume/list.sst';"> 취소</button>
+											 <c:if test="${mode=='update'}">
+											      <input type="hidden" name="resumeNum" value="${dto.resumeNum}">
+											      <input type="hidden" name="memId" value="${dto.memId}">
+											      <input type="hidden" name="page" value="${page}">
+										  </c:if>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</form>
+			</div>
+
 		</div>
+	</div>
 
-    </div>
 
+	
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
 

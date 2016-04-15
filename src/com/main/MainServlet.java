@@ -26,7 +26,9 @@ public class MainServlet extends MyServlet {
 		
 		MainDAO dao = new MainDAO();
 		
-		if(uri.indexOf("main.sst")!=-1) {
+		
+			if(uri.indexOf("main.sst")!=-1) {
+			
 			List<MainDTO> listShare, listPfo, listWanted, listResume, listQuest, listTip, listCompany, listDocu, listTrend;
 			
 			listShare=dao.mainShare();

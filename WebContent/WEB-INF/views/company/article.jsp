@@ -262,7 +262,7 @@ function deleteReply(companyR_num, pageNo, memId){
 					          <input type="image" src="<%=cp%>/res/image/btn_delete.gif" onclick="deleteCompany('${dto.companyNum}')">
 					    </c:if>
    						</td>
-   						<td align="right" colspan="2">
+   						<td align="right" colspan="3">
 					          <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/company/list.sst?${params}';">
 					    </td>
 					    </tr>

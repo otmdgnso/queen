@@ -63,6 +63,14 @@
 	<div class="container" role="main">
 		<div class="bodyFrame col-sm-10"
 			style="float: none; margin-left: auto; margin-right: auto;">
+			
+			<div class="body-title">
+	          <h3><span class="glyphicon glyphicon-book"></span>팀원구하기 글쓰기</h3>
+	    </div>
+	    
+	    <div class="alert alert-info">
+	        <i class="glyphicon glyphicon-info-sign"></i> 팀원을 구하는 글을 써주세요.
+	    </div>
 
 			<div>
 				<form name="wantedForm" method="post" onsubmit="return check();">
@@ -111,10 +119,10 @@
 							<tfoot>
 								<tr>
 									<td colspan="4" style="text-align: center; padding-top: 15px;">
-										<button type="submit" class="btn btn-primary">
+										<button type="submit" class="btn btn-info btn-sm btn-search">
 											확인 <span class="glyphicon glyphicon-ok"></span>
 										</button>
-										<button type="button" class="btn btn-danger"
+										<button type="button" class="btn btn-default btn-sm wbtn"
 											onclick="javascript:location.href='<%=cp%>/wanted/list.sst';"> 취소</button>
 											 <c:if test="${mode=='update'}">
 											      <input type="hidden" name="wantedNum" value="${dto.wantedNum}">

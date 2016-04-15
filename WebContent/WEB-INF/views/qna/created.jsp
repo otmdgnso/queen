@@ -125,6 +125,7 @@
 											<input type="hidden" name="qnaNum" value="${dto.qnaNum}">
 											<input type="hidden" name="memId" value="${dto.memId}">
 											<input type="hidden" name="page" value="${page}">
+											<input type="hidden" name="qnaHead" value="${dto.qnaHead}">
 										</c:if>
 									</td>
 								</tr>

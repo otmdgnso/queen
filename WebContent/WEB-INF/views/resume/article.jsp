@@ -36,10 +36,13 @@
 <style type="text/css">
 .resume-reply {
     font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
+     border-top: #687ead solid 2px; 
+    border-bottom: #687ead solid 2px; padding:15px;
+    margin-bottom:70px;
 }
 
 .resume-reply-write {
-    border: #687ead solid 1px;
+    border-bottom: #ddd solid 2px; 
     padding: 10px;
     min-height: 50px;
 }
@@ -151,6 +154,21 @@ function deleteReply(resumeR_num, pageNo, memId){
 }
 </script>
 
+<style type="text/css">
+
+.resume-reply{
+  font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
+    border-top: #687ead solid 2px; 
+    border-bottom: #687ead solid 2px; padding:15px;
+    margin-bottom:70px;
+}
+
+.resume-reply-write {
+    border-bottom: #ddd solid 2px; 
+    padding: 10px;
+    min-height: 50px;
+}
+</style>
 </head>
 
 <body>
@@ -193,31 +211,31 @@ function deleteReply(resumeR_num, pageNo, memId){
                             </td>
                         </tr>
                         <tr>
-                        	<td bgcolor="#B2CCFF" style="color:white; text-align: left; width:200px; height:45px; ">지원회사</td>
+                        	<td bgcolor="#B2CCFF" style="color:#687ead; font-weight:bold; text-align: left; width:200px; height:45px; ">지원회사</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.resumeCompany}</td>
-                            <td bgcolor="#B2CCFF"style="color:white; text-align: left; width:200px; height:45px; ">지원시기</td>
+                            <td bgcolor="#B2CCFF"style="color:#687ead; text-align: left; width:200px; height:45px; ">지원시기</td>
                             <td  style="text-align: left; width:200px; height:45px; ">${dto.resumeDate}</td>
                         </tr>
                         <tr>
-                        	<td bgcolor="#B2CCFF"style=" color:white;text-align: left; width:200px; height:45px; ">지원직무</td>
+                        	<td bgcolor="#B2CCFF"style=" color:#687ead; font-weight:bold;text-align: left; width:200px; height:45px; ">지원직무</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.resumeJob}</td>
-                            <td bgcolor="#B2CCFF"style="color:white;text-align: left; width:200px; height:45px; ">출신학교</td>
+                            <td bgcolor="#B2CCFF"style="color:#687ead; font-weight:bold;text-align: left; width:200px; height:45px; ">출신학교</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.resumeSchool}</td>
                         </tr>
                         <tr>
-                        	<td bgcolor="#B2CCFF"style="color:white;text-align: left; width:200px; height:45px; ">전공</td>
+                        	<td bgcolor="#B2CCFF"style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">전공</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.resumeMajor}</td>
-                            <td bgcolor="#B2CCFF"style="color:white;text-align: left; width:200px; height:45px; ">학점</td>
+                            <td bgcolor="#B2CCFF"style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">학점</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.resumeScore}</td>
                         </tr>
                         <tr>
-                        	<td bgcolor="#B2CCFF"style="color:white;text-align: left; width:200px; height:45px; ">어학성적</td>
+                        	<td bgcolor="#B2CCFF"style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">어학성적</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.resumeLanguage}</td>
-                            <td bgcolor="#B2CCFF"style="color:white;text-align: left; width:200px; height:45px; ">대외활동</td>
+                            <td bgcolor="#B2CCFF"style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">대외활동</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.resumeEx}</td>
                         </tr>
                         <tr>
-                        	<td bgcolor="#B2CCFF"style="color:white;text-align: left; width:200px; height:45px; ">강조역량</td>
+                        	<td bgcolor="#B2CCFF"style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">강조역량</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.resumeAbility}</td>
                             <td style="text-align: left; width:200px; height:45px; "></td>
                             <td style="text-align: left; width:200px; height:45px; "></td>

@@ -37,10 +37,14 @@
 <style type="text/css">
 .company-reply {
     font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
+    border-top: #687ead solid 2px; 
+    border-bottom: #687ead solid 2px; padding:15px;
+    margin-bottom:70px;
 }
 
 .company-reply-write {
-    border: #d5d5d5 solid 1px;
+
+   border-bottom: #ddd solid 2px; 
     padding: 10px;
     min-height: 50px;
 }
@@ -195,33 +199,33 @@ function deleteReply(companyR_num, pageNo, memId){
                             </td>
                         </tr>
                         <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">회사명</td>
+                        	<td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">회사명</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.companyName}</td>
-                            <td style="text-align: left; width:200px; height:45px; ">웹사이트</td>
+                            <td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">웹사이트</td>
                             <td style="text-align: left; width:200px; height:45px; "><a href="http://${dto.companyWeb}">${dto.companyWeb}</a></td>
                         </tr>
                         <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">기업형태</td>
+                        	<td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">기업형태</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.companyForm}</td>
-                            <td style="text-align: left; width:200px; height:45px; ">설립일</td>
+                            <td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">설립일</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.companyDate}</td>
                         </tr>
                         <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">산업군</td>
+                        	<td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">산업군</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.companyIndustry}</td>
-                            <td style="text-align: left; width:200px; height:45px; ">매출액</td>
+                            <td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">매출액</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.companySales}</td>
                         </tr>
                         <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">초봉 평균</td>
+                        	<td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">초봉 평균</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.companySalary}</td>
-                            <td style="text-align: left; width:200px; height:45px; ">평점</td>
+                            <td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">평점</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.companyScore}</td>
                         </tr>
                         <tr>
-                        	<td style="text-align: left; width:200px; height:45px; ">잡 플래닛</td>
+                        	<td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; ">잡 플래닛</td>
                             <td style="text-align: left; width:200px; height:45px; "><a href="http://${dto.companyPlanet}">${dto.companyPlanet}</a></td>
-                            <td style="text-align: left; width:200px; height:45px; "></td>
+                            <td bgcolor="#B2CCFF" style="color:#687ead;font-weight:bold;text-align: left; width:200px; height:45px; "></td>
                             <td style="text-align: left; width:200px; height:45px; "></td>
                         </tr>
                         <tr>

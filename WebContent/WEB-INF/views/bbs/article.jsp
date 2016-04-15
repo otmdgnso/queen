@@ -183,9 +183,6 @@ function deleteReply(shareR_num, pageNo, memId){
                             </td>
                         </tr>
                         
-                        <tr>
-                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png">&nbsp;5</td>
-                        </tr>
                         
                         <tr height="30">
 					    <td width="80" bgcolor="#EEEEEE" align="center">이전글</td>

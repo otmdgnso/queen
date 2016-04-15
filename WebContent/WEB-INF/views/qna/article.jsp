@@ -301,9 +301,7 @@ function selectAnswer(a_num){
                             </td>
                         </tr>
                          <tr><td colspan="3"><a href="#" onclick="replyCtrl();">댓글</a></td></tr> 
-                        <tr>
-                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png">&nbsp;5</td>
-                        </tr>                        
+                  
                    </tbody>
                    <tfoot>
                     <tr>

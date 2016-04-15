@@ -101,7 +101,7 @@
 	                </thead>
 	                <tbody>
 	                <c:forEach var="dto" items="${listBestResume}">
-	                    <tr style="background-color: #F1E4B8; color:#687ead; font-weight:bold;" >
+	                    <tr style="background-color: #FFF3CC; color:#687ead; font-weight:bold;" >
                             <td class="text-center"><span style="display: inline-block;width: 28px;height:18px;line-height:18px; background: #ED4C00;color: #FFFFFF">Best</span></td>
                             <td class="text-center">${dto.resumeRecomm}</td>
 	                        <td class="text-center">${dto.resumeJob}</td>

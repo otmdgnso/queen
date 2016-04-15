@@ -163,10 +163,10 @@ function deleteReply(companyR_num, pageNo, memId){
    </div>
 
     <div class="container" role="main">
-    <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
+    <div class="col-sm-10_2"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span> 회사정보 게시판 </h3>
+             <h3  style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> 회사정보 게시판 </h3>
        </div>
        
        <div class="alert alert-info">

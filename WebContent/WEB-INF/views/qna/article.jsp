@@ -256,14 +256,14 @@ function selectAnswer(a_num){
    </div>
 
     <div class="container" role="main">
-    <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
+    <div class="col-sm-10_2"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span> 게시판 </h3>
+             <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> 개발 Q&A </h3>
        </div>
        
        <div class="alert alert-info">
-           <i class="glyphicon glyphicon-info-sign"></i> 기업에 대한 자세한 정보를 볼 수 있는 게시판입니다.
+           <i class="glyphicon glyphicon-info-sign"></i> &nbsp;&nbsp;&nbsp;개발 관련 질문과 답변을 위한 게시판입니다 - 코딩과 관련한 내용만 올려주세요
        </div>
        
        <div class="table-responsive" style="clear: both;">
@@ -353,7 +353,7 @@ function selectAnswer(a_num){
                   <div style="clear: both; padding-top: 10px;">
                       <textarea id="a_content" class="form-control" rows="3" required="required"></textarea>
                   </div>
-                  <div style="text-align: right; padding-top: 10px;">
+                  <div style="text-align: right; padding-top: 10px; margin-bottom:50px;">
                       <button type="button" class="btn btn-primary btn-sm" onclick="sendAnswer();"> 답변등록 <span class="glyphicon glyphicon-ok"></span></button>
                   </div>           
               </div>
@@ -363,6 +363,19 @@ function selectAnswer(a_num){
 
     </div>
 </div>
+
+
+ <div class="container">
+ <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
 </div>
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>

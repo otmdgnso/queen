@@ -59,7 +59,7 @@
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
 <div class="container" role="main">
-		<div class="bodyFrame col-sm-10"
+		<div class="col-sm-10_2"
 			style="float: none; margin-left: auto; margin-right: auto;">
 
 			<div>

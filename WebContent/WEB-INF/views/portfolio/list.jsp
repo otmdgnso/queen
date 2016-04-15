@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>spring</title>
+<title>사자의 심장을 가져라 </title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">

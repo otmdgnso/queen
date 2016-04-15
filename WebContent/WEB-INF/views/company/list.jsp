@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>사자의 심장을 가져라 </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
@@ -87,7 +87,7 @@
 	                </thead>
 	                <tbody>
 	                <c:forEach var="dto" items="${listBestCompany}">
-	                    <tr style="background-color: #FFA7A7">
+	                    <tr style="background-color: #FFF3CC; color:#687ead; font-weight:bold;">
                             <td class="text-center"><span style="display: inline-block;width: 28px;height:18px;line-height:18px; background: #ED4C00;color: #FFFFFF">Best</span></td>
                             <td class="text-center">${dto.companyRecomm}</td>
 	                        <td class="text-center">${dto.companyForm}</td>

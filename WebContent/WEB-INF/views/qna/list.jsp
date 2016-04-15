@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>사자의 심장을 가져라 </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=cp%>/res/css/bootstrap.css" rel="stylesheet">
@@ -55,7 +55,7 @@
 	    </div>
 	    
 	    <div class="alert alert-info">
-	        <i class="glyphicon glyphicon-info-sign"></i> 개발 관련 질문과 답변을 위한 게시판입니다 - 코딩과 관련한 내용만 올려주세요
+	        <i class="glyphicon glyphicon-info-sign"></i> &nbsp;&nbsp;&nbsp;개발 관련 질문과 답변을 위한 게시판입니다 - 코딩과 관련한 내용만 올려주세요
 	    </div>
 	
 	    <div>

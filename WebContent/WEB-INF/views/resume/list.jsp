@@ -17,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>사자의 심장을 가져라 </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
@@ -70,10 +70,10 @@
 
 
 <div class="container" role="main">
-    <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
+    <div class="col-sm-10_2"  style="float:none; margin-left: auto; margin-right: auto;">
         
 	    <div class="body-title">
-	          <h3><span class="glyphicon glyphicon-book"></span> 자소서 공유 게시판  </h3>
+	          <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> 자소서 공유 게시판  </h3>
 	    </div>
 	    
 	    <div class="alert alert-info">
@@ -101,7 +101,7 @@
 	                </thead>
 	                <tbody>
 	                <c:forEach var="dto" items="${listBestResume}">
-	                    <tr style="background-color: #FFA7A7">
+	                    <tr style="background-color: #FFF3CC; color:#687ead; font-weight:bold;" >
                             <td class="text-center"><span style="display: inline-block;width: 28px;height:18px;line-height:18px; background: #ED4C00;color: #FFFFFF">Best</span></td>
                             <td class="text-center">${dto.resumeRecomm}</td>
 	                        <td class="text-center">${dto.resumeJob}</td>
@@ -163,7 +163,9 @@
 	        		     </form>
 	        		</div>
 	        		<div style="float: left; width: 20%; min-width: 85px; text-align: right;">
-	        		    <input type="image" src="<%=cp%>/res/image/btn_write.gif" onclick="javascript:location.href='<%=cp%>/resume/created.sst';">
+	        		    <button style=""type="button" class="write" onclick="javascript:location.href='<%=cp%>/resume/created.sst';">
+	        		 		 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 글쓰기 </button>
+	        		    
 	        		</div>
 	        </div>
 	    </div>

@@ -108,8 +108,8 @@ function sendLogin2() {
 
     <div class="bodyFrame">
     <form class="form-signin" name="loginForm2" method="post"  onsubmit="return sendLogin2();">
-    <img alt="" src="<%=cp%>/res/image/사자.png" style="margin-left:90px; width:180px; height:208px; ">
-        <h2 class="form-signin-heading">Log In</h2>
+    <img alt="" src="<%=cp%>/res/image/사자.png" style="margin-top:30px; margin-left:90px; width:180px; height:210px; ">
+        <h2 class="form-signin-heading" >Log In</h2>
         
         <label for="memId" id="lblUserId" class="lbl">아이디</label>
         <input type="text" id="memId" name="memId" class="form-control loginTF" autofocus="autofocus"

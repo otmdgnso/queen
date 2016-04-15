@@ -173,7 +173,7 @@ function changeEmail() {
 	<div>
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
-
+<br><br>
 <div class="container" role="main" style="margin-top:50px;">
   <div class="jumbotron">
     <h1><span class="glyphicon glyphicon-user" style="color:gray; margin-right:10px;" ></span> ${mode=="created"?"회원 가입":"회원정보 수정"} </h1>

@@ -59,7 +59,7 @@ function sendLogin() {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<%=cp%>/main.sst">Queen</a>
+                <a class="navbar-brand" href="<%=cp%>/main.sst"><img style="width:40px; height:46px;" src="<%=cp%>/res/image/사자.png"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -122,7 +122,7 @@ function sendLogin() {
                      <li class="dropdown">
                     
 	                    <c:if test="${empty sessionScope.member}">
-	             			   <button  class="dropdown-toggle" style="margin-left:10px;margin-top:16px; border-radius:2px; background:none; border:none; color: #fff; font-size:13px;" type="button" 
+	             			   <button  class="dropdown-toggle" style="margin-left:10px;margin-top:16px; border-radius:2px; background:none; border:none; color: #fff; font-size:14px;" type="button" 
 	                        			data-toggle="modal" data-target="#login-modal"  >
 							<span style="color:#CCD9ED;" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; 로그인
 							</button>
@@ -159,7 +159,7 @@ function sendLogin() {
                     <!-- 로그아웃 / 혹은 회원가입  margin-left:10px; margin-top:10px; border-radius:4px; -->
                     <li >                   			     
 						<c:if test="${empty sessionScope.member}">  
-								<button id="btn1" style="margin-left:10px;margin-top:16px;background:none; border:none; color:#fff; font-size:13px; " type="button" 
+								<button id="btn1" style="margin-left:10px;margin-top:16px;background:none; border:none; color:#fff; font-size:14px; " type="button" 
 								onclick="location.href='<%=cp%>/member/member.sst';"class="dropdown-toggle"	>
 									<span style="color:#CCD9ED;" class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp; 회원가입
 								</button>

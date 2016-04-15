@@ -20,7 +20,7 @@ public class MainDAO {
 		
 		try {
 			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
-			sb.append(" SELECT shareNum ,shareSubject FROM share ORDER BY shareNum DESC)tb, ");  
+			sb.append(" SELECT shareNum ,left(shareSubject,19) shareSubject FROM share ORDER BY shareNum DESC)tb, ");  
 			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
 			
 			pstmt=conn.prepareStatement(sb.toString());
@@ -62,7 +62,7 @@ public class MainDAO {
 		
 		try {
 			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
-			sb.append(" SELECT Num ,Subject FROM portfolio ORDER BY Num DESC)tb, ");  
+			sb.append(" SELECT Num ,left(Subject,19) Subject FROM portfolio ORDER BY Num DESC)tb, ");  
 			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
 			
 			pstmt=conn.prepareStatement(sb.toString());
@@ -104,7 +104,7 @@ public class MainDAO {
 		
 		try {
 			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
-			sb.append(" SELECT wantedNum ,wantedSubject, wantedHead FROM wanted ORDER BY wantedNum DESC)tb, ");  
+			sb.append(" SELECT wantedNum ,left(wantedSubject, 10) wantedSubject, wantedHead FROM wanted ORDER BY wantedNum DESC)tb, ");  
 			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
 			
 			pstmt=conn.prepareStatement(sb.toString());
@@ -147,7 +147,7 @@ public class MainDAO {
 		
 		try {
 			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
-			sb.append(" SELECT resumeNum ,resumeSubject FROM resume ORDER BY resumeNum DESC)tb, ");  
+			sb.append(" SELECT resumeNum ,left(resumeSubject, 19) resumeSubject FROM resume ORDER BY resumeNum DESC)tb, ");  
 			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
 			
 			pstmt=conn.prepareStatement(sb.toString());
@@ -189,7 +189,7 @@ public class MainDAO {
 		
 		try {
 			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
-			sb.append(" SELECT questNum ,questSubject, questHead FROM question ORDER BY questNum DESC)tb, ");  
+			sb.append(" SELECT questNum ,left(questSubject, 10) questSubject, questHead FROM question ORDER BY questNum DESC)tb, ");  
 			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
 			
 			pstmt=conn.prepareStatement(sb.toString());
@@ -232,7 +232,7 @@ public class MainDAO {
 		
 		try {
 			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
-			sb.append(" SELECT tipNum ,tipSubject, tipHead FROM tip ORDER BY tipNum DESC)tb, ");  
+			sb.append(" SELECT tipNum ,left(tipSubject,10) tipSubject, tipHead FROM tip ORDER BY tipNum DESC)tb, ");  
 			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
 			
 			pstmt=conn.prepareStatement(sb.toString());
@@ -275,7 +275,7 @@ public class MainDAO {
 		
 		try {
 			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
-			sb.append(" SELECT companyNum , companySubject FROM company ORDER BY companyNum DESC)tb, ");  
+			sb.append(" SELECT companyNum , left(companySubject,19) companySubject FROM company ORDER BY companyNum DESC)tb, ");  
 			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
 			
 			pstmt=conn.prepareStatement(sb.toString());
@@ -317,7 +317,7 @@ public class MainDAO {
 		
 		try {
 			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
-			sb.append(" SELECT docuNum , docuSubject FROM docu ORDER BY docuNum DESC)tb, ");  
+			sb.append(" SELECT docuNum , left(docuSubject,19) docuSubject FROM docu ORDER BY docuNum DESC)tb, ");  
 			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
 			
 			pstmt=conn.prepareStatement(sb.toString());
@@ -359,7 +359,7 @@ public class MainDAO {
 		
 		try {
 			sb.append(" SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
-			sb.append(" SELECT trendNum ,trendSubject, trendHead FROM trend ORDER BY trendNum DESC)tb, ");  
+			sb.append(" SELECT trendNum ,left(trendSubject,10) trendSubject, trendHead FROM trend ORDER BY trendNum DESC)tb, ");  
 			sb.append("  (SELECT @rownum:=0) T)tb1 WHERE rnum >= 1 and rnum <= 5");
 			
 			pstmt=conn.prepareStatement(sb.toString());

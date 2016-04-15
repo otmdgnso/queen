@@ -145,11 +145,11 @@ public class QnaServlet extends MyServlet {
 			
 			
 			//파라미터
-			dto.setQnaSubject(req.getParameter("questSubject"));
-			dto.setQnaHead(req.getParameter("questHead"));
-			dto.setQnaContent(req.getParameter("questContent"));
+			dto.setQnaSubject(req.getParameter("qnaSubject"));
+			dto.setQnaHead(req.getParameter("qnaHead"));
+			dto.setQnaContent(req.getParameter("qnaContent"));
 			dto.setQnaSource(req.getParameter("qnaSource"));
-
+System.out.println(dto.getQnaSubject());
 			dao.insertQna(dto);
 			
 			req.setAttribute("mode", "created");

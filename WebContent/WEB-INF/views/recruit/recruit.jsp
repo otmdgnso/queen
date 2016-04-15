@@ -194,8 +194,8 @@
 			if(y==beforeyear && m==beforemonth && d==beforeday){
 				String subject=dto.getRecruitSubject();
 				out.print("<tr>");
-				out.print("<td style='font-size: 3pt; background-color: #FFC19E; border: solid black 1px;'>");
-				out.print("마감"+"</td>");
+				out.print("<td style='color:white; font-size: 3pt; background-color: #ED006D; border: 1px #FFB85A;'><b>");
+				out.print("마감"+"</b></td>");
 				out.print("<td>"+"&nbsp&nbsp"+"<a href='"+articleUrl+"?recruitNum="+recruitNum+"' style='font-size: 5pt; color: black;'>"+subject+"</a></td><br>");
 				out.print("</tr>");
 			}

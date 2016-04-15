@@ -232,6 +232,7 @@ function logincheck(){
                     <div class="panel-body">
                         <ul type="disc">
                         	<c:forEach var="dtoTip" items="${listTip}">
+                        	
 	                        	<li><a href="<%=cp%>/tip/article.sst?page=1&tipNum=${dtoTip.tipNum}"><b style="color:#687ead;">[${dtoTip.tipHead}]</b>&nbsp;${dtoTip.tipSubject}</a></li>
 	                         </c:forEach>
                         </ul>
@@ -248,11 +249,12 @@ function logincheck(){
                     <div class="panel-body">
                          <ul type="disc">
                         	<c:forEach var="dtoQuest" items="${listQuest}">
-	                        	<li><a href="#"><b style="color:#687ead;">[${dtoQuest.questHead}]</b>&nbsp;${dtoQuest.questSubject}</a></li>
+                        	
+	                        	<li><a href="<%=cp%>/qna/article.sst?page=1&qnaNum=${dtoQuest.questNum}"><b style="color:#687ead;">[${dtoQuest.questHead}]</b>&nbsp;${dtoQuest.questSubject}</a></li>
 	                         </c:forEach>
                         </ul>
                         
-                        <a href="#" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
+                        <a href="<%=cp%>/qna/list.sst" class="btn btn-default" style="text-align: right">View&nbsp;More</a>	
                     </div>
                 </div>
             </div>
@@ -262,16 +264,19 @@ function logincheck(){
 
 
         <!-- Call to Action Section -->
+        <c:if test="${empty sessionScope.member}"> 
         <div class="well">
             <div class="row">
                 <div class="col-md-8">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                    <p style="color:#687ead; font-size: 14pt"><b>Join NOW !!</b></p>
+                    <p>지금 회원가입 하시면, 쌍용교육센터의 수업자료, 포트폴리오 등 많은 유용한 정보를 만나실 수 있습니다.</p>
                 </div>
                 <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+                    <a class="btn btn-lg btn-default btn-block" href="<%=cp%>/member/member.sst" style="color:white; margin-top: 10px">Join Member</a>
                 </div>
             </div>
         </div>
+        </c:if>
 
         <hr>
 

@@ -36,11 +36,14 @@
 
 <style type="text/css">
 .docu-reply {
-    font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
+      font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
+    border-top: #687ead solid 2px; 
+    border-bottom: #687ead solid 2px; padding:15px;
+    margin-bottom:70px;
 }
 
 .docu-reply-write {
-    border: #d5d5d5 solid 1px;
+       border-bottom: #ddd solid 2px; 
     padding: 10px;
     min-height: 50px;
 }

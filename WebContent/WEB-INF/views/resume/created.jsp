@@ -131,7 +131,7 @@
 
 
 		<div class="body-title">
-	          <h3><span class="glyphicon glyphicon-book"></span> 자소성 정보 등록 </h3>
+	          <h3><span class="glyphicon glyphicon-book"></span> 자소서 정보 등록 </h3>
 	    </div>
 	    
 	    <div class="alert alert-info">
@@ -229,10 +229,10 @@
 							<tfoot>
 								<tr>
 									<td colspan="4" style="text-align: center; padding-top: 15px;">
-										<button type="submit" class="btn btn-primary">
+										<button type="submit" class="btn btn-info btn-sm btn-search">
 											확인 <span class="glyphicon glyphicon-ok"></span>
 										</button>
-										<button type="button" class="btn btn-danger"
+										<button type="button" class="btn btn-default btn-sm wbtn"
 											onclick="javascript:location.href='<%=cp%>/resume/list.sst';"> 취소</button>
 											 <c:if test="${mode=='update'}">
 											      <input type="hidden" name="resumeNum" value="${dto.resumeNum}">

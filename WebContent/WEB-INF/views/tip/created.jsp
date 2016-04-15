@@ -103,9 +103,18 @@
 					<tr align="left" height="40"> 
 					      <td width="100" bgcolor="#EEEEEE" style="text-align: center;">말 머 리</td>
 					      <td width="500" style="padding-left:10px;"> 
-					      	<input type="text" name="tipHead" size="75" maxlength="100" class="boxTF" value="${dto.tipHead}">
+					      	<select name="tipHead" >
+									<option value="java" ${dto.tipHead=="java"?"selected='selected'" : ""}>JAVA</option>
+									<option value="css" ${dto.tipHead=="css"?"selected='selected'" : ""}>CSS</option>
+									<option value="javascript" ${dto.tipHead=="javascript"?"selected='selected'" : ""}>JAVAScript</option>
+									<option value="c" ${dto.tipHead=="c"?"selected='selected'" : ""}>C</option>
+									<option value="cpp" ${dto.tipHead=="cpp"?"selected='selected'" : ""}>C++</option>
+									<option value="c#" ${dto.tipHead=="c#"?"selected='selected'" : ""}>C#</option>
+									<option value="sql" ${dto.tipHead=="sql"?"selected='selected'" : ""}>SQL</option>
+									</select>
 					      </td>
 					  </tr>
+					  
 					  <tr><td colspan="2" height="1" bgcolor="#DBDBDB"></td></tr>
 					
 					  <tr align="left" height="40"> 

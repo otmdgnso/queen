@@ -34,6 +34,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+	<!-- 신택스 하이라이터 (css) -->
+	<link type="text/css" rel="stylesheet" href="<%=cp%>/res/sh/shCoreEclipse.css"/>
+	<link type="text/css" rel="stylesheet" href="<%=cp%>/res/sh/shThemeEclipse.css"/>
+
 <style type="text/css">
 .tip-reply {
     font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
@@ -48,6 +52,16 @@
 
 <!-- jQuery -->
 <script src="<%=cp%>/res/js/jquery.js"></script>
+
+<!-- 신택스 하이라이터 (js) -->
+<script type="text/javascript" src="<%=cp %>/res/sh/shCore.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushCpp.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushCSharp.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushCss.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushJava.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushJScript.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushSql.js"></script>
+<script>SyntaxHighlighter.all();</script>
 
 <script type="text/javascript">
 <c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
@@ -198,11 +212,13 @@ function deleteReply(tipR_num, pageNo, memId){
                                  ${dto.tipContent}
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="3" style="height: 230px;">
-                                 ${dto.tipSource}
+                        <tr >
+                            <td colspan="3" style="width: 920px; color:#5478BE;">
+                                 <b>소스코드</b>
+                                 <pre class="brush:${dto.tipHead}">${dto.tipSource}</pre>
                             </td>
                         </tr>
+                        
                         <tr>
                         <td><img id="btnLike" src="<%=cp%>/res/image/social.png" onclick="recommCheck()">&nbsp;${dto.tipRecomm}</td>
                         </tr>

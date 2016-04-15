@@ -73,8 +73,24 @@ function deleteQna(qnaNum) {
 		location.href=url;
 	}
 }
+
 </c:if>
 var flag=1;
+
+function  recommCheck() {
+	var c="${dataCount}";
+	if(c=="")
+		c="0";
+	
+	if(c=="1") {
+		alert("이미 추천 하셨습니다.");
+		return;
+	} else {
+		var url="<%=cp%>/qna/recomm.sst?page=${page}&qnaNum=${dto.qnaNum}";
+		location.href=url;
+	}
+	
+} 
 //-- 댓글 ------------------------------------
 //답변
 $(function(){
@@ -244,6 +260,7 @@ function selectAnswer(a_num){
 			listAnswerPage(1);
 	},"json");
 }
+
 </script>
 
 </head>
@@ -301,7 +318,9 @@ function selectAnswer(a_num){
                             </td>
                         </tr>
                          <tr><td colspan="3"><a href="#" onclick="replyCtrl();">댓글</a></td></tr> 
-                  
+                   <tr>
+                        <td style="align:center; font-size:13px;"><img id="btnLike" src="<%=cp%>/res/image/social.png" onclick="recommCheck()">&nbsp;&nbsp;&nbsp;${dto.qnaRecomm}</td>
+                        </tr>
                    </tbody>
                    <tfoot>
                     <tr>

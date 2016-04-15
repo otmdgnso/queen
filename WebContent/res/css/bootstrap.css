@@ -4,6 +4,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+#logoLion{
+	margin-bottom: 7px;
+	margin-top: 7px;
+}
+
 #btnLike{
    width: 35px;
    height: 35px;
@@ -4212,9 +4217,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
+  min-height: 60px;
+  
 }
 @media (min-width: 768px) {
   .navbar {
@@ -4320,9 +4324,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  height: 50px;
-  padding: 15px 15px;
- 
+  height: 60px;
   line-height: 20px;
 
 }
@@ -4644,8 +4646,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: #687ead;
 }
 .navbar-inverse .navbar-brand {
-	margin-top:3px;
-	font-size:20px;
+font-size:20px;
   color: #CCD9ED;
 }
 .navbar-inverse .navbar-brand:hover,

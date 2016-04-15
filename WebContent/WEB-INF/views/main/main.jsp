@@ -39,9 +39,6 @@
 	<%-- <script type="text/javascript" src="<%=cp%>/res/js/jquery-1.12.0.min.js"></script>  --%>
 
 <script type="text/javascript">
-function logincheck(){
-	alert("체크!");
-}
 
 </script>
 </head>
@@ -114,12 +111,12 @@ function logincheck(){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h5><i class="fa fa-fw fa-paperclip"></i> 수업자료</h5>
+                        <h5 style="color:#687ead; font-weight: bold;"><i class="fa fa-fw fa-paperclip"></i> 수업자료</h5>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
                           <c:forEach var="dtoDocu" items="${listDocu}">
-                        	<li><a href="<%=cp%>/docu/article.sst?page=1&docuNum=${dtoDocu.docuNum}" onclick="logincheck();">${dtoDocu.docuSubject}</a></li>
+                        	<li><a href="<%=cp%>/docu/article.sst?page=1&docuNum=${dtoDocu.docuNum}" >${dtoDocu.docuSubject}</a></li>
                           </c:forEach>
                         </ul>
                         
@@ -130,7 +127,7 @@ function logincheck(){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h5><i class="fa fa-fw fa-film"></i> 포트폴리오</h5>
+                        <h5 style="color:#687ead; font-weight: bold;"><i class="fa fa-fw fa-film"></i> 포트폴리오</h5>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -146,12 +143,12 @@ function logincheck(){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h5><i class="fa fa-fw fa-file-text"></i> 자소서 공유</h5>
+                        <h5 style="color:#687ead; font-weight: bold;"><i class="fa fa-fw fa-file-text"></i> 자소서 공유</h5>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">
                           <c:forEach var="dtoResume" items="${listResume}">
-                        	<li><a href="<%=cp %>/resume/article.sst?page=1&resumeNum=${dtoResume.resumeNum}">${dtoResume.resumeSubject}</a></li>
+                        	<li><a href="<%=cp %>/resume/list.sst">${dtoResume.resumeSubject}</a></li>
                           </c:forEach>
                         </ul>
                         
@@ -162,7 +159,7 @@ function logincheck(){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h5><i class="fa fa-fw fa-info"></i> 회사정보  </h5>
+                        <h5 style="color:#687ead; font-weight: bold;"><i class="fa fa-fw fa-info"></i> 회사정보  </h5>
                     </div>
                     <div class="panel-body">
                           
@@ -180,7 +177,7 @@ function logincheck(){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h5><i class="fa fa-fw fa-user"></i> 취업정보나눔 </h5>
+                        <h5 style="color:#687ead; font-weight: bold;"><i class="fa fa-fw fa-user"></i> 취업정보나눔 </h5>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">
@@ -195,7 +192,7 @@ function logincheck(){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h5><i class="fa fa-fw fa-user"></i> 팀원구하기</h5>
+                        <h5 style="color:#687ead; font-weight: bold;"><i class="fa fa-fw fa-user"></i> 팀원구하기</h5>
                     </div>
                     <div class="panel-body">
                       <ul type="disc">
@@ -211,7 +208,7 @@ function logincheck(){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h5><i class="fa fa-fw fa-info"></i> IT동향</h5>
+                        <h5 style="color:#687ead; font-weight: bold;"><i class="fa fa-fw fa-info"></i> IT동향</h5>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -227,7 +224,7 @@ function logincheck(){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h5><i class="fa fa-fw fa-gittip"></i> 개발Tip</h5>
+                        <h5 style="color:#687ead; font-weight: bold;"><i class="fa fa-fw fa-gittip"></i> 개발Tip</h5>
                     </div>
                     <div class="panel-body">
                         <ul type="disc">
@@ -244,7 +241,7 @@ function logincheck(){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h5><i class="fa fa-fw fa-question"></i>개발Q&nbsp;&#38;&nbsp;A</h5>
+                        <h5 style="color:#687ead; font-weight: bold;"><i class="fa fa-fw fa-question"></i>개발Q&nbsp;&#38;&nbsp;A</h5>
                     </div>
                     <div class="panel-body">
                          <ul type="disc">

@@ -170,13 +170,16 @@ public class CompanyServlet extends MyServlet {
 			req.setAttribute("mode", "created");
 			resp.sendRedirect(cp+ "/company/list.sst");
 		} else if (uri.indexOf("article.sst") != -1) {
-			//글보기
-	        if(info == null){
-			    
-				resp.sendRedirect(cp+"/"); //로그인 되지 않은경우 메인페이지로넘어감
-				return;
-			}
-			
+			  if(info==null) { // 로그인되지 않은 경우
+					
+					String msg2=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 로그인 후 사용하실 수 있습니다";
+					req.setAttribute("message", msg2);
+					
+					String path="/WEB-INF/views/member/login.jsp";
+					forward(req, resp, path);
+					return ;
+				}
+			  
 	        //파라미터 : CompanyNum, page,[searchKey,searchValue]
 			int companyNum = Integer.parseInt(req.getParameter("companyNum"));
 			int recommCount=dao.recommCount(companyNum, info.getMemId());

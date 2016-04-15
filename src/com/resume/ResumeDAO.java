@@ -348,11 +348,18 @@ public class ResumeDAO {
 		PreparedStatement pstmt = null;
 		String sql;
 		
-		sql="DELETE FROM resume WHERE resumeNum=?";
+		
 		try {
-		   pstmt = conn.prepareStatement(sql);
-		   pstmt.setInt(1, resumeNum);
-		   result = pstmt.executeUpdate();
+			sql="DELETE FROM resumeRecomm WHERE resumeNum=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, resumeNum);
+			result = pstmt.executeUpdate();
+			pstmt.close();
+			
+			sql="DELETE FROM resume WHERE resumeNum=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, resumeNum);
+			result = pstmt.executeUpdate();
 		   
 		} catch (Exception e) {
 			System.out.println(e.toString());

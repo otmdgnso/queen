@@ -323,11 +323,19 @@ public class TipDAO {
 		PreparedStatement pstmt = null;
 		String sql;
 		
-		sql="DELETE FROM tip WHERE tipNum=?";
+		
 		try {
-		   pstmt = conn.prepareStatement(sql);
-		   pstmt.setInt(1, tipNum);
-		   result = pstmt.executeUpdate();
+			
+			sql="DELETE FROM tipRecomm WHERE tipNum=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, tipNum);
+			result = pstmt.executeUpdate();
+			pstmt.close();
+			
+			sql="DELETE FROM tip WHERE tipNum=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, tipNum);
+			result = pstmt.executeUpdate();
 		   
 		} catch (Exception e) {
 			System.out.println(e.toString());

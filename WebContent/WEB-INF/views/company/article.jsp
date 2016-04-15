@@ -198,7 +198,7 @@ function deleteReply(companyR_num, pageNo, memId){
                         	<td style="text-align: left; width:200px; height:45px; ">회사명</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.companyName}</td>
                             <td style="text-align: left; width:200px; height:45px; ">웹사이트</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyWeb}</td>
+                            <td style="text-align: left; width:200px; height:45px; "><a href="http://${dto.companyWeb}">${dto.companyWeb}</a></td>
                         </tr>
                         <tr>
                         	<td style="text-align: left; width:200px; height:45px; ">기업형태</td>

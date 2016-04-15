@@ -346,11 +346,19 @@ public class CompanyDAO {
 		PreparedStatement pstmt = null;
 		String sql;
 		
-		sql="DELETE FROM company WHERE companyNum=?";
+		
 		try {
-		   pstmt = conn.prepareStatement(sql);
-		   pstmt.setInt(1, companyNum);
-		   result = pstmt.executeUpdate();
+			
+			sql="DELETE FROM companyRecomm WHERE companyNum=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, companyNum);
+			result = pstmt.executeUpdate();
+			pstmt.close();
+			
+			sql="DELETE FROM company WHERE companyNum=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, companyNum);
+			result = pstmt.executeUpdate();
 		   
 		} catch (Exception e) {
 			System.out.println(e.toString());

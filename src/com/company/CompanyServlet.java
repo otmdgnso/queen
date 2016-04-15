@@ -154,7 +154,6 @@ public class CompanyServlet extends MyServlet {
 			//파라미터
 			dto.setCompanyContent(req.getParameter("companyContent"));
 			dto.setCompanySubject(req.getParameter("companySubject"));
-			dto.setMemId(req.getParameter("memId"));
 			dto.setCompanyForm(req.getParameter("companyForm"));
 			dto.setCompanyName(req.getParameter("companyName"));
 			dto.setCompanyWeb(req.getParameter("companyWeb"));

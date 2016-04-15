@@ -100,6 +100,10 @@
 									<option value="스프링" ${dto.wantedHead=="스프링"?"selected='selected'" : ""}>스프링</option>
 									<option value="JSP" ${dto.wantedHead=="JSP"?"selected='selected'" : ""}>JSP</option>
 									<option value="오라클" ${dto.wantedHead=="오라클"?"selected='selected'" : ""}>오라클</option>
+									<option value="공모전" ${dto.wantedHead=="오라클"?"selected='selected'" : ""}>오라클</option>
+									<option value="스터디" ${dto.wantedHead=="오라클"?"selected='selected'" : ""}>오라클</option>
+									<option value="기타" ${dto.wantedHead=="오라클"?"selected='selected'" : ""}>오라클</option>
+									
 									</select>
 										</td>
 								</tr>

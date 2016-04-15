@@ -71,12 +71,13 @@
 									<td class="td1">말머리</td>
 									<td colspan="3" class="td3">
 									<select name="qnaHead" >
-									<option value="자바" ${dto.qnaHead=="자바"?"selected='selected'" : ""}>자바</option>
-									<option value="스프링" ${dto.qnaHead=="스프링"?"selected='selected'" : ""}>스프링</option>
-									<option value="JSP" ${dto.qnaHead=="JSP"?"selected='selected'" : ""}>JSP</option>
-									<option value="JQuery" ${dto.qnaHead=="JQuery"?"selected='selected'" : ""}>JQuery</option>
-									<option value="C++" ${dto.qnaHead=="C++"?"selected='selected'" : ""}>C++</option>
-									<option value="HTML" ${dto.qnaHead=="HTML"?"selected='selected'" : ""}>HTML</option>
+									<option value="java" ${dto.qnaHead=="java"?"selected='selected'" : ""}>JAVA</option>
+									<option value="css" ${dto.qnaHead=="css"?"selected='selected'" : ""}>CSS</option>
+									<option value="javascript" ${dto.qnaHead=="javascript"?"selected='selected'" : ""}>JAVAScript</option>
+									<option value="c" ${dto.qnaHead=="c"?"selected='selected'" : ""}>C</option>
+									<option value="cpp" ${dto.qnaHead=="cpp"?"selected='selected'" : ""}>C++</option>
+									<option value="c#" ${dto.qnaHead=="c#"?"selected='selected'" : ""}>C#</option>
+									<option value="sql" ${dto.qnaHead=="sql"?"selected='selected'" : ""}>SQL</option>
 									</select>
 										</td>
 							</tr>

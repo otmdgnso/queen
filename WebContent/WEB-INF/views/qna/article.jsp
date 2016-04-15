@@ -34,6 +34,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+
+	<!-- 신택스 하이라이터 (css) -->
+	<%-- <link href="<%=cp%>/res/css/shCss/shCoreMidnight.css" rel="stylesheet" type="text/css"> --%>
+	<link type="text/css" rel="stylesheet" href="<%=cp%>/res/sh/shCoreEclipse.css"/>
+	<link type="text/css" rel="stylesheet" href="<%=cp%>/res/sh/shThemeEclipse.css"/>
+	
 <style type="text/css">
 .qna-reply {
     font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", 돋움, sans-serif;
@@ -48,6 +55,16 @@
 
 <!-- jQuery -->
 <script src="<%=cp%>/res/js/jquery.js"></script>
+
+<!-- 신택스 하이라이터 (js) -->
+<script type="text/javascript" src="<%=cp %>/res/sh/shCore.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushCpp.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushCSharp.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushCss.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushJava.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushJScript.js"></script>
+<script type="text/javascript" src="<%=cp %>/res/sh/shBrushSql.js"></script>
+<script>SyntaxHighlighter.all();</script>
 
 <script type="text/javascript">
 <c:if test="${dto.memId == sessionScope.member.memId || sessionScope.member.memId=='admin'}">
@@ -271,7 +288,13 @@ function deleteAnswer(a_num, pageNo, memId){
                                  ${dto.qnaContent}
                             </td>
                         </tr>
-                         <tr><td><a href="#" onclick="replyCtrl();">댓글</a></td></tr> 
+                        <tr >
+                            <td colspan="3" style="width: 920px; color:#5478BE;">
+                                 <b>소스코드</b>
+                                 <pre class="brush:${dto.qnaHead}">${dto.qnaSource}</pre>
+                            </td>
+                        </tr>
+                         <tr><td colspan="3"><a href="#" onclick="replyCtrl();">댓글</a></td></tr> 
                         <tr>
                         <td><img id="btnLike" src="<%=cp%>/res/image/social.png">&nbsp;5</td>
                         </tr>                        
@@ -337,6 +360,8 @@ function deleteAnswer(a_num, pageNo, memId){
 </div>
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>
+
+    
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+<%@page import="com.resume.ResumeDAO"%>
+<%@page import="com.resume.ResumeDTO"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -43,6 +45,18 @@
 		f.action="<%=cp%>/resume/list.sst";
 		f.submit();
 	}
+	function checkWrite(resumeNum){
+		var cnt="${cnt}";
+		cnt=parseInt(cnt);
+		if(cnt>0){
+		   var url="${articleUrl}&resumeNum="+resumeNum;
+		   location.href=url;
+		} else {
+			alert("한 번 이상 글을 작성하셔야 볼 수 있습니다.")
+		}
+	}
+	
+	
 </script>
 
 </head>
@@ -91,7 +105,7 @@
                             <td class="text-center"><span style="display: inline-block;width: 28px;height:18px;line-height:18px; background: #ED4C00;color: #FFFFFF">Best</span></td>
                             <td class="text-center">${dto.resumeRecomm}</td>
 	                        <td class="text-center">${dto.resumeJob}</td>
-	                        <td><a href='${articleUrl}&resumeNum=${dto.resumeNum}'>${dto.resumeSubject}</a></td>
+	                        <td><a href="javascript:checkWrite('${dto.resumeNum}')">${dto.resumeSubject}</a></td>
 	                        <td class="text-center">${dto.memId}</td>
 	                        <td class="text-center">${dto.resumeCreated}</td>
 	                        <td class="text-center">${dto.resumeHitCount}</td> 
@@ -104,7 +118,7 @@
 	                        <td class="text-center">${dto.listResumeNum}</td>
 	                        <td class="text-center">${dto.resumeRecomm}</td>
 	                        <td class="text-center">${dto.resumeJob}</td>
-	                        <td><a href='${articleUrl}&resumeNum=${dto.resumeNum}'>${dto.resumeSubject}</a></td>
+	                        <td><a href="javascript:checkWrite('${dto.resumeNum}')">${dto.resumeSubject}</a></td>
 	                        <td class="text-center">${dto.memId}</td>
 	                        <td class="text-center">${dto.resumeCreated}</td>
 	                        <td class="text-center">${dto.resumeHitCount}</td> 

@@ -762,6 +762,34 @@ public class ResumeDAO {
 					
 					
 				}
+				
+				
+				//글 작성여부
+				public int isWriteResume(String memId){
+					int result=0;
+					PreparedStatement pstmt=null;
+					ResultSet rs=null;
+					StringBuffer sb=new StringBuffer();
+					
+					try {
+						sb.append("SELECT count(*) FROM resume WHERE memId=?");
+						pstmt=conn.prepareStatement(sb.toString());
+						pstmt.setString(1, memId);
+						rs=pstmt.executeQuery();
+						
+						if(rs.next()){
+							result=rs.getInt(1);
+						}
+						rs.close();
+						pstmt.close();
+						
+						
+					} catch (Exception e) {
+						System.out.println(e.toString());
+					}
+					
+					return result;
+				}
 	
 	
 	

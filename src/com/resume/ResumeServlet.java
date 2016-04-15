@@ -117,6 +117,13 @@ public class ResumeServlet extends MyServlet {
 				articleUrl += "&" + params;
 			}
 			String paging = util.paging(current_page, total_page, listUrl);
+			
+			//글쓴 이력이 있는지 여부 확인
+			int cnt=dao.isWriteResume(info.getMemId());
+			
+			
+			
+			
             //포워딩할 JSP로 넘길 속성
 			req.setAttribute("list", list);
 			req.setAttribute("paging", paging);
@@ -125,6 +132,8 @@ public class ResumeServlet extends MyServlet {
 			req.setAttribute("total_page", total_page);
 			req.setAttribute("articleUrl", articleUrl);
 			req.setAttribute("listBestResume", listBestResume);
+			req.setAttribute("cnt", cnt);
+			
 
 			forward(req, resp, "/WEB-INF/views/resume/list.jsp");
 		} else if(uri.indexOf("created.sst")!=-1) {

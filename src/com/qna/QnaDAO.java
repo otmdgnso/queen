@@ -334,35 +334,43 @@ public class QnaDAO {
 	}
 
 	public int deleteQna(int qnaNum) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		String sql;
+	      int result = 0;
+	      PreparedStatement pstmt = null;
+	      String sql;
 
-		try {
-			sql = "DELETE FROM answer WHERE questNum=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, qnaNum);
-			result = pstmt.executeUpdate();
-			
-			pstmt.close();
-			sql = "DELETE FROM question WHERE questNum=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, qnaNum);
-			result = pstmt.executeUpdate();
-			
+	      try {
+	         sql = "DELETE FROM questrecomm WHERE questNum=?";
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, qnaNum);
+	         result = pstmt.executeUpdate();
+	         
+	         pstmt.close();
+	         result=0;
+	         sql = "DELETE FROM answer WHERE questNum=?";
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, qnaNum);
+	         result = pstmt.executeUpdate();
+	         
+	         pstmt.close();
+	         result=0;
+	         sql = "DELETE FROM question WHERE questNum=?";
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, qnaNum);
+	         result = pstmt.executeUpdate();
+	         
 
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (Exception e2) {
-				}
-			}
-		}
-		return result;
-	}
+	      } catch (Exception e) {
+	         System.out.println(e.toString());
+	      } finally {
+	         if (pstmt != null) {
+	            try {
+	               pstmt.close();
+	            } catch (Exception e2) {
+	            }
+	         }
+	      }
+	      return result;
+	   }
 
 	// 조회수 증가
 	public int qnaHitCount(int qnaNum) {

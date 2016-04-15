@@ -696,7 +696,6 @@ public class QnaDAO {
 		return result;
 	}
 
-	// ´ñ±Û ¸®½ºÆ®
 	public List<AnswerDTO> listAnswer(int qnaNum, int start, int end) {
 		List<AnswerDTO> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -704,12 +703,12 @@ public class QnaDAO {
 		StringBuffer sb = new StringBuffer();
 
 		try {
-			sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM ( ");
+			sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
 			sb.append(
-					"SELECT answerNum, questNum, memId, answerContent, DATE_FORMAT(answerCreated , '%Y-%m-%d') answerCreated FROM answer");
-			sb.append(" WHERE questNum=? ");
-			sb.append(" ORDER BY answerNum DESC) tb, (");
-			sb.append(" SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <=?");
+					"    SELECT answerNum, a.questNum, a.memId, answerContent, DATE_FORMAT(answerCreated , '%Y-%m-%d') answerCreated, b.memId createId, answerchoose ");
+			sb.append("     FROM answer a JOIN question b ON a.questNum=b.questNum    ");
+			sb.append(
+					"   	WHERE a.questNum=? ORDER BY answerNum DESC) tb, ( SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <=?");
 
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setInt(1, qnaNum);
@@ -726,7 +725,8 @@ public class QnaDAO {
 				dto.setMemId(rs.getString("memId"));
 				dto.setA_content(rs.getString("answerContent"));
 				dto.setA_created(rs.getString("answerCreated"));
-
+				dto.setCreateId(rs.getString("createId"));
+				dto.setAnswerchoose(rs.getInt("answerchoose"));
 				list.add(dto);
 			}
 
@@ -773,4 +773,58 @@ public class QnaDAO {
 		return result;
 	}
 
+	public int selectAnswer(int a_Num) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+			sql = "SELECT answerchoose, questnum FROM answer WHERE answerNum=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, a_Num);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		if (result == 1)
+			sql = "UPDATE answer SET answerchoose=0  WHERE answerNum=?";
+		else
+			sql = "UPDATE answer SET answerchoose=1  WHERE answerNum=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, a_Num);
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e2) {
+				}
+			}
+		}
+		return result;
+	}
 }

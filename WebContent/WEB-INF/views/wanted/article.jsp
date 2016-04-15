@@ -15,8 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>글 보기</title>
-
+  <title>사자의 심장을 가져라 </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
@@ -183,9 +182,7 @@ function deleteReply(wantedR_num, pageNo, memId){
                             </td>
                         </tr>
                         
-                        <tr>
-                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png">&nbsp;5</td>
-                        </tr>
+   
                         
                         <tr height="30">
 					    <td width="80" bgcolor="#EEEEEE" align="center">이전글</td>

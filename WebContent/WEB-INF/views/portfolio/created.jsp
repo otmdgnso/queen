@@ -86,7 +86,7 @@ function check() {
 		$('#imageViewModal').modal('show');
 	}
 </script>
-
+<title>사자의 심장을 가져라 </title>
 </head>
 <body>
 
@@ -95,7 +95,7 @@ function check() {
 	</div>
 
 	<div class="container" role="main">
-		<div class="bodyFrame col-sm-10"
+		<div class="col-sm-10_2"
 			style="float: none; margin-left: auto; margin-right: auto;">
 
 			<div>

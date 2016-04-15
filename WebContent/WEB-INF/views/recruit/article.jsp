@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>글 보기</title>
+    <title>사자의 심장을 가져라 </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
@@ -141,14 +141,14 @@ function deleteReply(recruitR_num, pageNo, memId){
    </div>
 
     <div class="container" role="main">
-    <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
+    <div class="col-sm-10_2"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span>공채 일정 게시판 </h3>
+             <h3  style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> &nbsp; 공채일정  </h3>
        </div>
        
        <div class="alert alert-info">
-           <i class="glyphicon glyphicon-info-sign"></i> 기업별 상세 채용 내용을 확인하는 공간입니다.
+           <i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;&nbsp; 기업별 상세 채용 내용을 확인하는 공간입니다
        </div>
        
        <div class="table-responsive" style="clear: both;">

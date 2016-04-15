@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>글 보기</title>
+    <title>사자의 심장을 가져라 </title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -163,10 +163,10 @@ function deleteReply(companyR_num, pageNo, memId){
    </div>
 
     <div class="container" role="main">
-    <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
+    <div class="col-sm-10_2"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span> 회사정보 게시판 </h3>
+             <h3  style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> 회사정보 게시판 </h3>
        </div>
        
        <div class="alert alert-info">
@@ -198,7 +198,7 @@ function deleteReply(companyR_num, pageNo, memId){
                         	<td style="text-align: left; width:200px; height:45px; ">회사명</td>
                             <td style="text-align: left; width:200px; height:45px; ">${dto.companyName}</td>
                             <td style="text-align: left; width:200px; height:45px; ">웹사이트</td>
-                            <td style="text-align: left; width:200px; height:45px; ">${dto.companyWeb}</td>
+                            <td style="text-align: left; width:200px; height:45px; "><a href="http://${dto.companyWeb}">${dto.companyWeb}</a></td>
                         </tr>
                         <tr>
                         	<td style="text-align: left; width:200px; height:45px; ">기업형태</td>
@@ -262,7 +262,7 @@ function deleteReply(companyR_num, pageNo, memId){
 					          <input type="image" src="<%=cp%>/res/image/btn_delete.gif" onclick="deleteCompany('${dto.companyNum}')">
 					    </c:if>
    						</td>
-   						<td align="right" colspan="2">
+   						<td align="right" colspan="3">
 					          <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/company/list.sst?${params}';">
 					    </td>
 					    </tr>

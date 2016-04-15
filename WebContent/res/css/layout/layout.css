@@ -91,6 +91,7 @@
 /**  body **/
 .bodyFrame{
 	min-height: 500px;
+	margin-top:70px;
 }
 
 .adminBodyFrame{

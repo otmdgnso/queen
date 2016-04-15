@@ -64,7 +64,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+<title>사자의 심장을 가져라 </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=cp %>/res/css/bootstrap.css" rel="stylesheet">
@@ -102,7 +102,7 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><%=year%>년 공채 달력
+                <h1 style="font-size:30px;" class="page-header"><span class="glyphicon glyphicon-calendar"></span> &nbsp;&nbsp;<%=year%>년 공채 달력
                     <small>쌍용강북교육센터</small>
                 </h1>
                 <ol class="breadcrumb">
@@ -120,14 +120,14 @@
         	
         <!-- 달력 출력 시작  -->
         	<table style="width: 1050px; border: solid #BDBDBD  1px; border-spacing: 0; margin: 5px auto 0; background: #F6F6F6;">
-	<tr height="30" align="center">
-		<td width="150px" bgcolor="#EAEAEA" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">월(MON)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">화(TUE)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">수(WED)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">목(THU)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">금(FRI)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
+	<tr height="30" align="center" style="padding:5px;">
+		<td width="150px" bgcolor="#d9e5ff" style="color: red; border: solid #BDBDBD 1px; ">일(SUN)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">월(MON)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">화(TUE)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">수(WED)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">목(THU)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">금(FRI)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
 	</tr>
 <%
 	out.print("<tr height='30' align='center'>");
@@ -220,13 +220,13 @@
 
 <table style="width: 1050px; border: solid #BDBDBD 1px; border-spacing: 0; margin: 5px auto 0; background: #F6F6F6;">
 	<tr height="30" align="center">
-		<td width="150px" bgcolor="#EAEAEA" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">월(MON)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">화(TUE)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">수(WED)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">목(THU)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">금(FRI)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">월(MON)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">화(TUE)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">수(WED)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">목(THU)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">금(FRI)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
 	</tr>
 <%
 	out.print("<tr height='30' align='center'>");
@@ -323,14 +323,14 @@
 </table>
 
 <table style="width: 1050px; border: solid #BDBDBD 1px; border-spacing: 0; margin: 5px auto 0; background: #F6F6F6;">
-<tr height="30" align="center">
-		<td width="150px" bgcolor="#EAEAEA" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">월(MON)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">화(TUE)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">수(WED)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">목(THU)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="border: solid #BDBDBD 1px;">금(FRI)</td>
-		<td width="150px" bgcolor="#EAEAEA" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
+<tr height="40" align="center">
+		<td width="150px" bgcolor="#d9e5ff" style="color: red; border: solid #BDBDBD 1px;">일(SUN)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">월(MON)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">화(TUE)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">수(WED)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">목(THU)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="border: solid #BDBDBD 1px;">금(FRI)</td>
+		<td width="150px" bgcolor="#d9e5ff" style="color: blue; border: solid #BDBDBD 1px;">토(SAT)</td>
 </tr>
 
 <%
@@ -430,7 +430,9 @@
 <!-- 관리자인 경우만 일정 등록 가능 -->
 <c:if test="${sessionScope.member.memId=='admin'}">
 <!-- 글쓰기 폼으로 가는 주소 입력 -->
-<input type="button" value="일정 등록" onclick="javascript:location.href='<%=cp%>/recruit/created.sst';">
+<button style="margin-left:1000px;"type="button" class="write" onclick="javascript:location.href='<%=cp%>/recruit/created.sst';">
+	        		 		 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 일정등록 </button>
+
 </c:if>
 <!-- 글쓰기 버튼 출력 끝 -->
         	

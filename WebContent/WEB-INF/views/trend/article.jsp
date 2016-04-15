@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>글 보기</title>
+    <title>사자의 심장을 가져라 </title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -147,10 +147,10 @@ function deleteReply(trendR_num, pageNo, memId){
    </div>
 
     <div class="container" role="main">
-    <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
+    <div class="col-sm-10_2"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span> IT동향 게시판 </h3>
+             <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> IT동향 게시판 </h3>
        </div>
        
        <div class="alert alert-info">
@@ -183,9 +183,7 @@ function deleteReply(trendR_num, pageNo, memId){
                             </td>
                         </tr>
                         
-                        <tr>
-                        <td><img id="btnLike" src="<%=cp%>/res/image/social.png">&nbsp;5</td>
-                        </tr>
+         
                         
                         <tr height="30">
                    <td width="80" bgcolor="#EEEEEE" align="center">이전글</td>

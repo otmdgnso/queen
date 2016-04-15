@@ -124,7 +124,7 @@ function deleteReply(replyNum, pageNo, memId) {
 	}
 }
 </script>
-
+<title>사자의 심장을 가져라 </title>
 </head>
 
 <body>

@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>study</title>
+<title>사자의 심장을 가져라 </title>
 <!-- Bootstrap Core CSS -->
     <link href="<%=cp%>/res/css/bootstrap.min.css" rel="stylesheet">
 
@@ -59,7 +59,7 @@
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
 <div class="container" role="main">
-		<div class="bodyFrame col-sm-10"
+		<div class="col-sm-10_2"
 			style="float: none; margin-left: auto; margin-right: auto;">
 
 			<div>
@@ -125,6 +125,7 @@
 											<input type="hidden" name="qnaNum" value="${dto.qnaNum}">
 											<input type="hidden" name="memId" value="${dto.memId}">
 											<input type="hidden" name="page" value="${page}">
+											<input type="hidden" name="qnaHead" value="${dto.qnaHead}">
 										</c:if>
 									</td>
 								</tr>

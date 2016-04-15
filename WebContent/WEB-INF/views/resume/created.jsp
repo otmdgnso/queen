@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>study</title>
+<title>사자의 심장을 가져라 </title>
 <!-- Bootstrap Core CSS -->
     <link href="<%=cp%>/res/css/bootstrap.css" rel="stylesheet">
 

@@ -125,6 +125,14 @@
 					</div>
 				</div>
 			</div>
+			<!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12"  style="margin-left: 50px;">
+                    <p>Copyright &copy; SIST Comm 2016</p>
+                </div>
+            </div>
+        </footer>
 		</div>
 	</div>
 

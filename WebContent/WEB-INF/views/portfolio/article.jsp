@@ -240,9 +240,17 @@ function deleteReply(replyNum, pageNo, memId) {
 					onclick="sendReply();">
 					댓글등록 <span class="glyphicon glyphicon-ok"></span>
 				</button>
+				
 			</div>
 								<div id="listReply"></div>
-
+<!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12"  style="margin-left: 50px;">
+                    <p>Copyright &copy; SIST Comm 2016</p>
+                </div>
+            </div>
+        </footer>
 	</div>
 	<!-- /.container -->
 

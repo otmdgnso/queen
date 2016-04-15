@@ -131,6 +131,14 @@
 	        		 		 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 글쓰기 </button>
 	        		    <%-- <input type="image" src="<%=cp%>/res/image/btn_write.gif" onclick="javascript:location.href='<%=cp%>/tip/created.sst';"> --%>
 	        		</div>
+	        		<!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12"  style="margin-left: 50px;">
+                    <p>Copyright &copy; SIST Comm 2016</p>
+                </div>
+            </div>
+        </footer>
 	        </div>
 	    </div>
 

@@ -242,9 +242,17 @@ function deleteReply(shareR_num, pageNo, memId){
           </div>
           
       </div>
-
+<!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12"  style="margin-left: 50px;">
+                    <p>Copyright &copy; SIST Comm 2016</p>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
+
  <!-- jQuery -->
     <!-- Bootstrap Core JavaScript -->
     <script src="<%=cp%>/res/js/bootstrap.min.js"></script>

@@ -261,7 +261,7 @@ function deleteReply(resumeR_num, pageNo, memId){
 					          <input type="image" src="<%=cp%>/res/image/btn_delete.gif" onclick="deleteResume('${dto.resumeNum}')">
 					    </c:if>
    						</td>
-   						<td align="right" colspan="2">
+   						<td align="right" colspan="3">
 					          <input type="image" src="<%=cp%>/res/image/btn_list.gif" onclick="javascript:location.href='<%=cp%>/resume/list.sst?${params}';">
 					    </td>
 					    </tr>

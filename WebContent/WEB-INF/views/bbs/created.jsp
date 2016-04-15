@@ -58,12 +58,17 @@
 	<div>
 		<jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
-
+  
 	
 	<div class="container" role="main">
 		<div class="bodyFrame col-sm-10"
 			style="float: none; margin-left: auto; margin-right: auto;">
-
+        <div class="body-title">
+	          <h3><span class="glyphicon glyphicon-book"></span>취업정보 나눔 게시판 글쓰기 </h3>
+	    </div>
+        <div class="alert alert-info" >
+	         <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> &nbsp;&nbsp;&nbsp; 글을 작성해주세요.
+	    </div>
 			<div>
 				<form name="shareForm" method="post" onsubmit="return check();">
 					<div class="bs-write">
@@ -100,10 +105,10 @@
 							<tfoot>
 								<tr>
 									<td colspan="4" style="text-align: center; padding-top: 15px;">
-										<button type="submit" class="btn btn-primary">
+										<button type="submit" class="btn btn-info btn-sm btn-search">
 											확인 <span class="glyphicon glyphicon-ok"></span>
 										</button>
-										<button type="button" class="btn btn-danger"
+										<button type="button" class="btn btn-default btn-sm wbtn"
 											onclick="javascript:location.href='<%=cp%>/bbs/list.sst';"> 취소</button>
 											 <c:if test="${mode=='update'}">
 											      <input type="hidden" name="shareNum" value="${dto.shareNum}">

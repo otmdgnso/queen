@@ -150,11 +150,11 @@ function deleteReply(shareR_num, pageNo, memId){
     <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
 
        <div class="body-title">
-             <h3><span class="glyphicon glyphicon-book"></span> 게시판 </h3>
+             <h3><span class="glyphicon glyphicon-book"></span> 취업정보 나눔 게시판 </h3>
        </div>
        
        <div class="alert alert-info">
-           <i class="glyphicon glyphicon-info-sign"></i> 회원과 자유로이 토론할 수 있는 공간입니다.
+           <i class="glyphicon glyphicon-info-sign"></i> 취업정보 나눔 게시판 입니다.
        </div>
        
        <div class="table-responsive" style="clear: both;">

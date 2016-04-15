@@ -56,7 +56,7 @@
 
 
 <div class="container" role="main">
-    <div class="bodyFrame col-sm-10"  style="float:none; margin-left: auto; margin-right: auto;">
+    <div class="col-sm-10_2"  style="float:none; margin-left: auto; margin-right: auto;">
         
 	    <div class="body-title">
 	          <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> 수업자료 </h3>

@@ -102,7 +102,7 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><%=year%>년 공채 달력
+                <h1 style="font-size:30px;" class="page-header"><span class="glyphicon glyphicon-calendar"></span> &nbsp;&nbsp;<%=year%>년 공채 달력
                     <small>쌍용강북교육센터</small>
                 </h1>
                 <ol class="breadcrumb">
@@ -430,7 +430,9 @@
 <!-- 관리자인 경우만 일정 등록 가능 -->
 <c:if test="${sessionScope.member.memId=='admin'}">
 <!-- 글쓰기 폼으로 가는 주소 입력 -->
-<input type="button" value="일정 등록" onclick="javascript:location.href='<%=cp%>/recruit/created.sst';">
+<button style="margin-left:1000px;"type="button" class="write" onclick="javascript:location.href='<%=cp%>/recruit/created.sst';">
+	        		 		 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 일정등록 </button>
+
 </c:if>
 <!-- 글쓰기 버튼 출력 끝 -->
         	

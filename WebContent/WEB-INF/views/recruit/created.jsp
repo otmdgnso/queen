@@ -39,7 +39,7 @@ function check() {
    
    str = f.recruitCompany.value;
    if(!str) {
-      $("#recruitCompany + .help-block").html("<span style='color:red;'>기엄명을 기입하세요!<span>");
+      $("#recruitCompany + .help-block").html("<span style='color:red;'>기업명을 기입하세요!<span>");
        f.recruitCompany.focus();
        return false;
    }else {
@@ -203,10 +203,10 @@ function check() {
    </div>
 
 
-<div class="form-group">
-  <div class="col-sm-offset-2 col-sm-10">
+<div class="form-group" >
+  <div class="col-sm-offset-2 col-sm-10" style="margin-top:30px;">
    <c:if test="${mode=='created'}">
-            <button type="submit" name="sendButton" class="btn btn-primary" style="margin-right:20px; height:40px; width:130px;">등록완료 <span class="glyphicon glyphicon-ok"></span></button>
+            <button type="submit" name="sendButton" class="btn btn-info btn-sm btn-search" style="font-size:13px; margin-right:20px; height:40px; width:130px;">등록완료 <span class="glyphicon glyphicon-ok"></span></button>
             <button type="button" class="btn btn-danger" onclick="javascript:location.href='<%=cp%>//recruit/recruit.sst';" style="margin-right:20px; height:40px; width:130px;">등록취소 <span class="glyphicon glyphicon-remove"></span></button>
    </c:if>
    <c:if test="${mode=='update'}">

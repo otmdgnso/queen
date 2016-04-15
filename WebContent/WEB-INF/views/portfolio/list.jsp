@@ -39,9 +39,19 @@
     <jsp:include page="/WEB-INF/views/layout/navigation.jsp"></jsp:include>
 	</div>
  <!-- Page Content -->
-    <div class="container">
+    <div class="container" role="main">
 
-        <!-- Page Heading/Breadcrumbs -->
+		<div class="col-sm-10_2"  style="float:none; margin-left: auto; margin-right: auto;">
+        
+	    <div class="body-title">
+	          <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span>&nbsp; 포트폴리오</h3>
+	    </div>
+	    
+	    <div class="alert alert-info">
+	        <i class="glyphicon glyphicon-info-sign"></i> &nbsp;&nbsp;&nbsp;지난 수강생들의 포트폴리오를 공유하는 곳입니다
+	    </div>
+	
+       <%--  <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Portfolio
@@ -52,7 +62,7 @@
                     <li class="active">Portfolio</li>
                 </ol>
             </div>
-        </div>
+        </div> --%>
         <!-- /.row -->
 
 			<div>
@@ -97,21 +107,26 @@
 				</div>
 
 				<div style="clear: both;">
-					<div style="float: left; width: 20%; min-width: 85px;">
+					<%-- <div style="float: left; width: 20%; min-width: 85px;">
+	        		    <button type="button" class="btn btn-default btn-sm wbtn" onclick="javascript:location.href='<%=cp%>/docu/list.sst';">새로고침</button>
+	        		</div> --%>
+					<!-- <div style="float: left; width: 20%; min-width: 85px;">
 						&nbsp;</div>
 					<div style="float: left; width: 60%; text-align: center;">
-						&nbsp;</div>
+						&nbsp;</div> -->
 					<div
-						style="float: left; width: 20%; min-width: 85px; text-align: right;">
-						<button type="button" class="btn btn-primary btn-sm bbtn"
+						style="float: left; margin-left: 700px;  width: 20%; min-width: 85px; text-align: right;">
+						<button style=""type="button" class="write" onclick="javascript:location.href='<%=cp%>/portfolio/created.sst';">
+	        		 		 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 글쓰기 </button>
+			<%-- 			<button type="button" class="btn btn-primary btn-sm bbtn"
 							onclick="javascript:location.href='<%=cp%>/portfolio/created.sst';">
-							<span class="glyphicon glyphicon glyphicon-pencil"></span> 등록하기
-						</button>
+							<span class="glyphicon glyphicon glyphicon-pencil"></span> 글쓰기
+						</button> --%>
 					</div>
 				</div>
-
 			</div>
-			</div>
+		</div>
+	</div>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="<%=cp%>/res/js/bootstrap.min.js"></script>

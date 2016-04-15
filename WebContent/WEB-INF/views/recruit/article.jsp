@@ -203,7 +203,7 @@ function deleteReply(recruitR_num, pageNo, memId){
                       <tr>
                          <td>           
                          <c:if test="${sessionScope.member.memId=='admin'}">	               
-                                 <input type="button" value="수정" onclick="javascript:location.href='<%=cp%>/recruit/update.sst?recruitNum=${dto.recruitNum}';">
+                                 <input type="button" value="수정" class="btn btn-default btn-sm wbtn" onclick="javascript:location.href='<%=cp%>/recruit/update.sst?recruitNum=${dto.recruitNum}';">
                                  <input type="button" value="삭제" class="btn btn-default btn-sm wbtn" onclick="deleteRecruit();">
                          </c:if>
                          </td>
@@ -233,7 +233,14 @@ function deleteReply(recruitR_num, pageNo, memId){
           </div>
           
       </div>
-
+<!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12"  style="margin-left: 50px;">
+                    <p>Copyright &copy; SIST Comm 2016</p>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
 

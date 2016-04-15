@@ -261,13 +261,17 @@ function deleteReply(freeR_num, pageNo, memId){
 	               </div>           
 	           </div>
 	    </div>
-
+<!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12"  style="margin-left: 50px;">
+                    <p>Copyright &copy; SIST Comm 2016</p>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
 
-<div>
-    <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
-</div>
 
 <script type="text/javascript" src="<%=cp%>/res/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/res/js/jquery.ui.datepicker-ko.js"></script>

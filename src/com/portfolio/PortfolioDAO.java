@@ -129,9 +129,9 @@ public class PortfolioDAO {
 
 		try {
 			sb.append("SELECT * FROM ( SELECT tb.*,  @rownum:=@rownum+1 AS rnum FROM (");
-			sb.append("    SELECT Num , memId, subject, content, imageFilename FROM portfolio ORDER BY num DESC)tb,  ");
-			sb.append("       (SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
-
+	         sb.append("    SELECT Num , memId, subject, left(content,19) content, imageFilename FROM portfolio ORDER BY num DESC)tb,  ");
+	         sb.append("       (SELECT @rownum:=0) T)tb1 WHERE rnum >= ? and rnum <= ?");
+	         
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);

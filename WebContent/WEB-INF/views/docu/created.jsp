@@ -73,7 +73,7 @@
 		<div class="col-sm-10_2"
 			style="float: none; margin-left: auto; margin-right: auto;">
 	     <div class="body-title">
-	          <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span>수업자료 게시판 글쓰기 </h3>
+	          <h3 style="font-size:30px;"><span class="glyphicon glyphicon-book"></span> &nbsp; 수업자료 글쓰기 </h3>
 	    </div>
         <div class="alert alert-info" >
 	         <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> &nbsp;&nbsp;&nbsp;수업과 관련된 글과 자료만 작성해주세요
